@@ -1,0 +1,19 @@
+vpc_endpoint:
+  name: "<string>"	# Required; A name for this resource
+  service_name: "<string>"       # Required; The service name. AWS services are usually com.amazonaws.<region>.<service>
+  vpc_id: "<string>"       # Required; The ID of the VPC in which the endpoint will be used
+  auto_accept: "<string>"       # Optional; Accept the VPC endpoint
+  policy: "<string>"       # Optional; A policy to attach to the endpoint that controls access to the service; Format like jsonencode( <JSON policy> )
+  private_dns_enabled: <boolean>        # Optional; Whether or not to associate a private hosted zone with the specified VPC; Default false
+  ip_address_type: "<string>"       # Optional; The IP Address Type for the endpoint; ipv4, dualstack or ipv6
+  route_table_ids:  # Optional; One or more route table IDs
+    - <list>
+  subnet_ids:  # Optional; The ID of one or more subnets in which to create a network interface for the endpoint
+    - <list>
+  security_group_ids:  # Optional; The ID of one or more security groups to associate with the network interface
+    - <list>
+  vpc_endpoint_type: "<string>"       # Optional; The VPC endpoint type; Gateway, GatewayLoadBalancer or Interface; Default Gateway
+  tags:  # Optional; A map of tags to assign to the resource
+    - <list>
+  dns_options:
+    dns_record_ip_type: "<string>"       # Optional; The DNS records created for the endpoint; ipv4, dualstack, service-defined or ipv6

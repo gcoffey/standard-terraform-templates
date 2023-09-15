@@ -1,0 +1,10 @@
+resource "aws_lb_target_group_attachment" "{{ lb_target_group_attachment.name }}" {
+  ## Required Vars
+  target_group_arn   = "{{ lb_target_group_attachment.target_group_arn }}"
+  target_id   = "{{ lb_target_group_attachment.target_id }}"
+
+  ## Optional Vars
+  port   = "{{ lb_target_group_attachment.port }}"
+  availability_zone   = "{{ lb_target_group_attachment.availability_zone }}"
+
+}

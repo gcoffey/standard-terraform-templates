@@ -1,0 +1,27 @@
+resource "azurerm_app_configuration" "{{ app_configuration.name }}" {
+  ## Required Vars
+  name   = "{{ app_configuration.name }}"
+  location   = "{{ app_configuration.location }}"
+  resource_group_name   = "{{ app_configuration.resource_group_name }}"
+
+  ## Optional Vars
+  local_auth_enabled   = {{ app_configuration.local_auth_enabled }}
+  public_network_access   = "{{ app_configuration.public_network_access }}"
+  purge_protection_enabled   = {{ app_configuration.purge_protection_enabled }}
+  sku   = "{{ app_configuration.sku }}"
+  soft_delete_retention_days   = "{{ app_configuration.soft_delete_retention_days }}"
+  tags   = "{{ app_configuration.tags | to_json | safe }}"
+
+  ## Blocks
+  encryption {
+    ## Optional Block Vars
+    key_vault_key_identifier   = "{{ app_configuration.encryption.key_vault_key_identifier }}"
+    identity_client_id   = "{{ app_configuration.encryption.identity_client_id }}"
+  }
+  identity {
+    ## Required Block Vars
+    type   = "{{ app_configuration.identity.type }}"
+    ## Optional Block Vars
+    identity_ids   = "{{ app_configuration.identity.identity_ids }}"
+  }
+}

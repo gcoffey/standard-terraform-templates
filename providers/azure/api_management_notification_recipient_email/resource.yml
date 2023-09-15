@@ -1,0 +1,14 @@
+resource:
+  name: "azurerm_api_management_notification_recipient_email"
+  enable_variable_comments: false
+  var_name: "api_management_notification_recipient_email"
+  required_vars:
+    - name: "api_management_id"
+      description: "The ID of the API Management Service"
+      type: "string"
+    - name: "email"
+      description: "The recipient email address"
+      type: "string"
+    - name: "notification_type"
+      description: "Notification Name Template? ; AccountClosedPublisher, BCC, NewApplicationNotificationMessage etc"
+      type: "string"

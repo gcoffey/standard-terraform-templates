@@ -1,0 +1,14 @@
+resource "azurerm_app_service_certificate" "{{ app_service_certificate.name }}" {
+  ## Required Vars
+  name   = "{{ app_service_certificate.name }}"
+  resource_group_name   = "{{ app_service_certificate.resource_group_name }}"
+  location   = "{{ app_service_certificate.location }}"
+
+  ## Optional Vars
+  pfx_blob   = "{{ app_service_certificate.pfx_blob }}"
+  password   = "{{ app_service_certificate.password }}"
+  app_service_plan_id   = "{{ app_service_certificate.app_service_plan_id }}"
+  key_vault_secret_id   = "{{ app_service_certificate.key_vault_secret_id }}"
+  tags   = "{{ app_service_certificate.tags | to_json | safe }}"
+
+}

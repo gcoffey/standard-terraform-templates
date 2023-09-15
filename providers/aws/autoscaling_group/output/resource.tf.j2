@@ -1,0 +1,83 @@
+resource "aws_autoscaling_group" "{{ autoscaling_group.name }}" {
+  ## Required Vars
+  max_size   = "{{ autoscaling_group.max_size }}"
+  min_size   = "{{ autoscaling_group.min_size }}"
+
+  ## Optional Vars
+  name   = "{{ autoscaling_group.name }}"
+  name_prefix   = "{{ autoscaling_group.name_prefix }}"
+  availability_zones   = "{{ autoscaling_group.availability_zones | to_json | safe }}"
+  capacity_rebalance   = {{ autoscaling_group.capacity_rebalance }}
+  context   = "{{ autoscaling_group.context }}"
+  default_cooldown   = "{{ autoscaling_group.default_cooldown }}"
+  default_instance_warmup   = "{{ autoscaling_group.default_instance_warmup }}"
+  launch_configuration   = "{{ autoscaling_group.launch_configuration }}"
+  health_check_grace_period   = "{{ autoscaling_group.health_check_grace_period }}"
+  health_check_type   = "{{ autoscaling_group.health_check_type }}"
+  desired_capacity   = "{{ autoscaling_group.desired_capacity }}"
+  desired_capacity_type   = "{{ autoscaling_group.desired_capacity_type }}"
+  force_delete   = {{ autoscaling_group.force_delete }}
+  load_balancers   = "{{ autoscaling_group.load_balancers | to_json | safe }}"
+  vpc_zone_identifier   = "{{ autoscaling_group.vpc_zone_identifier | to_json | safe }}"
+  target_group_arns   = "{{ autoscaling_group.target_group_arns }}"
+  termination_policies   = "{{ autoscaling_group.termination_policies | to_json | safe }}"
+  suspended_processes   = "{{ autoscaling_group.suspended_processes | to_json | safe }}"
+  placement_group   = "{{ autoscaling_group.placement_group }}"
+  metrics_granularity   = "{{ autoscaling_group.metrics_granularity }}"
+  enabled_metrics   = "{{ autoscaling_group.enabled_metrics | to_json | safe }}"
+  wait_for_capacity_timeout   = "{{ autoscaling_group.wait_for_capacity_timeout }}"
+  min_elb_capacity   = "{{ autoscaling_group.min_elb_capacity }}"
+  wait_for_elb_capacity   = "{{ autoscaling_group.wait_for_elb_capacity }}"
+  protect_from_scale_in   = {{ autoscaling_group.protect_from_scale_in }}
+  service_linked_role_arn   = "{{ autoscaling_group.service_linked_role_arn }}"
+  max_instance_lifetime   = "{{ autoscaling_group.max_instance_lifetime }}"
+
+  ## Blocks
+  launch_template {
+    ## Optional Block Vars
+    id   = "{{ autoscaling_group.launch_template.id }}"
+    name   = "{{ autoscaling_group.launch_template.name }}"
+    version   = "{{ autoscaling_group.launch_template.version }}"
+  }
+  mixed_instances_policy {
+    ## Required Block Vars
+    launch_template {
+      ## Required Block Vars
+      ## Optional Block Vars
+    }
+    ## Optional Block Vars
+    instances_distribution {
+      ## Optional Block Vars
+      on_demand_allocation_strategy   = "{{ autoscaling_group.mixed_instances_policy.instances_distribution.on_demand_allocation_strategy }}"
+      on_demand_base_capacity   = "{{ autoscaling_group.mixed_instances_policy.instances_distribution.on_demand_base_capacity }}"
+      on_demand_percentage_above_base_capacity   = "{{ autoscaling_group.mixed_instances_policy.instances_distribution.on_demand_percentage_above_base_capacity }}"
+      spot_allocation_strategy   = "{{ autoscaling_group.mixed_instances_policy.instances_distribution.spot_allocation_strategy }}"
+      spot_instance_pools   = "{{ autoscaling_group.mixed_instances_policy.instances_distribution.spot_instance_pools }}"
+      spot_max_price   = "{{ autoscaling_group.mixed_instances_policy.instances_distribution.spot_max_price }}"
+    }
+  }
+  instance_refresh {
+    ## Required Block Vars
+    strategy   = "{{ autoscaling_group.instance_refresh.strategy }}"
+    ## Optional Block Vars
+    preferences {
+      ## Optional Block Vars
+      checkpoint_delay   = "{{ autoscaling_group.instance_refresh.preferences.checkpoint_delay }}"
+      checkpoint_percentages   = "{{ autoscaling_group.instance_refresh.preferences.checkpoint_percentages | to_json | safe }}"
+      instance_warmup   = "{{ autoscaling_group.instance_refresh.preferences.instance_warmup }}"
+      min_health_percentage   = "{{ autoscaling_group.instance_refresh.preferences.min_health_percentage }}"
+      skip_matching   = {{ autoscaling_group.instance_refresh.preferences.skip_matching }}
+      auto_rollback   = "{{ autoscaling_group.instance_refresh.preferences.auto_rollback }}"
+    }
+    triggers   = "{{ autoscaling_group.instance_refresh.triggers | to_json | safe }}"
+  }
+  warm_pool {
+    ## Optional Block Vars
+    pool_state   = "{{ autoscaling_group.warm_pool.pool_state }}"
+    min_size   = "{{ autoscaling_group.warm_pool.min_size }}"
+    instance_reuse_policy   = "{{ autoscaling_group.warm_pool.instance_reuse_policy }}"
+    max_group_prepared_capacity   = "{{ autoscaling_group.warm_pool.max_group_prepared_capacity }}"
+    skip_matching   = {{ autoscaling_group.warm_pool.skip_matching }}
+    auto_rollback   = "{{ autoscaling_group.warm_pool.auto_rollback }}"
+  }
+}

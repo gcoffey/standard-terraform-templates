@@ -1,0 +1,8 @@
+resource "azurerm_api_management_notification_recipient_user" "{{ api_management_notification_recipient_user.name }}" {
+  ## Required Vars
+  api_management_id   = "{{ api_management_notification_recipient_user.api_management_id }}"
+  user_id   = "{{ api_management_notification_recipient_user.user_id }}"
+  notification_type   = "{{ api_management_notification_recipient_user.notification_type }}"
+
+
+}

@@ -1,0 +1,59 @@
+resource "azurerm_api_management_custom_domain" "{{ api_management_custom_domain.name }}" {
+  ## Required Vars
+  api_management_id   = "{{ api_management_custom_domain.api_management_id }}"
+
+  ## Optional Vars
+
+  ## Blocks
+  developer_portal {
+    ## Required Block Vars
+    host_name   = "{{ api_management_custom_domain.developer_portal.host_name }}"
+    ## Optional Block Vars
+    certificate   = "{{ api_management_custom_domain.developer_portal.certificate }}"
+    certificate_password   = "{{ api_management_custom_domain.developer_portal.certificate_password }}"
+    key_vault_id   = "{{ api_management_custom_domain.developer_portal.key_vault_id }}"
+    negotiate_client_certificate   = {{ api_management_custom_domain.developer_portal.negotiate_client_certificate }}
+    ssl_keyvault_identity_client_id   = "{{ api_management_custom_domain.developer_portal.ssl_keyvault_identity_client_id }}"
+  }
+  management {
+    ## Required Block Vars
+    host_name   = "{{ api_management_custom_domain.management.host_name }}"
+    ## Optional Block Vars
+    certificate   = "{{ api_management_custom_domain.management.certificate }}"
+    certificate_password   = "{{ api_management_custom_domain.management.certificate_password }}"
+    key_vault_id   = "{{ api_management_custom_domain.management.key_vault_id }}"
+    negotiate_client_certificate   = {{ api_management_custom_domain.management.negotiate_client_certificate }}
+    ssl_keyvault_identity_client_id   = "{{ api_management_custom_domain.management.ssl_keyvault_identity_client_id }}"
+  }
+  portal {
+    ## Required Block Vars
+    host_name   = "{{ api_management_custom_domain.portal.host_name }}"
+    ## Optional Block Vars
+    certificate   = "{{ api_management_custom_domain.portal.certificate }}"
+    certificate_password   = "{{ api_management_custom_domain.portal.certificate_password }}"
+    key_vault_id   = "{{ api_management_custom_domain.portal.key_vault_id }}"
+    negotiate_client_certificate   = {{ api_management_custom_domain.portal.negotiate_client_certificate }}
+    ssl_keyvault_identity_client_id   = "{{ api_management_custom_domain.portal.ssl_keyvault_identity_client_id }}"
+  }
+  scm {
+    ## Required Block Vars
+    host_name   = "{{ api_management_custom_domain.scm.host_name }}"
+    ## Optional Block Vars
+    certificate   = "{{ api_management_custom_domain.scm.certificate }}"
+    certificate_password   = "{{ api_management_custom_domain.scm.certificate_password }}"
+    key_vault_id   = "{{ api_management_custom_domain.scm.key_vault_id }}"
+    negotiate_client_certificate   = {{ api_management_custom_domain.scm.negotiate_client_certificate }}
+    ssl_keyvault_identity_client_id   = "{{ api_management_custom_domain.scm.ssl_keyvault_identity_client_id }}"
+  }
+  gateway {
+    ## Required Block Vars
+    host_name   = "{{ api_management_custom_domain.gateway.host_name }}"
+    ## Optional Block Vars
+    certificate   = "{{ api_management_custom_domain.gateway.certificate }}"
+    certificate_password   = "{{ api_management_custom_domain.gateway.certificate_password }}"
+    default_ssl_binding   = {{ api_management_custom_domain.gateway.default_ssl_binding }}
+    key_vault_id   = "{{ api_management_custom_domain.gateway.key_vault_id }}"
+    negotiate_client_certificate   = {{ api_management_custom_domain.gateway.negotiate_client_certificate }}
+    ssl_keyvault_identity_client_id   = "{{ api_management_custom_domain.gateway.ssl_keyvault_identity_client_id }}"
+  }
+}

@@ -1,0 +1,9 @@
+resource "azurerm_resource_group" "{{ resource_group.name }}" {
+  ## Required Vars
+  location   = "{{ resource_group.location }}"
+  name   = "{{ resource_group.name }}"
+
+  ## Optional Vars
+  tags   = "{{ resource_group.tags | to_json | safe }}"
+
+}

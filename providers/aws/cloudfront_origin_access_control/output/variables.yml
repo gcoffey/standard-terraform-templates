@@ -1,0 +1,7 @@
+cloudfront_origin_access_control:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; A name that identifies the Origin Access Control
+  description: "<string>"       # Required; The description of the Origin Access Control; Can be empty
+  origin_access_control_origin_type: "<string>"       # Required; The type of origin that this Origin Access Control is for; Only S3 currently
+  signing_behavior: "<string>"       # Required; Specifies which requests CF signs; always, never or no-override
+  signing_protocol: "<string>"       # Required; Determines how CF signs requests; sigv4

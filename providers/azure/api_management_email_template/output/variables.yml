@@ -1,0 +1,7 @@
+api_management_email_template:
+  name: "<string>"	# Required; A name for this resource
+  template_name: "<string>"       # Required; Email Template; AccountClosedDeveloper, ApplicationApprovedNotificationMessage, ConfirmSignUpIdentityDefault etc
+  api_management_name: "<string>"       # Required; The name of the API Management Service
+  resource_group_name: "<string>"       # Required; The name of the resource group where the Email Template should exist
+  subject: "<string>"       # Required; The subject of the Email
+  body: "<string>"       # Required; The body of the Email

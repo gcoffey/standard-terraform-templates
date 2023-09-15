@@ -1,0 +1,4 @@
+lb_listener_certificate:
+  name: "<string>"	# Required; A name for this resource
+  listener_arn: "<string>"       # Required; The ARN of the listener to attach the certificate to
+  certificate_arn: "<string>"       # Required; ARN of the certificate to attach to the listener

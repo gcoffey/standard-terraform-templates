@@ -1,0 +1,17 @@
+- name: Process Service Pack Resources
+  block:
+    - include_vars: "{{ resource_path }}/{{ item.name }}/resource.yml"
+    - file: 
+        path: "{{ provider_path }}/{{ item.name }}"
+        state: absent
+    - file:
+        path: "{{ output_path }}/{{ item.name }}"
+        state: directory
+    - name: Generate Resource Templates
+      template:
+        src: "{{ core_path }}/tf_resource.tf.j2"
+        dest: "{{ output_path }}/{{ item.name }}/resource.tf.j2"
+    - name: Generate Resource Variables Template
+      template:
+        src: "{{ core_path }}/variables.yml.j2"
+        dest: "{{ output_path }}/{{ item.name }}/variables.yml"

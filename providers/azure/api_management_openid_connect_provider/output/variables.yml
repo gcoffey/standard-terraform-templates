@@ -1,0 +1,10 @@
+api_management_openid_connect_provider:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the OpenID Connect Provider
+  api_management_name: "<string>"       # Required; The name of the API Management Service
+  resource_group_name: "<string>"       # Required; The name of the Resource Group
+  client_id: "<string>"       # Required; The Client ID used for the Client App
+  client_secret: "<string>"       # Required; The Client Secret used for the Client App
+  display_name: "<string>"       # Required; A user-friendly name for this OpenID Connect Provider
+  metadata_endpoint: "<string>"       # Required; The URI of the Metadata endpoint
+  description: "<string>"       # Optional; A description of this OpenID Connect Provider

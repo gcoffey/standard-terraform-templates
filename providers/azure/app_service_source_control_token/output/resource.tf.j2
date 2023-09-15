@@ -1,0 +1,9 @@
+resource "azurerm_app_service_source_control_token" "{{ app_service_source_control_token.name }}" {
+  ## Required Vars
+  type   = "{{ app_service_source_control_token.type }}"
+  token   = "{{ app_service_source_control_token.token }}"
+
+  ## Optional Vars
+  token_secret   = "{{ app_service_source_control_token.token_secret }}"
+
+}

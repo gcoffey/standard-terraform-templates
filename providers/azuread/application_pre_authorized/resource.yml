@@ -1,0 +1,15 @@
+resource:
+  name: "azuread_application_pre_authorized"
+  enable_variable_comments: false
+  var_name: "application_pre_authorized"
+  required_vars:
+    - name: "application_object_id"
+      description: "The object ID of the application for which permissions are being authorized"
+      type: "string"
+    - name: "permission_ids"
+      description: "A set of permission scope IDs required by the authorized application"
+      type: "string"
+  optional_vars:
+    - name: "authorized_application_id"
+      description: "The application ID [client ID] of the application being authorized"
+      type: "string"

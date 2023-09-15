@@ -1,0 +1,34 @@
+lb:
+  name: "<string>"	# Required; A name for this resource
+  customer_owned_ipv4_pool: "<string>"       # Optional; The ID of the customer owned ipv4 pool to use for this LB
+  desync_mitigation_mode: "<string>"       # Optional; Determines how the LB handles requests that might pose a security risk; monitor, defensive or strictest
+  drop_invalid_header_fields: <boolean>        # Optional; Indicates whether HTTP headers with header fields that are not valid are removed or routed to targets
+  enable_cross_zone_load_balancing: <boolean>        # Optional; If true, cross-zone load balancing of the load balancer will be enabled; Default false
+  enable_deletion_protection: <boolean>        # Optional; If true, deletion of the LB will be disabled via the AWS API; Default false
+  enable_http2: <boolean>        # Optional; Indicates whether HTTP/2 is enabled in application laod balancers; Default true
+  enable_tls_version_and_cipher_suite_headers: <boolean>        # Optional; Indicates whether the two header (x-amzn-tls-version and x-amzn-tls-cipher-suite) which contain info about TLS
+  enable_xff_client_port: <boolean>        # Optional; Indicates whether the X-Forwarded-For header should preserve the source port that the client used; Default true
+  enable_waf_fail_open: <boolean>        # Optional; Indicates whether to allow a WAF-enabled load balancer to route requests to targets if it is unable to forward to AWS WAF
+  idle_timeout: "<string>"       # Optional; The time in seconds that the connection is allowed to be idle; Only valid for ALB; Default 60
+  internal: <boolean>        # Optional; If true, the LB will be internal
+  ip_address_type: "<string>"       # Optional; The type of IP addresses used by the subnets for your LB; ipv4 or dualstack
+  load_balancer_type: "<string>"       # Optional; The type of LB to create; application, gateway or network
+  name: "<string>"       # Optional; The name of the LB
+  name_prefix: "<string>"       # Optional; Creates a unique name beginning with the specified prefix
+  security_groups:  # Optional; A list of security group IDs to assign to the LB
+    - <list>
+  preserve_host_header: <boolean>        # Optional; Indicates whether the ALB should preserve the Host header in the HTTP request; Default false
+  subnets:  # Optional; A list of subnet IDs to attach to the LB
+    - <list>
+  xff_header_processing_mode: "<string>"       # Optional; Determines how the LB modifies the X-Forwarded-For header in the HTTP request; append, preserve or remove
+  tags:  # Optional; A map of tags to assign to the resource
+    - <list>
+  access_logs:
+    bucket: "<string>"       # Required; The S3 bucket name to store logs in
+    enabled: <boolean>        # Optional; Boolean to enable / disable access_logs; Default false
+    prefix: "<string>"       # Optional; The S3 bucket path prefix, Logs are stored in the root if not configured
+  subnet_mapping:
+    subnet_id: "<string>"       # Required; ID of the subnet of which to attach to the LB
+    allocation_id: "<string>"       # Optional; The allocation ID of the Elastic IP address for an internet facing LB
+    ipv6_address: "<string>"       # Optional; The IPv6 address
+    private_ipv4_address: "<string>"       # Optional; The private IPv4 address for an internal LB

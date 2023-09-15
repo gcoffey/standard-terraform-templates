@@ -1,0 +1,20 @@
+resource:
+  name: "aws_cloudfront_origin_access_control"
+  enable_variable_comments: false
+  var_name: "cloudfront_origin_access_control"
+  required_vars:
+    - name: "name"
+      description: "A name that identifies the Origin Access Control"
+      type: "string"
+    - name: "description"
+      description: "The description of the Origin Access Control; Can be empty"
+      type: "string"
+    - name: "origin_access_control_origin_type"
+      description: "The type of origin that this Origin Access Control is for; Only S3 currently"
+      type: "string"
+    - name: "signing_behavior"
+      description: "Specifies which requests CF signs; always, never or no-override"
+      type: "string"
+    - name: "signing_protocol"
+      description: "Determines how CF signs requests; sigv4"
+      type: "string"

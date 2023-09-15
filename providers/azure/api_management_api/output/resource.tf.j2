@@ -1,0 +1,66 @@
+resource "azurerm_api_management_api" "{{ api_management_api.name }}" {
+  ## Required Vars
+  name   = "{{ api_management_api.name }}"
+  api_management_name   = "{{ api_management_api.api_management_name }}"
+  resource_group_name   = "{{ api_management_api.resource_group_name }}"
+  revision   = "{{ api_management_api.revision }}"
+
+  ## Optional Vars
+  api_type   = "{{ api_management_api.api_type }}"
+  display_name   = "{{ api_management_api.display_name }}"
+  path   = "{{ api_management_api.path }}"
+  protocols   = "{{ api_management_api.protocols | to_json | safe }}"
+  description   = "{{ api_management_api.description }}"
+  service_url   = "{{ api_management_api.service_url }}"
+  soap_pass_through   = {{ api_management_api.soap_pass_through }}
+  subscription_required   = {{ api_management_api.subscription_required }}
+  terms_of_service_url   = "{{ api_management_api.terms_of_service_url }}"
+  version   = "{{ api_management_api.version }}"
+  version_set_id   = "{{ api_management_api.version_set_id }}"
+  revision_description   = "{{ api_management_api.revision_description }}"
+  version_description   = "{{ api_management_api.version_description }}"
+  source_api_id   = "{{ api_management_api.source_api_id }}"
+
+  ## Blocks
+  contact {
+    ## Optional Block Vars
+    email   = "{{ api_management_api.contact.email }}"
+    name   = "{{ api_management_api.contact.name }}"
+    url   = "{{ api_management_api.contact.url }}"
+  }
+  import {
+    ## Required Block Vars
+    content_format   = "{{ api_management_api.import.content_format }}"
+    content_value   = "{{ api_management_api.import.content_value }}"
+    ## Optional Block Vars
+    wsdl_selector {
+      ## Required Block Vars
+      service_name   = "{{ api_management_api.import.wsdl_selector.service_name }}"
+ 
+      endpoint_name   = "{{ api_management_api.import.wsdl_selector.endpoint_name }}"
+ 
+    }
+  }
+  license {
+    ## Optional Block Vars
+    name   = "{{ api_management_api.license.name }}"
+    url   = "{{ api_management_api.license.url }}"
+  }
+  oauth2_authorization {
+    ## Required Block Vars
+    authorization_server_name   = "{{ api_management_api.oauth2_authorization.authorization_server_name }}"
+    ## Optional Block Vars
+    scope   = "{{ api_management_api.oauth2_authorization.scope }}"
+  }
+  openid_authentication {
+    ## Required Block Vars
+    openid_provider_name   = "{{ api_management_api.openid_authentication.openid_provider_name }}"
+    ## Optional Block Vars
+    bearer_token_sending_methods   = "{{ api_management_api.openid_authentication.bearer_token_sending_methods }}"
+  }
+  subscription_key_parameter_names {
+    ## Required Block Vars
+    header   = "{{ api_management_api.subscription_key_parameter_names.header }}"
+    query   = "{{ api_management_api.subscription_key_parameter_names.query }}"
+  }
+}

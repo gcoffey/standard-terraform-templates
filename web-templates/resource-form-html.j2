@@ -1,0 +1,31 @@
+<form id="{{ resource.name }}" action="{{ resource.action }}">
+<fieldset>
+<legend>{{ resource.legend_name }}</legend>
+{% for rvars in resource.required_vars %} 
+<div>
+ <label for="{{ rvars.name }}">{{ title(rvars.name) }}:</label>
+{% if rvars.type == "string" %}
+ <input name="{{ rvars.name }}" id="{{ rvars.name }}" type="text" placeholder="{{ rvars.description }}" required autofocus>
+{% endif %}
+{% if rvars.type == "boolean" %}
+ <input name="{{ rvars.name }}" id="enabled" type="radio" value="enabled" required autofocus>
+ <label for="enabled">enabled</label>
+ <input name="{{ rvars.name }}" id="disabled" type="radio" value="disabled" required autofocus>
+ <label for="disabled">disabled</label>
+{% endif %}
+{% if rvars.type == "list" %}
+{% for lvars in rvars.list_options %}
+ <input name="{{ lvars.name }}" id="{{ lvars.name }}" type="checkbox" value="{{ lvars.description }}" autofocus>
+ <label for="{{ lvars.name }}">{{ title(lvars.name) }}</label>
+{% endfor %}
+{% endif %}
+</div>
+{% endfor %}
+
+<div>
+
+<div>
+ <input name="Save" type="submit" value="Save">
+</div>
+</fieldset>
+</form>

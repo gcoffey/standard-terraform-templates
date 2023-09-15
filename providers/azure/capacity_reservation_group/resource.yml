@@ -1,0 +1,21 @@
+resource:
+  name: "azurerm_capacity_reservation_group"
+  enable_variable_comments: false
+  var_name: "capacity_reservation_group"
+  required_vars:
+    - name: "name"
+      description: "Specifies the name of this Capacity Reservation Group"
+      type: "string"
+    - name: "resource_group_name"
+      description: "Specifies the name of the resource group the Capacity Reservation Group is located in"
+      type: "string"
+    - name: "location"
+      description: "The Azure location where the Capacity Reservation Group exists"
+      type: "string"
+  optional_vars:
+    - name: "zone"
+      description: "Specifies the Availability Zone for this Capacity Reservation Group"
+      type: "string"
+    - name: "tags"
+      description: "A mapping of tags"
+      type: "list"

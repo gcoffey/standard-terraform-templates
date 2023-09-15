@@ -1,0 +1,149 @@
+windows_virtual_machine_scale_set:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the Windows Virtual MAchine Scale Set
+  location: "<string>"       # Required; Specifies the supported Azure location where the resource should be created
+  resource_group_name: "<string>"       # Required; The name of the Resource Group in which the Windows VM Scale Set should exist
+  admin_password: "<string>"       # Required; The password which should be used for the local administrator on this VM
+  admin_username: "<string>"       # Required; The username of the local administrator on each VM Scale Set instance
+  instances: "<string>"       # Required; The number of VMs in the Scale Set
+  sku: "<string>"       # Required; The VM SKU for the Scale Set, such as Standard_F2
+  capacity_reservation_group_id: "<string>"       # Optional; Specifies the ID of the Capacity Reservation Group which the VM Scale Set should be allocated to
+  computer_name_prefix: "<string>"       # Optional; The prefix which should be used for the name of the VMs in this Scale Set
+  custom_data: "<string>"       # Optional; The Base64-Encoded Custom Data which should be used for this VM Scale Set
+  do_not_run_extensions_on_overprovisioned_machines: <boolean>        # Optional; Should VM extensions be run on overprovisioned VMs in the Scale Set; Default false
+  edge_zone: "<string>"       # Optional; Specifies the Edge Zone within the Azure Region where this VM Scale Set should exist
+  enable_automatic_updates: <boolean>        # Optional; Are automatic updates enabled for this VM; Defaul true
+  encryption_at_host_enabled: <boolean>        # Optional; Should all of the disks attached to this VM be encrypted
+  extension_operations_enabled: <boolean>        # Optional; Should extension operations be allowed on the VM Scale Set; Default true
+  extensions_time_budget: "<string>"       # Optional; Specifies the duration allocated for all extensions to start; between 15 and 120 mins; Default PT1H30M [90mins]
+  eviction_policy: "<string>"       # Optional; Specifies the eviction policy for VMs in this Scale Set; Deallocate or Delete
+  gallery_application: "<string>"       # Optional; A Gallery Application Block
+  health_probe_id: "<string>"       # Optional; The ID of a Load Balancer Probe which should be used to determine the health of an instance
+  host_group_id: "<string>"       # Optional; Specifies the ID of the dedicated host group that the vm scale set resides in
+  license_type: "<string>"       # Optional; Specifies the type of on-premise license; None, Windows_Client or Windows_Server
+  max_bid_price: "<string>"       # Optional; The maximum price you're willing to pay for each VM Scale Set in US dollars; Default -1
+  overprovision: <boolean>        # Optional; Should Azure over-provision VMs in this Scale Set; Default true
+  platform_fault_domain_count: "<string>"       # Optional; Specifies the number of fault domains that are used by the VM Scale Set
+  priority: "<string>"       # Optional; The Priority of this VM Scale Set; Regular or Spot; Default Regular
+  provision_vm_agent: <boolean>        # Optional; Should the Azure VM Agent be provisioned on each VM in the Scale Set; Default true
+  proximity_placement_group_id: "<string>"       # Optional; The ID of the Proximity Placement Group in which the VM Scale Set
+  scale_in: "<string>"       # Optional; A Scale In Block
+  secure_boot_enabled: <boolean>        # Optional; Specifies if Secure Boot and Trusted Launch is enabled for the VM
+  single_placement_group: <boolean>        # Optional; Should this VM Scale Set be limited to a Single Placement Group; Default true
+  source_image_id: "<string>"       # Optional; The ID of an image which each VM in this Scale Set
+  tags:  # Optional; A mapping of tags
+    - <list>
+  timezone: "<string>"       # Optional; Specifies the time zone of the VMs
+  upgrade_mode: "<string>"       # Optional; Specifies how Upgrades should be performed to VM instances; Automatic, Manual or Rolling
+  user_data: "<string>"       # Optional; The Base64-Encoded User Data which should be used for this VM Scale Set
+  vtpm_enabled: <boolean>        # Optional; Specifies if vTPM and Trusted Launch is enabled for the VM
+  zone_balance: "<string>"       # Optional; Should the VMs in this Scale Set be evenly distributed across Availability Zones; Default false
+  zones: "<string>"       # Optional; Specifies a list of Availability Zones in which this VM Scale Set should be located
+  additional_capabilities:
+    ultra_ssd_enabled: <boolean>        # Optional; Should the capacity to enable Data Disks of the UltraSSD_LRS storate account be supported; Default false
+  additional_unattend_content:
+    content: "<string>"       # Required; The XML formatted content that is added to the unattend.xml file
+    setting: "<string>"       # Required; The name of the setting to which the content applies; AutoLogon or FirstLogonCommands
+  automatic_os_upgrade_policy:
+    disable_automatic_rollback: <boolean>        # Required; Should automatic rollbacks be disabled
+    enable_automatic_os_upgrade: "<string>"       # Required; Should OS Upgrades automatically be applied to Scale Set instances in a rolling fashion
+  automatic_instance_repair:
+    enabled: <boolean>        # Required; Should the automatic instance repair be enabled on this Virtual Machine Scale Set
+    grace_period: "<string>"       # Optional; Amount of time (in minutes, between 30 & 90; default PT30M) for which automatic repairs will be delayed
+  boot_diagnostics:
+    storage_account_uri: "<string>"       # Optional; The primary / secondary endpoint for the Azure Storage Account which should be used for Boot Diagnostics
+  data_disk:
+    name: "<string>"       # Required; The Name of the data disk
+    caching: "<string>"       # Required; The type of Caching which should be used; None, ReadOnly or ReadWrite
+    disk_size_gb: "<string>"       # Required; The size of the Data Disk which should be created
+    lun: "<string>"       # Required; The Logical Unit Number of the Data Disk
+    storage_account_type: "<string>"       # Required; The Type of STorage Account which should back this Data Disk; Standard_LRS, StandardSSD_LRS, Premium_LRS etc
+    create_option: "<string>"       # Optional; The create option which should be used for this Data Disk; Empty or FromImage; Default Empty
+    disk_encryption_set_id: "<string>"       # Optional; The ID of the Disk Encryption Set which should be used to encrypt this Data Disk
+    ultra_ssd_disk_iops_read_write: "<string>"       # Optional; Specifies the Read-Write IOPS for this Data Disk
+    ultra_ssd_disk_mbps_read_write: "<string>"       # Optional; Specifies the bandwidth in MB per second for this Data Disk
+    write_accelerator_enabled: <boolean>        # Optional; write_accelerator_enabled; Default false
+  extension:
+    name: "<string>"       # Required; The name for the Virtual Machine Scale Set extension
+    publisher: "<string>"       # Required; Specifies the Publisher of the Extension
+    type: "<string>"       # Required; Specifies the Type of the Extension
+    type_handler_version: "<string>"       # Required; Specifies the version of the extension to use
+    auto_upgrade_minor_version: <boolean>        # Optional; Should the latest version of the Extension be used at Deployment Time; Default true
+    automatic_upgrade_enabled: <boolean>        # Optional; Should the Extension be automatically updated whenever the Publisher releases a new version
+    force_update_tag: "<string>"       # Optional; A value which, when different to the previous value can be used to force-run the Extension
+    protected_settings: "<string>"       # Optional; A JSON String which specifies Sensitive Settings for the Extension
+    protected_settings_from_key_vault:
+      secret_url: "<string>"       # Required; The URL to the Key Vault Secret which stores the protected Settings 
+      source_vault_id: "<string>"       # Required; The ID of the source Key Vault 
+    provision_after_extensions: "<string>"       # Optional; An ordered list of Extension names which this should be provisioned after
+    settings: "<string>"       # Optional; A JSON String which specifies Settings for the Extension
+  gallery_application:
+    version_id: "<string>"       # Required; Specifies the Gallery Application Version resource ID
+    configuration_blob_uri: "<string>"       # Optional; Specifies the URI to an Azure Blob that will replace the default configuration for the package if provided
+    order: "<string>"       # Optional; Specifies the order in which the packages have to be installed
+    tag: "<string>"       # Optional; Specifies a passthrough value for more generic context
+  identity:
+    type: "<string>"       # Required; Specifies the type of Managed Service Identity; SystemAssigned or UserAssigned
+    identity_ids: "<string>"       # Optional; Specifies a list of User Assigned Managed Identity IDs to be assigned to this Windows Virtual Machine Scale Set
+  network_interface:
+    name: "<string>"       # Required; The name which should be used for this network interface
+    ip_configuration:
+ 
+      name: "<string>"       # Required; The name which should be used for this IP Configuration      application_gateway_backend_address_pool_ids: "<string>"       # Optional; A list of Backend Address Pools from an App Gateway this Scale Set should attach to
+      application_security_group_ids: "<string>"       # Optional; A list of Application Security Group IDs which this Scale Set should attach to
+      load_balancer_backend_address_pool_ids: "<string>"       # Optional; A list of Backend Address Pools from a LB which this Scale Set should attach to
+      load_balancer_inbound_nat_rules_ids: "<string>"       # Optional; A list of NAT Rule IDs from a Load Balancer which this Scale Set should attach to
+      primary: <boolean>        # Optional; Is this the Primary IP Config for this Network Interface; Default false
+      subnet_id: "<string>"       # Optional; The ID of the Subnet which this IP Config should connect to
+      version: "<string>"       # Optional; The Internet Protocol Version which should be used for this IP Config; IPv4 or IPv6; Default IPv4
+    dns_servers: "<string>"       # Optional; A list of IP Addresses of DNS Servers which should be assigned to the network interface
+    enable_accelerated_networking: <boolean>        # Optional; Does this Network interface support accelerated networking; Default false
+    enable_ip_forwarding: <boolean>        # Optional; Does this Network interface support IP Forwarding; Default false
+    network_security_group_id: "<string>"       # Optional; The ID of a Network Security Group which should be assigned to this Network Interface
+    primary: "<string>"       # Optional; Is this the primary ip configuration
+  os_disk:
+    caching: "<string>"       # Required; The Type of Caching which should be used for the Internal OS Disk; None, ReadOnly or ReadWrite
+    storage_account_type: "<string>"       # Required; The Type of Storage Account which should back this internal OS disk; Standard_LRS, StandardSSD_LRS etc
+    diff_disk_settings:
+      option: "<string>"       # Required; Specifies the Ephemeral Disk Settings for the OS Disk; Possible value is Local 
+      placement: "<string>"       # Optional; Specifies where to store the Ephemeral Disk; CacheDisk or ResourceDisk; Default CacheDisk
+    disk_encryption_set_id: "<string>"       # Optional; The ID of the Disk Encryption Set which should be used to encrypt this OS Disk
+    disk_size_gb: "<string>"       # Optional; The size of the internal OS Disk in GB
+    secure_vm_disk_encryption_set_id: "<string>"       # Optional; The ID of the Disk Encryption Set which should be used to encrypt this OS Disk. Required when Confidential VMSS
+    security_encryption_type: "<string>"       # Optional; Encryption Type when the Virtual Machine Scale Set is Confidential VMSS; VMGuestStateOnly or DiskWithVMGuestState
+    write_accelerator_enabled: <boolean>        # Optional; Should Write Accelerator be Enabled for this OS Disk; Default false
+  plan:
+    name: "<string>"       # Required; Specifies the name of the image from the marketplace
+    publisher: "<string>"       # Required; Specifies the publisher of the image
+    product: "<string>"       # Required; Specifies the product of the image from the marketplace
+  scale_in:
+    rule: "<string>"       # Optional; The scale-in policy rule that decides which VMs are chosen for removal; Default, NewestVM or OldestVM; Default is Default
+    force_deletion_enabled: <boolean>        # Optional; Should the VMs chosen for removal be force deleted when the VMSS is being scaled in; Default false
+  rolling_upgrade_policy:
+    max_batch_instance_percent: "<string>"       # Required; The maximum percent of total VM instances that will be upgraded simultaneously
+    max_unhealthy_instance_percent: "<string>"       # Required; The maximum percent of total VM instances that can be unhealthy, before the update aborts
+    max_unhealthy_upgraded_instance_percent: "<string>"       # Required; The maximum percent of upgraded VM instances that can be found to be unhealthy
+    pause_time_between_batches: "<string>"       # Required; The wait time between completing the update for all VM in one batch and starting the next batch; Time duration in ISO8601 format
+    cross_zone_upgrades_enabled: <boolean>        # Optional; Should the VM Scale SEt ignore the Azure Zone boundaries when constructing upgrade batches; true or false
+    prioritize_unhealth_instances_enabled: <boolean>        # Optional; Upgrade all unhealthy instances in a scale set before any health instances; true or false
+  secret:
+    certificate:
+ 
+      store: "<string>"       # Required; The certificate store on the Virtual Machine where the certificate should be added      url: "<string>"       # Required; The Secret URL of a Key Vault Certificate    key_vault_id: "<string>"       # Required; The ID of the Key Vault which all Secrets should be sourced
+  terminate_notification:
+    enabled: <boolean>        # Required; Should the terminate notification be enabled on this VM Scale Set
+    timeout: "<string>"       # Optional; Length of time (in minutes, between 5 and 15) a notification to be sent to the VM; Default PT5M
+  termination_notification:
+    enabled: <boolean>        # Required; Should the termination notification be enabled on this VM Scale Set
+    timeout: "<string>"       # Optional; Length of time (in minutes, between 5 and 15) a notification to be sent to the VM; Default PT5M
+  winrm_listener:
+    protocol: "<string>"       # Required; The Protocol of the WinRM Listener; Http or Https
+    certificate_url: "<string>"       # Optional; Required when protocol = Https; The Secret URL of a Key Vault Certificate
+  source_image_reference:
+    publisher: "<string>"       # Required; Specifies the publisher of the image used to create the virtual machines
+    offer: "<string>"       # Required; Specifies the offer of the image used to create the virtual machines
+    sku: "<string>"       # Required; Specifies the SKU of the image used to create the virtual machines
+    version: "<string>"       # Required; Specifies the version of the image used to create the virtual machines
+  spot_restore:
+    enabled: <boolean>        # Optional; Should the Spot-Try-Restore feature be enabled
+    timeout: "<string>"       # Optional; The length of time that the VM Scale SEt should attempt to restore the Spot VM instances; Default PT1H30M

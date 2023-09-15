@@ -1,0 +1,39 @@
+resource "azurerm_mysql_server" "{{ mysql_server.name }}" {
+  ## Required Vars
+  name   = "{{ mysql_server.name }}"
+  resource_group_name   = "{{ mysql_server.resource_group_name }}"
+  location   = "{{ mysql_server.location }}"
+  sku_name   = "{{ mysql_server.sku_name }}"
+  version   = "{{ mysql_server.version }}"
+
+  ## Optional Vars
+  administrator_login   = "{{ mysql_server.administrator_login }}"
+  administrator_login_password   = "{{ mysql_server.administrator_login_password }}"
+  auto_grow_enabled   = {{ mysql_server.auto_grow_enabled }}
+  backup_retention_days   = "{{ mysql_server.backup_retention_days }}"
+  create_mode   = "{{ mysql_server.create_mode }}"
+  creation_source_server_id   = "{{ mysql_server.creation_source_server_id }}"
+  geo_redundant_backup_enabled   = {{ mysql_server.geo_redundant_backup_enabled }}
+  infrastructure_encryption_enabled   = {{ mysql_server.infrastructure_encryption_enabled }}
+  public_network_access_enabled   = {{ mysql_server.public_network_access_enabled }}
+  restore_point_in_time   = "{{ mysql_server.restore_point_in_time }}"
+  ssl_enforcement_enabled   = {{ mysql_server.ssl_enforcement_enabled }}
+  ssl_minimal_tls_version_enforced   = "{{ mysql_server.ssl_minimal_tls_version_enforced }}"
+  storage_mb   = "{{ mysql_server.storage_mb }}"
+  tags   = "{{ mysql_server.tags | to_json | safe }}"
+
+  ## Blocks
+  identity {
+    ## Required Block Vars
+    type   = "{{ mysql_server.identity.type }}"
+  }
+  threat_detection_policy {
+    ## Optional Block Vars
+    enabled   = {{ mysql_server.threat_detection_policy.enabled }}
+    disabled_alerts   = "{{ mysql_server.threat_detection_policy.disabled_alerts }}"
+    email_account_admins   = "{{ mysql_server.threat_detection_policy.email_account_admins | to_json | safe }}"
+    retention_days   = "{{ mysql_server.threat_detection_policy.retention_days }}"
+    storage_account_access_key   = "{{ mysql_server.threat_detection_policy.storage_account_access_key }}"
+    storage_endpoint   = "{{ mysql_server.threat_detection_policy.storage_endpoint }}"
+  }
+}

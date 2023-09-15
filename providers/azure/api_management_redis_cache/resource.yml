@@ -1,0 +1,24 @@
+resource:
+  name: "azurerm_api_management_redis_cache"
+  enable_variable_comments: false
+  var_name: "api_management_redis_cache"
+  required_vars:
+    - name: "name"
+      description: "The name which should be used for this API Management Redis Cache"
+      type: "string"
+    - name: "api_management_id"
+      description: "The resource ID of the API Management Service"
+      type: "string"
+    - name: "connection_string"
+      description: "The connection string to the Cache for Redis"
+      type: "string"
+  optional_vars:
+    - name: "description"
+      description: "The description of the API Management Redis Cache"
+      type: "string"
+    - name: "redis_cache_id"
+      description: "The resource ID of the Cache for Redis"
+      type: "string"
+    - name: "cache_location"
+      description: "The location where to use cache from; Defaults to default"
+      type: "string"

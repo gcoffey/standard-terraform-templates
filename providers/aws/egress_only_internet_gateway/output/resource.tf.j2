@@ -1,0 +1,7 @@
+resource "aws_egress_only_internet_gateway" "{{ egress_only_internet_gateway.name }}" {
+
+  ## Optional Vars
+  vpc_id   = "{{ egress_only_internet_gateway.vpc_id }}"
+  tags   = "{{ egress_only_internet_gateway.tags | to_json | safe }}"
+
+}

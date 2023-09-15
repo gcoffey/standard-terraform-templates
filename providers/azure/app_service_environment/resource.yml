@@ -1,0 +1,45 @@
+resource:
+  name: "azurerm_app_service_environment"
+  enable_variable_comments: false
+  var_name: "app_service_environment"
+  required_vars:
+    - name: "name"
+      description: "The name of the App Service Environment"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The resource group name of the App Service Environment"
+      type: "string"
+    - name: "subnet_id"
+      description: "The ID of the Subnet which the App Service Environment should be connected to"
+      type: "string"
+  optional_vars:
+    - name: "cluster_setting"
+      description: "Cluster Setting Block"
+      type: "block"
+    - name: "internal_load_balancing_mode"
+      description: "Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment; None, Web or Publishing"
+      type: "string"
+    - name: "pricing_tier"
+      description: "Pricing tier for the front end instances; I1, I2 or I3; Default I1"
+      type: "string"
+    - name: "front_end_scale_factor"
+      description: "Scale factor for front end instances; Between 5 and 15; Default 15"
+      type: "string"
+    - name: "allowed_user_ip_cidrs"
+      description: "Allowed user added IP ranges on the ASE database"
+      type: "string"
+    - name: "tags"
+      description: "A mapping of tags"
+      type: "list"
+
+blocks:
+  - name: "cluster_setting"
+    required: false
+    description: "Cluster Setting Block"
+    required_vars:
+      - name: "name"
+        description: "Name of the Cluster Setting"
+        type: "string"
+      - name: "value"
+        description: "Value of the Cluster Setting"
+        type: "string"

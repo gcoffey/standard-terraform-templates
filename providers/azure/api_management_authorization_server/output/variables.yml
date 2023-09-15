@@ -1,0 +1,23 @@
+api_management_authorization_server:
+  name: "<string>"	# Required; A name for this resource
+  api_management_name: "<string>"       # Required; The name of the API Management Service where the Authorization Server should exist
+  authorization_methods: "<string>"       # Required; The HTTP Verbs supported by the Auth Endpoint; DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT or TRACE
+  authorization_endpoint: "<string>"       # Required; The OAUTH Authorization Endpoint
+  client_id: "<string>"       # Required; The Client / App ID registered with this Authorization Server
+  client_registration_endpoint: "<string>"       # Required; The URI of the page where Client / App registration is performed for this Auth server
+  display_name: "<string>"       # Required; The user-friendly name of this Authorization Server
+  grant_types: "<string>"       # Required; Authorization Grant when requesting an Access Token; authorizationCode, clientCredentials, implicit or resourceOwnerPassword
+  name: "<string>"       # Required; The name of this Authorization Server
+  resource_group_name: "<string>"       # Required; The name of this Resource Group in which the API Management Service exists
+  bearer_token_sending_methods: "<string>"       # Optional; The mechanism by which Access Tokens are passed to the API; authorizationHeader or query
+  client_authentication_method: "<string>"       # Optional; The authentication methods supported by the token endpoint; Basic or Body
+  client_secret: "<string>"       # Optional; The client / app secret
+  default_scope: "<string>"       # Optional; The Default Scope used when requesting an Access Token
+  description: "<string>"       # Optional; A description of the Authorization Server
+  resource_owner_password: "<string>"       # Optional; The password associated with the Resource Owner; Required when grant_type is resourceOwnerPassword
+  resource_owner_username: "<string>"       # Optional; The username associated with the Resource Owner; Required when grant_type is resourceOwnerPassword
+  support_state: <boolean>        # Optional; Does this authorization server support state; Default true
+  token_endpoint: "<string>"       # Optional; The OAUTH Token Endpoint
+  token_body_parameter:
+    name: "<string>"       # Required; The name of the parameter
+    value: "<string>"       # Required; The value of the parameter

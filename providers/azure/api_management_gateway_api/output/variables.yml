@@ -1,0 +1,4 @@
+api_management_gateway_api:
+  name: "<string>"	# Required; A name for this resource
+  gateway_id: "<string>"       # Required; The identifier for the API Management Gateway
+  api_id: "<string>"       # Required; The identifier for the API Management API

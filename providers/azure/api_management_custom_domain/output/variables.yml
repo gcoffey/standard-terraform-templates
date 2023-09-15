@@ -1,0 +1,39 @@
+api_management_custom_domain:
+  name: "<string>"	# Required; A name for this resource
+  api_management_id: "<string>"       # Required; The ID of the API Management Service
+  developer_portal:
+    host_name: "<string>"       # Required; The hostname to use for the corresponding endpoint
+    certificate: "<string>"       # Optional; The Base64 Encoded Certificate
+    certificate_password: "<string>"       # Optional; The password associated with the certificate
+    key_vault_id: "<string>"       # Optional; The ID of the Key Vault Secret containing the SSL cert
+    negotiate_client_certificate: <boolean>        # Optional; Should Client Certificate Negotiation be enabled; Default false
+    ssl_keyvault_identity_client_id: "<string>"       # Optional; System or User Assigned Managed Identity clientId from AzureAD
+  management:
+    host_name: "<string>"       # Required; The hostname to use for the corresponding endpoint
+    certificate: "<string>"       # Optional; The Base64 Encoded Certificate
+    certificate_password: "<string>"       # Optional; The password associated with the certificate
+    key_vault_id: "<string>"       # Optional; The ID of the Key Vault Secret containing the SSL cert
+    negotiate_client_certificate: <boolean>        # Optional; Should Client Certificate Negotiation be enabled; Default false
+    ssl_keyvault_identity_client_id: "<string>"       # Optional; System or User Assigned Managed Identity clientId from AzureAD
+  portal:
+    host_name: "<string>"       # Required; The hostname to use for the corresponding endpoint
+    certificate: "<string>"       # Optional; The Base64 Encoded Certificate
+    certificate_password: "<string>"       # Optional; The password associated with the certificate
+    key_vault_id: "<string>"       # Optional; The ID of the Key Vault Secret containing the SSL cert
+    negotiate_client_certificate: <boolean>        # Optional; Should Client Certificate Negotiation be enabled; Default false
+    ssl_keyvault_identity_client_id: "<string>"       # Optional; System or User Assigned Managed Identity clientId from AzureAD
+  scm:
+    host_name: "<string>"       # Required; The hostname to use for the corresponding endpoint
+    certificate: "<string>"       # Optional; The Base64 Encoded Certificate
+    certificate_password: "<string>"       # Optional; The password associated with the certificate
+    key_vault_id: "<string>"       # Optional; The ID of the Key Vault Secret containing the SSL cert
+    negotiate_client_certificate: <boolean>        # Optional; Should Client Certificate Negotiation be enabled; Default false
+    ssl_keyvault_identity_client_id: "<string>"       # Optional; System or User Assigned Managed Identity clientId from AzureAD
+  gateway:
+    host_name: "<string>"       # Required; The hostname to use for the corresponding endpoint
+    certificate: "<string>"       # Optional; The Base64 Encoded Certificate
+    certificate_password: "<string>"       # Optional; The password associated with the certificate
+    default_ssl_binding: <boolean>        # Optional; Is the certificate associated with this Hostname the default SSL cert?; Default false
+    key_vault_id: "<string>"       # Optional; The ID of the Key Vault Secret containing the SSL cert
+    negotiate_client_certificate: <boolean>        # Optional; Should Client Certificate Negotiation be enabled; Default false
+    ssl_keyvault_identity_client_id: "<string>"       # Optional; System or User Assigned Managed Identity clientId from AzureAD

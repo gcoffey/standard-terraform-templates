@@ -1,0 +1,24 @@
+resource "{{ resource.name }}" "{{ '{{' }} {{ resource.var_name }}.name {{ '}}' }}" {
+{% if resource.required_vars is defined %}
+  ## Required Vars
+{% for required in resource.required_vars %}
+{% include('tf_resource_required_variables.tf.j2') %}
+{% endfor %}
+{% endif %}
+
+{% if resource.optional_vars is defined %}
+  ## Optional Vars
+{% for optional in resource.optional_vars %}
+{% include('tf_resource_optional_variables.tf.j2') %}
+{% endfor %}
+{% endif %}
+
+{% if blocks is defined %}
+  ## Blocks
+{% for block in blocks %}
+{% if block.parent_block is not defined %}
+{% include('tf_resource_block.tf.j2') %}
+{% endif %}
+{% endfor %}
+{% endif %}
+}

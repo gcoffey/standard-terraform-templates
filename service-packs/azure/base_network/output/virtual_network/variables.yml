@@ -1,0 +1,20 @@
+virtual_network:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the virtual network
+  resource_group_name: "<string>"       # Required; The name of the Resource group in which the VNET should be created
+  location: "<string>"       # Required; Specifies the supported Azure location where the resource exists
+  address_space: "<string>"       # Required; The address space that is used for the virtual network
+  bgp_community: "<string>"       # Optional; The BGP community attribute in format <as-number>:<community-value>
+  dns_servers:  # Optional; List of IP addresses of DNS servers
+    - <list>
+  edge_zone: "<string>"       # Optional; Specifies the Edge Zone within the Azure Region
+  flow_timeout_in_minutes: "<string>"       # Optional; The flow timeout in minutes for the Virtual Network; between 4 and 30
+  tags:  # Optional; A mapping of tags
+    - <list>
+  ddos_protection_plan:
+    id: "<string>"       # Required; The ID of DDoS Protection Plan
+    enable: "<string>"       # Required; Enable/disable DDoS Protection Plan on Virtual Network
+  subnet:
+    name: "<string>"       # Required; The name of the subnet
+    address_prefix: "<string>"       # Required; The address prefix to use for the subnet
+    security_group: "<string>"       # Optional; The Network Security Group to associate with the subnet

@@ -1,0 +1,4 @@
+vpc_endpoint_route_table_association:
+  name: "<string>"	# Required; A name for this resource
+  route_table_id: "<string>"       # Required; Identifier of the EC2 Route Table to be assocaited with the VPC Endpoint
+  vpc_endpoint_id: "<string>"       # Required; Identifier of the VPC Endpoint with which the Route Table will be associated

@@ -1,0 +1,18 @@
+resource "azurerm_api_management_gateway" "{{ api_management_gateway.name }}" {
+  ## Required Vars
+  name   = "{{ api_management_gateway.name }}"
+  api_management_id   = "{{ api_management_gateway.api_management_id }}"
+
+  ## Optional Vars
+  description   = "{{ api_management_gateway.description }}"
+
+  ## Blocks
+  location_data {
+    ## Required Block Vars
+    name   = "{{ api_management_gateway.location_data.name }}"
+    ## Optional Block Vars
+    city   = "{{ api_management_gateway.location_data.city }}"
+    district   = "{{ api_management_gateway.location_data.district }}"
+    region   = "{{ api_management_gateway.location_data.region }}"
+  }
+}

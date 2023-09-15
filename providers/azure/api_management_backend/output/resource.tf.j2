@@ -1,0 +1,55 @@
+resource "azurerm_api_management_backend" "{{ api_management_backend.name }}" {
+  ## Required Vars
+  name   = "{{ api_management_backend.name }}"
+  api_management_name   = "{{ api_management_backend.api_management_name }}"
+  resource_group_name   = "{{ api_management_backend.resource_group_name }}"
+  protocol   = "{{ api_management_backend.protocol }}"
+  url   = "{{ api_management_backend.url }}"
+
+  ## Optional Vars
+  description   = "{{ api_management_backend.description }}"
+  resource_id   = "{{ api_management_backend.resource_id }}"
+  title   = "{{ api_management_backend.title }}"
+  tls   = "{{ api_management_backend.tls }}"
+
+  ## Blocks
+  credentials {
+    ## Optional Block Vars
+    authorization {
+      ## Optional Block Vars
+      parameter   = "{{ api_management_backend.credentials.authorization.parameter }}"
+      scheme   = "{{ api_management_backend.credentials.authorization.scheme }}"
+    }
+    certificate   = "{{ api_management_backend.credentials.certificate }}"
+    header   = "{{ api_management_backend.credentials.header }}"
+    query   = "{{ api_management_backend.credentials.query }}"
+  }
+  proxy {
+    ## Required Block Vars
+    url   = "{{ api_management_backend.proxy.url }}"
+    username   = "{{ api_management_backend.proxy.username }}"
+    ## Optional Block Vars
+    password   = "{{ api_management_backend.proxy.password }}"
+  }
+  service_fabric_cluster {
+    ## Required Block Vars
+    management_endpoints   = "{{ api_management_backend.service_fabric_cluster.management_endpoints | to_json | safe }}"
+    max_partition_resolution_retries   = "{{ api_management_backend.service_fabric_cluster.max_partition_resolution_retries }}"
+    ## Optional Block Vars
+    client_certificate_thumbprint   = "{{ api_management_backend.service_fabric_cluster.client_certificate_thumbprint }}"
+    client_certificate_id   = "{{ api_management_backend.service_fabric_cluster.client_certificate_id }}"
+    server_certificate_thumbprints   = "{{ api_management_backend.service_fabric_cluster.server_certificate_thumbprints | to_json | safe }}"
+    server_x509_name {
+      ## Required Block Vars
+      issuer_certificate_thumbprint   = "{{ api_management_backend.service_fabric_cluster.server_x509_name.issuer_certificate_thumbprint }}"
+ 
+      name   = "{{ api_management_backend.service_fabric_cluster.server_x509_name.name }}"
+ 
+    }
+  }
+  tls {
+    ## Required Block Vars
+    validate_certificate_chain   = "{{ api_management_backend.tls.validate_certificate_chain }}"
+    validate_certificate_name   = "{{ api_management_backend.tls.validate_certificate_name }}"
+  }
+}

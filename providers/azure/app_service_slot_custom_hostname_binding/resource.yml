@@ -1,0 +1,18 @@
+resource:
+  name: "azurerm_app_service_slot_custom_hostname_binding"
+  enable_variable_comments: false
+  var_name: "app_service_slot_custom_hostname_binding"
+  required_vars:
+    - name: "hostname"
+      description: "Specifies the Custom Hostname to use for the App Service"
+      type: "string"
+    - name: "app_service_slot_id"
+      description: "The ID of the App Service Slot"
+      type: "string"
+  optional_vars:
+    - name: "ssl_state"
+      description: "The SSL type; IpBasedEnabled or SniEnabled"
+      type: "string"
+    - name: "thumbprint"
+      description: "The SSL certificate thumbprint"
+      type: "string"

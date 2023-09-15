@@ -1,0 +1,14 @@
+resource:
+  name: "azuread_app_role_assignment"
+  enable_variable_comments: false
+  var_name: "app_role_assignment"
+  required_vars:
+    - name: "app_role_id"
+      description: "The ID of the app role to be assigned"
+      type: "string"
+    - name: "principal_object_id"
+      description: "The object ID of the user, group or service principal to be assigned this app role"
+      type: "string"
+    - name: "resource_object_id"
+      description: "The object ID of the service principal representing the resource"
+      type: "string"

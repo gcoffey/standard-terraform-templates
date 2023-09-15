@@ -1,0 +1,136 @@
+resource "aws_cloudfront_distribution" "{{ cloudfront_distribution.name }}" {
+  ## Required Vars
+  enabled   = {{ cloudfront_distribution.enabled }}
+
+  ## Optional Vars
+  aliases   = "{{ cloudfront_distribution.aliases }}"
+  comment   = "{{ cloudfront_distribution.comment }}"
+  default_root_object   = "{{ cloudfront_distribution.default_root_object }}"
+  is_ipv6_enabled   = {{ cloudfront_distribution.is_ipv6_enabled }}
+  http_version   = "{{ cloudfront_distribution.http_version }}"
+  ordered_cache_behavior   = "{{ cloudfront_distribution.ordered_cache_behavior | to_json | safe }}"
+  price_class   = "{{ cloudfront_distribution.price_class }}"
+  web_acl_id   = "{{ cloudfront_distribution.web_acl_id }}"
+  retain_on_delete   = {{ cloudfront_distribution.retain_on_delete }}
+  wait_for_deployment   = {{ cloudfront_distribution.wait_for_deployment }}
+  tags   = "{{ cloudfront_distribution.tags | to_json | safe }}"
+
+  ## Blocks
+  default_cache_behavior {
+    ## Required Block Vars
+    allowed_methods   = "{{ cloudfront_distribution.default_cache_behavior.allowed_methods }}"
+    cached_methods   = "{{ cloudfront_distribution.default_cache_behavior.cached_methods }}"
+    path_pattern   = "{{ cloudfront_distribution.default_cache_behavior.path_pattern }}"
+    target_origin_id   = "{{ cloudfront_distribution.default_cache_behavior.target_origin_id }}"
+    viewer_protocol_policy   = "{{ cloudfront_distribution.default_cache_behavior.viewer_protocol_policy }}"
+    ## Optional Block Vars
+    cache_policy_id   = "{{ cloudfront_distribution.default_cache_behavior.cache_policy_id }}"
+    compress   = {{ cloudfront_distribution.default_cache_behavior.compress }}
+    default_ttl   = "{{ cloudfront_distribution.default_cache_behavior.default_ttl }}"
+    field_level_encryption_id   = "{{ cloudfront_distribution.default_cache_behavior.field_level_encryption_id }}"
+    lambda_function_association {
+      ## Required Block Vars
+      event_type   = "{{ cloudfront_distribution.default_cache_behavior.lambda_function_association.event_type }}"
+ 
+      lambda_arn   = "{{ cloudfront_distribution.default_cache_behavior.lambda_function_association.lambda_arn }}"
+ 
+      ## Optional Block Vars
+      include_body   = {{ cloudfront_distribution.default_cache_behavior.lambda_function_association.include_body }}
+    }
+    function_association {
+      ## Required Block Vars
+      event_type   = "{{ cloudfront_distribution.default_cache_behavior.function_association.event_type }}"
+ 
+      function_arn   = "{{ cloudfront_distribution.default_cache_behavior.function_association.function_arn }}"
+ 
+    }
+    max_ttl   = "{{ cloudfront_distribution.default_cache_behavior.max_ttl }}"
+    min_ttl   = "{{ cloudfront_distribution.default_cache_behavior.min_ttl }}"
+    origin_request_policy_id   = "{{ cloudfront_distribution.default_cache_behavior.origin_request_policy_id }}"
+    realtime_log_config_arn   = "{{ cloudfront_distribution.default_cache_behavior.realtime_log_config_arn }}"
+    response_headers_policy_id   = "{{ cloudfront_distribution.default_cache_behavior.response_headers_policy_id }}"
+    smooth_streaming   = "{{ cloudfront_distribution.default_cache_behavior.smooth_streaming }}"
+    trusted_key_groups   = "{{ cloudfront_distribution.default_cache_behavior.trusted_key_groups | to_json | safe }}"
+    trusted_signers   = "{{ cloudfront_distribution.default_cache_behavior.trusted_signers | to_json | safe }}"
+  }
+  custom_error_response {
+    ## Required Block Vars
+    error_code   = "{{ cloudfront_distribution.custom_error_response.error_code }}"
+    ## Optional Block Vars
+    error_caching_min_ttl   = "{{ cloudfront_distribution.custom_error_response.error_caching_min_ttl }}"
+    response_code   = "{{ cloudfront_distribution.custom_error_response.response_code }}"
+    response_page_path   = "{{ cloudfront_distribution.custom_error_response.response_page_path }}"
+  }
+  logging_config {
+    ## Required Block Vars
+    bucket   = "{{ cloudfront_distribution.logging_config.bucket }}"
+    ## Optional Block Vars
+    include_cookies   = "{{ cloudfront_distribution.logging_config.include_cookies }}"
+    prefix   = "{{ cloudfront_distribution.logging_config.prefix }}"
+  }
+  origin {
+    ## Required Block Vars
+    domain_name   = "{{ cloudfront_distribution.origin.domain_name }}"
+    origin_id   = "{{ cloudfront_distribution.origin.origin_id }}"
+    ## Optional Block Vars
+    connection_attempts   = "{{ cloudfront_distribution.origin.connection_attempts }}"
+    connection_timeout   = "{{ cloudfront_distribution.origin.connection_timeout }}"
+    custom_origin_config {
+      ## Required Block Vars
+      http_port   = "{{ cloudfront_distribution.origin.custom_origin_config.http_port }}"
+ 
+      https_port   = "{{ cloudfront_distribution.origin.custom_origin_config.https_port }}"
+ 
+      origin_protocol_policy   = "{{ cloudfront_distribution.origin.custom_origin_config.origin_protocol_policy }}"
+ 
+      origin_ssl_protocols   = "{{ cloudfront_distribution.origin.custom_origin_config.origin_ssl_protocols }}"
+ 
+      origin_keepalive_timeout   = "{{ cloudfront_distribution.origin.custom_origin_config.origin_keepalive_timeout }}"
+ 
+      origin_read_timeout   = "{{ cloudfront_distribution.origin.custom_origin_config.origin_read_timeout }}"
+ 
+    }
+    custom_header   = "{{ cloudfront_distribution.origin.custom_header | to_json | safe }}"
+    origin_access_control_id   = "{{ cloudfront_distribution.origin.origin_access_control_id }}"
+    origin_path   = "{{ cloudfront_distribution.origin.origin_path }}"
+    origin_shield {
+      ## Required Block Vars
+      enabled   = {{ cloudfront_distribution.origin.origin_shield.enabled }}
+ 
+      origin_shield_region   = "{{ cloudfront_distribution.origin.origin_shield.origin_shield_region }}"
+ 
+    }
+    s3_origin_config {
+      ## Required Block Vars
+      origin_access_identity   = "{{ cloudfront_distribution.origin.s3_origin_config.origin_access_identity }}"
+ 
+    }
+  }
+  origin_group {
+    ## Required Block Vars
+    origin_id   = "{{ cloudfront_distribution.origin_group.origin_id }}"
+    failover_criteria   = "{{ cloudfront_distribution.origin_group.failover_criteria }}"
+    member {
+    }
+  }
+  member {
+    ## Required Block Vars
+    origin_id   = "{{ cloudfront_distribution.member.origin_id }}"
+  }
+  restrictions {
+    ## Required Block Vars
+    geo_restriction {
+      ## Required Block Vars
+      locations   = "{{ cloudfront_distribution.restrictions.geo_restriction.locations | to_json | safe }}"
+      restriction_type   = "{{ cloudfront_distribution.restrictions.geo_restriction.restriction_type }}"
+    }
+  }
+  viewer_certificate {
+    ## Required Block Vars
+    acm_certificate_arn   = "{{ cloudfront_distribution.viewer_certificate.acm_certificate_arn }}"
+    cloudfront_default_certificate   = {{ cloudfront_distribution.viewer_certificate.cloudfront_default_certificate }}
+    iam_certificate_id   = "{{ cloudfront_distribution.viewer_certificate.iam_certificate_id }}"
+    minimum_protocol_version   = "{{ cloudfront_distribution.viewer_certificate.minimum_protocol_version }}"
+    ssl_support_method   = "{{ cloudfront_distribution.viewer_certificate.ssl_support_method }}"
+  }
+}

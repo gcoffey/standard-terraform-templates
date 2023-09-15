@@ -1,0 +1,17 @@
+resource:
+  name: "azurerm_api_management_identity_provider_facebook"
+  enable_variable_comments: false
+  var_name: "api_management_identity_provider_facebook"
+  required_vars:
+    - name: "api_management_name"
+      description: "The name of the API Management Service"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the Resource Group where the API Management Service exists"
+      type: "string"
+    - name: "app_id"
+      description: "App Id for Facebook"
+      type: "string"
+    - name: "app_secret"
+      description: "App Secret for Facebook"
+      type: "string"

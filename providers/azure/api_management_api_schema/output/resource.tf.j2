@@ -1,0 +1,14 @@
+resource "azurerm_api_management_api_schema" "{{ api_management_api_schema.name }}" {
+  ## Required Vars
+  schema_id   = "{{ api_management_api_schema.schema_id }}"
+  api_name   = "{{ api_management_api_schema.api_name }}"
+  api_management_name   = "{{ api_management_api_schema.api_management_name }}"
+  resource_group_name   = "{{ api_management_api_schema.resource_group_name }}"
+  content_type   = "{{ api_management_api_schema.content_type }}"
+
+  ## Optional Vars
+  value   = "{{ api_management_api_schema.value }}"
+  components   = "{{ api_management_api_schema.components }}"
+  definitions   = "{{ api_management_api_schema.definitions }}"
+
+}

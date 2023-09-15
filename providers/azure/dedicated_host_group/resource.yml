@@ -1,0 +1,27 @@
+resource:
+  name: "azurerm_dedicated_host_group"
+  enable_variable_comments: false
+  var_name: "dedicated_host_group"
+  required_vars:
+    - name: "name"
+      description: "Specifies the name of this Dedicated Host Group"
+      type: "string"
+    - name: "resource_group_name"
+      description: "Specifies the resource group name where the Dedicated Host Group should exist"
+      type: "string"
+    - name: "location"
+      description: "The Azure location where the Dedicated Host Group should exist"
+      type: "string"
+    - name: "platform_fault_domain"
+      description: "Specify the fault domain of the Dedicated Host Group in which to create the Dedicated Host"
+      type: "string"
+  optional_vars:
+    - name: "automatic_placement_enabled"
+      description: "Would virtual machines or virtual machine scale sets be placed automatically on this Dedicated Host Group?; Default false"
+      type: "boolean"
+    - name: "zone"
+      description: "Specifies the Availability Zone in which this Dedicated Host Group should be located"
+      type: "string"
+    - name: "tags"
+      description: "A mapping of tags"
+      type: "list"

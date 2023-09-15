@@ -1,0 +1,16 @@
+resource_pack:
+  name: "Application Registration"
+  description: "Register an application [client] in Azure AD, to provide authentication and authorization using OAuth / OpenID etc"
+  resources:
+    - name: application
+      provider: azuread
+    - name: application_password
+      provider: azuread
+      parent: "application"
+    - name: service_principal
+      provider: azuread
+      parent: "application"
+    - name: app_role_assignment
+      provider: azuread
+      parent: "service_principal"
+

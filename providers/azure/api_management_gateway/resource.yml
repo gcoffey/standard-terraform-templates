@@ -1,0 +1,37 @@
+resource:
+  name: "azurerm_api_management_gateway"
+  enable_variable_comments: false
+  var_name: "api_management_gateway"
+  required_vars:
+    - name: "name"
+      description: "The name which should be used for the API Management Gateway"
+      type: "string"
+    - name: "api_management_id"
+      description: "The ID of the API Management Resource"
+      type: "string"
+    - name: "location_data"
+      description: "A location data block"
+      type: "block"
+  optional_vars:
+    - name: "description"
+      description: "The description of the API Management Gateway"
+      type: "string"
+
+blocks:
+  - name: "location_data"
+    required: false 
+    description: "A location data block"
+    required_vars:
+      - name: "name"
+        description: "A canonical name for the location"
+        type: "string"
+    optional_vars:
+      - name: "city"
+        description: "The city or locality where the resource is located"
+        type: "string"
+      - name: "district"
+        description: "The district, state or province"
+        type: "string"
+      - name: "region"
+        description: "The country or region"
+        type: "string"

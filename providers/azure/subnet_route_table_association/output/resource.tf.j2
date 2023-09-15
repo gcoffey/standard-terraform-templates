@@ -1,0 +1,7 @@
+resource "azurerm_subnet_route_table_association" "{{ subnet_route_table_association.name }}" {
+  ## Required Vars
+  route_table_id   = "{{ subnet_route_table_association.route_table_id }}"
+  subnet_id   = "{{ subnet_route_table_association.subnet_id }}"
+
+
+}

@@ -1,0 +1,17 @@
+resource:
+  name: "azurerm_api_management_identity_provider_google"
+  enable_variable_comments: false
+  var_name: "api_management_identity_provider_google"
+  required_vars:
+    - name: "api_management_name"
+      description: "The name of the API Management Service"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the Resource Group where the API Management Service exists"
+      type: "string"
+    - name: "client_id"
+      description: "Client Id for Google Sign-in"
+      type: "string"
+    - name: "client_secret"
+      description: "Client Secret for Google Sign-in"
+      type: "string"

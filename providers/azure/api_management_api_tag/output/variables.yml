@@ -1,0 +1,4 @@
+api_management_api_tag:
+  name: "<string>"	# Required; A name for this resource
+  api_id: "<string>"       # Required; The ID of the API Management API
+  name: "<string>"       # Required; The name of the tag

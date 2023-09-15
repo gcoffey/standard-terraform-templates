@@ -1,0 +1,17 @@
+resource "azurerm_api_management_identity_provider_aadb2c" "{{ api_management_identity_provider_aadb2c.name }}" {
+  ## Required Vars
+  api_management_name   = "{{ api_management_identity_provider_aadb2c.api_management_name }}"
+  resource_group_name   = "{{ api_management_identity_provider_aadb2c.resource_group_name }}"
+  client_id   = "{{ api_management_identity_provider_aadb2c.client_id }}"
+  client_secret   = "{{ api_management_identity_provider_aadb2c.client_secret }}"
+  allowed_tenant   = "{{ api_management_identity_provider_aadb2c.allowed_tenant }}"
+  signin_tenant   = "{{ api_management_identity_provider_aadb2c.signin_tenant }}"
+  authority   = "{{ api_management_identity_provider_aadb2c.authority }}"
+  signin_policy   = "{{ api_management_identity_provider_aadb2c.signin_policy }}"
+  signup_tenant   = "{{ api_management_identity_provider_aadb2c.signup_tenant }}"
+
+  ## Optional Vars
+  password_reset_policy   = "{{ api_management_identity_provider_aadb2c.password_reset_policy }}"
+  profile_editing_policy   = "{{ api_management_identity_provider_aadb2c.profile_editing_policy }}"
+
+}

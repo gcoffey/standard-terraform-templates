@@ -1,0 +1,27 @@
+resource:
+  name: "azurerm_aadb2c_directory"
+  enable_variable_comments: false
+  var_name: "aadb2c_directory"
+  required_vars:
+    - name: "data_residency_location"
+      description: "Location in which the B2C tenant is hosted and data resides; Asia Pacific, Australia, Europe, Global or United States"
+      type: "string"
+    - name: "domain_name"
+      description: "Domain name of the B2C tenant including the .onmicrosoft.com"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the Resource Group where the AAD B2C Directory should exist"
+      type: "string"
+    - name: "sku_name"
+      description: "Billing SKU for the B2C tenant; PremiumP1 or PremiumP2"
+      type: "string"
+  optional_vars:
+    - name: "country_code"
+      description: "Country code of the B2C tenant"
+      type: "string"
+    - name: "display_name"
+      description: "The initial display name of the B2C tenant"
+      type: "string"
+    - name: "tags"
+      description: "A mapping of tags to apply to the resource"
+      type: "list"

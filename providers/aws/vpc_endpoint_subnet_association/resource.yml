@@ -1,0 +1,11 @@
+resource:
+  name: "aws_vpc_endpoint_service_subnet_association"
+  enable_variable_comments: false
+  var_name: "vpc_endpoint_service_subnet_association"
+  required_vars:
+    - name: "vpc_endpoint_id"
+      description: "The ID of the VPC endpoint with which the subnet will be associated"
+      type: "string"
+    - name: "subnet_id"
+      description: "The ID of the subnet to be associated with the VPC endpoint"
+      type: "string"

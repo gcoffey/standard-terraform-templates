@@ -1,0 +1,9 @@
+subscription:
+  name: "<string>"	# Required; A name for this resource
+  subscription_name: "<string>"       # Required; The Name of the Subscription
+  alias: "<string>"       # Optional; The aLias name for the subscription
+  billing_scope_id: "<string>"       # Optional; The Azure Billing Scope ID
+  subscription_id: "<string>"       # Optional; The ID of the subscription
+  workload: "<string>"       # Optional; The workload type of the Subscription; Production or DevTest
+  tags:  # Optional; A mapping of tags
+    - <list>

@@ -1,0 +1,100 @@
+resource "azurerm_api_management_api_operation" "{{ api_management_api_operation.name }}" {
+  ## Required Vars
+  operation_id   = "{{ api_management_api_operation.operation_id }}"
+  api_name   = "{{ api_management_api_operation.api_name }}"
+  api_management_name   = "{{ api_management_api_operation.api_management_name }}"
+  resource_group_name   = "{{ api_management_api_operation.resource_group_name }}"
+  display_name   = "{{ api_management_api_operation.display_name }}"
+  method   = "{{ api_management_api_operation.method }}"
+  url_template   = "{{ api_management_api_operation.url_template }}"
+
+  ## Optional Vars
+  description   = "{{ api_management_api_operation.description }}"
+
+  ## Blocks
+  request {
+    ## Optional Block Vars
+    description   = "{{ api_management_api_operation.request.description }}"
+    header {
+      ## Required Block Vars
+      name   = "{{ api_management_api_operation.request.header.name }}"
+ 
+      required   = {{ api_management_api_operation.request.header.required }}
+ 
+      type   = "{{ api_management_api_operation.request.header.type }}"
+ 
+      ## Optional Block Vars
+      description   = "{{ api_management_api_operation.request.header.description }}"
+      default_value   = "{{ api_management_api_operation.request.header.default_value }}"
+      values   = "{{ api_management_api_operation.request.header.values }}"
+      schema_id   = "{{ api_management_api_operation.request.header.schema_id }}"
+      type_name   = "{{ api_management_api_operation.request.header.type_name }}"
+    }
+    query_parameter {
+      ## Required Block Vars
+      name   = "{{ api_management_api_operation.request.query_parameter.name }}"
+ 
+      required   = {{ api_management_api_operation.request.query_parameter.required }}
+ 
+      type   = "{{ api_management_api_operation.request.query_parameter.type }}"
+ 
+      ## Optional Block Vars
+      description   = "{{ api_management_api_operation.request.query_parameter.description }}"
+      default_value   = "{{ api_management_api_operation.request.query_parameter.default_value }}"
+      values   = "{{ api_management_api_operation.request.query_parameter.values }}"
+      schema_id   = "{{ api_management_api_operation.request.query_parameter.schema_id }}"
+      type_name   = "{{ api_management_api_operation.request.query_parameter.type_name }}"
+    }
+    representation {
+      ## Required Block Vars
+      content_type   = "{{ api_management_api_operation.request.representation.content_type }}"
+ 
+      ## Optional Block Vars
+      schema_id   = "{{ api_management_api_operation.request.representation.schema_id }}"
+      type_name   = "{{ api_management_api_operation.request.representation.type_name }}"
+    }
+  }
+  response {
+    ## Required Block Vars
+    status_code   = "{{ api_management_api_operation.response.status_code }}"
+    ## Optional Block Vars
+    description   = "{{ api_management_api_operation.response.description }}"
+    header {
+      ## Required Block Vars
+      name   = "{{ api_management_api_operation.response.header.name }}"
+ 
+      required   = {{ api_management_api_operation.response.header.required }}
+ 
+      type   = "{{ api_management_api_operation.response.header.type }}"
+ 
+      ## Optional Block Vars
+      description   = "{{ api_management_api_operation.response.header.description }}"
+      default_value   = "{{ api_management_api_operation.response.header.default_value }}"
+      values   = "{{ api_management_api_operation.response.header.values }}"
+      schema_id   = "{{ api_management_api_operation.response.header.schema_id }}"
+      type_name   = "{{ api_management_api_operation.response.header.type_name }}"
+    }
+    representation {
+      ## Required Block Vars
+      content_type   = "{{ api_management_api_operation.response.representation.content_type }}"
+ 
+      ## Optional Block Vars
+      schema_id   = "{{ api_management_api_operation.response.representation.schema_id }}"
+      type_name   = "{{ api_management_api_operation.response.representation.type_name }}"
+    }
+  }
+  template_parameter {
+    ## Required Block Vars
+    name   = "{{ api_management_api_operation.template_parameter.name }}"
+    required   = {{ api_management_api_operation.template_parameter.required }}
+    type   = "{{ api_management_api_operation.template_parameter.type }}"
+    ## Optional Block Vars
+    description   = "{{ api_management_api_operation.template_parameter.description }}"
+    default_value   = "{{ api_management_api_operation.template_parameter.default_value }}"
+    values   = "{{ api_management_api_operation.template_parameter.values }}"
+    example {
+    }
+    schema_id   = "{{ api_management_api_operation.template_parameter.schema_id }}"
+    type_name   = "{{ api_management_api_operation.template_parameter.type_name }}"
+  }
+}

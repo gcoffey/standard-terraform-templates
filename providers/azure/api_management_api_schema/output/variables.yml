@@ -1,0 +1,10 @@
+api_management_api_schema:
+  name: "<string>"	# Required; A name for this resource
+  schema_id: "<string>"       # Required; A unique identifier for this API Schema
+  api_name: "<string>"       # Required; The name of the API in the API Management Service
+  api_management_name: "<string>"       # Required; The name of the API Management Service
+  resource_group_name: "<string>"       # Required; The name of the resource group in which the API Management Service exists
+  content_type: "<string>"       # Required; The content type of the API Schema
+  value: "<string>"       # Optional; The JSON escaped string defining the document representing the schema
+  components: "<string>"       # Optional; Types definitions. Used for Swagger/OpenAPI schemas
+  definitions: "<string>"       # Optional; Types definitions. Used for Swagger/OpenAPI schemas

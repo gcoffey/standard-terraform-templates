@@ -1,0 +1,20 @@
+resource "azurerm_api_management_named_value" "{{ api_management_named_value.name }}" {
+  ## Required Vars
+  name   = "{{ api_management_named_value.name }}"
+  api_management_name   = "{{ api_management_named_value.api_management_name }}"
+  display_name   = "{{ api_management_named_value.display_name }}"
+  resource_group_name   = "{{ api_management_named_value.resource_group_name }}"
+
+  ## Optional Vars
+  value   = "{{ api_management_named_value.value }}"
+  secret   = {{ api_management_named_value.secret }}
+  tags   = "{{ api_management_named_value.tags | to_json | safe }}"
+
+  ## Blocks
+  value_from_key_vault {
+    ## Required Block Vars
+    secret_id   = "{{ api_management_named_value.value_from_key_vault.secret_id }}"
+    ## Optional Block Vars
+    identity_client_id   = "{{ api_management_named_value.value_from_key_vault.identity_client_id }}"
+  }
+}

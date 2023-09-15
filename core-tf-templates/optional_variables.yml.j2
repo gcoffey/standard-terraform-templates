@@ -1,0 +1,13 @@
+{% if optional.type == "string" %}
+  {{ optional.name }}: "<string>"       # Optional; {{ optional.description }}
+{% endif %}
+{% if optional.type == "integer" %}
+  {{ optional.name }}: <integer>        # Optional; {{ optional.description }}
+{% endif %}
+{% if optional.type == "boolean" %}
+  {{ optional.name }}: <boolean>        # Optional; {{ optional.description }}
+{% endif %}
+{% if optional.type == "list" %}
+  {{ optional.name }}:  # Optional; {{ optional.description }}
+    - <list>
+{% endif %}

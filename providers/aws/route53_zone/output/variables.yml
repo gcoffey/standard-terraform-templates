@@ -1,0 +1,11 @@
+route53_zone:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; This is the name of the hosted zone
+  comment: "<string>"       # Optional; A comment for the hoested zone
+  delegation_set_id: "<string>"       # Optional; The ID of the reusable delegation set whose NS records you want to assign to the hosted zone
+  force_destroy: <boolean>        # Optional; Whether to destroy all records in the zone when destroying the zone
+  tags:  # Optional; A map of tags to assign to the resource
+    - <list>
+  vpc:
+    vpc_id: "<string>"       # Required; ID of the VPC to associate
+    vpc_region: "<string>"       # Optional; Region of the VPC to associate

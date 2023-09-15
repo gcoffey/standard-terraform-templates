@@ -1,0 +1,13 @@
+resource_pack:
+  name: "Public Linux Server"
+  description: "A single VM, running Linux with a publically accessible IP address assigned"
+  resources:
+    - name: linux_virtual_machine
+      provider: azure
+    - name: network_interface
+      provider: azure
+      parent: "linux_virtual_machine"
+    - name: public_ip
+      provider: azure
+      parent: "network_interface"
+

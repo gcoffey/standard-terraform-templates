@@ -1,0 +1,8 @@
+resource "azurerm_active_directory_domain_service_replica_set" "{{ active_directory_domain_service_replica_set.name }}" {
+  ## Required Vars
+  domain_service_id   = "{{ active_directory_domain_service_replica_set.domain_service_id }}"
+  location   = "{{ active_directory_domain_service_replica_set.location }}"
+  subnet_id   = "{{ active_directory_domain_service_replica_set.subnet_id }}"
+
+
+}

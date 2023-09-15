@@ -1,0 +1,18 @@
+resource "aws_sns_platform_application" "{{ sns_platform_application.name }}" {
+  ## Required Vars
+  name   = "{{ sns_platform_application.name }}"
+  platform   = "{{ sns_platform_application.platform }}"
+  platform_credential   = "{{ sns_platform_application.platform_credential }}"
+
+  ## Optional Vars
+  event_delivery_failure_topic_arn   = "{{ sns_platform_application.event_delivery_failure_topic_arn }}"
+  event_endpoint_created_topic_arn   = "{{ sns_platform_application.event_endpoint_created_topic_arn }}"
+  event_endpoint_updated_topic_arn   = "{{ sns_platform_application.event_endpoint_updated_topic_arn }}"
+  failure_feedback_role_arn   = "{{ sns_platform_application.failure_feedback_role_arn }}"
+  platform_principal   = "{{ sns_platform_application.platform_principal }}"
+  success_feedback_role_arn   = "{{ sns_platform_application.success_feedback_role_arn }}"
+  success_feedback_sample_rate   = "{{ sns_platform_application.success_feedback_sample_rate }}"
+  apple_platform_team_id   = "{{ sns_platform_application.apple_platform_team_id }}"
+  apple_platform_bundle_id   = "{{ sns_platform_application.apple_platform_bundle_id }}"
+
+}

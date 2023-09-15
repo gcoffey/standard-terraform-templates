@@ -1,0 +1,73 @@
+db_instance:
+  name: "<string>"	# Required; A name for this resource
+  allocated_storage: "<string>"       # Required; The allocated storage in gigabytes
+  engine: "<string>"       # Required; The database engine to use;
+  instance_class: "<string>"       # Required; The instance type of the RDS instance
+  password: "<string>"       # Required; Password for the master DB user; This may show up in logs, and will be stored in the DB state file
+  username: "<string>"       # Required; Username for the master DB user; Cannot be specified for a replica
+  allow_major_version_upgrade: <boolean>        # Optional; Indicates that major version upgrades are allowed
+  apply_immediately: <boolean>        # Optional; Specifies whether any database modifications are applied immediately; Default false
+  auto_minor_version_upgrade: <boolean>        # Optional; Indicates That minor engine upgrades will be applied automatically to the DB instance during the maintenance window
+  availability_zone: "<string>"       # Optional; The AZ for the RDS instance
+  backup_retention_period: "<string>"       # Optional; The days to retain backups for; Default is 0
+  backup_window: "<string>"       # Optional; The daily time range [in UTC] during which automated backups are created
+  ca_cert_identifier: "<string>"       # Optional; The Identifier of the CA certificate for the DB instance
+  character_set_name: "<string>"       # Optional; The character set name to use for DB encoding in Oracle and MS SQL instances
+  copy_tags_to_snapshot: <boolean>        # Optional; Copy all instance tags to snapshots; Default false
+  custom_iam_instance_profile: "<string>"       # Optional; The Instance profile associatd with the underlying EC2 instance
+  db_name: "<string>"       # Optional; The name of the database to create when the DB instance is created
+  db_subnet_group_name: "<string>"       # Optional; Name of DB subnet group, DB instance will be created in the VPC assocaited with the DB subnet group
+  delete_automated_backups: <boolean>        # Optional; Specifies whether to remove automate backups immediately after the DB instance is deleted; Default true
+  deletion_protection: <boolean>        # Optional; If the DB instance should have deletion protection enabled; Default false
+  domain: "<string>"       # Optional; The ID of the Directory Service Active Directory domain to create the instance in
+  domain_iam_role_name: "<string>"       # Optional; The name of the IAM role to be used when making API calls to the Directory Service
+  enabled_cloudwatch_logs_exports: "<string>"       # Optional; Set of log types to enable for exporting to CloudWatch logs; audit, error, general, slowquery etc
+  engine_version: "<string>"       # Optional; The engine version to use;
+  final_snapshot_identifier: "<string>"       # Optional; The name of your final DB snapshot when this DB instance is deleted
+  iam_database_authentication_enabled: <boolean>        # Optional; Specifies whether mappings of AWS IAM account to DB accounts is enabled
+  identifier: "<string>"       # Optional; The name of the RDS instance
+  identifier_prefix: "<string>"       # Optional; A unique identifier prefix; Specify identifier or identifier_prefix
+  iops: "<string>"       # Optional; The amount of provisioned IOPS
+  kms_key_id: "<string>"       # Optional; The ARN for the KMS encryption key
+  license_model: "<string>"       # Optional; License model information for this DB instance
+  maintenance_window: "<string>"       # Optional; The window to perform maintenance; Format ddd:hh24:mi-ddd:hh24:mi
+  max_allocated_storage: "<string>"       # Optional; When configured the upper limite to RDS can automatically scale the storage of the DB instance
+  monitoring_interval: "<string>"       # Optional; The interval in seconds between points when Enhanced Monitoring metrics are collected; 0, 1, 5, 10, 15, 30, 60
+  monitoring_role_arn: "<string>"       # Optional; The ARN for the IAM role that permits RDS to send enchanced monitoring metrics to CloudWatch Logs
+  multi_az: "<string>"       # Optional; Specifies if the RDS instance is multi AZ
+  nchar_character_set_name: "<string>"       # Optional; The national character set is used in the NCHAR, NVARCHAR2 and NCLOB data types for Oracle
+  network_type: "<string>"       # Optional; The network type of the DB instance; IPV4 or DUAL
+  option_group_name: "<string>"       # Optional; Name of the DB option group to associate
+  parameter_group_name: "<string>"       # Optional; Name of the DB parameter group to associate
+  performance_insights_enabled: <boolean>        # Optional; Specifies whether Performance Insights are enabled; Default false
+  performance_insights_kms_key_id: "<string>"       # Optional; The ARN for the KMS key to encrypt Performance Insights data
+  performance_insights_retention_period: "<string>"       # Optional; Amount of time in days to retain Performance Insights data. 7, 731 or a multiple of 31; Default 7
+  port: "<string>"       # Optional; The port on which the DB accepts connections
+  publicly_accessible: <boolean>        # Optional; Control is the instance is publicly accessible; Default false
+  replica_mode: "<string>"       # Optional; Specifies whether the replica is in either mounted or open-read-only mode
+  replicate_source_db: "<string>"       # Optional; Specifies that this resource is a replicate database, and to use this value as the source database
+  skip_final_snapshot: <boolean>        # Optional; Determines whether a final DB snapshot is created before the DB instance is deleted; Default false
+  snapshot_identifier: "<string>"       # Optional; Specifies whether or not to create this database from a snapshot
+  storage_encrypted: <boolean>        # Optional; Specifies whether the DB instance is encrypted; Default false
+  storage_type: "<string>"       # Optional; One of standard, gp2, gp3 or io1; Default io1 if iops defined or gp2 if not
+  storage_throughput: "<string>"       # Optional; The storage throughput value for the DB instance
+  timezone: "<string>"       # Optional; Timezone of the DB instance; Only support by MS SQL Server
+  vpc_security_group_ids:  # Optional; List of VPC security groups to associate
+    - <list>
+  customer_owned_ip_enabled: <boolean>        # Optional; Indicates whether to enable a customer-owned IP address for an RDS on Outposts DB instance
+  tags:  # Optional; A map of tags to assign to the resource
+    - <list>
+  restore_to_point_in_time:
+    restore_time: "<string>"       # Optional; The date and time to restore from
+    source_db_instance_identifier: "<string>"       # Optional; The identifier of the source DB instance from which to restore
+    source_db_instance_automated_backups_arn: "<string>"       # Optional; The ARN of the automated backup from which to restore
+    source_dbi_resource_id: "<string>"       # Optional; The Resource ID of the Source DB Instance from which to restore
+    use_latest_restorable_time: <boolean>        # Optional; A boolean value that indicates whether the DB instance is restored from the latest backup time; Default false
+  s3_import:
+    bucket_name: "<string>"       # Required; The bucket name where your backup is stored
+    ingestion_role: "<string>"       # Required; Role applied to load the data
+    source_engine: "<string>"       # Required; Source engine for the backup
+    source_engine_version: "<string>"       # Required; Version of the source engine used to make the backup
+    bucket_prefix: "<string>"       # Optional; The S3 path to your backup
+  blue_green_update:
+    enabled: <boolean>        # Optional; Enables low-downtime updates; Default false

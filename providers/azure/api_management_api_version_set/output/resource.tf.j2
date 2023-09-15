@@ -1,0 +1,14 @@
+resource "azurerm_api_management_api_version_set" "{{ api_management_api_version_set.name }}" {
+  ## Required Vars
+  name   = "{{ api_management_api_version_set.name }}"
+  api_management_name   = "{{ api_management_api_version_set.api_management_name }}"
+  resource_group_name   = "{{ api_management_api_version_set.resource_group_name }}"
+  display_name   = "{{ api_management_api_version_set.display_name }}"
+  versioning_scheme   = "{{ api_management_api_version_set.versioning_scheme }}"
+
+  ## Optional Vars
+  description   = "{{ api_management_api_version_set.description }}"
+  version_header_name   = "{{ api_management_api_version_set.version_header_name }}"
+  version_query_name   = "{{ api_management_api_version_set.version_query_name }}"
+
+}

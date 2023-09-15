@@ -1,0 +1,11 @@
+availability_set:
+  name: "<string>"	# Required; A name for this resource
+  location: "<string>"       # Required; The Azure Region where the availability set should be created
+  name: "<string>"       # Required; The name of the availability set
+  resource_group_name: "<string>"       # Required; The resource group name for the availability set
+  platform_update_domain_count: "<string>"       # Optional; Specifies the number of update domains that are used; Default 5
+  platform_fault_domain_count: "<string>"       # Optional; Specifies the number of fault domains that are used; Default 3
+  proximity_placement_group_id: "<string>"       # Optional; The ID of the Proximity Placement Group to which this VM should be assigned
+  managed: <boolean>        # Optional; Specifies whether the availability set is managed or not; Default true
+  tags:  # Optional; A mapping of tags
+    - <list>

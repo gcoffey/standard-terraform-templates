@@ -1,0 +1,15 @@
+resource "azurerm_app_configuration_key" "{{ app_configuration_key.name }}" {
+  ## Required Vars
+  key   = "{{ app_configuration_key.key }}"
+  configuration_store_id   = "{{ app_configuration_key.configuration_store_id }}"
+
+  ## Optional Vars
+  content_type   = "{{ app_configuration_key.content_type }}"
+  label   = "{{ app_configuration_key.label }}"
+  value   = "{{ app_configuration_key.value }}"
+  locked   = {{ app_configuration_key.locked }}
+  type   = "{{ app_configuration_key.type }}"
+  vault_key_reference   = "{{ app_configuration_key.vault_key_reference }}"
+  tags   = "{{ app_configuration_key.tags | to_json | safe }}"
+
+}

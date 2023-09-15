@@ -1,0 +1,42 @@
+container_registry:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Specifies the name of the Container Registry
+  resource_group_name: "<string>"       # Required; The name of the Resource group in which the Container Registry should be created
+  location: "<string>"       # Required; Specifies the supported Azure location where the resource should be created
+  sku: "<string>"       # Required; SKU name of the container registry; Basic, Standard or Premium
+  admin_enabled: <boolean>        # Optional; Specifies whether the admin user is enabled; Default false
+  policy_network_access_enabled: <boolean>        # Optional; Whether public network access is allowed for the container registry; Default true
+  quarantine_policy_enabled: <boolean>        # Optional; Boolean value that indicates whether quarantine policy is enabled
+  zone_redundancy_enabled: <boolean>        # Optional; Whether zone redundancy is enabled for this container registry?; Default false
+  export_policy_enabled: <boolean>        # Optional; Boolean value that indicates whether export policy is enabled; Default true
+  anonymous_pull_enabled: <boolean>        # Optional; Whether allows anonymous pull access to this Container Registry?
+  data_endpoint_enabled: <boolean>        # Optional; Whether to enable dedicated data endpoints for this container registry; only support when sku = Premium
+  network_rule_bypass_option: "<string>"       # Optional; Whether to allow trusted Azure services to access a network restricted Container Registry; None or AzureServices
+  tags:  # Optional; A mapping of tags
+    - <list>
+  georeplications:
+    location: "<string>"       # Required; A location where the container registry should be geo-replicated
+    regional_endpoint_enabled: <boolean>        # Optional; Whether regional endpoint is enabled for this Container Registry
+    zone_redundancy_enabled: <boolean>        # Optional; Whether zone redundancy is enabled for this replication location; Default false
+    tags:  # Optional; A mapping of tags
+      - <list>
+  network_rule_set:
+    default_action: "<string>"       # Optional; The behaviour for requests matching no rules; Allow or Deny; Default Allow
+    ip_rule:
+      action: "<string>"       # Required; The behaviour for requests matching this rule; Allow 
+      ip_range: "<string>"       # Required; The CIDR block from which requests will match the rule 
+    virtual_network:
+      action: "<string>"       # Required; Behaviour for requests matching this rule; Allow 
+      subnet_id: "<string>"       # Required; The subnet id from which requests will match the rule 
+  trust_policy:
+    enabled: <boolean>        # Optional; Boolean value that indicates whether the policy is enabled
+  retention_policy:
+    days: "<string>"       # Optional; The number of days to retain an untagged manifest after which it gets purged; Default 7
+    enabled: <boolean>        # Optional; Should the policy be enabled
+  identity:
+    type: "<string>"       # Required; Specifies the type of Managed Service IDentity; SystemAssigned, UserAssigned
+    identity_ids: "<string>"       # Optional; Specifies a list of User Assigned Managed Identity Ids
+  encryption:
+    key_vault_key_id: "<string>"       # Required; The ID of the Key Vault Key
+    identity_client_id: "<string>"       # Required; The Client ID of the managed Identity associated with the encryption key
+    enabled: <boolean>        # Optional; Whether encryption is enabled

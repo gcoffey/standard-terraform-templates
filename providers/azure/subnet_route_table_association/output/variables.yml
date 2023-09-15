@@ -1,0 +1,4 @@
+subnet_route_table_association:
+  name: "<string>"	# Required; A name for this resource
+  route_table_id: "<string>"       # Required; The ID of the Route Table which should be associate with the Subnet
+  subnet_id: "<string>"       # Required; The ID of the Subnet

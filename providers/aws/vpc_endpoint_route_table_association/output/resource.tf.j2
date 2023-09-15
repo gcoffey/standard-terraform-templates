@@ -1,0 +1,7 @@
+resource "aws_vpc_endpoint_route_table_association" "{{ vpc_endpoint_route_table_association.name }}" {
+  ## Required Vars
+  route_table_id   = "{{ vpc_endpoint_route_table_association.route_table_id }}"
+  vpc_endpoint_id   = "{{ vpc_endpoint_route_table_association.vpc_endpoint_id }}"
+
+
+}

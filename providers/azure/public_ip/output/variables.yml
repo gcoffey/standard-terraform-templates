@@ -1,0 +1,21 @@
+public_ip:
+  name: "<string>"	# Required; A name for this resource
+  location: "<string>"       # Required; The Azure Region where the Public IP should exist
+  name: "<string>"       # Required; The name of the Public IP to create
+  resource_group_name: "<string>"       # Required; The name of the resource group to create the public ip in
+  allocation_method: "<string>"       # Required; Defines the allocation method for this IP address; Static or Dynamic
+  zones: "<string>"       # Optional; A collection containing the availability zone to allocate the public ip in
+  ddos_protection_mode: "<string>"       # Optional; The DDoS protection mode of the public IP; Disabled, Enabled or VirtualNetworkInherited
+  ddos_protection_plan_id: "<string>"       # Optional; The ID of DDoS protection plan associated with the public IP
+  domain_name_label: "<string>"       # Optional; Label for the Domain Name
+  edge_zone: "<string>"       # Optional; Specifies the Edge Zone within the Azure Region where this Public IP should exist
+  idle_timeout_in_minutes: "<string>"       # Optional; Specifies the timeout for the TCP idle connection; between 4 and 30
+  ip_tags:  # Optional; A mapping of IP tags to assign to the public IP
+    - <list>
+  ip_version: "<string>"       # Optional; The IP version to use; IPv4 or IPv6
+  public_ip_prefix_id: "<string>"       # Optional; If specified then public IP address allocated will be provided from the public IP prefix resource
+  reverse_fqdn: "<string>"       # Optional; A fully qualified domain name that resolves to this public IP address
+  sku: "<string>"       # Optional; The SKU of the Public IP; Basic or Standard; Default Basic
+  sku_tier: "<string>"       # Optional; The SKU Tier that should be used for the Public IP; Regional or Global; Default Regional
+  tags:  # Optional; A mapping of tags
+    - <list>

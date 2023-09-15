@@ -1,0 +1,22 @@
+resource "azurerm_api_management_logger" "{{ api_management_logger.name }}" {
+  ## Required Vars
+  name   = "{{ api_management_logger.name }}"
+  api_management_name   = "{{ api_management_logger.api_management_name }}"
+  resource_group_name   = "{{ api_management_logger.resource_group_name }}"
+
+  ## Optional Vars
+  buffered   = {{ api_management_logger.buffered }}
+  description   = "{{ api_management_logger.description }}"
+  resource_id   = "{{ api_management_logger.resource_id }}"
+
+  ## Blocks
+  application_insights {
+    ## Required Block Vars
+    instrumentation_key   = "{{ api_management_logger.application_insights.instrumentation_key }}"
+  }
+  eventhub {
+    ## Required Block Vars
+    name   = "{{ api_management_logger.eventhub.name }}"
+    connection_string   = "{{ api_management_logger.eventhub.connection_string }}"
+  }
+}

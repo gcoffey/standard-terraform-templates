@@ -1,0 +1,9 @@
+api_management_group:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the API Management Group
+  api_management_name: "<string>"       # Required; The name of the API Management Group
+  display_name: "<string>"       # Required; The display name of this API Management Group
+  resource_group_name: "<string>"       # Required; The name of the Resource Group where the API Management Service API Diagnostics Logs should exist
+  description: "<string>"       # Optional; The description of this API Management Group
+  external_id: "<string>"       # Optional; The identifier of the External Group e.g. aad://<tenant id>/groups/<group id>
+  type: "<string>"       # Optional; The type of this API Management Group; custom, external or system; Default is custom

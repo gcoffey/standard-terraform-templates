@@ -1,0 +1,14 @@
+resource "azurerm_availability_set" "{{ availability_set.name }}" {
+  ## Required Vars
+  location   = "{{ availability_set.location }}"
+  name   = "{{ availability_set.name }}"
+  resource_group_name   = "{{ availability_set.resource_group_name }}"
+
+  ## Optional Vars
+  platform_update_domain_count   = "{{ availability_set.platform_update_domain_count }}"
+  platform_fault_domain_count   = "{{ availability_set.platform_fault_domain_count }}"
+  proximity_placement_group_id   = "{{ availability_set.proximity_placement_group_id }}"
+  managed   = {{ availability_set.managed }}
+  tags   = "{{ availability_set.tags | to_json | safe }}"
+
+}

@@ -1,0 +1,5 @@
+app_service_slot_virtual_network_swift_connection:
+  name: "<string>"	# Required; A name for this resource
+  slot_name: "<string>"       # Required; The name of the App Service Slot or Function App Slot
+  app_service_id: "<string>"       # Required; The ID of the App Service or Function App
+  subnet_id: "<string>"       # Required; The ID of the subnet the app service will be associated to [subnet must have service_delegation = Microsoft.Web/serverFarms]

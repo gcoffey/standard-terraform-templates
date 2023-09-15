@@ -1,0 +1,13 @@
+resource "azurerm_dedicated_host_group" "{{ dedicated_host_group.name }}" {
+  ## Required Vars
+  name   = "{{ dedicated_host_group.name }}"
+  resource_group_name   = "{{ dedicated_host_group.resource_group_name }}"
+  location   = "{{ dedicated_host_group.location }}"
+  platform_fault_domain   = "{{ dedicated_host_group.platform_fault_domain }}"
+
+  ## Optional Vars
+  automatic_placement_enabled   = {{ dedicated_host_group.automatic_placement_enabled }}
+  zone   = "{{ dedicated_host_group.zone }}"
+  tags   = "{{ dedicated_host_group.tags | to_json | safe }}"
+
+}

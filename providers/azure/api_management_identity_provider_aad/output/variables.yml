@@ -1,0 +1,8 @@
+api_management_identity_provider_aad:
+  name: "<string>"	# Required; A name for this resource
+  api_management_name: "<string>"       # Required; The name of the API Management Service
+  resource_group_name: "<string>"       # Required; The name of the Resource Group where the API Management Service exists
+  client_id: "<string>"       # Required; Client Id of the Application in the AAD Identity Provider
+  client_secret: "<string>"       # Required; Client Secret of the Application in the AAD Identity Provider
+  allowed_tenants: "<string>"       # Required; List of allowed AAD Tenants
+  signin_tenant: "<string>"       # Optional; The AAD Tenant to use instead of Common when logging into Active Directory

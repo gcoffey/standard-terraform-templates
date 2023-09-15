@@ -1,0 +1,39 @@
+resource:
+  name: "azurerm_network_interface"
+  enable_variable_comments: false
+  var_name: "network_interface"
+  required_vars:
+    - name: "ip_configuration"
+      description: "One or more ip configuration blocks"
+      type: "block"
+    - name: "location"
+      description: "The location where the Network Interface should be created"
+      type: "string"
+    - name: "name"
+      description: "The name of the Network Interface to be created"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the Resource Group in which to create the Network Interface"
+      type: "string"
+  optional_vars:
+    - name: "dns_servers"
+      description: "A list of IP addresses defining the DNS servers to use"
+      type: "list"
+    - name: "edge_zone"
+      description: "Specifies the Edge Zone within the Azure Region where this NIC hsould exist"
+      type: "string"
+    - name: "enable_ip_forwarding"
+      description: "Should IP Forwarding be enabled; Default false"
+      default_value: false
+      type: "boolean"
+    - name: "enable_accelerated_networking"
+      description: "Should Accelerated Networking be enabled; Default false"
+      default_value: false
+      type: "boolean"
+    - name: "internal_dns_name_label"
+      description: "The DNS name used for internal communications between VMs in the same Virtual Network"
+      type: "string"
+    - name: "tags"
+      description: "A mapping of tags to assign to the resource"
+      type: "map"
+

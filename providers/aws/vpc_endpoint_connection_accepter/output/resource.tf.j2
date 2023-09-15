@@ -1,0 +1,7 @@
+resource "aws_vpc_endpoint_connection_accepter" "{{ vpc_endpoint_connection_accepter.name }}" {
+  ## Required Vars
+  vpc_endpoint_id   = "{{ vpc_endpoint_connection_accepter.vpc_endpoint_id }}"
+  vpc_endpoint_service_id   = "{{ vpc_endpoint_connection_accepter.vpc_endpoint_service_id }}"
+
+
+}

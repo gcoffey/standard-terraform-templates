@@ -1,0 +1,8 @@
+resource "azurerm_app_service_active_slot" "{{ app_service_active_slot.name }}" {
+  ## Required Vars
+  resource_group_name   = "{{ app_service_active_slot.resource_group_name }}"
+  app_service_name   = "{{ app_service_active_slot.app_service_name }}"
+  app_service_slot_name   = "{{ app_service_active_slot.app_service_slot_name }}"
+
+
+}

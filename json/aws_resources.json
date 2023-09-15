@@ -1,0 +1,45 @@
+{  
+"resources": [ 
+
+"autoscaling_attachment",
+"autoscaling_group",
+"cloudfront_distribution",
+"cloudfront_function",
+"cloudfront_origin_access_control",
+"db_instance",
+"egress_only_internet_gateway",
+"internet_gateway",
+"lb",
+"lb_listener",
+"lb_listener_certificate",
+"lb_target_group",
+"lb_target_group_attachment",
+"nat_gateway",
+"network_acl",
+"network_acl_association",
+"route",
+"route53_record",
+"route53_zone",
+"route_table",
+"security_group",
+"security_group_rule",
+"sns_platform_application",
+"subnet",
+"vpc",
+"vpc_endpoint",
+"vpc_endpoint_connection_accepter",
+"vpc_endpoint_connection_notification",
+"vpc_endpoint_policy",
+"vpc_endpoint_route_table_association",
+"vpc_endpoint_security_group_association",
+"vpc_endpoint_service",
+"vpc_endpoint_service_allowed_principal",
+"vpc_endpoint_subnet_association",
+ ]
+}
+{  
+"servicepacks": [ 
+
+"base-network",
+ ]
+}

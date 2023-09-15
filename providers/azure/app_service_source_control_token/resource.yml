@@ -1,0 +1,15 @@
+resource:
+  name: "azurerm_app_service_source_control_token"
+  enable_variable_comments: false
+  var_name: "app_service_source_control_token"
+  required_vars:
+    - name: "type"
+      description: "The source control type; BitBucket, Dropbox, GitHub or OneDrive"
+      type: "string"
+    - name: "token"
+      description: "The OAuth access token"
+      type: "string"
+  optional_vars:
+    - name: "token_secret"
+      description: "The OAuth access token secret"
+      type: "string"

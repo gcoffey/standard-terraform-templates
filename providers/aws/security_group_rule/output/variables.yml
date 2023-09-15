@@ -1,0 +1,16 @@
+security_group_rule:
+  name: "<string>"	# Required; A name for this resource
+  from_port: "<string>"       # Required; Start port (or ICMP type number if protocol is icmp or icmpv6)
+  protocol: "<string>"       # Required; Protocol; icmp, icmpv6, tcp, udp or all
+  security_group_id: "<string>"       # Required; Security group to apply this rule to
+  to_port: "<string>"       # Required; End port (or ICMP code if protocol is icmp)
+  type: "<string>"       # Required; Type of rule being created. Valid options are ingress or egress
+  cidr_blocks:  # Optional; List of CIDR blocks
+    - <list>
+  description: "<string>"       # Optional; Description of the rule
+  ipv6_cidr_blocks:  # Optional; List of IPv6 CIDR blocks
+    - <list>
+  prefix_list_ids:  # Optional; List of Prefix List IDs
+    - <list>
+  self: <boolean>        # Optional; Whether the security group itself will be added as a source to this ingress rule
+  source_security_group_id: "<string>"       # Optional; Security group id to allow access to / from

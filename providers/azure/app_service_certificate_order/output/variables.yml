@@ -1,0 +1,11 @@
+app_service_certificate_order:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Specifies the name of the certificate
+  resource_group_name: "<string>"       # Required; The name of the Resource group in which the App Service exists
+  location: "<string>"       # Required; Specifies the supported Azure location where the resource exists; currentl only global supported
+  auto_renew: <boolean>        # Optional; If the certificate should be automatically renewed when it expires; Default true
+  csr: "<string>"       # Optional; Last CSR that was created for this order
+  distinguished_name: "<string>"       # Optional; The Distinguished Name for the App Service Certificate Order
+  key_size: "<string>"       # Optional; Certificate key size; Default 2048
+  product_type: "<string>"       # Optional; Certificate product type; Standard or WildCard
+  validity_in_years: "<string>"       # Optional; Duration in years, between 1 and 3; Default is 1

@@ -1,0 +1,41 @@
+resource "aws_lb" "{{ lb.name }}" {
+
+  ## Optional Vars
+  customer_owned_ipv4_pool   = "{{ lb.customer_owned_ipv4_pool }}"
+  desync_mitigation_mode   = "{{ lb.desync_mitigation_mode }}"
+  drop_invalid_header_fields   = {{ lb.drop_invalid_header_fields }}
+  enable_cross_zone_load_balancing   = {{ lb.enable_cross_zone_load_balancing }}
+  enable_deletion_protection   = {{ lb.enable_deletion_protection }}
+  enable_http2   = {{ lb.enable_http2 }}
+  enable_tls_version_and_cipher_suite_headers   = {{ lb.enable_tls_version_and_cipher_suite_headers }}
+  enable_xff_client_port   = {{ lb.enable_xff_client_port }}
+  enable_waf_fail_open   = {{ lb.enable_waf_fail_open }}
+  idle_timeout   = "{{ lb.idle_timeout }}"
+  internal   = {{ lb.internal }}
+  ip_address_type   = "{{ lb.ip_address_type }}"
+  load_balancer_type   = "{{ lb.load_balancer_type }}"
+  name   = "{{ lb.name }}"
+  name_prefix   = "{{ lb.name_prefix }}"
+  security_groups   = "{{ lb.security_groups | to_json | safe }}"
+  preserve_host_header   = {{ lb.preserve_host_header }}
+  subnets   = "{{ lb.subnets | to_json | safe }}"
+  xff_header_processing_mode   = "{{ lb.xff_header_processing_mode }}"
+  tags   = "{{ lb.tags | to_json | safe }}"
+
+  ## Blocks
+  access_logs {
+    ## Required Block Vars
+    bucket   = "{{ lb.access_logs.bucket }}"
+    ## Optional Block Vars
+    enabled   = {{ lb.access_logs.enabled }}
+    prefix   = "{{ lb.access_logs.prefix }}"
+  }
+  subnet_mapping {
+    ## Required Block Vars
+    subnet_id   = "{{ lb.subnet_mapping.subnet_id }}"
+    ## Optional Block Vars
+    allocation_id   = "{{ lb.subnet_mapping.allocation_id }}"
+    ipv6_address   = "{{ lb.subnet_mapping.ipv6_address }}"
+    private_ipv4_address   = "{{ lb.subnet_mapping.private_ipv4_address }}"
+  }
+}

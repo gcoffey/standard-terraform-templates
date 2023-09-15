@@ -1,0 +1,6 @@
+api_management_identity_provider_facebook:
+  name: "<string>"	# Required; A name for this resource
+  api_management_name: "<string>"       # Required; The name of the API Management Service
+  resource_group_name: "<string>"       # Required; The name of the Resource Group where the API Management Service exists
+  app_id: "<string>"       # Required; App Id for Facebook
+  app_secret: "<string>"       # Required; App Secret for Facebook

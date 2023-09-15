@@ -1,0 +1,22 @@
+resource "azurerm_analysis_services_server" "{{ analysis_services_server.name }}" {
+  ## Required Vars
+  name   = "{{ analysis_services_server.name }}"
+  location   = "{{ analysis_services_server.location }}"
+  resource_group_name   = "{{ analysis_services_server.resource_group_name }}"
+  sku   = "{{ analysis_services_server.sku }}"
+
+  ## Optional Vars
+  admin_users   = "{{ analysis_services_server.admin_users | to_json | safe }}"
+  querypool_connection_mode   = "{{ analysis_services_server.querypool_connection_mode }}"
+  backup_blob_container_uri   = "{{ analysis_services_server.backup_blob_container_uri }}"
+  enable_power_bi_service   = {{ analysis_services_server.enable_power_bi_service }}
+  tag   = "{{ analysis_services_server.tag | to_json | safe }}"
+
+  ## Blocks
+  ipv4_firewall_rule {
+    ## Required Block Vars
+    name   = "{{ analysis_services_server.ipv4_firewall_rule.name }}"
+    range_start   = "{{ analysis_services_server.ipv4_firewall_rule.range_start }}"
+    range_end   = "{{ analysis_services_server.ipv4_firewall_rule.range_end }}"
+  }
+}

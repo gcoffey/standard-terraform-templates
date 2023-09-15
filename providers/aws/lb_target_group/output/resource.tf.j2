@@ -1,0 +1,49 @@
+resource "aws_lb_target_group" "{{ lb_target_group.name }}" {
+  ## Required Vars
+  port   = "{{ lb_target_group.port }}"
+  protocol   = "{{ lb_target_group.protocol }}"
+  target_type   = "{{ lb_target_group.target_type }}"
+
+  ## Optional Vars
+  connection_termination   = {{ lb_target_group.connection_termination }}
+  deregistration_delay   = "{{ lb_target_group.deregistration_delay }}"
+  lambda_multi_value_headers_enabled   = {{ lb_target_group.lambda_multi_value_headers_enabled }}
+  load_balancing_algorithm_type   = "{{ lb_target_group.load_balancing_algorithm_type }}"
+  load_balancing_cross_zone_enabled   = {{ lb_target_group.load_balancing_cross_zone_enabled }}
+  name_prefix   = "{{ lb_target_group.name_prefix }}"
+  name   = "{{ lb_target_group.name }}"
+  protocol_version   = "{{ lb_target_group.protocol_version }}"
+  proxy_protocol_v2   = {{ lb_target_group.proxy_protocol_v2 }}
+  slow_start   = "{{ lb_target_group.slow_start }}"
+  ip_address_type   = "{{ lb_target_group.ip_address_type }}"
+  vpc_id   = "{{ lb_target_group.vpc_id }}"
+  tags   = "{{ lb_target_group.tags | to_json | safe }}"
+
+  ## Blocks
+  health_check {
+    ## Required Block Vars
+    matcher   = "{{ lb_target_group.health_check.matcher }}"
+    path   = "{{ lb_target_group.health_check.path }}"
+    ## Optional Block Vars
+    enabled   = {{ lb_target_group.health_check.enabled }}
+    healthy_threshold   = "{{ lb_target_group.health_check.healthy_threshold }}"
+    interval   = "{{ lb_target_group.health_check.interval }}"
+    port   = "{{ lb_target_group.health_check.port }}"
+    protocol   = "{{ lb_target_group.health_check.protocol }}"
+    timeout   = "{{ lb_target_group.health_check.timeout }}"
+    unhealthy_threshold   = "{{ lb_target_group.health_check.unhealthy_threshold }}"
+  }
+  stickiness {
+    ## Required Block Vars
+    type   = "{{ lb_target_group.stickiness.type }}"
+    ## Optional Block Vars
+    cookie_duration   = "{{ lb_target_group.stickiness.cookie_duration }}"
+    cookie_name   = "{{ lb_target_group.stickiness.cookie_name }}"
+    enabled   = {{ lb_target_group.stickiness.enabled }}
+  }
+  target_failover {
+    ## Optional Block Vars
+    on_deregistration   = "{{ lb_target_group.target_failover.on_deregistration }}"
+    on_unhealthy   = "{{ lb_target_group.target_failover.on_unhealthy }}"
+  }
+}

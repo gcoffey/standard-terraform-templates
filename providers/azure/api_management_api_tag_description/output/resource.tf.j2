@@ -1,0 +1,10 @@
+resource "azurerm_api_management_api_tag_description" "{{ api_management_api_tag_description.name }}" {
+  ## Required Vars
+  api_tag_id   = "{{ api_management_api_tag_description.api_tag_id }}"
+
+  ## Optional Vars
+  description   = "{{ api_management_api_tag_description.description }}"
+  external_documentation_url   = "{{ api_management_api_tag_description.external_documentation_url }}"
+  external_documentation_description   = "{{ api_management_api_tag_description.external_documentation_description }}"
+
+}

@@ -1,0 +1,11 @@
+resource:
+  name: "aws_vpc_endpoint_connection_accepter"
+  enable_variable_comments: false
+  var_name: "vpc_endpoint_connection_accepter"
+  required_vars:
+    - name: "vpc_endpoint_id"
+      description: "The VPC Endpoint ID"
+      type: "string"
+    - name: "vpc_endpoint_service_id"
+      description: "AWS VPC Endpoint Service ID"
+      type: "string"

@@ -1,0 +1,6 @@
+api_management_identity_provider_google:
+  name: "<string>"	# Required; A name for this resource
+  api_management_name: "<string>"       # Required; The name of the API Management Service
+  resource_group_name: "<string>"       # Required; The name of the Resource Group where the API Management Service exists
+  client_id: "<string>"       # Required; Client Id for Google Sign-in
+  client_secret: "<string>"       # Required; Client Secret for Google Sign-in

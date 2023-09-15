@@ -1,0 +1,19 @@
+app_service_source_control:
+  name: "<string>"	# Required; A name for this resource
+  app_id: "<string>"       # Required; The ID of the Windows or Linux Web App
+  branch: "<string>"       # Optional; The branch name to use for deployments
+  repo_url: "<string>"       # Optional; The URL for the repository
+  use_manual_integration: <boolean>        # Optional; Should code be deployed manually; true, false; Default false
+  rollback_enabled: <boolean>        # Optional; Should the Deployment Rollback be enabled?; true, false; Default false
+  use_local_git: <boolean>        # Optional; Should the App use local Git configuration
+  use_mercurial: <boolean>        # Optional; The repository specified is Mercurial; Default false
+  github_action_configuration:
+    code_configuration:
+      runtime_stack: "<string>"       # Required; The value to use for the Runtime Stack; dotnetcore, spring, tomcat, node or python 
+      runtime_version: "<string>"       # Required; The value to use for the Runtime Version 
+    container_configuration:
+      image_name: "<string>"       # Required; The image name for the build 
+      registry_url: "<string>"       # Required; The server URL for the container registry 
+      registry_password: "<string>"       # Optional; The password used to upload the image to the container registry
+      registry_username: "<string>"       # Optional; The username used to upload the image to the container registry
+    generate_workflow_file: <boolean>        # Optional; Whether to generate the GitHub work flow file; Default true

@@ -1,0 +1,15 @@
+resource:
+  name: "azurerm_api_management_api_release"
+  enable_variable_comments: false
+  var_name: "api_management_api_release"
+  required_vars:
+    - name: "name"
+      description: "The name for this release"
+      type: "string"
+    - name: "api_id"
+      description: "The ID of the API Management API"
+      type: "string"
+  optional_vars:
+    - name: "notes"
+      description: "The Release Notes"
+      type: "string"

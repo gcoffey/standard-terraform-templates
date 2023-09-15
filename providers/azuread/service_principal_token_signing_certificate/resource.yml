@@ -1,0 +1,15 @@
+resource:
+  name: "azuread_service_principal_token_signing_certificate"
+  enable_variable_comments: false
+  var_name: "service_principal_token_signing_certificate"
+  required_vars:
+    - name: "service_principal_id"
+      description: "The object ID of the service principal for which this certificate should be created"
+      type: "string"
+  optional_vars:
+    - name: "display_name"
+      description: "Specifies a friendly name for the certificate; Must start with CN="
+      type: "string"
+    - name: "end_date"
+      description: "The end date until which the certificate is valid, formatted as an RFC 3339 date string"
+      type: "string"

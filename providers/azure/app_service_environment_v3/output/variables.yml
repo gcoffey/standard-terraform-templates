@@ -1,0 +1,14 @@
+app_service_environment_v3:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the App Service Environment
+  resource_group_name: "<string>"       # Required; The resource group name of the App Service Environment
+  subnet_id: "<string>"       # Required; The ID of the Subnet which the App Service Environment should be connected to
+  internal_load_balancing_mode: "<string>"       # Optional; Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment; None, Web or Publishing
+  allow_new_private_endpoint_connections: <boolean>        # Optional; Should new Private Endpoint Connections be allowed; Default true
+  dedicated_host_count: "<string>"       # Optional; This ASEv3 should use dedicated Host; Only possible value is 2
+  zone_redundant: "<string>"       # Optional; Set to true to deploy the ASEv3 with availability zones supported
+  tags:  # Optional; A mapping of tags
+    - <list>
+  cluster_setting:
+    name: "<string>"       # Required; Name of the Cluster Setting
+    value: "<string>"       # Required; Value of the Cluster Setting

@@ -1,0 +1,12 @@
+resource "azurerm_subscription" "{{ subscription.name }}" {
+  ## Required Vars
+  subscription_name   = "{{ subscription.subscription_name }}"
+
+  ## Optional Vars
+  alias   = "{{ subscription.alias }}"
+  billing_scope_id   = "{{ subscription.billing_scope_id }}"
+  subscription_id   = "{{ subscription.subscription_id }}"
+  workload   = "{{ subscription.workload }}"
+  tags   = "{{ subscription.tags | to_json | safe }}"
+
+}

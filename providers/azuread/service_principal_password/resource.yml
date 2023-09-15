@@ -1,0 +1,24 @@
+resource:
+  name: "azuread_service_principal_password"
+  enable_variable_comments: false
+  var_name: "service_principal_password"
+  required_vars:
+    - name: "service_principal_id"
+      description: "The object ID of the service principal"
+      type: "string"
+  optional_vars:
+    - name: "display_name"
+      description: "A display name for the password"
+      type: "string"
+    - name: "end_date"
+      description: "The end date until which the password is valid, formatted as an RFC3339 date string"
+      type: "string"
+    - name: "end_date_relative"
+      description: "A relative duration for which the password is valid until e.g. 240h"
+      type: "string"
+    - name: "rotate_when_changed"
+      description: "A map of arbitrary key/value pairs that will force recreation of the password when they change"
+      type: "map"
+    - name: "start_date"
+      description: "The start date from which the password is valid, formatted as an RFC3339 date string"
+      type: "string"

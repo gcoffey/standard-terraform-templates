@@ -1,0 +1,6 @@
+resource_provider_registration:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the Resource provider to create
+  feature:
+    name: "<string>"       # Required; Name of the feature
+    registered: "<string>"       # Required; Should this feature be registered or unregistered

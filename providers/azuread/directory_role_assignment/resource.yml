@@ -1,0 +1,18 @@
+resource:
+  name: "azuread_directory_role_assignment"
+  enable_variable_comments: false
+  var_name: "directory_role_assignment"
+  required_vars:
+    - name: "principal_object_id"
+      description: "The object ID of the principal to create a role assignment for"
+      type: "string"
+    - name: "role_id"
+      description: "The ID of the role to assign"
+      type: "string"
+  optional_vars:
+    - name: "app_scope_id"
+      description: "Identifier of the app-specific scope"
+      type: "string"
+    - name: "directory_scope_id"
+      description: "Identifier of the directory object representing the scope of the assignment"
+      type: "string"

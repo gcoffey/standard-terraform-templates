@@ -1,0 +1,8 @@
+route:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the route
+  route_table_name: "<string>"       # Required; The name of the route table
+  resource_group_name: "<string>"       # Required; The name of the resource group to create the public ip in
+  address_prefix: "<string>"       # Required; The destination to which the route applies
+  next_hop_type: "<string>"       # Required; The type of Azure hop the packet should be sent to; VirtualNetworkGateway, VnetLocal, Internet, VirtualAppliance or None
+  next_hop_in_ip_address: "<string>"       # Optional; Contains the IP address packets should be forwarded to; when next_hop_type = VirtualAppliance

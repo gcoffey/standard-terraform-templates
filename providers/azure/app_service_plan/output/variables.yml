@@ -1,0 +1,18 @@
+app_service_plan:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Specifies the name of the App Service Plan
+  resource_group_name: "<string>"       # Required; The name of the Resource group in which the App Service Plan should be created
+  location: "<string>"       # Required; Specifies the supported Azure location where the resource exists
+  kind: "<string>"       # Optional; The kind of the App Service Plan; Windows, Linux, elastic, xenon or FunctionApp; Default Windows
+  maximum_elastic_worker_count: "<string>"       # Optional; The maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
+  app_service_environment_id: "<string>"       # Optional; The ID of the App Service Environment
+  reserved: <boolean>        # Optional; Is this App Service Plan reserved?
+  per_site_scaling: <boolean>        # Optional; Can Apps assigned to this App Service Plan be scaled independently?
+  is_xenon: <boolean>        # Optional; Whether to create a xenon App Service Plan
+  zone_redundant: <boolean>        # Optional; Specifies if the App Serviec PLan should be Zone Redundant
+  tags:  # Optional; A mapping of tags
+    - <list>
+  sku:
+    tier: "<string>"       # Required; Specifies the plan's pricing tier
+    size: "<string>"       # Required; Specifies the plan's instance size
+    capacity: "<string>"       # Optional; Specifies the number of workers

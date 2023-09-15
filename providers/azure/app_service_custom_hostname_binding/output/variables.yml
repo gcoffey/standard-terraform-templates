@@ -1,0 +1,7 @@
+app_service_custom_hostname_binding:
+  name: "<string>"	# Required; A name for this resource
+  hostname: "<string>"       # Required; Specifies the Custom Hostname to use for the App Service
+  resource_group_name: "<string>"       # Required; The name of the Resource group in which the App Service exists
+  app_service_name: "<string>"       # Required; The name of the App SErvice in which to add the Custom Hostname Binding
+  ssl_state: "<string>"       # Optional; The SSL type; IpBasedEnabled or SniEnabled
+  thumbprint: "<string>"       # Optional; The SSL certificate thumbprint

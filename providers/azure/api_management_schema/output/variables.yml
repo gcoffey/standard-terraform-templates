@@ -1,0 +1,8 @@
+api_management_schema:
+  name: "<string>"	# Required; A name for this resource
+  schema_id: "<string>"       # Required; A unique identifier for this Schema
+  api_management_name: "<string>"       # Required; The Name of the API Management Service
+  resource_group_name: "<string>"       # Required; The Name of the Resource Group
+  type: "<string>"       # Required; The content type of the schema; xml or json
+  value: "<string>"       # Required; The string defining the document representing the Schema
+  description: "<string>"       # Optional; The description of the Schema

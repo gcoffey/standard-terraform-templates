@@ -1,0 +1,16 @@
+resource "azurerm_api_management_user" "{{ api_management_user.name }}" {
+  ## Required Vars
+  user_id   = "{{ api_management_user.user_id }}"
+  api_management_name   = "{{ api_management_user.api_management_name }}"
+  email   = "{{ api_management_user.email }}"
+  resource_group_name   = "{{ api_management_user.resource_group_name }}"
+  first_name   = "{{ api_management_user.first_name }}"
+  last_name   = "{{ api_management_user.last_name }}"
+
+  ## Optional Vars
+  confirmation   = "{{ api_management_user.confirmation }}"
+  note   = "{{ api_management_user.note }}"
+  password   = "{{ api_management_user.password }}"
+  state   = "{{ api_management_user.state }}"
+
+}

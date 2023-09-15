@@ -1,0 +1,18 @@
+resource:
+  name: "azurerm_api_management_api_tag_description"
+  enable_variable_comments: false
+  var_name: "api_management_api_tag_description"
+  required_vars:
+    - name: "api_tag_id"
+      description: "The ID of the API Management API Tag"
+      type: "string"
+  optional_vars:
+    - name: "description"
+      description: "The description of the tag"
+      type: "string"
+    - name: "external_documentation_url"
+      description: "The URL of external documentation resources describing the tag"
+      type: "string"
+    - name: "external_documentation_description"
+      description: "The description of the external documentation resources describing the tag"
+      type: "string"

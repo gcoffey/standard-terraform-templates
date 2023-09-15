@@ -1,0 +1,18 @@
+app_configuration:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the App Configuration
+  location: "<string>"       # Required; The Azure location where to create the resource
+  resource_group_name: "<string>"       # Required; The name of the resource group where to create the App Configuration
+  local_auth_enabled: <boolean>        # Optional; Whether local authentication methods is enabled; Default true
+  public_network_access: "<string>"       # Optional; The Public Network Access setting of the App Configuration; Enabled or Disabled
+  purge_protection_enabled: <boolean>        # Optional; Whether Purge Protection is enabled; Default false
+  sku: "<string>"       # Optional; The SKU name of the App Configuration; free or standard
+  soft_delete_retention_days: "<string>"       # Optional; The number of days that items should be retained for once soft-deleted; Only works for standard sku; Default 7
+  tags:  # Optional; Mapping of tags to assign to the resource
+    - <list>
+  encryption:
+    key_vault_key_identifier: "<string>"       # Optional; Specifies the URI of the key vault key used to encrypt data
+    identity_client_id: "<string>"       # Optional; Specifies the client id of the identity which will be used to access the key vault
+  identity:
+    type: "<string>"       # Required; Specifies the type of Managed Service Identity that should be configured; SystemAssigned, UserAssigned
+    identity_ids: "<string>"       # Optional; A list of User Assigned Managed Identity IDs to be assigned

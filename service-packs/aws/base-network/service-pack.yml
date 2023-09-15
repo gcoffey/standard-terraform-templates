@@ -1,0 +1,15 @@
+service_pack:
+  resources:
+    - name: vpc
+      provider: aws
+    - name: route_table
+      provider: aws
+    - name: subnet
+      provider: aws
+    - name: network_acl
+      provider: aws
+    - name: internet_gateway
+      provider: aws
+    - name: nat_gateway
+      provider: aws
+

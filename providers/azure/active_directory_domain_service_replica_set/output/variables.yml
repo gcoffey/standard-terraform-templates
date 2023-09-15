@@ -1,0 +1,5 @@
+active_directory_domain_service_replica_set:
+  name: "<string>"	# Required; A name for this resource
+  domain_service_id: "<string>"       # Required; The ID of the Domain Service
+  location: "<string>"       # Required; The Azure location where the Replica set should exist
+  subnet_id: "<string>"       # Required; The ID of the subnet in which to place this Replica Set

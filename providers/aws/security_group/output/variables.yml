@@ -1,0 +1,37 @@
+security_group:
+  name: "<string>"	# Required; A name for this resource
+  description: "<string>"       # Optional; Security group description; Defaults to Managed by Terraform
+  name_prefix: "<string>"       # Optional; Creates a unique name beginning with the specified prefix
+  name: "<string>"       # Optional; Name of the security group; If omitted, Terraform will assign a random unique name
+  revoke_rules_on_delete: <boolean>        # Optional; Instruct Terraform to revoke all of the Security Groups attached ingress and egress rules
+  tags:  # Optional; Map of tags to assign to the resource
+    - <list>
+  vpc_id: "<string>"       # Optional; VPC ID; Defaults to the regions default VPC
+  ingress:
+    from_port: "<string>"       # Required; Start port (or ICMP type number if protocol is icmp or icmpv6)
+    to_port: "<string>"       # Required; End range port (or ICMP type number if protocol is icmp or icmpv6)
+    protocol: "<string>"       # Required; Protocol. icmp, icmpv6, tcp, udp or all
+    cidr_blocks:  # Optional; List of CIDR blocks
+      - <list>
+    description: "<string>"       # Optional; Description of this ingress rule
+    ipv6_cidr_blocks:  # Optional; List of IPv6 CIDR blocks
+      - <list>
+    prefix_list_ids:  # Optional; List of Prefix List IDs
+      - <list>
+    security_groups:  # Optional; List of security groups. A group name can be used relative to the default VPC
+      - <list>
+    self: <boolean>        # Optional; Whether the security group itself will be added as a source to this ingress rule
+  egress:
+    from_port: "<string>"       # Required; Start port (or ICMP type number if protocol is icmp or icmpv6)
+    to_port: "<string>"       # Required; End range port (or ICMP type number if protocol is icmp or icmpv6)
+    protocol: "<string>"       # Required; Protocol. icmp, icmpv6, tcp, udp or all
+    cidr_blocks:  # Optional; List of CIDR blocks
+      - <list>
+    description: "<string>"       # Optional; Description of this ingress rule
+    ipv6_cidr_blocks:  # Optional; List of IPv6 CIDR blocks
+      - <list>
+    prefix_list_ids:  # Optional; List of Prefix List IDs
+      - <list>
+    security_groups:  # Optional; List of security groups. A group name can be used relative to the default VPC
+      - <list>
+    self: <boolean>        # Optional; Whether the security group itself will be added as a source to this ingress rule

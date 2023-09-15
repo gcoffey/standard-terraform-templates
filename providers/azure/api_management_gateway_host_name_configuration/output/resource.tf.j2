@@ -1,0 +1,15 @@
+resource "azurerm_api_management_gateway_host_name_configuration" "{{ api_management_gateway_host_name_configuration.name }}" {
+  ## Required Vars
+  name   = "{{ api_management_gateway_host_name_configuration.name }}"
+  api_management_id   = "{{ api_management_gateway_host_name_configuration.api_management_id }}"
+  gateway_name   = "{{ api_management_gateway_host_name_configuration.gateway_name }}"
+  certificate_id   = "{{ api_management_gateway_host_name_configuration.certificate_id }}"
+  host_name   = "{{ api_management_gateway_host_name_configuration.host_name }}"
+
+  ## Optional Vars
+  request_client_certificate_enabled   = "{{ api_management_gateway_host_name_configuration.request_client_certificate_enabled }}"
+  http2_enabled   = {{ api_management_gateway_host_name_configuration.http2_enabled }}
+  tls10_enabled   = {{ api_management_gateway_host_name_configuration.tls10_enabled }}
+  tls11_enabled   = {{ api_management_gateway_host_name_configuration.tls11_enabled }}
+
+}

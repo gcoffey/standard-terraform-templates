@@ -1,0 +1,16 @@
+resource "azurerm_capacity_reservation" "{{ capacity_reservation.name }}" {
+  ## Required Vars
+  name   = "{{ capacity_reservation.name }}"
+  capacity_reservation_group_id   = "{{ capacity_reservation.capacity_reservation_group_id }}"
+
+  ## Optional Vars
+  zone   = "{{ capacity_reservation.zone }}"
+  tags   = "{{ capacity_reservation.tags | to_json | safe }}"
+
+  ## Blocks
+  sku {
+    ## Required Block Vars
+    name   = "{{ capacity_reservation.sku.name }}"
+    capacity   = {{ capacity_reservation.sku.capacity }}
+  }
+}

@@ -1,0 +1,17 @@
+analysis_services_server:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the Analysis Services Server
+  location: "<string>"       # Required; The Azure location where the Analysis Services Server exists
+  resource_group_name: "<string>"       # Required; The name of the resource group where the Analysis Services Server should exist
+  sku: "<string>"       # Required; SKU for the Analysis Services Server; D1, B1, S0, S1, S2, S4, S8, S9, S8v2, S9v2
+  admin_users:  # Optional; List of email addresses of admin users
+    - <list>
+  querypool_connection_mode: "<string>"       # Optional; Controls how the read-write server is used in the query pool
+  backup_blob_container_uri: "<string>"       # Optional; URI and SAS token for a blob container to store backups
+  enable_power_bi_service: <boolean>        # Optional; Indicates if the Power BI Service is allowed to access or not
+  tag:  # Optional; A mapping of tags to assign to the resource
+    - <list>
+  ipv4_firewall_rule:
+    name: "<string>"       # Required; Specifies the name of the firewall rule
+    range_start: "<string>"       # Required; Start of the firewall rule range as IPv4 address
+    range_end: "<string>"       # Required; End of the firewall rule range as IPv4 address

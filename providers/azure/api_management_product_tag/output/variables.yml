@@ -1,0 +1,6 @@
+api_management_product_tag:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name which should be used for this API Management Tag
+  api_management_product_id: "<string>"       # Required; The ID of the API Management Product
+  api_management_name: "<string>"       # Required; The name of the API Management Service
+  resource_group_name: "<string>"       # Required; The name of the Resource Group

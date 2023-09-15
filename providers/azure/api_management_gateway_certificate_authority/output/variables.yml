@@ -1,0 +1,6 @@
+api_management_gateway_certificate_authority:
+  name: "<string>"	# Required; A name for this resource
+  api_management_id: "<string>"       # Required; The ID of the API Management Service
+  certificate_name: "<string>"       # Required; The name of the API Management Certificate
+  gateway_name: "<string>"       # Required; The name of the API Management Gateway
+  is_trusted: <boolean>        # Optional; Whether the API Management Gateway Certificate Authority is trusted

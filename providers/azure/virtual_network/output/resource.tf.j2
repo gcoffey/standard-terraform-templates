@@ -1,0 +1,28 @@
+resource "azurerm_virtual_network" "{{ virtual_network.name }}" {
+  ## Required Vars
+  name   = "{{ virtual_network.name }}"
+  resource_group_name   = "{{ virtual_network.resource_group_name }}"
+  location   = "{{ virtual_network.location }}"
+  address_space   = "{{ virtual_network.address_space }}"
+
+  ## Optional Vars
+  bgp_community   = "{{ virtual_network.bgp_community }}"
+  dns_servers   = "{{ virtual_network.dns_servers | to_json | safe }}"
+  edge_zone   = "{{ virtual_network.edge_zone }}"
+  flow_timeout_in_minutes   = "{{ virtual_network.flow_timeout_in_minutes }}"
+  tags   = "{{ virtual_network.tags | to_json | safe }}"
+
+  ## Blocks
+  ddos_protection_plan {
+    ## Required Block Vars
+    id   = "{{ virtual_network.ddos_protection_plan.id }}"
+    enable   = "{{ virtual_network.ddos_protection_plan.enable }}"
+  }
+  subnet {
+    ## Required Block Vars
+    name   = "{{ virtual_network.subnet.name }}"
+    address_prefix   = "{{ virtual_network.subnet.address_prefix }}"
+    ## Optional Block Vars
+    security_group   = "{{ virtual_network.subnet.security_group }}"
+  }
+}

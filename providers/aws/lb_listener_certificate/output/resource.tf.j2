@@ -1,0 +1,7 @@
+resource "aws_lb_listener_certificate" "{{ lb_listener_certificate.name }}" {
+  ## Required Vars
+  listener_arn   = "{{ lb_listener_certificate.listener_arn }}"
+  certificate_arn   = "{{ lb_listener_certificate.certificate_arn }}"
+
+
+}

@@ -1,0 +1,22 @@
+#draggable-container {
+  display: flex;
+}
+
+.category {
+  margin-right: 20px;
+}
+
+.draggable {
+  background-color: lightblue;
+  margin-bottom: 5px;
+  padding: 5px;
+  cursor: move;
+}
+
+#droppable-container {
+  margin-top: 20px;
+  background-color: lightgray;
+  min-height: 200px;
+  padding: 10px;
+}
+

@@ -1,0 +1,9 @@
+resource "azurerm_api_management_identity_provider_facebook" "{{ api_management_identity_provider_facebook.name }}" {
+  ## Required Vars
+  api_management_name   = "{{ api_management_identity_provider_facebook.api_management_name }}"
+  resource_group_name   = "{{ api_management_identity_provider_facebook.resource_group_name }}"
+  app_id   = "{{ api_management_identity_provider_facebook.app_id }}"
+  app_secret   = "{{ api_management_identity_provider_facebook.app_secret }}"
+
+
+}

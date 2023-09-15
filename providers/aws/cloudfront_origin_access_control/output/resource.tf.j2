@@ -1,0 +1,10 @@
+resource "aws_cloudfront_origin_access_control" "{{ cloudfront_origin_access_control.name }}" {
+  ## Required Vars
+  name   = "{{ cloudfront_origin_access_control.name }}"
+  description   = "{{ cloudfront_origin_access_control.description }}"
+  origin_access_control_origin_type   = "{{ cloudfront_origin_access_control.origin_access_control_origin_type }}"
+  signing_behavior   = "{{ cloudfront_origin_access_control.signing_behavior }}"
+  signing_protocol   = "{{ cloudfront_origin_access_control.signing_protocol }}"
+
+
+}

@@ -1,0 +1,13 @@
+resource "azurerm_resource_provider_registration" "{{ resource_provider_registration.name }}" {
+  ## Required Vars
+  name   = "{{ resource_provider_registration.name }}"
+
+  ## Optional Vars
+
+  ## Blocks
+  feature {
+    ## Required Block Vars
+    name   = "{{ resource_provider_registration.feature.name }}"
+    registered   = "{{ resource_provider_registration.feature.registered }}"
+  }
+}

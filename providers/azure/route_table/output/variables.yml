@@ -1,0 +1,13 @@
+route_table:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the route table
+  location: "<string>"       # Required; Specifies the supported Azure location
+  resource_group_name: "<string>"       # Required; The name of the resource group to create the route table in
+  disable_bgp_route_propagation: <boolean>        # Optional; Disable BGP route propagation
+  tags:  # Optional; A mapping of tags
+    - <list>
+  route:
+    name: "<string>"       # Required; The name of the route
+    address_prefix: "<string>"       # Required; The destination to which the route applies
+    next_hop_type: "<string>"       # Required; The type of Azure hop the packet should be sent to; VirtualNetworkGateway,VnetLocal, Internet, VirtualAppliance or None
+    next_hop_in_ip_address: "<string>"       # Optional; Contains the IP address packets should be forwarded to

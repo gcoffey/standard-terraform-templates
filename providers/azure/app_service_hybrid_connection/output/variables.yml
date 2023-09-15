@@ -1,0 +1,8 @@
+app_service_hybrid_connection:
+  name: "<string>"	# Required; A name for this resource
+  app_service_name: "<string>"       # Required; Specifies the name of the App Service
+  resource_group_name: "<string>"       # Required; The name of the resource group in which to create the App Service
+  relay_id: "<string>"       # Required; The ID of the Service Bus Relay
+  hostname: "<string>"       # Required; The hostname of the endpoint
+  port: "<string>"       # Required; The port of the endpoint
+  send_key_name: "<string>"       # Optional; The name of the Service Bus key which has send permissions; Default RootManageSharedAccessKey

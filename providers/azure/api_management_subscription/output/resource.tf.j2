@@ -1,0 +1,16 @@
+resource "azurerm_api_management_subscription" "{{ api_management_subscription.name }}" {
+  ## Required Vars
+  api_management_name   = "{{ api_management_subscription.api_management_name }}"
+  display_name   = "{{ api_management_subscription.display_name }}"
+  product_id   = "{{ api_management_subscription.product_id }}"
+  resource_group_name   = "{{ api_management_subscription.resource_group_name }}"
+
+  ## Optional Vars
+  user_id   = "{{ api_management_subscription.user_id }}"
+  api_id   = "{{ api_management_subscription.api_id }}"
+  primary_key   = "{{ api_management_subscription.primary_key }}"
+  secondary_key   = "{{ api_management_subscription.secondary_key }}"
+  state   = "{{ api_management_subscription.state }}"
+  allow_tracing   = {{ api_management_subscription.allow_tracing }}
+
+}

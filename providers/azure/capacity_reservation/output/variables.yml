@@ -1,0 +1,10 @@
+capacity_reservation:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Specifies the name of this Capacity Reservation
+  capacity_reservation_group_id: "<string>"       # Required; The ID of the Capacity Reservation Group
+  zone: "<string>"       # Optional; Specifies the Availability Zone for this Capacity Reservation
+  tags:  # Optional; A mapping of tags
+    - <list>
+  sku:
+    name: "<string>"       # Required; Name of the sku, such as Standard_F2
+    capacity: <integer>        # Required; Specifies the number of instances to be reserved. Must be a positive integer

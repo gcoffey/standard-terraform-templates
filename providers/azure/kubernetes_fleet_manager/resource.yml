@@ -1,0 +1,30 @@
+resource:
+  name: "azurerm_kubernetes_fleet_manager"
+  enable_variable_comments: false
+  var_name: "kubernetes_fleet_manager"
+  required_vars:
+    - name: "location"
+      description: "The Azure Region where the Kubernetes Fleet Manager should be created"
+      type: "string"
+    - name: "name"
+      description: "The name of the Kubernetes Fleet Managed"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The resource group name for the Kubernetes Fleet Managed"
+      type: "string"
+  optional_vars:
+    - name: "hub_profile"
+      description: "A Hub Profile Block"
+      type: "block"
+    - name: "tags"
+      description: "A mapping of tags"
+      type: "list"
+
+blocks:
+  - name: "hub_profile"
+    required: false
+    description: "Hub Profile Block"
+    required_vars:
+      - name: "dns_prefix"
+        description: "DNS Prefix"
+        type: "string"

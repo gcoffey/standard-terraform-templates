@@ -1,0 +1,37 @@
+resource:
+  name: "aws_route53_zone"
+  enable_variable_comments: false
+  var_name: "route53_zone"
+  required_vars:
+    - name: "name"
+      description: "This is the name of the hosted zone"
+      type: "string"
+  optional_vars:
+    - name: "comment"
+      description: "A comment for the hoested zone"
+      type: "string"
+    - name: "delegation_set_id"
+      description: "The ID of the reusable delegation set whose NS records you want to assign to the hosted zone"
+      type: "string"
+    - name: "force_destroy"
+      description: "Whether to destroy all records in the zone when destroying the zone"
+      type: "boolean"
+    - name: "vpc"
+      description: "A VPC block"
+      type: "block"
+    - name: "tags"
+      description: "A map of tags to assign to the resource"
+      type: "list"
+
+blocks:
+  - name: "vpc"
+    required: false
+    description: "A VPC Block"
+    required_vars:
+      - name: "vpc_id"
+        description: "ID of the VPC to associate"
+        type: "string"
+    optional_vars:
+      - name: "vpc_region"
+        description: "Region of the VPC to associate"
+        type: "string"

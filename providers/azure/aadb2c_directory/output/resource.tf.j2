@@ -1,0 +1,13 @@
+resource "azurerm_aadb2c_directory" "{{ aadb2c_directory.name }}" {
+  ## Required Vars
+  data_residency_location   = "{{ aadb2c_directory.data_residency_location }}"
+  domain_name   = "{{ aadb2c_directory.domain_name }}"
+  resource_group_name   = "{{ aadb2c_directory.resource_group_name }}"
+  sku_name   = "{{ aadb2c_directory.sku_name }}"
+
+  ## Optional Vars
+  country_code   = "{{ aadb2c_directory.country_code }}"
+  display_name   = "{{ aadb2c_directory.display_name }}"
+  tags   = "{{ aadb2c_directory.tags | to_json | safe }}"
+
+}

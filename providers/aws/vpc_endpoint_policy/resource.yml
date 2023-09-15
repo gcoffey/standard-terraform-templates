@@ -1,0 +1,12 @@
+resource:
+  name: "aws_vpc_endpoint_policy"
+  enable_variable_comments: false
+  var_name: "vpc_endpoint_policy"
+  required_vars:
+    - name: "vpc_endpoint_id"
+      description: "The VPC Endpoint ID"
+      type: "string"
+  optional_vars:
+    - name: "policy"
+      description: "A policy to attach to the endpoint that controls access to the service; Format jsonencode( <JSON Policy> )"
+      type: "string"

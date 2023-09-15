@@ -1,0 +1,18 @@
+resource "aws_route53_zone" "{{ route53_zone.name }}" {
+  ## Required Vars
+  name   = "{{ route53_zone.name }}"
+
+  ## Optional Vars
+  comment   = "{{ route53_zone.comment }}"
+  delegation_set_id   = "{{ route53_zone.delegation_set_id }}"
+  force_destroy   = {{ route53_zone.force_destroy }}
+  tags   = "{{ route53_zone.tags | to_json | safe }}"
+
+  ## Blocks
+  vpc {
+    ## Required Block Vars
+    vpc_id   = "{{ route53_zone.vpc.vpc_id }}"
+    ## Optional Block Vars
+    vpc_region   = "{{ route53_zone.vpc.vpc_region }}"
+  }
+}

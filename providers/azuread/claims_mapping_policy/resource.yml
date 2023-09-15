@@ -1,0 +1,11 @@
+resource:
+  name: "azuread_claims_mapping_policy"
+  enable_variable_comments: false
+  var_name: "claims_mapping_policy"
+  required_vars:
+    - name: "definition"
+      description: "The claims mapping policy; This is a  JSON formatted string"
+      type: "string"
+    - name: "display_name"
+      description: "The display name for this Claims Mapping Policy"
+      type: "string"

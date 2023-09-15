@@ -1,0 +1,26 @@
+---
+
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  vars_prompt:
+    - name: provider_name
+      prompt: Enter a provider name
+      private: false
+    - name: resource_name
+      prompt: Enter a resource name
+      private: false
+  vars:
+    core_path: "core-tf-templates"
+    provider_path: "providers/{{ provider_name }}/{{ resource_name }}"
+  vars_files:
+    - "{{ provider_path}}/resource.yml"
+  tasks:
+    - name: Generate Resource Template
+      template:
+        src: "{{ core_path }}/tf_resource.tf.j2"
+        dest: "{{ provider_path }}/resource.tf.j2"
+    - name: Generate Resource Variables Template
+      template:
+        src: "{{ core_path }}/variables.yml.j2"
+        dest: "{{ provider_path }}/variables.yml"

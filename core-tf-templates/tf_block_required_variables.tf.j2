@@ -1,0 +1,15 @@
+{% if resource.enable_variable_comments is defined and resource.enable_variable_comments %}
+    # {{ required.name }}; {{ required.description }}
+{% endif %}
+{% if required.type == "string" %}
+    {{ required.name }}   = "{{ '{{' }} {{ resource.var_name }}.{{ block.name }}.{{ required.name }} {{ '}}' }}"
+{% endif %}
+{% if required.type == "boolean" or required.type == "integer" %}
+    {{ required.name }}   = {{ '{{' }} {{ resource.var_name }}.{{ block.name }}.{{ required.name }} {{ '}}' }}
+{% endif %}
+{% if required.type == "list" %}
+    {{ required.name }}   = "{{ '{{' }} {{ resource.var_name }}.{{ block.name }}.{{ required.name }} | to_json | safe {{ '}}' }}"
+{% endif %}
+{% if required.type == "block" %}
+{% include('tf_nested_block.tf.j2') %}
+{% endif %}

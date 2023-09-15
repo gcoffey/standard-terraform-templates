@@ -1,0 +1,49 @@
+resource:
+  name: "azurerm_api_management_logger"
+  enable_variable_comments: false
+  var_name: "api_management_logger"
+  required_vars:
+    - name: "name"
+      description: "The name of this Logger"
+      type: "string"
+    - name: "api_management_name"
+      description: "The name of the API Management Service"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the Resource Group where the API Management Service exists"
+      type: "string"
+  optional_vars:
+    - name: "application_insights"
+      description: "Application Insights Block"
+      type: "block"
+    - name: "buffered"
+      description: "Should records be buffered by the Logger; Default true"
+      type: "boolean"
+    - name: "description"
+      description: "A description of this Logger"
+      type: "string"
+    - name: "eventhub"
+      description: "Event Hub Block"
+      type: "block"
+    - name: "resource_id"
+      description: "The target resource id which will be linked in the API Management Portal"
+      type: "string"
+
+blocks:
+  - name: "application_insights"
+    required: false 
+    description: "Application Insights Block"
+    required_vars:
+      - name: "instrumentation_key"
+        description: "The instrumentation key use to push data to App Insights"
+        type: "string"
+  - name: "eventhub"
+    required: false
+    description: "Event Hub Block"
+    required_vars:
+      - name: "name"
+        description: "Name of the Event Hub"
+        type: "string"
+      - name: "connection_string"
+        description: "The connection string of an EventHub Namespace"
+        type: "string"

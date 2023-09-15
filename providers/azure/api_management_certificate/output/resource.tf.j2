@@ -1,0 +1,13 @@
+resource "azurerm_api_management_certificate" "{{ api_management_certificate.name }}" {
+  ## Required Vars
+  name   = "{{ api_management_certificate.name }}"
+  api_management_name   = "{{ api_management_certificate.api_management_name }}"
+  resource_group_name   = "{{ api_management_certificate.resource_group_name }}"
+
+  ## Optional Vars
+  data   = "{{ api_management_certificate.data }}"
+  password   = "{{ api_management_certificate.password }}"
+  key_vault_secret_id   = "{{ api_management_certificate.key_vault_secret_id }}"
+  key_vault_identity_client_id   = "{{ api_management_certificate.key_vault_identity_client_id }}"
+
+}

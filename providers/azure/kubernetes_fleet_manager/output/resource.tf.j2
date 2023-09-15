@@ -1,0 +1,15 @@
+resource "azurerm_kubernetes_fleet_manager" "{{ kubernetes_fleet_manager.name }}" {
+  ## Required Vars
+  location   = "{{ kubernetes_fleet_manager.location }}"
+  name   = "{{ kubernetes_fleet_manager.name }}"
+  resource_group_name   = "{{ kubernetes_fleet_manager.resource_group_name }}"
+
+  ## Optional Vars
+  tags   = "{{ kubernetes_fleet_manager.tags | to_json | safe }}"
+
+  ## Blocks
+  hub_profile {
+    ## Required Block Vars
+    dns_prefix   = "{{ kubernetes_fleet_manager.hub_profile.dns_prefix }}"
+  }
+}

@@ -1,0 +1,5 @@
+api_management_tag:
+  name: "<string>"	# Required; A name for this resource
+  api_management_id: "<string>"       # Required; The ID of the API Management
+  name: "<string>"       # Required; The name which should be used for this API Management tag
+  display_name: "<string>"       # Required; The display name of the API Management Tag; Default is the value of name

@@ -1,0 +1,7 @@
+api_management_product_policy:
+  name: "<string>"	# Required; A name for this resource
+  product_id: "<string>"       # Required; The ID of the API Management Product
+  api_management_name: "<string>"       # Required; The name of the API Management Service
+  resource_group_name: "<string>"       # Required; The name of the Resource Group
+  xml_content: "<string>"       # Optional; The XML Content for this Policy
+  xml_link: "<string>"       # Optional; A link to a Policy XML Document, which must be publicly available

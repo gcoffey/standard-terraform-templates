@@ -1,0 +1,14 @@
+sns_platform_application:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The friendly name for the SNS platform app
+  platform: "<string>"       # Required; The platform that the app is registered with
+  platform_credential: "<string>"       # Required; Application Platform Credential
+  event_delivery_failure_topic_arn: "<string>"       # Optional; The ARN of the SNS Topic triggerd when a delivery to any of the platform endpoints encounters a permanent failure
+  event_endpoint_created_topic_arn: "<string>"       # Optional; The ARN of the SNS Topic triggered when an existing platform endpoint is deleted from your platform app
+  event_endpoint_updated_topic_arn: "<string>"       # Optional; The ARN of the SNS Topic triggered when an existing platform endpoint is changed from your platform app
+  failure_feedback_role_arn: "<string>"       # Optional; The IAM role ARN permitted to receive failure feedback for this app and give SNS write access to CW logs
+  platform_principal: "<string>"       # Optional; Application Platform principal
+  success_feedback_role_arn: "<string>"       # Optional; The IAM role ARN permitted to receive success feedback for this application and give SNS write access to CW logs
+  success_feedback_sample_rate: "<string>"       # Optional; The sample rate percentage of successfully delivered messages; 0-100
+  apple_platform_team_id: "<string>"       # Optional; The Identifier assigned to your Apple Dev Account Team
+  apple_platform_bundle_id: "<string>"       # Optional; The bundle identifier that's assigned to your iOS app

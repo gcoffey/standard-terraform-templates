@@ -1,0 +1,14 @@
+resource:
+  name: "azurerm_app_service_certificate_binding"
+  enable_variable_comments: false
+  var_name: "app_service_certificate_binding"
+  required_vars:
+    - name: "certificate_id"
+      description: "The ID of the certificate to bind to the custom domain"
+      type: "string"
+    - name: "hostname_binding_id"
+      description: "The ID of the Custom Domain / Hostname Binding"
+      type: "string"
+    - name: "ssl_state"
+      description: "The type of certificate binding; IpBasedEnabled or SniEnabled"
+      type: "boolean"

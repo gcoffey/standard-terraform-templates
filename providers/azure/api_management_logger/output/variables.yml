@@ -1,0 +1,13 @@
+api_management_logger:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of this Logger
+  api_management_name: "<string>"       # Required; The name of the API Management Service
+  resource_group_name: "<string>"       # Required; The name of the Resource Group where the API Management Service exists
+  buffered: <boolean>        # Optional; Should records be buffered by the Logger; Default true
+  description: "<string>"       # Optional; A description of this Logger
+  resource_id: "<string>"       # Optional; The target resource id which will be linked in the API Management Portal
+  application_insights:
+    instrumentation_key: "<string>"       # Required; The instrumentation key use to push data to App Insights
+  eventhub:
+    name: "<string>"       # Required; Name of the Event Hub
+    connection_string: "<string>"       # Required; The connection string of an EventHub Namespace

@@ -1,0 +1,6 @@
+app_service_slot_custom_hostname_binding:
+  name: "<string>"	# Required; A name for this resource
+  hostname: "<string>"       # Required; Specifies the Custom Hostname to use for the App Service
+  app_service_slot_id: "<string>"       # Required; The ID of the App Service Slot
+  ssl_state: "<string>"       # Optional; The SSL type; IpBasedEnabled or SniEnabled
+  thumbprint: "<string>"       # Optional; The SSL certificate thumbprint

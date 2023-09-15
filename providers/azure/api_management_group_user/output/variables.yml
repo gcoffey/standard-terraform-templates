@@ -1,0 +1,6 @@
+api_management_group_user:
+  name: "<string>"	# Required; A name for this resource
+  user_id: "<string>"       # Required; The ID of the API Management user to assign to the API Management Group
+  api_management_name: "<string>"       # Required; The name of the API Management Service
+  group_name: "<string>"       # Required; The name of the API Management Group
+  resource_group_name: "<string>"       # Required; The name of the Resource Group where the API Management Service exists

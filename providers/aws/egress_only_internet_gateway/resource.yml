@@ -1,0 +1,11 @@
+resource:
+  name: "aws_egress_only_internet_gateway"
+  enable_variable_comments: false
+  var_name: "egress_only_internet_gateway"
+  optional_vars:
+    - name: "vpc_id"
+      description: "The VPC ID to create in"
+      type: "string"
+    - name: "tags"
+      description: "A map of tags to assign to the resource"
+      type: "list"

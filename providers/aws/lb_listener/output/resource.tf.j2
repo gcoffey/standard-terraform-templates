@@ -1,0 +1,80 @@
+resource "aws_lb_listener" "{{ lb_listener.name }}" {
+  ## Required Vars
+  load_balancer_arn   = "{{ lb_listener.load_balancer_arn }}"
+
+  ## Optional Vars
+  alpn_policy   = "{{ lb_listener.alpn_policy }}"
+  certificate_arn   = "{{ lb_listener.certificate_arn }}"
+  port   = "{{ lb_listener.port }}"
+  protocol   = "{{ lb_listener.protocol }}"
+  ssl_policy   = "{{ lb_listener.ssl_policy }}"
+  tags   = "{{ lb_listener.tags | to_json | safe }}"
+
+  ## Blocks
+  default_action {
+    ## Required Block Vars
+    type   = "{{ lb_listener.default_action.type }}"
+    ## Optional Block Vars
+    authenticate_cognito {
+      ## Required Block Vars
+      user_pool_arn   = "{{ lb_listener.default_action.authenticate_cognito.user_pool_arn }}"
+ 
+      user_pool_client_id   = "{{ lb_listener.default_action.authenticate_cognito.user_pool_client_id }}"
+ 
+      user_pool_domain   = "{{ lb_listener.default_action.authenticate_cognito.user_pool_domain }}"
+ 
+      ## Optional Block Vars
+      authentication_request_extra_params   = "{{ lb_listener.default_action.authenticate_cognito.authentication_request_extra_params }}"
+      on_unauthenticated_request   = "{{ lb_listener.default_action.authenticate_cognito.on_unauthenticated_request }}"
+      scope   = "{{ lb_listener.default_action.authenticate_cognito.scope }}"
+      session_cookie_name   = "{{ lb_listener.default_action.authenticate_cognito.session_cookie_name }}"
+      session_timeout   = "{{ lb_listener.default_action.authenticate_cognito.session_timeout }}"
+    }
+    authenticate_oidc {
+      ## Required Block Vars
+      authorization_endpoint   = "{{ lb_listener.default_action.authenticate_oidc.authorization_endpoint }}"
+ 
+      client_id   = "{{ lb_listener.default_action.authenticate_oidc.client_id }}"
+ 
+      client_secret   = "{{ lb_listener.default_action.authenticate_oidc.client_secret }}"
+ 
+      issuer   = "{{ lb_listener.default_action.authenticate_oidc.issuer }}"
+ 
+      token_endpoint   = "{{ lb_listener.default_action.authenticate_oidc.token_endpoint }}"
+ 
+      user_info_endpoint   = "{{ lb_listener.default_action.authenticate_oidc.user_info_endpoint }}"
+ 
+      ## Optional Block Vars
+      on_unauthenticated_request   = "{{ lb_listener.default_action.authenticate_oidc.on_unauthenticated_request }}"
+      scope   = "{{ lb_listener.default_action.authenticate_oidc.scope }}"
+      session_cookie_name   = "{{ lb_listener.default_action.authenticate_oidc.session_cookie_name }}"
+      session_timeout   = "{{ lb_listener.default_action.authenticate_oidc.session_timeout }}"
+    }
+    fixed_response {
+      ## Required Block Vars
+      content_type   = "{{ lb_listener.default_action.fixed_response.content_type }}"
+ 
+      ## Optional Block Vars
+      message_body   = "{{ lb_listener.default_action.fixed_response.message_body }}"
+      status_code   = "{{ lb_listener.default_action.fixed_response.status_code }}"
+    }
+    forward {
+      ## Required Block Vars
+ 
+      ## Optional Block Vars
+    }
+    order   = "{{ lb_listener.default_action.order }}"
+    redirect {
+      ## Required Block Vars
+      status_code   = "{{ lb_listener.default_action.redirect.status_code }}"
+ 
+      ## Optional Block Vars
+      host   = "{{ lb_listener.default_action.redirect.host }}"
+      path   = "{{ lb_listener.default_action.redirect.path }}"
+      port   = "{{ lb_listener.default_action.redirect.port }}"
+      protocol   = "{{ lb_listener.default_action.redirect.protocol }}"
+      query   = "{{ lb_listener.default_action.redirect.query }}"
+    }
+    target_group_arn   = "{{ lb_listener.default_action.target_group_arn }}"
+  }
+}

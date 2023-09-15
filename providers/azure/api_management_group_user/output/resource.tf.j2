@@ -1,0 +1,9 @@
+resource "azurerm_api_management_group_user" "{{ api_management_group_user.name }}" {
+  ## Required Vars
+  user_id   = "{{ api_management_group_user.user_id }}"
+  api_management_name   = "{{ api_management_group_user.api_management_name }}"
+  group_name   = "{{ api_management_group_user.group_name }}"
+  resource_group_name   = "{{ api_management_group_user.resource_group_name }}"
+
+
+}

@@ -1,0 +1,16 @@
+subnet:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the subnet
+  virtual_network_name: "<string>"       # Required; The name of the virtual network
+  resource_group_name: "<string>"       # Required; The name of the resource group to create the virtual network in
+  address_prefixes: "<string>"       # Required; The address prefixes to use for the subnet
+  private_endpoint_network_policies_enabled: <boolean>        # Optional; Enable or Disable network policies for the private endpoint on the subnet
+  private_link_service_network_policies_enabled: <boolean>        # Optional; Enable or Disable network policies for the private link service on the subnet
+  service_endpoints: "<string>"       # Optional; The list of Service endpoints; Microsoft.AzureActiveDirectory, Microsoft.AzureCosmosDB, Microsoft.ContainerRegistry etc
+  service_endpoint_policy_ids:  # Optional; The list of IDs of Service Endpoint Policies to associate with the subnet
+    - <list>
+  delegation:
+    name: "<string>"       # Required; A name for this delegation
+    service_delegation:
+ 
+      name: "<string>"       # Required; The name of service to delegate; Microsoft.ApiManagement/service, Microsoft.AzureComsmosDB/clusters etc      actions: "<string>"       # Optional; A list of Actions which should be delegated; Microsoft.Network/networkinterfaces/*, Microsoft.Network/publicIPAddresses/join/action etc

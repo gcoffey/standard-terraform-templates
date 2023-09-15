@@ -1,0 +1,34 @@
+{% if required is defined and required.name is defined%}
+    {{ required.name }}:
+{% for nestedblock in blocks %}
+{% if required.name == nestedblock.name and nestedblock.parent_block is defined and block.name == nestedblock.parent_block %} 
+{% if nestedblock.required_vars is defined %}
+{% for blockrequired in nestedblock.required_vars %}
+{% include('nested_block_required_variables.tf.j2') %}
+{% endfor %}
+{% endif %}
+{% if nestedblock.optional_vars is defined %}
+{% for blockoptional in nestedblock.optional_vars %}
+{% include('nested_block_optional_variables.tf.j2') %}
+{% endfor %}
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if optional is defined and optional.name is defined %}
+    {{ optional.name }}:
+{% for nestedblock in blocks %}
+{% if optional.name == nestedblock.name and nestedblock.parent_block is defined and block.name == nestedblock.parent_block %}
+{% if nestedblock.required_vars is defined %}
+{% for blockrequired in nestedblock.required_vars %}
+{% include('nested_block_required_variables.tf.j2') %} 
+{% endfor %}
+{% endif %}
+{% if nestedblock.optional_vars is defined %}
+{% for blockoptional in nestedblock.optional_vars %}
+{% include('nested_block_optional_variables.tf.j2') %}
+{% endfor %}
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}

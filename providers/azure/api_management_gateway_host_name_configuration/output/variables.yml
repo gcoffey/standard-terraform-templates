@@ -1,0 +1,11 @@
+api_management_gateway_host_name_configuration:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the API Management Gateway Host Name Config
+  api_management_id: "<string>"       # Required; The ID of the API Management Resource
+  gateway_name: "<string>"       # Required; The name of the API Management Gateway
+  certificate_id: "<string>"       # Required; The certificate ID to be used for TLS connection
+  host_name: "<string>"       # Required; The host name to use for the API Management Gateway Host Name Config
+  request_client_certificate_enabled: "<string>"       # Optional; Whether the API Management Gateway requests a client cert
+  http2_enabled: <boolean>        # Optional; Whether HTTP/2.0 is supported; Default true
+  tls10_enabled: <boolean>        # Optional; Whether TLS 1.0 is supported
+  tls11_enabled: <boolean>        # Optional; Whether TLS 1.1 is supported

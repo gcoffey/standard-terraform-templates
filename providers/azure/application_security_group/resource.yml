@@ -1,0 +1,18 @@
+resource:
+  name: "azurerm_application_security_group"
+  enable_variable_comments: false
+  var_name: "application_security_group"
+  required_vars:
+    - name: "name"
+      description: "The name of the ASG"
+      type: "string"
+    - name: "location"
+      description: "The name of the location"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the resource group to create the ASG in"
+      type: "string"
+  optional_vars:
+    - name: "tags"
+      description: "A mapping of tags"
+      type: "list"

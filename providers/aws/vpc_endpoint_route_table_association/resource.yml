@@ -1,0 +1,11 @@
+resource:
+  name: "aws_vpc_endpoint_route_table_association"
+  enable_variable_comments: false
+  var_name: "vpc_endpoint_route_table_association"
+  required_vars:
+    - name: "route_table_id"
+      description: "Identifier of the EC2 Route Table to be assocaited with the VPC Endpoint"
+      type: "string"
+    - name: "vpc_endpoint_id"
+      description: "Identifier of the VPC Endpoint with which the Route Table will be associated"
+      type: "string"

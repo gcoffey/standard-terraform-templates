@@ -1,0 +1,5 @@
+api_management_api_release:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name for this release
+  api_id: "<string>"       # Required; The ID of the API Management API
+  notes: "<string>"       # Optional; The Release Notes

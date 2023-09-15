@@ -1,0 +1,7 @@
+application_security_group:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the ASG
+  location: "<string>"       # Required; The name of the location
+  resource_group_name: "<string>"       # Required; The name of the resource group to create the ASG in
+  tags:  # Optional; A mapping of tags
+    - <list>

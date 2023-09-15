@@ -1,0 +1,9 @@
+api_management_certificate:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the API Management certificate
+  api_management_name: "<string>"       # Required; The name of the API Management Service where the API exist
+  resource_group_name: "<string>"       # Required; The name of the resource group in which the API Management Service exists
+  data: "<string>"       # Optional; The base-64 encoded certificate data; must be PFX format
+  password: "<string>"       # Optional; The password used for this certificate
+  key_vault_secret_id: "<string>"       # Optional; The ID of the Key Vault Secret containing the SSL cert
+  key_vault_identity_client_id: "<string>"       # Optional; The Client ID of the user assigned managed identity

@@ -1,0 +1,11 @@
+resource "aws_cloudfront_function" "{{ cloudfront_function.name }}" {
+  ## Required Vars
+  name   = "{{ cloudfront_function.name }}"
+  code   = "{{ cloudfront_function.code }}"
+  runtime   = "{{ cloudfront_function.runtime }}"
+
+  ## Optional Vars
+  comment   = "{{ cloudfront_function.comment }}"
+  publish   = {{ cloudfront_function.publish }}
+
+}

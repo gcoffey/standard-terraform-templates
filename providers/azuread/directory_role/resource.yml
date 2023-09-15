@@ -1,0 +1,11 @@
+resource:
+  name: "azuread_directory_role"
+  enable_variable_comments: false
+  var_name: "directory_role"
+  optional_vars:
+    - name: "display_name"
+      description: "The display name of the directory role to activate"
+      type: "string"
+    - name: "template_id"
+      description: "The object ID of the role template from which to activate the directory role"
+      type: "string"

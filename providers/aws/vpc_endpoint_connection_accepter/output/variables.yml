@@ -1,0 +1,4 @@
+vpc_endpoint_connection_accepter:
+  name: "<string>"	# Required; A name for this resource
+  vpc_endpoint_id: "<string>"       # Required; The VPC Endpoint ID
+  vpc_endpoint_service_id: "<string>"       # Required; AWS VPC Endpoint Service ID

@@ -1,0 +1,10 @@
+dedicated_host_group:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Specifies the name of this Dedicated Host Group
+  resource_group_name: "<string>"       # Required; Specifies the resource group name where the Dedicated Host Group should exist
+  location: "<string>"       # Required; The Azure location where the Dedicated Host Group should exist
+  platform_fault_domain: "<string>"       # Required; Specify the fault domain of the Dedicated Host Group in which to create the Dedicated Host
+  automatic_placement_enabled: <boolean>        # Optional; Would virtual machines or virtual machine scale sets be placed automatically on this Dedicated Host Group?; Default false
+  zone: "<string>"       # Optional; Specifies the Availability Zone in which this Dedicated Host Group should be located
+  tags:  # Optional; A mapping of tags
+    - <list>

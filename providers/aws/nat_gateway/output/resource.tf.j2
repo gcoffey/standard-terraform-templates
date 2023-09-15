@@ -1,0 +1,11 @@
+resource "aws_nat_gateway" "{{ nat_gateway.name }}" {
+  ## Required Vars
+  subnet_id   = "{{ nat_gateway.subnet_id }}"
+
+  ## Optional Vars
+  allocation_id   = "{{ nat_gateway.allocation_id }}"
+  connectivity_type   = "{{ nat_gateway.connectivity_type }}"
+  private_ip   = "{{ nat_gateway.private_ip }}"
+  tags   = "{{ nat_gateway.tags | to_json | safe }}"
+
+}

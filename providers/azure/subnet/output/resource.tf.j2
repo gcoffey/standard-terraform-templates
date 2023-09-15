@@ -1,0 +1,25 @@
+resource "azurerm_subnet" "{{ subnet.name }}" {
+  ## Required Vars
+  name   = "{{ subnet.name }}"
+  virtual_network_name   = "{{ subnet.virtual_network_name }}"
+  resource_group_name   = "{{ subnet.resource_group_name }}"
+  address_prefixes   = "{{ subnet.address_prefixes }}"
+
+  ## Optional Vars
+  private_endpoint_network_policies_enabled   = {{ subnet.private_endpoint_network_policies_enabled }}
+  private_link_service_network_policies_enabled   = {{ subnet.private_link_service_network_policies_enabled }}
+  service_endpoints   = "{{ subnet.service_endpoints }}"
+  service_endpoint_policy_ids   = "{{ subnet.service_endpoint_policy_ids | to_json | safe }}"
+
+  ## Blocks
+  delegation {
+    ## Required Block Vars
+    name   = "{{ subnet.delegation.name }}"
+    service_delegation {
+      ## Required Block Vars
+      name   = "{{ subnet.delegation.service_delegation.name }}"
+      ## Optional Block Vars
+      actions   = "{{ subnet.delegation.service_delegation.actions }}"
+    }
+  }
+}

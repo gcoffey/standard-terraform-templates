@@ -1,0 +1,16 @@
+{% if required.type == "string" %}
+    {{ required.name }}: "<string>"       # Required; {{ required.description }}
+{% endif %}
+{% if required.type == "integer" %}
+    {{ required.name }}: <integer>        # Required; {{ required.description }}
+{% endif %}
+{% if required.type == "boolean" %}
+    {{ required.name }}: <boolean>        # Required; {{ required.description }}
+{% endif %}
+{% if required.type == "list" %}
+    {{ required.name }}:  # Required; {{ required.description }}
+      - <list>
+{% endif %}
+{% if required.type == "block" %}
+{% include('nested_block_variables.yml.j2') %}
+{% endif -%}

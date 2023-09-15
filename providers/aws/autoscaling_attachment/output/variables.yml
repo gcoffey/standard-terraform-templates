@@ -1,0 +1,5 @@
+autoscaling_attachment:
+  name: "<string>"	# Required; A name for this resource
+  autoscaling_group_name: "<string>"       # Required; Name of ASG to associate with the ELB
+  elb: "<string>"       # Optional; Name of the ELB
+  lb_target_group_arn: "<string>"       # Optional; ARN of a load balancer target group

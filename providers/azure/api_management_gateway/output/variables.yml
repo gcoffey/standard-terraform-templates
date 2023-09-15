@@ -1,0 +1,10 @@
+api_management_gateway:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name which should be used for the API Management Gateway
+  api_management_id: "<string>"       # Required; The ID of the API Management Resource
+  description: "<string>"       # Optional; The description of the API Management Gateway
+  location_data:
+    name: "<string>"       # Required; A canonical name for the location
+    city: "<string>"       # Optional; The city or locality where the resource is located
+    district: "<string>"       # Optional; The district, state or province
+    region: "<string>"       # Optional; The country or region

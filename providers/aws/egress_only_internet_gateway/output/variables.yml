@@ -1,0 +1,5 @@
+egress_only_internet_gateway:
+  name: "<string>"	# Required; A name for this resource
+  vpc_id: "<string>"       # Optional; The VPC ID to create in
+  tags:  # Optional; A map of tags to assign to the resource
+    - <list>

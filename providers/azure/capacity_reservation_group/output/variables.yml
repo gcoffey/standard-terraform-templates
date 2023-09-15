@@ -1,0 +1,8 @@
+capacity_reservation_group:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Specifies the name of this Capacity Reservation Group
+  resource_group_name: "<string>"       # Required; Specifies the name of the resource group the Capacity Reservation Group is located in
+  location: "<string>"       # Required; The Azure location where the Capacity Reservation Group exists
+  zone: "<string>"       # Optional; Specifies the Availability Zone for this Capacity Reservation Group
+  tags:  # Optional; A mapping of tags
+    - <list>

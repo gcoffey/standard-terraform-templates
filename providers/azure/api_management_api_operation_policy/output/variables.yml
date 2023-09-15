@@ -1,0 +1,8 @@
+api_management_api_operation_policy:
+  name: "<string>"	# Required; A name for this resource
+  api_name: "<string>"       # Required; The name of the API within the API Management Service
+  api_management_name: "<string>"       # Required; The name of the API Management Service
+  resource_group_name: "<string>"       # Required; The name of the resource group in which the API Management Service exists
+  operation_id: "<string>"       # Required; The display name for this API Management Operation
+  xml_content: "<string>"       # Optional; The XML Content for this Policy
+  xml_link: "<string>"       # Optional; A link to a Policy XML Document, which must be publicly available

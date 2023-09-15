@@ -1,0 +1,18 @@
+resource:
+  name: "azurerm_user_assigned_identity"
+  enable_variable_comments: false
+  var_name: "user_assigned_identity"
+  required_vars:
+    - name: "location"
+      description: "The Azure Region where the User Assigned Identity should exist"
+      type: "string"
+    - name: "name"
+      description: "The name of the User Assigned Identity to create"
+      type: "string"
+    - name: "resource_group_name"
+      description: "Specifies the name of the Resource Group within which this User Assigned Identity should exist"
+      type: "string"
+  optional_vars:
+    - name: "tags"
+      description: "A mapping of tags"
+      type: "list"

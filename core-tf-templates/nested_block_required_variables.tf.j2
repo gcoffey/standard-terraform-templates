@@ -1,0 +1,13 @@
+{% if blockrequired.type == "string" %}
+      {{ blockrequired.name }}: "<string>"       # Required; {{ blockrequired.description }}
+{%- endif -%}
+{% if blockrequired.type == "integer" %}
+      {{ blockrequired.name }}: <integer>        # Required; {{ blockrequired.description }}
+{%- endif -%}
+{% if blockrequired.type == "boolean" %}
+      {{ blockrequired.name }}: <boolean>        # Required; {{ blockrequired.description }}
+{%- endif -%}
+{% if blockrequired.type == "list" %}
+      {{ blockrequired.name }}:  # Required; {{ blockrequired.description }}
+        - <list>
+{% endif %}

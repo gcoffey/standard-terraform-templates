@@ -1,0 +1,9 @@
+resource "azurerm_api_management_product_api" "{{ api_management_product_api.name }}" {
+  ## Required Vars
+  api_management_name   = "{{ api_management_product_api.api_management_name }}"
+  api_name   = "{{ api_management_product_api.api_name }}"
+  product_id   = "{{ api_management_product_api.product_id }}"
+  resource_group_name   = "{{ api_management_product_api.resource_group_name }}"
+
+
+}

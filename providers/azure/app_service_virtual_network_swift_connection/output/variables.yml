@@ -1,0 +1,4 @@
+app_service_virtual_network_swift_connection:
+  name: "<string>"	# Required; A name for this resource
+  app_service_id: "<string>"       # Required; The ID of the App Service or Function App to associate to the VNet
+  subnet_id: "<string>"       # Required; The ID of the subnet the app service will be associated to; subnet requires sevice_delegation = Microsoft.Web/serverFarms

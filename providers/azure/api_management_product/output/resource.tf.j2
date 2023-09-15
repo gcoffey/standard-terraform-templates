@@ -1,0 +1,16 @@
+resource "azurerm_api_management_product" "{{ api_management_product.name }}" {
+  ## Required Vars
+  api_management_name   = "{{ api_management_product.api_management_name }}"
+  display_name   = "{{ api_management_product.display_name }}"
+  product_id   = "{{ api_management_product.product_id }}"
+  published   = {{ api_management_product.published }}
+  resource_group_name   = "{{ api_management_product.resource_group_name }}"
+
+  ## Optional Vars
+  approval_required   = {{ api_management_product.approval_required }}
+  subscription_required   = {{ api_management_product.subscription_required }}
+  description   = "{{ api_management_product.description }}"
+  subscriptions_limit   = "{{ api_management_product.subscriptions_limit }}"
+  terms   = "{{ api_management_product.terms }}"
+
+}

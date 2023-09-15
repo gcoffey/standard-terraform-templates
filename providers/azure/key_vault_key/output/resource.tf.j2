@@ -1,0 +1,25 @@
+resource "azurerm_key_vault_key" "{{ key_vault_key.name }}" {
+  ## Required Vars
+  key_vault_id   = "{{ key_vault_key.key_vault_id }}"
+  name   = "{{ key_vault_key.name }}"
+  key_type   = "{{ key_vault_key.key_type }}"
+
+  ## Optional Vars
+  curve   = "{{ key_vault_key.curve }}"
+  key_opts   = "{{ key_vault_key.key_opts }}"
+  not_before_date   = "{{ key_vault_key.not_before_date }}"
+  expiration_date   = "{{ key_vault_key.expiration_date }}"
+  tags   = "{{ key_vault_key.tags | to_json | safe }}"
+
+  ## Blocks
+  rotation_policy {
+    ## Optional Block Vars
+    expire_after   = "{{ key_vault_key.rotation_policy.expire_after }}"
+    automatic {
+      ## Optional Block Vars
+      time_after_creation   = "{{ key_vault_key.rotation_policy.automatic.time_after_creation }}"
+      time_before_expiry   = "{{ key_vault_key.rotation_policy.automatic.time_before_expiry }}"
+    }
+    notify_before_expiry   = "{{ key_vault_key.rotation_policy.notify_before_expiry }}"
+  }
+}

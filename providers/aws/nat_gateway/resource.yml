@@ -1,0 +1,21 @@
+resource:
+  name: "aws_nat_gateway"
+  enable_variable_comments: false
+  var_name: "nat_gateway"
+  required_vars:
+    - name: "subnet_id"
+      description: "The Subnet ID of the subnet in which to place the gateway"
+      type: "string"
+  optional_vars:
+    - name: "allocation_id"
+      description: "The allocation ID of the elastic ip address for the gateway"
+      type: "string"
+    - name: "connectivity_type"
+      description: "Connectivity type for the gateway; private or public; Default public"
+      type: "string"
+    - name: "private_ip"
+      description: "The private IPv5 address to assign to the NAT gateway"
+      type: "string"
+    - name: "tags"
+      description: "A map of tags to assign to the resource"
+      type: "list"

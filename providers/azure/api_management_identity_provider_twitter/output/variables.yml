@@ -1,0 +1,6 @@
+api_management_identity_provider_twitter:
+  name: "<string>"	# Required; A name for this resource
+  api_management_name: "<string>"       # Required; The name of the API Management Service
+  resource_group_name: "<string>"       # Required; The name of the Resource Group where the API Management Service exists
+  api_key: "<string>"       # Required; App Consumer API Key for Twitter
+  api_secret_key: "<string>"       # Required; App Consumer API Secret Key for Twitter

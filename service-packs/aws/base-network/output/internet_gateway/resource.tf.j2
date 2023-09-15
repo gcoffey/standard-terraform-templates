@@ -1,0 +1,34 @@
+resource "aws_internet_gateway" "{{ internet_gateway.name }}" {
+
+  ## Optional Vars
+  vpc_id   = "{{ internet_gateway.vpc_id }}"
+  tags   = "{{ internet_gateway.tags | to_json | safe }}"
+
+  ## Blocks
+  ingress {
+    ## Required Block Vars
+    from_port   = "{{ internet_gateway.ingress.from_port }}"
+    to_port   = "{{ internet_gateway.ingress.to_port }}"
+    rule_no   = "{{ internet_gateway.ingress.rule_no }}"
+    action   = "{{ internet_gateway.ingress.action }}"
+    protocol   = "{{ internet_gateway.ingress.protocol }}"
+    ## Optional Block Vars
+    cidr_block   = "{{ internet_gateway.ingress.cidr_block }}"
+    ipv6_cidr_block   = "{{ internet_gateway.ingress.ipv6_cidr_block }}"
+    icmp_type   = "{{ internet_gateway.ingress.icmp_type }}"
+    icmp_code   = "{{ internet_gateway.ingress.icmp_code }}"
+  }
+  egress {
+    ## Required Block Vars
+    from_port   = "{{ internet_gateway.egress.from_port }}"
+    to_port   = "{{ internet_gateway.egress.to_port }}"
+    rule_no   = "{{ internet_gateway.egress.rule_no }}"
+    action   = "{{ internet_gateway.egress.action }}"
+    protocol   = "{{ internet_gateway.egress.protocol }}"
+    ## Optional Block Vars
+    cidr_block   = "{{ internet_gateway.egress.cidr_block }}"
+    ipv6_cidr_block   = "{{ internet_gateway.egress.ipv6_cidr_block }}"
+    icmp_type   = "{{ internet_gateway.egress.icmp_type }}"
+    icmp_code   = "{{ internet_gateway.egress.icmp_code }}"
+  }
+}

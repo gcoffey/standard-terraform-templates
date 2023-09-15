@@ -1,0 +1,9 @@
+resource "azurerm_api_management_api_release" "{{ api_management_api_release.name }}" {
+  ## Required Vars
+  name   = "{{ api_management_api_release.name }}"
+  api_id   = "{{ api_management_api_release.api_id }}"
+
+  ## Optional Vars
+  notes   = "{{ api_management_api_release.notes }}"
+
+}

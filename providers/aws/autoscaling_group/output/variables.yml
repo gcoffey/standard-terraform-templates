@@ -1,0 +1,70 @@
+autoscaling_group:
+  name: "<string>"	# Required; A name for this resource
+  max_size: "<string>"       # Required; Maximum size of the Auto Scaling Group
+  min_size: "<string>"       # Required; Minimum size of the Auto Scaling Group
+  name: "<string>"       # Optional; Name of the ASG; Conflicts with name_prefix
+  name_prefix: "<string>"       # Optional; Creates a unique name beginning with the specified prefix; Conflicts with name
+  availability_zones:  # Optional; List of one or more availability zones for the group; Conflicts with vpc_zone_identifier
+    - <list>
+  capacity_rebalance: <boolean>        # Optional; Whether capacity rebalance is enabled
+  context: "<string>"       # Optional; Reserved
+  default_cooldown: "<string>"       # Optional; Amount of time, in seconds, after a scaling activity completes before another scaling activity can start
+  default_instance_warmup: "<string>"       # Optional; Amount of time, in seconds, until a newly launched instance can contribute to the Amazon CloudWatch metrics
+  launch_configuration: "<string>"       # Optional; Name of the launch configuration to use
+  health_check_grace_period: "<string>"       # Optional; Time, in seconds, after instance comes into service before checking health; Default 300
+  health_check_type: "<string>"       # Optional; EC2 or ELB
+  desired_capacity: "<string>"       # Optional; Number of Amazon EC2 instances that should be running in the group
+  desired_capacity_type: "<string>"       # Optional; The unit of measurement for the value specified for desired_capacityi; units, vcpu or memory-mid
+  force_delete: <boolean>        # Optional; Allows deleting the ASG without waiting for all instance in the pool to terminate
+  load_balancers:  # Optional; List of ELB names to add to the ASG names; For ALBs use target_group_arns
+    - <list>
+  vpc_zone_identifier:  # Optional; List of Subnet IDs to launch resources in
+    - <list>
+  target_group_arns: "<string>"       # Optional; Set of aws_alb_target_group ARNS for use with Application or Network Load Balancing
+  termination_policies:  # Optional; List of policies to decide how the instances in the ASG should be terminated; OldestInstance, NewestInstance etc
+    - <list>
+  suspended_processes:  # Optional; List of processes to suspend for the Auto Scaling Group; Launch, Terminate, HealthCheck etc
+    - <list>
+  placement_group: "<string>"       # Optional; Name of the placement group into which you'll launch your instances
+  metrics_granularity: "<string>"       # Optional; Granularity to associate with the metrics to collect; Default 1Minute
+  enabled_metrics:  # Optional; List of metrics to collect
+    - <list>
+  wait_for_capacity_timeout: "<string>"       # Optional; Maximum duration that Terraform should wait for ASG instances to be healthy before timing out; Default 10m
+  min_elb_capacity: "<string>"       # Optional; Setting this causes Terraform to wait for this number of instances from the ASG to show up health in the ELB only on creation
+  wait_for_elb_capacity: "<string>"       # Optional; Setting this will cause Terraform to wait for exactly this number of health instances in the ASG to be attached to the LB
+  protect_from_scale_in: <boolean>        # Optional; Whether newly launched instances are automatically protectd from termination by EC2 Auto Scaling when scaling in
+  service_linked_role_arn: "<string>"       # Optional; ARN of the service-linked role that the ASG will use to call other AWS services
+  max_instance_lifetime: "<string>"       # Optional; Maximum amount of time, in seconds, that an instance can be in service
+  launch_template:
+    id: "<string>"       # Optional; ID of the launch template
+    name: "<string>"       # Optional; Name of the launch template
+    version: "<string>"       # Optional; Version of the launch template; $Latest or $Default
+  mixed_instances_policy:
+    launch_template:
+ 
+    instances_distribution:
+      on_demand_allocation_strategy: "<string>"       # Optional; Strategy to use when launching on-demand instances; prioritized or lowest-price
+      on_demand_base_capacity: "<string>"       # Optional; Absolute minimum amount of desired capacity that must be fulfilled by on-demand instances; Default 0
+      on_demand_percentage_above_base_capacity: "<string>"       # Optional; Percentage split between on-demand and spot instances above the base on-demand capacity; Default 100
+      spot_allocation_strategy: "<string>"       # Optional; How to allocate capacity across spot pools; lowest-price, capacity-optimized, capacity-optimized-prioritized or price-capacity-optimized
+      spot_instance_pools: "<string>"       # Optional; Number of Spot tools per availability zone to allocate capacity; Default 2
+      spot_max_price: "<string>"       # Optional; Maximum price per unit hour that the user is willing to pay for the Spot instances
+  instance_refresh:
+    strategy: "<string>"       # Required; Strategy to use for instance refresh; Rolling is the only allowed value
+    preferences:
+      checkpoint_delay: "<string>"       # Optional; Number of seconds to wait after a checkpoint; Default 3600
+      checkpoint_percentages:  # Optional; List of percentages for each checkpoint
+        - <list>
+      instance_warmup: "<string>"       # Optional; Number of seconds until a newly launched instance is configurd and ready to use
+      min_health_percentage: "<string>"       # Optional; Amount of capacity in the ASG that must remain health during an instance refresh; Default 90
+      skip_matching: <boolean>        # Optional; Replace instances that already have your desired configuration; Default false
+      auto_rollback: "<string>"       # Optional; Automatically rollback if instance refresh fails; Default false
+    triggers:  # Optional; Set of additional property names that will trigger an Instance Refresh
+      - <list>
+  warm_pool:
+    pool_state: "<string>"       # Optional; Sets the instance state to transition to after the lifecycle hooks finish; Stopped, Running or Hibernated
+    min_size: "<string>"       # Optional; Min number of instances to maintain in the warm pool; Default 0
+    instance_reuse_policy: "<string>"       # Optional; Whether instances in the ASG can be returned to the warm pool on scale in
+    max_group_prepared_capacity: "<string>"       # Optional; Total max number of instances that are allowd to be in the warm pool
+    skip_matching: <boolean>        # Optional; Replace instances that already have your desired configuration; Default false
+    auto_rollback: "<string>"       # Optional; Automatically rollback if instance refresh fails; Default false

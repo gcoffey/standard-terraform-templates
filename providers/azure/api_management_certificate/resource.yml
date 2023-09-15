@@ -1,0 +1,27 @@
+resource:
+  name: "azurerm_api_management_certificate"
+  enable_variable_comments: false
+  var_name: "api_management_certificate"
+  required_vars:
+    - name: "name"
+      description: "The name of the API Management certificate"
+      type: "string"
+    - name: "api_management_name"
+      description: "The name of the API Management Service where the API exist"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the resource group in which the API Management Service exists"
+      type: "string"
+  optional_vars:
+    - name: "data"
+      description: "The base-64 encoded certificate data; must be PFX format"
+      type: "string"
+    - name: "password"
+      description: "The password used for this certificate"
+      type: "string"
+    - name: "key_vault_secret_id"
+      description: "The ID of the Key Vault Secret containing the SSL cert"
+      type: "string"
+    - name: "key_vault_identity_client_id"
+      description: "The Client ID of the user assigned managed identity"
+      type: "string"

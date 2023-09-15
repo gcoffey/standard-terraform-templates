@@ -1,0 +1,24 @@
+resource:
+  name: "azuread_application_federated_identity_credential"
+  enable_variable_comments: false
+  var_name: "application_federated_identity_credential"
+  required_vars:
+    - name: "application_object_id"
+      description: "The object ID of the application for which this federated identity credential should be created"
+      type: "string"
+    - name: "audiences"
+      description: "List of audiences that can appear in the external token"
+      type: "string"
+    - name: "display_name"
+      description: "A unique display name for the federated identity credential"
+      type: "string"
+    - name: "issuer"
+      description: "The URL of the external identity provider, which must match the issue claim for the token"
+      type: "string"
+    - name: "subject"
+      description: "The identifier of the software represented in the token"
+      type: "string"
+  optional_vars:
+    - name: "description"
+      description: "A description for the federated identity credential"
+      type: "string"

@@ -1,0 +1,11 @@
+resource:
+  name: "azurerm_app_service_virtual_network_swift_connection"
+  enable_variable_comments: false
+  var_name: "app_service_virtual_network_swift_connection"
+  required_vars:
+    - name: "app_service_id"
+      description: "The ID of the App Service or Function App to associate to the VNet"
+      type: "string"
+    - name: "subnet_id"
+      description: "The ID of the subnet the app service will be associated to; subnet requires sevice_delegation = Microsoft.Web/serverFarms"
+      type: "string"

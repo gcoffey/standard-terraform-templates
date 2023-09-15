@@ -1,0 +1,144 @@
+resource "azurerm_function_app" "{{ app_function_app.name }}" {
+  ## Required Vars
+  name   = "{{ app_function_app.name }}"
+  resource_group_name   = "{{ app_function_app.resource_group_name }}"
+  location   = "{{ app_function_app.location }}"
+  app_service_plan_id   = "{{ app_function_app.app_service_plan_id }}"
+
+  ## Optional Vars
+  client_cert_mode   = "{{ app_function_app.client_cert_mode }}"
+  daily_memory_time_quota   = "{{ app_function_app.daily_memory_time_quota }}"
+  enabled   = {{ app_function_app.enabled }}
+  enable_builtin_logging   = {{ app_function_app.enable_builtin_logging }}
+  https_only   = {{ app_function_app.https_only }}
+  key_vault_reference_identity_id   = "{{ app_function_app.key_vault_reference_identity_id }}"
+  os_type   = "{{ app_function_app.os_type }}"
+  storage_account_name   = "{{ app_function_app.storage_account_name }}"
+  storage_account_access_key   = "{{ app_function_app.storage_account_access_key }}"
+  version   = "{{ app_function_app.version }}"
+  tags   = "{{ app_function_app.tags | to_json | safe }}"
+
+  ## Blocks
+  connection_string {
+    ## Required Block Vars
+    name   = "{{ app_function_app.connection_string.name }}"
+    type   = "{{ app_function_app.connection_string.type }}"
+    value   = "{{ app_function_app.connection_string.value }}"
+  }
+  site_config {
+    ## Optional Block Vars
+    always_on   = {{ app_function_app.site_config.always_on }}
+    app_scale_limit   = "{{ app_function_app.site_config.app_scale_limit }}"
+    cors {
+    }
+    dotnet_framework_version   = "{{ app_function_app.site_config.dotnet_framework_version }}"
+    elastic_instance_minimum   = "{{ app_function_app.site_config.elastic_instance_minimum }}"
+    ftps_state   = "{{ app_function_app.site_config.ftps_state }}"
+    health_check_path   = "{{ app_function_app.site_config.health_check_path }}"
+    http2_enabled   = {{ app_function_app.site_config.http2_enabled }}
+    ip_restriction {
+      ## Optional Block Vars
+      ip_address   = "{{ app_function_app.site_config.ip_restriction.ip_address }}"
+      service_tag   = "{{ app_function_app.site_config.ip_restriction.service_tag }}"
+      virtual_network_subnet_id   = "{{ app_function_app.site_config.ip_restriction.virtual_network_subnet_id }}"
+      name   = "{{ app_function_app.site_config.ip_restriction.name }}"
+      priority   = "{{ app_function_app.site_config.ip_restriction.priority }}"
+      action   = "{{ app_function_app.site_config.ip_restriction.action }}"
+    }
+    java_version   = "{{ app_function_app.site_config.java_version }}"
+    linux_fx_version   = "{{ app_function_app.site_config.linux_fx_version }}"
+    min_tls_version   = "{{ app_function_app.site_config.min_tls_version }}"
+    pre_warmed_instance_count   = "{{ app_function_app.site_config.pre_warmed_instance_count }}"
+    runtime_scale_monitoring_enabled   = {{ app_function_app.site_config.runtime_scale_monitoring_enabled }}
+    scm_ip_restriction {
+      ## Optional Block Vars
+      ip_address   = "{{ app_function_app.site_config.scm_ip_restriction.ip_address }}"
+      service_tag   = "{{ app_function_app.site_config.scm_ip_restriction.service_tag }}"
+      virtual_network_subnet_id   = "{{ app_function_app.site_config.scm_ip_restriction.virtual_network_subnet_id }}"
+      name   = "{{ app_function_app.site_config.scm_ip_restriction.name }}"
+      priority   = "{{ app_function_app.site_config.scm_ip_restriction.priority }}"
+      action   = "{{ app_function_app.site_config.scm_ip_restriction.action }}"
+    }
+    scm_type   = "{{ app_function_app.site_config.scm_type }}"
+    scm_use_main_ip_restriction   = {{ app_function_app.site_config.scm_use_main_ip_restriction }}
+    use_32_bit_worker_process   = {{ app_function_app.site_config.use_32_bit_worker_process }}
+    vnet_route_all_enabled   = {{ app_function_app.site_config.vnet_route_all_enabled }}
+    websockets_enabled   = {{ app_function_app.site_config.websockets_enabled }}
+    auto_swap_slot_name   = "{{ app_function_app.site_config.auto_swap_slot_name }}"
+  }
+  cors {
+    ## Required Block Vars
+    allowed_origins   = "{{ app_function_app.cors.allowed_origins | to_json | safe }}"
+    ## Optional Block Vars
+    support_credentials   = {{ app_function_app.cors.support_credentials }}
+  }
+  identity {
+    ## Required Block Vars
+    type   = "{{ app_function_app.identity.type }}"
+    ## Optional Block Vars
+    identity_ids   = "{{ app_function_app.identity.identity_ids }}"
+  }
+  auth_settings {
+    ## Required Block Vars
+    enabled   = {{ app_function_app.auth_settings.enabled }}
+    ## Optional Block Vars
+    active_directory {
+      ## Required Block Vars
+      client_id   = "{{ app_function_app.auth_settings.active_directory.client_id }}"
+ 
+      ## Optional Block Vars
+      client_secret   = "{{ app_function_app.auth_settings.active_directory.client_secret }}"
+      allowed_audiences   = "{{ app_function_app.auth_settings.active_directory.allowed_audiences }}"
+    }
+    additional_login_params   = "{{ app_function_app.auth_settings.additional_login_params }}"
+    allowed_external_redirect_urls   = "{{ app_function_app.auth_settings.allowed_external_redirect_urls }}"
+    default_provider   = "{{ app_function_app.auth_settings.default_provider }}"
+    facebook {
+      ## Required Block Vars
+      app_id   = "{{ app_function_app.auth_settings.facebook.app_id }}"
+ 
+      app_secret   = "{{ app_function_app.auth_settings.facebook.app_secret }}"
+ 
+      ## Optional Block Vars
+      oauth_scopes   = "{{ app_function_app.auth_settings.facebook.oauth_scopes }}"
+    }
+    google {
+      ## Required Block Vars
+      client_id   = "{{ app_function_app.auth_settings.google.client_id }}"
+ 
+      client_secret   = "{{ app_function_app.auth_settings.google.client_secret }}"
+ 
+      ## Optional Block Vars
+      oauth_scopes   = "{{ app_function_app.auth_settings.google.oauth_scopes }}"
+    }
+    issuer   = "{{ app_function_app.auth_settings.issuer }}"
+    microsoft {
+      ## Required Block Vars
+      client_id   = "{{ app_function_app.auth_settings.microsoft.client_id }}"
+ 
+      client_secret   = "{{ app_function_app.auth_settings.microsoft.client_secret }}"
+ 
+      ## Optional Block Vars
+      oauth_scopes   = "{{ app_function_app.auth_settings.microsoft.oauth_scopes }}"
+    }
+    runtime_version   = "{{ app_function_app.auth_settings.runtime_version }}"
+    token_refresh_extension_hours   = "{{ app_function_app.auth_settings.token_refresh_extension_hours }}"
+    token_store_enabled   = {{ app_function_app.auth_settings.token_store_enabled }}
+    twitter {
+      ## Required Block Vars
+      consumer_key   = "{{ app_function_app.auth_settings.twitter.consumer_key }}"
+ 
+      consumer_secret   = "{{ app_function_app.auth_settings.twitter.consumer_secret }}"
+ 
+    }
+    unauthenticated_client_action   = "{{ app_function_app.auth_settings.unauthenticated_client_action }}"
+  }
+  source_control {
+    ## Optional Block Vars
+    repo_url   = "{{ app_function_app.source_control.repo_url }}"
+    branch   = "{{ app_function_app.source_control.branch }}"
+    manual_integration   = {{ app_function_app.source_control.manual_integration }}
+    rollback_enabled   = {{ app_function_app.source_control.rollback_enabled }}
+    use_mercurial   = {{ app_function_app.source_control.use_mercurial }}
+  }
+}

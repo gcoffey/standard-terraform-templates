@@ -1,0 +1,37 @@
+resource:
+  name: "azuread_invitation"
+  enable_variable_comments: false
+  var_name: "invitation"
+  required_vars:
+    - name: "redirect_url"
+      description: "The URL that the user should be redirected to once the invitation is redeemed"
+      type: "string"
+    - name: "user_email_address"
+      description: "The email address of the user being invited"
+      type: "string"
+  optional_vars:
+    - name: "message"
+      description: "A message block"
+      type: "string"
+    - name: "user_display_name"
+      description: "The display name of the user being invited"
+      type: "string"
+    - name: "user_type"
+      description: "The user type of the user being invited; Guest or Member; Default Guest"
+      default_value: "Guest"
+      type: "string"
+
+blocks:
+  - name: "message"
+    required: false
+    description: "Message Block"
+    optional_vars:
+      - name: "additional_recipients"
+        description: "Email addresses of additional recipients the invitation message should be sent to"
+        type: "list"
+      - name: "body"
+        description: "Customized message body you want to send if you don't want to send the default message"
+        type: "string"
+      - name: "language"
+        description: "The language you want to send the default message in e.g. en-US"
+        type: "string"

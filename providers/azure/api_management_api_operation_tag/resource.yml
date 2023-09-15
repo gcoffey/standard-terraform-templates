@@ -1,0 +1,14 @@
+resource:
+  name: "azurerm_api_management_api_operation_tag"
+  enable_variable_comments: false
+  var_name: "api_management_api_operation_tag"
+  required_vars:
+    - name: "api_operation_id"
+      description: "The ID of the API Management API Operation"
+      type: "string"
+    - name: "name"
+      description: "The name which should be used for this API Management API Operation Tag"
+      type: "string"
+    - name: "display_name"
+      description: "The display name for this API Management API Operation Tag"
+      type: "string"

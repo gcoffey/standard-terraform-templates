@@ -1,0 +1,14 @@
+resource:
+  name: "azurerm_app_service_slot_virtual_network_swift_connection"
+  enable_variable_comments: false
+  var_name: "app_service_slot_virtual_network_swift_connection"
+  required_vars:
+    - name: "slot_name"
+      description: "The name of the App Service Slot or Function App Slot"
+      type: "string"
+    - name: "app_service_id"
+      description: "The ID of the App Service or Function App"
+      type: "string"
+    - name: "subnet_id"
+      description: "The ID of the subnet the app service will be associated to [subnet must have service_delegation = Microsoft.Web/serverFarms]"
+      type: "string"

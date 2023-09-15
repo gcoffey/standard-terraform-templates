@@ -1,0 +1,15 @@
+resource "azurerm_app_service_certificate_order" "{{ app_service_certificate_order.name }}" {
+  ## Required Vars
+  name   = "{{ app_service_certificate_order.name }}"
+  resource_group_name   = "{{ app_service_certificate_order.resource_group_name }}"
+  location   = "{{ app_service_certificate_order.location }}"
+
+  ## Optional Vars
+  auto_renew   = {{ app_service_certificate_order.auto_renew }}
+  csr   = "{{ app_service_certificate_order.csr }}"
+  distinguished_name   = "{{ app_service_certificate_order.distinguished_name }}"
+  key_size   = "{{ app_service_certificate_order.key_size }}"
+  product_type   = "{{ app_service_certificate_order.product_type }}"
+  validity_in_years   = "{{ app_service_certificate_order.validity_in_years }}"
+
+}

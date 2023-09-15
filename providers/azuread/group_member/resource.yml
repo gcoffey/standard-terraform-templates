@@ -1,0 +1,11 @@
+resource:
+  name: "azuread_group_member"
+  enable_variable_comments: false
+  var_name: "group_member"
+  required_vars:
+    - name: "group_object_id"
+      description: "The object ID of the group you want to add the member to"
+      type: "string"
+    - name: "member_object_id"
+      description: "The object ID of the principal you want to add as a member to the group"
+      type: "string"

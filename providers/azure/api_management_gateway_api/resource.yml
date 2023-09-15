@@ -1,0 +1,11 @@
+resource:
+  name: "azurerm_api_management_gateway_api"
+  enable_variable_comments: false
+  var_name: "api_management_gateway_api"
+  required_vars:
+    - name: "gateway_id"
+      description: "The identifier for the API Management Gateway"
+      type: "string"
+    - name: "api_id"
+      description: "The identifier for the API Management API"
+      type: "string"

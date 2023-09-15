@@ -1,0 +1,33 @@
+resource:
+  name: "azuread_custom_directory_role"
+  enable_variable_comments: false
+  var_name: "custom_directory_role"
+  required_vars:
+    - name: "display_name"
+      description: "The display name of the custom directory role"
+      type: "string"
+    - name: "enabled"
+      description: "Indicates whether the role is enabled for assignment"
+      type: "boolean"
+    - name: "permissions"
+      description: "A collection of permissions block"
+      type: "string"
+    - name: "version"
+      description: "The version of the role definition"
+      type: "string"
+  optional_vars:
+    - name: "description"
+      description: "The description of the custom directory role"
+      type: "string"
+    - name: "template_id"
+      description: "Custom template identifier that is typically used if one needs an identifier to be the same across directories"
+      type: "string"
+
+blocks:
+  - name: "permissions"
+    required: false
+    description: "Permissions Block"
+    required_vars:
+      - name: "allowed_resource_actions"
+        description: "A set of tasks that can be performed on a resource"
+        type: "list"

@@ -1,0 +1,9 @@
+resource "azurerm_api_management_identity_provider_google" "{{ api_management_identity_provider_google.name }}" {
+  ## Required Vars
+  api_management_name   = "{{ api_management_identity_provider_google.api_management_name }}"
+  resource_group_name   = "{{ api_management_identity_provider_google.resource_group_name }}"
+  client_id   = "{{ api_management_identity_provider_google.client_id }}"
+  client_secret   = "{{ api_management_identity_provider_google.client_secret }}"
+
+
+}

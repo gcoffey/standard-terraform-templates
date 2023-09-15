@@ -1,0 +1,13 @@
+resource "azurerm_api_management_group" "{{ api_management_group.name }}" {
+  ## Required Vars
+  name   = "{{ api_management_group.name }}"
+  api_management_name   = "{{ api_management_group.api_management_name }}"
+  display_name   = "{{ api_management_group.display_name }}"
+  resource_group_name   = "{{ api_management_group.resource_group_name }}"
+
+  ## Optional Vars
+  description   = "{{ api_management_group.description }}"
+  external_id   = "{{ api_management_group.external_id }}"
+  type   = "{{ api_management_group.type }}"
+
+}

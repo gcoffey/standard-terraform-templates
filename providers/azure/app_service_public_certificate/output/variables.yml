@@ -1,0 +1,7 @@
+app_service_public_certificate:
+  name: "<string>"	# Required; A name for this resource
+  app_service_name: "<string>"       # Required; The name of the App Service
+  resource_group_name: "<string>"       # Required; The name of the Resource group in which the App Service Public Certificate should exist
+  certificate_name: "<string>"       # Required; The name of the public certificate
+  certificate_location: "<string>"       # Required; The location of the certificate; CurrentUserMy, LocalMachineMy or Unknown
+  blob: "<string>"       # Required; The base64-encoded contents of the certificate

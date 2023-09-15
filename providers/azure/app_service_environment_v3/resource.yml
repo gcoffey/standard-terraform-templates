@@ -1,0 +1,45 @@
+resource:
+  name: "azurerm_app_service_environment_v3"
+  enable_variable_comments: false
+  var_name: "app_service_environment_v3"
+  required_vars:
+    - name: "name"
+      description: "The name of the App Service Environment"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The resource group name of the App Service Environment"
+      type: "string"
+    - name: "subnet_id"
+      description: "The ID of the Subnet which the App Service Environment should be connected to"
+      type: "string"
+  optional_vars:
+    - name: "cluster_setting"
+      description: "Cluster Setting Block"
+      type: "block"
+    - name: "internal_load_balancing_mode"
+      description: "Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment; None, Web or Publishing"
+      type: "string"
+    - name: "allow_new_private_endpoint_connections"
+      description: "Should new Private Endpoint Connections be allowed; Default true"
+      type: "boolean"
+    - name: "dedicated_host_count"
+      description: "This ASEv3 should use dedicated Host; Only possible value is 2"
+      type: "string"
+    - name: "zone_redundant"
+      description: "Set to true to deploy the ASEv3 with availability zones supported"
+      type: "string"
+    - name: "tags"
+      description: "A mapping of tags"
+      type: "list"
+
+blocks:
+  - name: "cluster_setting"
+    required: false
+    description: "Cluster Setting Block"
+    required_vars:
+      - name: "name"
+        description: "Name of the Cluster Setting"
+        type: "string"
+      - name: "value"
+        description: "Value of the Cluster Setting"
+        type: "string"

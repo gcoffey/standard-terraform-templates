@@ -1,0 +1,48 @@
+resource "azurerm_active_directory_domain_service" "{{ active_directory_domain_service.name }}" {
+  ## Required Vars
+  domain_name   = "{{ active_directory_domain_service.domain_name }}"
+  location   = "{{ active_directory_domain_service.location }}"
+  name   = "{{ active_directory_domain_service.name }}"
+  resource_group_name   = "{{ active_directory_domain_service.resource_group_name }}"
+  sku   = "{{ active_directory_domain_service.sku }}"
+
+  ## Optional Vars
+  domain_configuration_type   = "{{ active_directory_domain_service.domain_configuration_type }}"
+  filtered_sync_enabled   = {{ active_directory_domain_service.filtered_sync_enabled }}
+  tags   = "{{ active_directory_domain_service.tags | to_json | safe }}"
+
+  ## Blocks
+  secure_ldap {
+    ## Required Block Vars
+    enabled   = {{ active_directory_domain_service.secure_ldap.enabled }}
+    pfx_certificate   = "{{ active_directory_domain_service.secure_ldap.pfx_certificate }}"
+    pfx_certificate_password   = "{{ active_directory_domain_service.secure_ldap.pfx_certificate_password }}"
+    ## Optional Block Vars
+    external_access_enabled   = {{ active_directory_domain_service.secure_ldap.external_access_enabled }}
+  }
+  notifications {
+    ## Optional Block Vars
+    additional_recipients   = "{{ active_directory_domain_service.notifications.additional_recipients }}"
+    notify_dc_admins   = {{ active_directory_domain_service.notifications.notify_dc_admins }}
+    notify_global_admins   = {{ active_directory_domain_service.notifications.notify_global_admins }}
+  }
+  initial_replica_set {
+    ## Required Block Vars
+    subnet_id   = "{{ active_directory_domain_service.initial_replica_set.subnet_id }}"
+  }
+  security {
+    ## Optional Block Vars
+    kerberos_armoring_enabled   = {{ active_directory_domain_service.security.kerberos_armoring_enabled }}
+    kerberos_rc4_encryption_enabled   = {{ active_directory_domain_service.security.kerberos_rc4_encryption_enabled }}
+    ntlm_v1_enabled   = {{ active_directory_domain_service.security.ntlm_v1_enabled }}
+    sync_kerberos_passwords   = {{ active_directory_domain_service.security.sync_kerberos_passwords }}
+    sync_ntlm_passwords   = {{ active_directory_domain_service.security.sync_ntlm_passwords }}
+    sync_on_prem_passwords   = {{ active_directory_domain_service.security.sync_on_prem_passwords }}
+    tls_v1_enabled   = {{ active_directory_domain_service.security.tls_v1_enabled }}
+  }
+  subscription_key_parameter_names {
+    ## Required Block Vars
+    header   = "{{ active_directory_domain_service.subscription_key_parameter_names.header }}"
+    query   = "{{ active_directory_domain_service.subscription_key_parameter_names.query }}"
+  }
+}

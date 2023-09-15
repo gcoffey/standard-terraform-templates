@@ -1,0 +1,21 @@
+resource:
+  name: "aws_cloudfront_function"
+  enable_variable_comments: false
+  var_name: "cloudfront_function"
+  required_vars:
+    - name: "name"
+      description: "Unique name for your CF Function"
+      type: "string"
+    - name: "code"
+      description: "Source code of the function"
+      type: "string"
+    - name: "runtime"
+      description: "Identifier of the function's runtime; Only cloudfront-js-1.0 is currently valid"
+      type: "string"
+  optional_vars:
+    - name: "comment"
+      description: "A comment for this function resource"
+      type: "string"
+    - name: "publish"
+      description: "Whether to publish creation / change as Live CF Function version; Default true"
+      type: "boolean"

@@ -1,0 +1,7 @@
+resource "aws_vpc_endpoint_service_subnet_association" "{{ vpc_endpoint_service_subnet_association.name }}" {
+  ## Required Vars
+  vpc_endpoint_id   = "{{ vpc_endpoint_service_subnet_association.vpc_endpoint_id }}"
+  subnet_id   = "{{ vpc_endpoint_service_subnet_association.subnet_id }}"
+
+
+}

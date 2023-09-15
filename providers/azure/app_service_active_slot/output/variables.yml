@@ -1,0 +1,5 @@
+app_service_active_slot:
+  name: "<string>"	# Required; A name for this resource
+  resource_group_name: "<string>"       # Required; The name of the Resource group in which the App Service exists
+  app_service_name: "<string>"       # Required; The name of the App Service within which the Slot exists
+  app_service_slot_name: "<string>"       # Required; The name of the App Service Slot which should be promoted to the Production Slot

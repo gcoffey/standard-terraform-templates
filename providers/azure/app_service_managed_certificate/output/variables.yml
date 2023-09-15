@@ -1,0 +1,5 @@
+app_service_managed_certificate:
+  name: "<string>"	# Required; A name for this resource
+  custom_hostname_binding_id: "<string>"       # Required; The ID of the App Service Custom Hostname Binding for the Certificate
+  tags:  # Optional; A mapping of tags
+    - <list>

@@ -1,0 +1,10 @@
+resource "azurerm_user_assigned_identity" "{{ user_assigned_identity.name }}" {
+  ## Required Vars
+  location   = "{{ user_assigned_identity.location }}"
+  name   = "{{ user_assigned_identity.name }}"
+  resource_group_name   = "{{ user_assigned_identity.resource_group_name }}"
+
+  ## Optional Vars
+  tags   = "{{ user_assigned_identity.tags | to_json | safe }}"
+
+}

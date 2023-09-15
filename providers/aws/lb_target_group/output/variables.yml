@@ -1,0 +1,37 @@
+lb_target_group:
+  name: "<string>"	# Required; A name for this resource
+  port: "<string>"       # Required; Port on which targets receive traffic, unless overridden
+  protocol: "<string>"       # Required; Protocol to use for routing traffic to the targets; GENEVE, HTTP, HTTPS, TCP, TCP_UDP, TLS or UDP
+  target_type: "<string>"       # Required; Type of target that you must specify when registering targets with this target group; Default is instance
+  connection_termination: <boolean>        # Optional; Whether to terminate connections at the end of the deregistration timeout on NLBs
+  deregistration_delay: "<string>"       # Optional; Amount of time for ELB to wait before changing state of target from draining to unused; Default is 300
+  lambda_multi_value_headers_enabled: <boolean>        # Optional; Whether the request and response headers exchanged between the LB and the Lambda function; Default false
+  load_balancing_algorithm_type: "<string>"       # Optional; Determines how the LB selects targets when routing requests; round_robin or least_outstanding_requests
+  load_balancing_cross_zone_enabled: <boolean>        # Optional; Indicates whether cross zone load balancing is enabled; true or false
+  name_prefix: "<string>"       # Optional; Creates a unique name beginning with the specified prefix
+  name: "<string>"       # Optional; Name of the target group; Use name_prefix or name
+  protocol_version: "<string>"       # Optional; Only applicable when protocol = HTTP or HTTPS; Default is HTTP1
+  proxy_protocol_v2: <boolean>        # Optional; Whether to enable support for proxy protocol v2; Default false
+  slow_start: "<string>"       # Optional; Amount time for targets to warm up before the LB sends them a full share of requests; Default is 0
+  ip_address_type: "<string>"       # Optional; The type of IP addresses used by the target group, only supported when target type is set to ip; ipv4 or ipv6
+  vpc_id: "<string>"       # Optional; Identifier of the VPC in which to create the target group
+  tags:  # Optional; Map of tags to assign to the resource
+    - <list>
+  health_check:
+    matcher: "<string>"       # Required; Response codes to use when checking for a healthy response from a target; e.g. 200,202, 200-29
+    path: "<string>"       # Required; Destination for the health check request; Required for HTTP / HTTPS ALB and HTTP NLB
+    enabled: <boolean>        # Optional; Whether health checks are enabled; Default true
+    healthy_threshold: "<string>"       # Optional; Number of consecutive health check successes required before considering a target healthy; Default 3
+    interval: "<string>"       # Optional; Approximate amount of time in seconds between health checks of an individual target; Default 30
+    port: "<string>"       # Optional; The port the load balancer uses when performing health checks on targets; Default is traffic-port
+    protocol: "<string>"       # Optional; Protocol the LB uses when performing health checks on targets; TCP, HTTP or HTTPS
+    timeout: "<string>"       # Optional; Amount of time in seconds during which no response from a target means a failed health check
+    unhealthy_threshold: "<string>"       # Optional; Number of consecutive health check failures required before considering a target unhealthy; Default 3
+  stickiness:
+    type: "<string>"       # Required; The type of sticky sessions; ALBs = lb_cookie or app_cookie, NLB = source_ip GWLB = source_ip_dest_ip or source_ip_dest_ip_proto
+    cookie_duration: "<string>"       # Optional; Only used when the type is lb_cookie; Default is 1 day [86400 seconds]
+    cookie_name: "<string>"       # Optional; Name of the application based cookie; AWSALB, AWSALBAPP or AWSALBTG
+    enabled: <boolean>        # Optional; Enable or disable stickiness; Default true
+  target_failover:
+    on_deregistration: "<string>"       # Optional; Indicates how the GWLB handles existing flows when a target is deregistered; Default no_rebalance
+    on_unhealthy: "<string>"       # Optional; Indicates how the GWLB handles existing flows when a target is unhealthy; Default no_rebalance

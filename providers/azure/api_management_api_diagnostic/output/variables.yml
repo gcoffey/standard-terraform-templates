@@ -1,0 +1,29 @@
+api_management_api_diagnostic:
+  name: "<string>"	# Required; A name for this resource
+  api_management_logger_id: "<string>"       # Required; The ID of the Diagnostics Logger
+  api_management_name: "<string>"       # Required; The name of the API Management Service Instance
+  api_name: "<string>"       # Required; The name of the API on which to configure the Diagnostics Logs
+  identifier: "<string>"       # Required; Identifier of the Diagnostics Logs; applicationinsights, azuremonitor
+  resource_group_name: "<string>"       # Required; The name of the Resource Group where the API Management Service API Diagnostics Logs should exist
+  always_log_errors: <boolean>        # Optional; Always logs errors
+  http_correlation_protocol: "<string>"       # Optional; The HTTP correlation Protocol; None, Legacy or W3C
+  log_client_ip: "<string>"       # Optional; Log client IP address
+  sampling_percentage: "<string>"       # Optional; Sampling percentage; Between 0.0 and 100.0
+  verbosity: "<string>"       # Optional; Logging verbosity; verbose, information or error
+  operation_name_format: "<string>"       # Optional; The format of the Operation Name for Application Insights; Name or Url
+  backend_request:
+    body_bytes: "<string>"       # Optional; Number of payload bytes to log (up to 8192)
+    headers_to_log: "<string>"       # Optional; Specifies a list of headers to log
+    data_masking:
+  backend_response:
+    body_bytes: "<string>"       # Optional; Number of payload bytes to log (up to 8192)
+    headers_to_log: "<string>"       # Optional; Specifies a list of headers to log
+    data_masking:
+  frontend_request:
+    body_bytes: "<string>"       # Optional; Number of payload bytes to log (up to 8192)
+    headers_to_log: "<string>"       # Optional; Specifies a list of headers to log
+    data_masking:
+  frontend_response:
+    body_bytes: "<string>"       # Optional; Number of payload bytes to log (up to 8192)
+    headers_to_log: "<string>"       # Optional; Specifies a list of headers to log
+    data_masking:

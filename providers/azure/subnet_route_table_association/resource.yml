@@ -1,0 +1,11 @@
+resource:
+  name: "azurerm_subnet_route_table_association"
+  enable_variable_comments: false
+  var_name: "subnet_route_table_association"
+  required_vars:
+    - name: "route_table_id"
+      description: "The ID of the Route Table which should be associate with the Subnet"
+      type: "string"
+    - name: "subnet_id"
+      description: "The ID of the Subnet"
+      type: "string"

@@ -1,0 +1,12 @@
+resource "azurerm_route" "{{ route.name }}" {
+  ## Required Vars
+  name   = "{{ route.name }}"
+  route_table_name   = "{{ route.route_table_name }}"
+  resource_group_name   = "{{ route.resource_group_name }}"
+  address_prefix   = "{{ route.address_prefix }}"
+  next_hop_type   = "{{ route.next_hop_type }}"
+
+  ## Optional Vars
+  next_hop_in_ip_address   = "{{ route.next_hop_in_ip_address }}"
+
+}

@@ -1,0 +1,45 @@
+resource "azurerm_key_vault" "{{ key_vault.name }}" {
+  ## Required Vars
+  location   = "{{ key_vault.location }}"
+  name   = "{{ key_vault.name }}"
+  resource_group_name   = "{{ key_vault.resource_group_name }}"
+  sku_name   = "{{ key_vault.sku_name }}"
+  tenant_id   = "{{ key_vault.tenant_id }}"
+  enabled_for_deployment   = {{ key_vault.enabled_for_deployment }}
+  enabled_for_disk_encryption   = {{ key_vault.enabled_for_disk_encryption }}
+  enabled_for_template_deployment   = {{ key_vault.enabled_for_template_deployment }}
+  enabled_rbac_authorization   = {{ key_vault.enabled_rbac_authorization }}
+  purge_protection_enabled   = {{ key_vault.purge_protection_enabled }}
+  public_network_access_enabled   = {{ key_vault.public_network_access_enabled }}
+  soft_delete_retention_days   = "{{ key_vault.soft_delete_retention_days }}"
+  tags   = "{{ key_vault.tags | to_json | safe }}"
+
+
+  ## Blocks
+  access_policy {
+    ## Required Block Vars
+    tenant_id   = "{{ key_vault.access_policy.tenant_id }}"
+    object_id   = "{{ key_vault.access_policy.object_id }}"
+    ## Optional Block Vars
+    application_id   = "{{ key_vault.access_policy.application_id }}"
+    certificate_permissions   = "{{ key_vault.access_policy.certificate_permissions }}"
+    key_permissions   = "{{ key_vault.access_policy.key_permissions }}"
+    secret_permissions   = "{{ key_vault.access_policy.secret_permissions }}"
+    storage_permissions   = "{{ key_vault.access_policy.storage_permissions }}"
+  }
+  network_acls {
+    ## Required Block Vars
+    bypass   = "{{ key_vault.network_acls.bypass }}"
+    default_action   = "{{ key_vault.network_acls.default_action }}"
+    ## Optional Block Vars
+    ip_rules   = "{{ key_vault.network_acls.ip_rules | to_json | safe }}"
+    virtual_network_subnet_ids   = "{{ key_vault.network_acls.virtual_network_subnet_ids | to_json | safe }}"
+  }
+  contact {
+    ## Required Block Vars
+    email   = "{{ key_vault.contact.email }}"
+    ## Optional Block Vars
+    name   = "{{ key_vault.contact.name }}"
+    phone   = "{{ key_vault.contact.phone }}"
+  }
+}

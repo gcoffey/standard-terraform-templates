@@ -1,0 +1,6 @@
+api_management_api_tag_description:
+  name: "<string>"	# Required; A name for this resource
+  api_tag_id: "<string>"       # Required; The ID of the API Management API Tag
+  description: "<string>"       # Optional; The description of the tag
+  external_documentation_url: "<string>"       # Optional; The URL of external documentation resources describing the tag
+  external_documentation_description: "<string>"       # Optional; The description of the external documentation resources describing the tag

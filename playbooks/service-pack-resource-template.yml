@@ -1,0 +1,21 @@
+---
+
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  vars_prompt:
+    - name: service_pack_name
+      prompt: Enter a service pack name
+      private: false
+    - name: provider_name
+      prompt: Enter a provider name
+      private: false
+  vars:
+    core_path: "../core-tf-templates"
+    provider_path: "../service-packs/{{ provider_name }}/{{ service_pack_name }}"
+    output_path: "{{ provider_path }}/output"
+    resource_path: "../providers/{{ provider_name }}"
+  tasks:
+    - include_vars: "{{ provider_path }}/service-pack.yml"
+    - include_tasks: service-pack-block.yml
+      loop: "{{ service_pack.resources }}"

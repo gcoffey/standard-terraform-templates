@@ -1,0 +1,12 @@
+{% if resource.enable_variable_comments is defined and resource.enable_variable_comments %}
+  # {{ optional.name }}; {{ optional.description }}
+{% endif %}
+{% if optional.type == "string" %}
+  {{ optional.name }}   = "{{ '{{' }} {{ resource.var_name }}.{{ optional.name }} {{ '}}' }}"
+{% endif %}
+{% if optional.type == "boolean" or optional.type == "integer" %}
+  {{ optional.name }}   = {{ '{{' }} {{ resource.var_name }}.{{ optional.name }} {{ '}}' }}
+{% endif %}
+{% if optional.type == "list" %}
+  {{ optional.name }}   = "{{ '{{' }} {{ resource.var_name }}.{{ optional.name }} | to_json | safe {{ '}}' }}"
+{% endif %}

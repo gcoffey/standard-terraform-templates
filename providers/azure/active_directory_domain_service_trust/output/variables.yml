@@ -1,0 +1,7 @@
+active_directory_domain_service_trust:
+  name: "<string>"	# Required; A name for this resource
+  domain_service_id: "<string>"       # Required; The ID of the Domain Service
+  name: "<string>"       # Required; The name which should be used for this Active Directory Domain Service Trust
+  password: "<string>"       # Required; The password of the inbound trust set in the on-premise Active Directory Domain Service
+  trusted_domain_dns_ips: "<string>"       # Required; Specifies a list of DNS IPs that are used to resolve the on-premise Active Directory Domain Service
+  trusted_domain_fqdn: "<string>"       # Required; The FQDN of the on-premise Active Directory Domain Service

@@ -1,0 +1,12 @@
+resource "azurerm_api_management_identity_provider_aad" "{{ api_management_identity_provider_aad.name }}" {
+  ## Required Vars
+  api_management_name   = "{{ api_management_identity_provider_aad.api_management_name }}"
+  resource_group_name   = "{{ api_management_identity_provider_aad.resource_group_name }}"
+  client_id   = "{{ api_management_identity_provider_aad.client_id }}"
+  client_secret   = "{{ api_management_identity_provider_aad.client_secret }}"
+  allowed_tenants   = "{{ api_management_identity_provider_aad.allowed_tenants }}"
+
+  ## Optional Vars
+  signin_tenant   = "{{ api_management_identity_provider_aad.signin_tenant }}"
+
+}

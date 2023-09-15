@@ -1,0 +1,96 @@
+resource "azurerm_app_service_slot" "{{ app_service_slot.name }}" {
+  ## Required Vars
+  name   = "{{ app_service_slot.name }}"
+  resource_group_name   = "{{ app_service_slot.resource_group_name }}"
+  location   = "{{ app_service_slot.location }}"
+  app_service_plan_id   = "{{ app_service_slot.app_service_plan_id }}"
+  app_service_name   = "{{ app_service_slot.app_service_name }}"
+
+  ## Optional Vars
+  client_affinity_enabled   = {{ app_service_slot.client_affinity_enabled }}
+  enabled   = {{ app_service_slot.enabled }}
+  https_only   = {{ app_service_slot.https_only }}
+  key_vault_reference_identity_id   = "{{ app_service_slot.key_vault_reference_identity_id }}"
+  tags   = "{{ app_service_slot.tags | to_json | safe }}"
+
+  ## Blocks
+  cors {
+    ## Required Block Vars
+    allowed_origins   = "{{ app_service_slot.cors.allowed_origins | to_json | safe }}"
+    ## Optional Block Vars
+    support_credentials   = "{{ app_service_slot.cors.support_credentials }}"
+  }
+  auth_settings {
+    ## Required Block Vars
+    enabled   = {{ app_service_slot.auth_settings.enabled }}
+    ## Optional Block Vars
+    active_directory {
+      ## Required Block Vars
+      client_id   = {{ app_service_slot.auth_settings.active_directory.client_id }}
+ 
+      ## Optional Block Vars
+      client_secret   = "{{ app_service_slot.auth_settings.active_directory.client_secret }}"
+      allowed_audiences   = "{{ app_service_slot.auth_settings.active_directory.allowed_audiences }}"
+    }
+    additional_login_params   = "{{ app_service_slot.auth_settings.additional_login_params }}"
+    allowed_external_redirect_urls   = "{{ app_service_slot.auth_settings.allowed_external_redirect_urls }}"
+    default_provider   = "{{ app_service_slot.auth_settings.default_provider }}"
+    facebook {
+      ## Required Block Vars
+      app_id   = "{{ app_service_slot.auth_settings.facebook.app_id }}"
+ 
+      app_secret   = "{{ app_service_slot.auth_settings.facebook.app_secret }}"
+ 
+      ## Optional Block Vars
+      oauth_scopes   = "{{ app_service_slot.auth_settings.facebook.oauth_scopes }}"
+    }
+    google {
+      ## Required Block Vars
+      client_id   = "{{ app_service_slot.auth_settings.google.client_id }}"
+ 
+      client_secret   = "{{ app_service_slot.auth_settings.google.client_secret }}"
+ 
+      ## Optional Block Vars
+      oauth_scopes   = "{{ app_service_slot.auth_settings.google.oauth_scopes }}"
+    }
+    issuer   = "{{ app_service_slot.auth_settings.issuer }}"
+    microsoft {
+      ## Required Block Vars
+      client_id   = "{{ app_service_slot.auth_settings.microsoft.client_id }}"
+ 
+      client_secret   = "{{ app_service_slot.auth_settings.microsoft.client_secret }}"
+ 
+      ## Optional Block Vars
+      oauth_scopes   = "{{ app_service_slot.auth_settings.microsoft.oauth_scopes }}"
+    }
+    runtime_version   = "{{ app_service_slot.auth_settings.runtime_version }}"
+    token_refresh_extension_hours   = "{{ app_service_slot.auth_settings.token_refresh_extension_hours }}"
+    toke_store_enabled   = {{ app_service_slot.auth_settings.toke_store_enabled }}
+    twitter {
+      ## Required Block Vars
+      consumer_key   = "{{ app_service_slot.auth_settings.twitter.consumer_key }}"
+ 
+      consumer_secret   = "{{ app_service_slot.auth_settings.twitter.consumer_secret }}"
+ 
+    }
+    unauthenticated_client_action   = "{{ app_service_slot.auth_settings.unauthenticated_client_action }}"
+  }
+  identity {
+    ## Required Block Vars
+    type   = "{{ app_service_slot.identity.type }}"
+    ## Optional Block Vars
+    identity_ids   = "{{ app_service_slot.identity.identity_ids }}"
+  }
+  logs {
+    ## Optional Block Vars
+    application_logs {
+      ## Optional Block Vars
+      file_system_level   = "{{ app_service_slot.logs.application_logs.file_system_level }}"
+    }
+    http_logs {
+      ## Optional Block Vars
+    }
+    detailed_error_messages_enabled   = {{ app_service_slot.logs.detailed_error_messages_enabled }}
+    failed_request_tracing_enabled   = {{ app_service_slot.logs.failed_request_tracing_enabled }}
+  }
+}

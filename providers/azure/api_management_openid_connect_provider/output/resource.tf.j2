@@ -1,0 +1,14 @@
+resource "azurerm_api_management_openid_connect_provider" "{{ api_management_openid_connect_provider.name }}" {
+  ## Required Vars
+  name   = "{{ api_management_openid_connect_provider.name }}"
+  api_management_name   = "{{ api_management_openid_connect_provider.api_management_name }}"
+  resource_group_name   = "{{ api_management_openid_connect_provider.resource_group_name }}"
+  client_id   = "{{ api_management_openid_connect_provider.client_id }}"
+  client_secret   = "{{ api_management_openid_connect_provider.client_secret }}"
+  display_name   = "{{ api_management_openid_connect_provider.display_name }}"
+  metadata_endpoint   = "{{ api_management_openid_connect_provider.metadata_endpoint }}"
+
+  ## Optional Vars
+  description   = "{{ api_management_openid_connect_provider.description }}"
+
+}

@@ -1,0 +1,62 @@
+resource:
+  name: "azurerm_app_configuration"
+  enable_variable_comments: false
+  var_name: "app_configuration"
+  required_vars:
+    - name: "name"
+      description: "The name of the App Configuration"
+      type: "string"
+    - name: "location"
+      description: "The Azure location where to create the resource"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the resource group where to create the App Configuration"
+      type: "string"
+  optional_vars:
+    - name: "identity"
+      description: "An identity block"
+      type: "block"
+    - name: "encryption"
+      description: "An encryption block"
+      type: "block"
+    - name: "local_auth_enabled"
+      description: "Whether local authentication methods is enabled; Default true"
+      type: "boolean"
+    - name: "public_network_access"
+      description: "The Public Network Access setting of the App Configuration; Enabled or Disabled"
+      type: "string"
+    - name: "purge_protection_enabled"
+      description: "Whether Purge Protection is enabled; Default false"
+      type: "boolean"
+    - name: "sku"
+      description: "The SKU name of the App Configuration; free or standard"
+      type: "string"
+    - name: "soft_delete_retention_days"
+      description: "The number of days that items should be retained for once soft-deleted; Only works for standard sku; Default 7"
+      type: "string"
+    - name: "tags"
+      description: "Mapping of tags to assign to the resource"
+      type: "list"
+
+blocks:
+  - name: "encryption"
+    required: false 
+    description: "An Encryption block"
+    optional_vars:
+      - name: "key_vault_key_identifier"
+        description: "Specifies the URI of the key vault key used to encrypt data"
+        type: "string"
+      - name: "identity_client_id"
+        description: "Specifies the client id of the identity which will be used to access the key vault"
+        type: "string"
+  - name: "identity"
+    required: false
+    description: "An Identity block"
+    required_vars:
+      - name: "type"
+        description: "Specifies the type of Managed Service Identity that should be configured; SystemAssigned, UserAssigned"
+        type: "string"
+    optional_vars:
+      - name: "identity_ids"
+        description: "A list of User Assigned Managed Identity IDs to be assigned"
+        type: "string"

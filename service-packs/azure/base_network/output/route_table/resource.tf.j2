@@ -1,0 +1,20 @@
+resource "azurerm_route_table" "{{ route_table.name }}" {
+  ## Required Vars
+  name   = "{{ route_table.name }}"
+  location   = "{{ route_table.location }}"
+  resource_group_name   = "{{ route_table.resource_group_name }}"
+
+  ## Optional Vars
+  disable_bgp_route_propagation   = {{ route_table.disable_bgp_route_propagation }}
+  tags   = "{{ route_table.tags | to_json | safe }}"
+
+  ## Blocks
+  route {
+    ## Required Block Vars
+    name   = "{{ route_table.route.name }}"
+    address_prefix   = "{{ route_table.route.address_prefix }}"
+    next_hop_type   = "{{ route_table.route.next_hop_type }}"
+    ## Optional Block Vars
+    next_hop_in_ip_address   = "{{ route_table.route.next_hop_in_ip_address }}"
+  }
+}

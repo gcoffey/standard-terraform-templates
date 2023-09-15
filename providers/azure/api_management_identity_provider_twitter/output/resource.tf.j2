@@ -1,0 +1,9 @@
+resource "azurerm_api_management_identity_provider_twitter" "{{ api_management_identity_provider_twitter.name }}" {
+  ## Required Vars
+  api_management_name   = "{{ api_management_identity_provider_twitter.api_management_name }}"
+  resource_group_name   = "{{ api_management_identity_provider_twitter.resource_group_name }}"
+  api_key   = "{{ api_management_identity_provider_twitter.api_key }}"
+  api_secret_key   = "{{ api_management_identity_provider_twitter.api_secret_key }}"
+
+
+}

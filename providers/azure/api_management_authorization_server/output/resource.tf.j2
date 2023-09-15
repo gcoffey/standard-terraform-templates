@@ -1,0 +1,30 @@
+resource "azurerm_api_management_authorization_server" "{{ api_management_authorization_server.name }}" {
+  ## Required Vars
+  api_management_name   = "{{ api_management_authorization_server.api_management_name }}"
+  authorization_methods   = "{{ api_management_authorization_server.authorization_methods }}"
+  authorization_endpoint   = "{{ api_management_authorization_server.authorization_endpoint }}"
+  client_id   = "{{ api_management_authorization_server.client_id }}"
+  client_registration_endpoint   = "{{ api_management_authorization_server.client_registration_endpoint }}"
+  display_name   = "{{ api_management_authorization_server.display_name }}"
+  grant_types   = "{{ api_management_authorization_server.grant_types }}"
+  name   = "{{ api_management_authorization_server.name }}"
+  resource_group_name   = "{{ api_management_authorization_server.resource_group_name }}"
+
+  ## Optional Vars
+  bearer_token_sending_methods   = "{{ api_management_authorization_server.bearer_token_sending_methods }}"
+  client_authentication_method   = "{{ api_management_authorization_server.client_authentication_method }}"
+  client_secret   = "{{ api_management_authorization_server.client_secret }}"
+  default_scope   = "{{ api_management_authorization_server.default_scope }}"
+  description   = "{{ api_management_authorization_server.description }}"
+  resource_owner_password   = "{{ api_management_authorization_server.resource_owner_password }}"
+  resource_owner_username   = "{{ api_management_authorization_server.resource_owner_username }}"
+  support_state   = {{ api_management_authorization_server.support_state }}
+  token_endpoint   = "{{ api_management_authorization_server.token_endpoint }}"
+
+  ## Blocks
+  token_body_parameter {
+    ## Required Block Vars
+    name   = "{{ api_management_authorization_server.token_body_parameter.name }}"
+    value   = "{{ api_management_authorization_server.token_body_parameter.value }}"
+  }
+}

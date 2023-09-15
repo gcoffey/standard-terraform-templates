@@ -1,0 +1,11 @@
+app_service_certificate:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Specifies the name of the certificate
+  resource_group_name: "<string>"       # Required; The name of the Resource group in which the App Service exists
+  location: "<string>"       # Required; Specifies the supported Azure location where the resource exists
+  pfx_blob: "<string>"       # Optional; The base64-encoded contents of the certificate
+  password: "<string>"       # Optional; The password to access the certificates private key
+  app_service_plan_id: "<string>"       # Optional; The ID of the associated App Service Plan
+  key_vault_secret_id: "<string>"       # Optional; The ID of the Key Vault secret
+  tags:  # Optional; A mapping of tags
+    - <list>

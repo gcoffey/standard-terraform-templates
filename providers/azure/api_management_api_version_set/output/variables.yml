@@ -1,0 +1,10 @@
+api_management_api_version_set:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the API version set; May only contain alphanumeric chars and dashes up to 80 chars in length
+  api_management_name: "<string>"       # Required; The name of the API Management Service in which the API Version Set should exist
+  resource_group_name: "<string>"       # Required; The name of the Resource GRoup in which the parent API Management Service exist
+  display_name: "<string>"       # Required; The display name of the API version set
+  versioning_scheme: "<string>"       # Required; Specifies where in an inbound HTTP request that the API Version should be read from; Header, Query or Segment
+  description: "<string>"       # Optional; The description of the API Version Set
+  version_header_name: "<string>"       # Optional; The name of the Header read from Inbound Requests which defines the API Version; Required when versioning_scheme is Header
+  version_query_name: "<string>"       # Optional; The name of the Query read from Inbound Requests which defines the API Version; Required when versioning_scheme is query

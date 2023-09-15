@@ -1,0 +1,186 @@
+resource "azurerm_app_service" "{{ app_service.name }}" {
+  ## Required Vars
+  name   = "{{ app_service.name }}"
+  location   = "{{ app_service.location }}"
+  resource_group_name   = "{{ app_service.resource_group_name }}"
+  app_service_plan_id   = "{{ app_service.app_service_plan_id }}"
+
+  ## Optional Vars
+  client_cert_enabled   = {{ app_service.client_cert_enabled }}
+  enabled   = {{ app_service.enabled }}
+  https_only   = {{ app_service.https_only }}
+  key_vault_reference_identity_id   = "{{ app_service.key_vault_reference_identity_id }}"
+  tags   = "{{ app_service.tags | to_json | safe }}"
+
+  ## Blocks
+  app_settings {
+    ## Optional Block Vars
+    SOME_KEY   = "{{ app_service.app_settings.SOME_KEY }}"
+    ANOTHER_KEY   = "{{ app_service.app_settings.ANOTHER_KEY }}"
+  }
+  storage_account {
+    ## Required Block Vars
+    name   = "{{ app_service.storage_account.name }}"
+    type   = "{{ app_service.storage_account.type }}"
+    account_name   = "{{ app_service.storage_account.account_name }}"
+    share_name   = "{{ app_service.storage_account.share_name }}"
+    access_key   = "{{ app_service.storage_account.access_key }}"
+    ## Optional Block Vars
+    mount_path   = "{{ app_service.storage_account.mount_path }}"
+  }
+  connection_string {
+    ## Required Block Vars
+    name   = "{{ app_service.connection_string.name }}"
+    type   = "{{ app_service.connection_string.type }}"
+    value   = "{{ app_service.connection_string.value }}"
+  }
+  identity {
+    ## Required Block Vars
+    type   = "{{ app_service.identity.type }}"
+    ## Optional Block Vars
+    identity_ids   = "{{ app_service.identity.identity_ids }}"
+  }
+  logs {
+    ## Optional Block Vars
+    application_logs {
+      ## Optional Block Vars
+      file_system_level   = "{{ app_service.logs.application_logs.file_system_level }}"
+    }
+    http_logs {
+      ## Optional Block Vars
+    }
+    detailed_error_messages_enabled   = {{ app_service.logs.detailed_error_messages_enabled }}
+    failed_request_tracing_enabled   = {{ app_service.logs.failed_request_tracing_enabled }}
+  }
+  site_config {
+    ## Optional Block Vars
+    acr_user_managed_identity_credentials   = {{ app_service.site_config.acr_user_managed_identity_credentials }}
+    acr_user_managed_identity_client_id   = "{{ app_service.site_config.acr_user_managed_identity_client_id }}"
+    always_on   = {{ app_service.site_config.always_on }}
+    app_command_line   = "{{ app_service.site_config.app_command_line }}"
+    auto_swap_slot_name   = "{{ app_service.site_config.auto_swap_slot_name }}"
+    cors   = "{{ app_service.site_config.cors }}"
+    default_documents   = "{{ app_service.site_config.default_documents }}"
+    dotnet_framework_version   = "{{ app_service.site_config.dotnet_framework_version }}"
+    ftps_state   = "{{ app_service.site_config.ftps_state }}"
+    health_check_path   = "{{ app_service.site_config.health_check_path }}"
+    number_of_workers   = "{{ app_service.site_config.number_of_workers }}"
+    http2_enabled   = {{ app_service.site_config.http2_enabled }}
+    ip_restriction {
+      ## Optional Block Vars
+      ip_address   = "{{ app_service.site_config.ip_restriction.ip_address }}"
+      service_tag   = "{{ app_service.site_config.ip_restriction.service_tag }}"
+      virtual_network_subnet_id   = "{{ app_service.site_config.ip_restriction.virtual_network_subnet_id }}"
+      name   = "{{ app_service.site_config.ip_restriction.name }}"
+      priority   = "{{ app_service.site_config.ip_restriction.priority }}"
+      action   = "{{ app_service.site_config.ip_restriction.action }}"
+    }
+    scm_use_main_ip_restriction   = {{ app_service.site_config.scm_use_main_ip_restriction }}
+    scm_ip_restriction {
+      ## Optional Block Vars
+      ip_address   = "{{ app_service.site_config.scm_ip_restriction.ip_address }}"
+      service_tag   = "{{ app_service.site_config.scm_ip_restriction.service_tag }}"
+      virtual_network_subnet_id   = "{{ app_service.site_config.scm_ip_restriction.virtual_network_subnet_id }}"
+      name   = "{{ app_service.site_config.scm_ip_restriction.name }}"
+      priority   = "{{ app_service.site_config.scm_ip_restriction.priority }}"
+      action   = "{{ app_service.site_config.scm_ip_restriction.action }}"
+    }
+    java_version   = "{{ app_service.site_config.java_version }}"
+    java_container   = "{{ app_service.site_config.java_container }}"
+    java_container_version   = "{{ app_service.site_config.java_container_version }}"
+    local_mysql_enabled   = {{ app_service.site_config.local_mysql_enabled }}
+    linux_fx_version   = "{{ app_service.site_config.linux_fx_version }}"
+    windows_fx_version   = "{{ app_service.site_config.windows_fx_version }}"
+    managed_pipeline_mode   = "{{ app_service.site_config.managed_pipeline_mode }}"
+    min_tls_version   = "{{ app_service.site_config.min_tls_version }}"
+    php_version   = "{{ app_service.site_config.php_version }}"
+    python_version   = "{{ app_service.site_config.python_version }}"
+    remote_debugging_enabled   = {{ app_service.site_config.remote_debugging_enabled }}
+    remote_debugging_version   = "{{ app_service.site_config.remote_debugging_version }}"
+    scm_type   = "{{ app_service.site_config.scm_type }}"
+    use_32_bit_worker_process   = "{{ app_service.site_config.use_32_bit_worker_process }}"
+    vnet_route_all_enabled   = {{ app_service.site_config.vnet_route_all_enabled }}
+    websockets_enabled   = {{ app_service.site_config.websockets_enabled }}
+  }
+  auth_settings {
+    ## Required Block Vars
+    enabled   = {{ app_service.auth_settings.enabled }}
+    ## Optional Block Vars
+    active_directory {
+      ## Required Block Vars
+      client_id   = "{{ app_service.auth_settings.active_directory.client_id }}"
+ 
+      ## Optional Block Vars
+      client_secret   = "{{ app_service.auth_settings.active_directory.client_secret }}"
+      allowed_audiences   = "{{ app_service.auth_settings.active_directory.allowed_audiences }}"
+    }
+    additional_login_params   = "{{ app_service.auth_settings.additional_login_params }}"
+    allowed_external_redirect_urls   = "{{ app_service.auth_settings.allowed_external_redirect_urls }}"
+    default_provider   = "{{ app_service.auth_settings.default_provider }}"
+    facebook {
+      ## Required Block Vars
+      app_id   = "{{ app_service.auth_settings.facebook.app_id }}"
+ 
+      app_secret   = "{{ app_service.auth_settings.facebook.app_secret }}"
+ 
+      ## Optional Block Vars
+      oauth_scopes   = "{{ app_service.auth_settings.facebook.oauth_scopes }}"
+    }
+    google {
+      ## Required Block Vars
+      client_id   = "{{ app_service.auth_settings.google.client_id }}"
+ 
+      client_secret   = "{{ app_service.auth_settings.google.client_secret }}"
+ 
+      ## Optional Block Vars
+      oauth_scopes   = "{{ app_service.auth_settings.google.oauth_scopes }}"
+    }
+    issuer   = "{{ app_service.auth_settings.issuer }}"
+    microsoft {
+      ## Required Block Vars
+      client_id   = "{{ app_service.auth_settings.microsoft.client_id }}"
+ 
+      client_secret   = "{{ app_service.auth_settings.microsoft.client_secret }}"
+ 
+      ## Optional Block Vars
+      oauth_scopes   = "{{ app_service.auth_settings.microsoft.oauth_scopes }}"
+    }
+    runtime_version   = "{{ app_service.auth_settings.runtime_version }}"
+    token_refresh_extension_hours   = "{{ app_service.auth_settings.token_refresh_extension_hours }}"
+    token_store_enabled   = {{ app_service.auth_settings.token_store_enabled }}
+    twitter {
+      ## Required Block Vars
+      consumer_key   = "{{ app_service.auth_settings.twitter.consumer_key }}"
+ 
+      consumer_secret   = "{{ app_service.auth_settings.twitter.consumer_secret }}"
+ 
+    }
+    unauthenticated_client_action   = "{{ app_service.auth_settings.unauthenticated_client_action }}"
+  }
+  backup {
+    ## Required Block Vars
+    name   = "{{ app_service.backup.name }}"
+    storage_account_url   = "{{ app_service.backup.storage_account_url }}"
+    schedule {
+    }
+    ## Optional Block Vars
+    enabled   = {{ app_service.backup.enabled }}
+  }
+  schedule {
+    ## Required Block Vars
+    frequency_interval   = "{{ app_service.schedule.frequency_interval }}"
+    frequency_unit   = "{{ app_service.schedule.frequency_unit }}"
+    ## Optional Block Vars
+    keep_at_least_one_backup   = {{ app_service.schedule.keep_at_least_one_backup }}
+    retention_period_in_days   = "{{ app_service.schedule.retention_period_in_days }}"
+    start_time   = "{{ app_service.schedule.start_time }}"
+  }
+  source_control {
+    ## Optional Block Vars
+    repo_url   = "{{ app_service.source_control.repo_url }}"
+    branch   = "{{ app_service.source_control.branch }}"
+    manual_integration   = "{{ app_service.source_control.manual_integration }}"
+    rollback_enabled   = {{ app_service.source_control.rollback_enabled }}
+    use_mercurial   = {{ app_service.source_control.use_mercurial }}
+  }
+}

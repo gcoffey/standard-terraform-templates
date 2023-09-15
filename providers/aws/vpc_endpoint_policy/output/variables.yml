@@ -1,0 +1,4 @@
+vpc_endpoint_policy:
+  name: "<string>"	# Required; A name for this resource
+  vpc_endpoint_id: "<string>"       # Required; The VPC Endpoint ID
+  policy: "<string>"       # Optional; A policy to attach to the endpoint that controls access to the service; Format jsonencode( <JSON Policy> )

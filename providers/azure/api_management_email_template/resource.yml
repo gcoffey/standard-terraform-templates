@@ -1,0 +1,20 @@
+resource:
+  name: "azurerm_api_management_email_template"
+  enable_variable_comments: false
+  var_name: "api_management_email_template"
+  required_vars:
+    - name: "template_name"
+      description: "Email Template; AccountClosedDeveloper, ApplicationApprovedNotificationMessage, ConfirmSignUpIdentityDefault etc"
+      type: "string"
+    - name: "api_management_name"
+      description: "The name of the API Management Service"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the resource group where the Email Template should exist"
+      type: "string"
+    - name: "subject"
+      description: "The subject of the Email"
+      type: "string"
+    - name: "body"
+      description: "The body of the Email"
+      type: "string"

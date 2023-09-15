@@ -1,0 +1,33 @@
+resource "azurerm_app_configuration_feature" "{{ app_configuration_feature.name }}" {
+  ## Required Vars
+  name   = "{{ app_configuration_feature.name }}"
+  configuration_store_id   = "{{ app_configuration_feature.configuration_store_id }}"
+
+  ## Optional Vars
+  description   = "{{ app_configuration_feature.description }}"
+  enabled   = {{ app_configuration_feature.enabled }}
+  label   = "{{ app_configuration_feature.label }}"
+  locked   = {{ app_configuration_feature.locked }}
+  percentage_filter_value   = "{{ app_configuration_feature.percentage_filter_value }}"
+  tags   = "{{ app_configuration_feature.tags | to_json | safe }}"
+
+  ## Blocks
+  targeting_filter {
+    ## Required Block Vars
+    default_rollout_percentage   = "{{ app_configuration_feature.targeting_filter.default_rollout_percentage }}"
+    ## Optional Block Vars
+    groups {
+      ## Required Block Vars
+      name   = "{{ app_configuration_feature.targeting_filter.groups.name }}"
+ 
+      rollout_percentage   = "{{ app_configuration_feature.targeting_filter.groups.rollout_percentage }}"
+ 
+    }
+    users   = "{{ app_configuration_feature.targeting_filter.users | to_json | safe }}"
+  }
+  timewindow_filter {
+    ## Optional Block Vars
+    start   = "{{ app_configuration_feature.timewindow_filter.start }}"
+    end   = "{{ app_configuration_feature.timewindow_filter.end }}"
+  }
+}

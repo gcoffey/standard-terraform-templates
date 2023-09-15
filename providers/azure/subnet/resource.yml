@@ -1,0 +1,57 @@
+resource:
+  name: "azurerm_subnet"
+  enable_variable_comments: false
+  var_name: "subnet"
+  required_vars:
+    - name: "name"
+      description: "The name of the subnet"
+      type: "string"
+    - name: "virtual_network_name"
+      description: "The name of the virtual network"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the resource group to create the virtual network in"
+      type: "string"
+    - name: "address_prefixes"
+      description: "The address prefixes to use for the subnet"
+      type: "string"
+  optional_vars:
+    - name: "delegation"
+      description: "One or more delegation blocks"
+      type: "block"
+    - name: "private_endpoint_network_policies_enabled"
+      description: "Enable or Disable network policies for the private endpoint on the subnet"
+      type: "boolean"
+    - name: "private_link_service_network_policies_enabled"
+      description: "Enable or Disable network policies for the private link service on the subnet"
+      type: "boolean"
+    - name: "service_endpoints"
+      description: "The list of Service endpoints; Microsoft.AzureActiveDirectory, Microsoft.AzureCosmosDB, Microsoft.ContainerRegistry etc"
+      type: "string"
+    - name: "service_endpoint_policy_ids"
+      description: "The list of IDs of Service Endpoint Policies to associate with the subnet"
+      type: "list"
+
+blocks:
+  - name: "delegation"
+    required: false
+    description: "Delegation Block"
+    required_vars:
+      - name: "name"
+        description: "A name for this delegation"
+        type: "string"
+      - name: "service_delegation"
+        description: "A service_delegation block"
+        type: "block"
+  - name: "service_delegation"
+    required: false
+    parent_block: "delegation"
+    description: "Service Delegation Block"
+    required_vars:
+      - name: "name"
+        description: "The name of service to delegate; Microsoft.ApiManagement/service, Microsoft.AzureComsmosDB/clusters etc"
+        type: "string"
+    optional_vars:
+      - name: "actions"
+        description: "A list of Actions which should be delegated; Microsoft.Network/networkinterfaces/*, Microsoft.Network/publicIPAddresses/join/action etc"
+        type: "string"

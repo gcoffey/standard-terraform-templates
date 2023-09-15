@@ -1,0 +1,19 @@
+subnet:
+  name: "<string>"	# Required; A name for this resource
+  vpc_id: "<string>"       # Required; The VPC ID
+  assign_ipv6_address_on_creation: <boolean>        # Optional; Specify tru to indicate that network interfaces created in the subnet should be assigned an IPv6 address; Default false
+  availability_zone: "<string>"       # Optional; AZ for the subnet
+  availability_zone_id: "<string>"       # Optional; AZ ID of the subnet
+  cidr_block: "<string>"       # Optional; The IPv4 CIDR block for the subnet
+  customer_owned_ipv4_pool: "<string>"       # Optional; The customer owned IPv4 address pool; outpost_arn must be specified when this is set
+  enable_dns64: <boolean>        # Optional; Indicates whether DNS queries made to the Amazone Provided DNS Resolver in this subnet should return synthetic IPv6 addresses; Default false
+  enable_resource_name_dns_aaaa_record_on_launch: <boolean>        # Optional; Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records; Default false
+  enable_resource_name_dns_a_record_on_launch: <boolean>        # Optional; Indicates whether to respond to DNS queries for instance hostnames with DNS A records; Default false
+  ipv6_cidr_block: "<string>"       # Optional; The IPv6 network range for the subnet, in CIDR notation; Subnet size must us a /64 prefix length
+  ipv6_native: <boolean>        # Optional; Indicates whether to create an IPv6-only subnet; Default false
+  map_customer_owned_ip_on_launch: <boolean>        # Optional; Specify true to indicate that network interface created in the subnet should be assigned a customer owned IP address; Default false
+  map_public_ip_on_launch: <boolean>        # Optional; Specify true to indicate that instances launched into the subnet should be assigned a Public IP; Default false
+  outpost_arn: "<string>"       # Optional; The Amazon Resource Name of the Outpost
+  private_dns_hostname_type_on_launch: "<string>"       # Optional; The type of hostnames to assign to instance in the subnet at launch; ip-name or resource-name
+  tags:  # Optional; A map of tags to assign to the resource; If provider default_tags is set, duplicate keys here will override provider tags
+    - <list>

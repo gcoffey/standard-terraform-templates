@@ -1,0 +1,24 @@
+resource:
+  name: "azurerm_api_management_identity_provider_aad"
+  enable_variable_comments: false
+  var_name: "api_management_identity_provider_aad"
+  required_vars:
+    - name: "api_management_name"
+      description: "The name of the API Management Service"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the Resource Group where the API Management Service exists"
+      type: "string"
+    - name: "client_id"
+      description: "Client Id of the Application in the AAD Identity Provider"
+      type: "string"
+    - name: "client_secret"
+      description: "Client Secret of the Application in the AAD Identity Provider"
+      type: "string"
+    - name: "allowed_tenants"
+      description: "List of allowed AAD Tenants"
+      type: "string"
+  optional_vars:
+    - name: "signin_tenant"
+      description: "The AAD Tenant to use instead of Common when logging into Active Directory"
+      type: "string"

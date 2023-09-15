@@ -1,0 +1,60 @@
+api_management_api_operation:
+  name: "<string>"	# Required; A name for this resource
+  operation_id: "<string>"       # Required; A unique identifier for this API Operation
+  api_name: "<string>"       # Required; The name of the API within the API Management Service
+  api_management_name: "<string>"       # Required; The name of the API Management Service where the API exist
+  resource_group_name: "<string>"       # Required; The name of the resource group in which the API Management Service exists
+  display_name: "<string>"       # Required; The display name for this API Management Operation
+  method: "<string>"       # Required; The HTTP Method used for this API Management Operation; GET, DELETE, PUT or POST
+  url_template: "<string>"       # Required; The relative URL Template identifying the target resource for this operation
+  description: "<string>"       # Optional; A description for this API Operation
+  request:
+    description: "<string>"       # Optional; A description of the HTTP request
+    header:
+      name: "<string>"       # Required; Name of the header 
+      required: <boolean>        # Required; is this header required 
+      type: "<string>"       # Required; The type of this header such as string 
+      description: "<string>"       # Optional; A description of this header
+      default_value: "<string>"       # Optional; The default value for this header
+      values: "<string>"       # Optional; One or more acceptable values for this header
+      schema_id: "<string>"       # Optional; The name of the schemar
+      type_name: "<string>"       # Optional; The type name defined by the schema
+    query_parameter:
+      name: "<string>"       # Required; The name of this query parameter 
+      required: <boolean>        # Required; Is this query paramter required 
+      type: "<string>"       # Required; The type of this query parameter such as string 
+      description: "<string>"       # Optional; A description of this query parameter
+      default_value: "<string>"       # Optional; The default value for this query parameter
+      values: "<string>"       # Optional; One or more acceptable values for this query parameter
+      schema_id: "<string>"       # Optional; The name of the schema
+      type_name: "<string>"       # Optional; The type name defined by the schema
+    representation:
+      content_type: "<string>"       # Required; The content type of this representation such as application/json 
+      schema_id: "<string>"       # Optional; The ID of an API Management Schema
+      type_name: "<string>"       # Optional; The type name defined by the schema
+  response:
+    status_code: "<string>"       # Required; The HTTP status code
+    description: "<string>"       # Optional; A description of the HTTP response
+    header:
+      name: "<string>"       # Required; Name of the header 
+      required: <boolean>        # Required; is this header required 
+      type: "<string>"       # Required; The type of this header such as string 
+      description: "<string>"       # Optional; A description of this header
+      default_value: "<string>"       # Optional; The default value for this header
+      values: "<string>"       # Optional; One or more acceptable values for this header
+      schema_id: "<string>"       # Optional; The name of the schemar
+      type_name: "<string>"       # Optional; The type name defined by the schema
+    representation:
+      content_type: "<string>"       # Required; The content type of this representation such as application/json 
+      schema_id: "<string>"       # Optional; The ID of an API Management Schema
+      type_name: "<string>"       # Optional; The type name defined by the schema
+  template_parameter:
+    name: "<string>"       # Required; The name of this tempalte parameter
+    required: <boolean>        # Required; Is this template parameter required
+    type: "<string>"       # Required; The type of this template parameter such as string
+    description: "<string>"       # Optional; A description of the template parameter
+    default_value: "<string>"       # Optional; The default value for this template parameter
+    values: "<string>"       # Optional; One or more acceptable values
+    example:
+    schema_id: "<string>"       # Optional; The name of the schema
+    type_name: "<string>"       # Optional; The type name defined by the schema

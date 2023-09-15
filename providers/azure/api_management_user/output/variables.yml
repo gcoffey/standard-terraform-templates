@@ -1,0 +1,12 @@
+api_management_user:
+  name: "<string>"	# Required; A name for this resource
+  user_id: "<string>"       # Required; The identifier for this User
+  api_management_name: "<string>"       # Required; The name of the API Management Service
+  email: "<string>"       # Required; The email address associated with this user
+  resource_group_name: "<string>"       # Required; The name of the Resource Group where the API Management Service exists
+  first_name: "<string>"       # Required; The first name for this user
+  last_name: "<string>"       # Required; The last name for this user
+  confirmation: "<string>"       # Optional; The kind of confirmation email which will be sent to this user; invite or signup
+  note: "<string>"       # Optional; A note about this user
+  password: "<string>"       # Optional; The password associated with this user
+  state: "<string>"       # Optional; The state of this user; active, blocked or pending

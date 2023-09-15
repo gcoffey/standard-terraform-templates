@@ -1,0 +1,12 @@
+api_management_subscription:
+  name: "<string>"	# Required; A name for this resource
+  api_management_name: "<string>"       # Required; The name of the API Management Service
+  display_name: "<string>"       # Required; The display name of the API Management Product
+  product_id: "<string>"       # Required; The identifier of the Product
+  resource_group_name: "<string>"       # Required; The name of the Resource Group
+  user_id: "<string>"       # Optional; The ID of the User which should be assigned to this Subscription
+  api_id: "<string>"       # Optional; The ID of the API which should be assigned to this Subscription
+  primary_key: "<string>"       # Optional; The primary subscription key to use for the subscription
+  secondary_key: "<string>"       # Optional; The secondary subscription key to use for the subscription
+  state: "<string>"       # Optional; The state of this Subscription; active, cancelled, expired, rejected, submitted or suspended; Default submitted
+  allow_tracing: <boolean>        # Optional; Determines whether tracing can be enabled; Default true

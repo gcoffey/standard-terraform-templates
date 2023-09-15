@@ -1,0 +1,33 @@
+resource:
+  name: "azurerm_capacity_reservation"
+  enable_variable_comments: false
+  var_name: "capacity_reservation"
+  required_vars:
+    - name: "name"
+      description: "Specifies the name of this Capacity Reservation"
+      type: "string"
+    - name: "capacity_reservation_group_id"
+      description: "The ID of the Capacity Reservation Group"
+      type: "string"
+    - name: "sku"
+      description: "An SKU Block"
+      type: "block"
+  optional_vars:
+    - name: "zone"
+      description: "Specifies the Availability Zone for this Capacity Reservation"
+      type: "string"
+    - name: "tags"
+      description: "A mapping of tags"
+      type: "list"
+
+blocks:
+  - name: "sku"
+    required: false
+    description: "An SKU Block"
+    required_vars:
+      - name: "name"
+        description: "Name of the sku, such as Standard_F2"
+        type: "string"
+      - name: "capacity"
+        description: "Specifies the number of instances to be reserved. Must be a positive integer"
+        type: "integer"

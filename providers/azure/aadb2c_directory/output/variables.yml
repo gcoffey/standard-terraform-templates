@@ -1,0 +1,10 @@
+aadb2c_directory:
+  name: "<string>"	# Required; A name for this resource
+  data_residency_location: "<string>"       # Required; Location in which the B2C tenant is hosted and data resides; Asia Pacific, Australia, Europe, Global or United States
+  domain_name: "<string>"       # Required; Domain name of the B2C tenant including the .onmicrosoft.com
+  resource_group_name: "<string>"       # Required; The name of the Resource Group where the AAD B2C Directory should exist
+  sku_name: "<string>"       # Required; Billing SKU for the B2C tenant; PremiumP1 or PremiumP2
+  country_code: "<string>"       # Optional; Country code of the B2C tenant
+  display_name: "<string>"       # Optional; The initial display name of the B2C tenant
+  tags:  # Optional; A mapping of tags to apply to the resource
+    - <list>

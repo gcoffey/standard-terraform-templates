@@ -1,0 +1,5 @@
+app_service_source_control_token:
+  name: "<string>"	# Required; A name for this resource
+  type: "<string>"       # Required; The source control type; BitBucket, Dropbox, GitHub or OneDrive
+  token: "<string>"       # Required; The OAuth access token
+  token_secret: "<string>"       # Optional; The OAuth access token secret

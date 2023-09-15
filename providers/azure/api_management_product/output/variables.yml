@@ -1,0 +1,12 @@
+api_management_product:
+  name: "<string>"	# Required; A name for this resource
+  api_management_name: "<string>"       # Required; The name of the API Management Service
+  display_name: "<string>"       # Required; The display name of the API Management Product
+  product_id: "<string>"       # Required; The identifier for this Product
+  published: <boolean>        # Required; Is this Product Published?
+  resource_group_name: "<string>"       # Required; The name of the Resource Group
+  approval_required: <boolean>        # Optional; Do subscribers need to be approved prior to being able to use the Product?
+  subscription_required: <boolean>        # Optional; Is a Subscription required to access APIs included in this Product?
+  description: "<string>"       # Optional; A description of this Product
+  subscriptions_limit: "<string>"       # Optional; The number of subscriptions a user can have to this Product at the same time
+  terms: "<string>"       # Optional; The Terms and Conditions for this Product

@@ -1,0 +1,10 @@
+resource "azurerm_api_management_email_template" "{{ api_management_email_template.name }}" {
+  ## Required Vars
+  template_name   = "{{ api_management_email_template.template_name }}"
+  api_management_name   = "{{ api_management_email_template.api_management_name }}"
+  resource_group_name   = "{{ api_management_email_template.resource_group_name }}"
+  subject   = "{{ api_management_email_template.subject }}"
+  body   = "{{ api_management_email_template.body }}"
+
+
+}

@@ -1,0 +1,43 @@
+api_management_api:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the API Management API
+  api_management_name: "<string>"       # Required; The name of the API Management Service where this API should be created
+  resource_group_name: "<string>"       # Required; The name of the resource group where the API Management API exists
+  revision: "<string>"       # Required; The revision which is used for this API
+  api_type: "<string>"       # Optional; Type of API; graphql, http, soap, websocket; Default http
+  display_name: "<string>"       # Optional; Display name of the API
+  path: "<string>"       # Optional; The relative URL Path for this API Management API
+  protocols:  # Optional; A list of protocols available to this API; http, https, ws or wss
+    - <list>
+  description: "<string>"       # Optional; A description of the API Management API
+  service_url: "<string>"       # Optional; Absolute URL of the backend service implementing this API
+  soap_pass_through: <boolean>        # Optional; Should this API expose a SOAP frontend, rather than HTTP; Default false
+  subscription_required: <boolean>        # Optional; Should this API require a subscription key; Default true
+  terms_of_service_url: "<string>"       # Optional; Absolute URL of the Terms of Service
+  version: "<string>"       # Optional; Version number of this API
+  version_set_id: "<string>"       # Optional; ID of the Version Set the API is associated with
+  revision_description: "<string>"       # Optional; Description of the API Revision
+  version_description: "<string>"       # Optional; Description of the API Version
+  source_api_id: "<string>"       # Optional; API id of the source API e.g. azurerm_api_managemenet_api.example.id
+  contact:
+    email: "<string>"       # Optional; Email address of the contact person / org
+    name: "<string>"       # Optional; Name of the contact person / org
+    url: "<string>"       # Optional; Absolute URL of the contact info
+  import:
+    content_format: "<string>"       # Required; API Definition format; openapi, openapi+json, openapi+json-link, openapi-link, swagger-json, swagger-link-json etc
+    content_value: "<string>"       # Required; Content of the API Definition or URL to API definition
+    wsdl_selector:
+      service_name: "<string>"       # Required; The name of the service to import 
+      endpoint_name: "<string>"       # Required; The name of the endpoint to import 
+  license:
+    name: "<string>"       # Optional; Name of the license
+    url: "<string>"       # Optional; Absolute URL of the license
+  oauth2_authorization:
+    authorization_server_name: "<string>"       # Required; OAuth authorization server identifier
+    scope: "<string>"       # Optional; Operations scope
+  openid_authentication:
+    openid_provider_name: "<string>"       # Required; OpenID Connect provider identifier
+    bearer_token_sending_methods: "<string>"       # Optional; How to send bearer token to the server; authorizationHeader or query
+  subscription_key_parameter_names:
+    header: "<string>"       # Required; The name of the HTTP Header to use for the subscription key
+    query: "<string>"       # Required; The name of the QueryString param for the subscription key

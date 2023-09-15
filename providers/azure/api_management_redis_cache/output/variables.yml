@@ -1,0 +1,8 @@
+api_management_redis_cache:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name which should be used for this API Management Redis Cache
+  api_management_id: "<string>"       # Required; The resource ID of the API Management Service
+  connection_string: "<string>"       # Required; The connection string to the Cache for Redis
+  description: "<string>"       # Optional; The description of the API Management Redis Cache
+  redis_cache_id: "<string>"       # Optional; The resource ID of the Cache for Redis
+  cache_location: "<string>"       # Optional; The location where to use cache from; Defaults to default

@@ -1,0 +1,5 @@
+api_management_policy:
+  name: "<string>"	# Required; A name for this resource
+  api_management_id: "<string>"       # Required; The ID of the API Management Service
+  xml_content: "<string>"       # Optional; The XML Content for this Policy
+  xml_link: "<string>"       # Optional; A link to a Policy XML Document, which must be publicly available

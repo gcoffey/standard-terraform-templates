@@ -1,0 +1,7 @@
+cloudfront_function:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Unique name for your CF Function
+  code: "<string>"       # Required; Source code of the function
+  runtime: "<string>"       # Required; Identifier of the function's runtime; Only cloudfront-js-1.0 is currently valid
+  comment: "<string>"       # Optional; A comment for this function resource
+  publish: <boolean>        # Optional; Whether to publish creation / change as Live CF Function version; Default true

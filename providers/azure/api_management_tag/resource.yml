@@ -1,0 +1,14 @@
+resource:
+  name: "azurerm_api_management_tag"
+  enable_variable_comments: false
+  var_name: "api_management_tag"
+  required_vars:
+    - name: "api_management_id"
+      description: "The ID of the API Management"
+      type: "string"
+    - name: "name"
+      description: "The name which should be used for this API Management tag"
+      type: "string"
+    - name: "display_name"
+      description: "The display name of the API Management Tag; Default is the value of name"
+      type: "string"

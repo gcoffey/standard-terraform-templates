@@ -1,0 +1,35 @@
+resource "azurerm_app_service_source_control" "{{ app_service_source_control.name }}" {
+  ## Required Vars
+  app_id   = "{{ app_service_source_control.app_id }}"
+
+  ## Optional Vars
+  branch   = "{{ app_service_source_control.branch }}"
+  repo_url   = "{{ app_service_source_control.repo_url }}"
+  use_manual_integration   = {{ app_service_source_control.use_manual_integration }}
+  rollback_enabled   = {{ app_service_source_control.rollback_enabled }}
+  use_local_git   = {{ app_service_source_control.use_local_git }}
+  use_mercurial   = {{ app_service_source_control.use_mercurial }}
+
+  ## Blocks
+  github_action_configuration {
+    ## Optional Block Vars
+    code_configuration {
+      ## Required Block Vars
+      runtime_stack   = "{{ app_service_source_control.github_action_configuration.code_configuration.runtime_stack }}"
+ 
+      runtime_version   = "{{ app_service_source_control.github_action_configuration.code_configuration.runtime_version }}"
+ 
+    }
+    container_configuration {
+      ## Required Block Vars
+      image_name   = "{{ app_service_source_control.github_action_configuration.container_configuration.image_name }}"
+ 
+      registry_url   = "{{ app_service_source_control.github_action_configuration.container_configuration.registry_url }}"
+ 
+      ## Optional Block Vars
+      registry_password   = "{{ app_service_source_control.github_action_configuration.container_configuration.registry_password }}"
+      registry_username   = "{{ app_service_source_control.github_action_configuration.container_configuration.registry_username }}"
+    }
+    generate_workflow_file   = {{ app_service_source_control.github_action_configuration.generate_workflow_file }}
+  }
+}

@@ -1,0 +1,12 @@
+resource "aws_vpc_endpoint_service" "{{ vpc_endpoint_service.name }}" {
+  ## Required Vars
+  acceptance_required   = {{ vpc_endpoint_service.acceptance_required }}
+
+  ## Optional Vars
+  allowed_principals   = "{{ vpc_endpoint_service.allowed_principals }}"
+  gateway_load_balancer_arns   = "{{ vpc_endpoint_service.gateway_load_balancer_arns }}"
+  network_load_balancer_arns   = "{{ vpc_endpoint_service.network_load_balancer_arns }}"
+  private_dns_name   = "{{ vpc_endpoint_service.private_dns_name }}"
+  supported_ip_address_types   = "{{ vpc_endpoint_service.supported_ip_address_types }}"
+
+}

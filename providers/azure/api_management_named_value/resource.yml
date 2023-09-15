@@ -1,0 +1,43 @@
+resource:
+  name: "azurerm_api_management_named_value"
+  enable_variable_comments: false
+  var_name: "api_management_named_value"
+  required_vars:
+    - name: "name"
+      description: "The name of the API Management Named Value"
+      type: "string"
+    - name: "api_management_name"
+      description: "The name of the API Management Service"
+      type: "string"
+    - name: "display_name"
+      description: "The display name of this API Management Named Value"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the Resource Group where the API Management Service API Diagnostics Logs should exist"
+      type: "string"
+  optional_vars:
+    - name: "value"
+      description: "The value of this API Management Named Value"
+      type: "string"
+    - name: "value_from_key_vault"
+      description: "A value from key vault block"
+      type: "block"
+    - name: "secret"
+      description: "Specifies whether this Named Value is secret; true, false; Default false"
+      type: "boolean"
+    - name: "tags"
+      description: "A list of tags to apply to this resource"
+      type: "list"
+blocks:
+  - name: "value_from_key_vault"
+    required: false
+    description: "Value from key vault block"
+    required_vars:
+      - name: "secret_id"
+        description: "The resource ID of the Key Vault Secret"
+        type: "string"
+    optional_vars:
+      - name: "identity_client_id"
+        description: "The client ID of User Assigned Identity to access the Key Vault"
+        type: "string"
+

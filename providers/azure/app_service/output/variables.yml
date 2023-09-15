@@ -1,0 +1,125 @@
+app_service:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the App Service
+  location: "<string>"       # Required; The Azure location where to create the resource
+  resource_group_name: "<string>"       # Required; The name of the resource group where to create the App Service
+  app_service_plan_id: "<string>"       # Required; The ID of the App Service Plan
+  client_cert_enabled: <boolean>        # Optional; Does the App Service require a client to present a certificate; Default false
+  enabled: <boolean>        # Optional; Is the App Service enabled
+  https_only: <boolean>        # Optional; Can the App Service be access only using HTTPS; Default false
+  key_vault_reference_identity_id: "<string>"       # Optional; The User Assigned Identity Id used for looking up Key Vault secrets
+  tags:  # Optional; A mapping of tags
+    - <list>
+  app_settings:
+    SOME_KEY: "<string>"       # Optional; Specify any application key / values your App requires
+    ANOTHER_KEY: "<string>"       # Optional; Specify any application key / values your App requires
+  storage_account:
+    name: "<string>"       # Required; The name of the storage account identifier
+    type: "<string>"       # Required; The type of storage; AzureBlob or AzureFiles
+    account_name: "<string>"       # Required; The name of the storage account
+    share_name: "<string>"       # Required; The name of the file share (container name when type = AzureBlob)
+    access_key: "<string>"       # Required; The path to mount the storage within the site's runtime environment
+    mount_path: "<string>"       # Optional; The path to mount the storage within the site's runtime environment
+  connection_string:
+    name: "<string>"       # Required; The name of the connection string
+    type: "<string>"       # Required; The type of connection string; APIHub, Custom, DocDb, EventHub, MySQL, NotificationHub, PostgreSQL, RedisCache etc
+    value: "<string>"       # Required; The value for the Connection String
+  identity:
+    type: "<string>"       # Required; The Identity type of the App Service; SystemAssigned or UserAssigned
+    identity_ids: "<string>"       # Optional; Specifies a list of user managed identity ids; Required if type = UserAssigned
+  logs:
+    application_logs:
+      file_system_level: "<string>"       # Optional; Log level for filesystem based logging; Error, Information, Verbose, Warning or Off; Default Off
+    http_logs:
+    detailed_error_messages_enabled: <boolean>        # Optional; Should detailed error message be enabled; Default false
+    failed_request_tracing_enabled: <boolean>        # Optional; Should failed request tracing be enabled; Default false
+  site_config:
+    acr_user_managed_identity_credentials: <boolean>        # Optional; Are Managed Identity Credentials use for Azure Container Registry pull?; true, false
+    acr_user_managed_identity_client_id: "<string>"       # Optional; If using User Managed Identity, the User Managed Identity Client Id
+    always_on: <boolean>        # Optional; Should the app be loaded at all times?; Default false
+    app_command_line: "<string>"       # Optional; App command line to launch e.g. /sbin/myserver -b 0.0.0.0
+    auto_swap_slot_name: "<string>"       # Optional; The name of the slot to automatically swap to during deployment
+    cors: "<string>"       # Optional; A Cors Block
+    default_documents: "<string>"       # Optional; The ordering of default documents to load, if an address isn't specified
+    dotnet_framework_version: "<string>"       # Optional; The version of the .NET framework CLR used in this App Service; v2.0, v4.0, v5.0 or v6.0; Default v4.0
+    ftps_state: "<string>"       # Optional; State of the FTP / FTPS service for this App Service; AllAllowed, FtpsOnly or Disabled
+    health_check_path: "<string>"       # Optional; The health check path to be pinged by App Service
+    number_of_workers: "<string>"       # Optional; The scaled number of workers (for per site scaling) of this App Service
+    http2_enabled: <boolean>        # Optional; Is HTTP2 Enabled on this App Service?; Default false
+    ip_restriction:
+      ip_address: "<string>"       # Optional; The IP Address used for this IP Restriction in CIDR notation
+      service_tag: "<string>"       # Optional; The Service Tag used for this IP Restriction
+      virtual_network_subnet_id: "<string>"       # Optional; The Virtual Network Subnet ID used for this IP restriction
+      name: "<string>"       # Optional; The Name of this IP restriction
+      priority: "<string>"       # Optional; The priority for this IP Restriction
+      action: "<string>"       # Optional; Does this restriction Allow or Deny access for this IP range; Default Allow
+    scm_use_main_ip_restriction: <boolean>        # Optional; IP security restrictions for scm to use main; Default false
+    scm_ip_restriction:
+      ip_address: "<string>"       # Optional; The IP Address used for this IP Restriction in CIDR notation
+      service_tag: "<string>"       # Optional; The Service Tag used for this IP Restriction
+      virtual_network_subnet_id: "<string>"       # Optional; The Virtual Network Subnet ID used for this IP restriction
+      name: "<string>"       # Optional; The Name of this IP restriction
+      priority: "<string>"       # Optional; The priority for this IP Restriction
+      action: "<string>"       # Optional; Does this restriction Allow or Deny access for this IP range; Default Allow
+    java_version: "<string>"       # Optional; The version of Java to use; 1.7, 1.8, 11
+    java_container: "<string>"       # Optional; The Java Container to use; JAVA, JETTY or TOMCAT
+    java_container_version: "<string>"       # Optional; The version of the Java Container to use
+    local_mysql_enabled: <boolean>        # Optional; Is MySQL In App Enabled?
+    linux_fx_version: "<string>"       # Optional; Linux App Framework and version for the App Service; DOCKER|<user/image:tag>, COMPOSE|${filebase64('compose.yml')} etc
+    windows_fx_version: "<string>"       # Optional; The Windows Docker container image; DOCKER|<user/image:tag>
+    managed_pipeline_mode: "<string>"       # Optional; The managed pipeline mode; Integrated or Classic; Default Integrated
+    min_tls_version: "<string>"       # Optional; The minimum supported TLS vesion for the App Service; 1.0, 1.1 or 1.2; Default 1.2
+    php_version: "<string>"       # Optional; The version of PHP to use in this App Service; 5.5, 5.6, 7.0, 7.1, 7.2, 7.3 or 7.4
+    python_version: "<string>"       # Optional; The version of Python to use in this App Service; 2.7 or 3.4
+    remote_debugging_enabled: <boolean>        # Optional; Is Remote Debugging Enabled?; Default false
+    remote_debugging_version: "<string>"       # Optional; Which version of Visual Studio should the Remote Debugged be compatible with?; VS2017 or VS2019
+    scm_type: "<string>"       # Optional; The type of Source Control enabled for this App Service; BitbucketGit, BitbucketHg, CodePlexGit, CodePlexHg, Dropbox, ExternalGit etc
+    use_32_bit_worker_process: "<string>"       # Optional; Should the App Service run in 32 bit mode rather than 64 bit mode?
+    vnet_route_all_enabled: <boolean>        # Optional; Should all outbound traffic to have Virtual Network Security Groups and User Defined Routes Applied? Default false
+    websockets_enabled: <boolean>        # Optional; Should websockets be enabled?
+  auth_settings:
+    enabled: <boolean>        # Required; Is Authentication enabled?
+    active_directory:
+      client_id: "<string>"       # Required; The Client ID of this relying part application 
+      client_secret: "<string>"       # Optional; The Client Secret of this relying party application
+      allowed_audiences: "<string>"       # Optional; Allowed audience values to consider when validating JWTs issued by Azure Active Directory
+    additional_login_params: "<string>"       # Optional; Login parameters to send to the OpenID Connect authorization endpoint when a user logs in
+    allowed_external_redirect_urls: "<string>"       # Optional; External URLs that can be redirected to as part of logging in or logging out of the app
+    default_provider: "<string>"       # Optional; The default provider to use when multiple provides have been setup; AzureActiveDirectory, Facebook, Google etc
+    facebook:
+      app_id: "<string>"       # Required; The App ID of the Facebook app used for login 
+      app_secret: "<string>"       # Required; The App Secret of the Facebook app used for login 
+      oauth_scopes: "<string>"       # Optional; The OAuth 2.0 scopes that will be requested as part of Facebook login authentication
+    google:
+      client_id: "<string>"       # Required; The OpenID Connect Client ID for the Google Web App 
+      client_secret: "<string>"       # Required; The client secret associated with the Google Web App 
+      oauth_scopes: "<string>"       # Optional; The OAuth 2.0 scopes that will be requested as part of Google login authentication
+    issuer: "<string>"       # Optional; Issuer URI
+    microsoft:
+      client_id: "<string>"       # Required; The OpenID Connect Client ID for the App 
+      client_secret: "<string>"       # Required; The client secret associated with the App 
+      oauth_scopes: "<string>"       # Optional; The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication
+    runtime_version: "<string>"       # Optional; The runtime version of the Authentication / Authorization module
+    token_refresh_extension_hours: "<string>"       # Optional; The number of hours after session token expiration that a session token can be used to call the token Refresh API
+    token_store_enabled: <boolean>        # Optional; If enabled the module will durably store platform-specifc security tokens that are obtained during login flows
+    twitter:
+      consumer_key: "<string>"       # Required; The consumer key of the Twitter app used for login 
+      consumer_secret: "<string>"       # Required; The consumer secret of the Twitter app used for login 
+    unauthenticated_client_action: "<string>"       # Optional; The action to take when an unauthenticated client attempts to access the app; AllowAnonymous or RedirectToLoginPage
+  backup:
+    name: "<string>"       # Required; The name for this backup
+    storage_account_url: "<string>"       # Required; The SAS URL to a Storage Container where Backups should be saved
+    schedule:
+    enabled: <boolean>        # Optional; Is this backup enabled?; Default true
+  schedule:
+    frequency_interval: "<string>"       # Required; Sets how often the backup should be executed
+    frequency_unit: "<string>"       # Required; Sets the unite of time for how often the backup should be executed; Day or Hour
+    keep_at_least_one_backup: <boolean>        # Optional; Should at least one backup always be kept in the Storage Account by the Retention Policy
+    retention_period_in_days: "<string>"       # Optional; Specifies the number of days after which Backups should be delete; Default 30
+    start_time: "<string>"       # Optional; Sets when the schedule should start working
+  source_control:
+    repo_url: "<string>"       # Optional; The URL of the source code repository
+    branch: "<string>"       # Optional; The branch of the remote repository to use; Default master
+    manual_integration: "<string>"       # Optional; Limits to manual integration; Default false
+    rollback_enabled: <boolean>        # Optional; Enable roll-back for the repository; Default false
+    use_mercurial: <boolean>        # Optional; Use mercurial if true, otherwise uses Git

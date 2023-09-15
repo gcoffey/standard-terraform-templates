@@ -1,0 +1,27 @@
+resource:
+  name: "azurerm_api_management_group"
+  enable_variable_comments: false
+  var_name: "api_management_group"
+  required_vars:
+    - name: "name"
+      description: "The name of the API Management Group"
+      type: "string"
+    - name: "api_management_name"
+      description: "The name of the API Management Group"
+      type: "string"
+    - name: "display_name"
+      description: "The display name of this API Management Group"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the Resource Group where the API Management Service API Diagnostics Logs should exist"
+      type: "string"
+  optional_vars:
+    - name: "description"
+      description: "The description of this API Management Group"
+      type: "string"
+    - name: "external_id"
+      description: "The identifier of the External Group e.g. aad://<tenant id>/groups/<group id>"
+      type: "string"
+    - name: "type"
+      description: "The type of this API Management Group; custom, external or system; Default is custom"
+      type: "string"

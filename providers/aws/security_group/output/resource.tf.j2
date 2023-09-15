@@ -1,0 +1,38 @@
+resource "aws_security_group" "{{ security_group.name }}" {
+
+  ## Optional Vars
+  description   = "{{ security_group.description }}"
+  name_prefix   = "{{ security_group.name_prefix }}"
+  name   = "{{ security_group.name }}"
+  revoke_rules_on_delete   = {{ security_group.revoke_rules_on_delete }}
+  tags   = "{{ security_group.tags | to_json | safe }}"
+  vpc_id   = "{{ security_group.vpc_id }}"
+
+  ## Blocks
+  ingress {
+    ## Required Block Vars
+    from_port   = "{{ security_group.ingress.from_port }}"
+    to_port   = "{{ security_group.ingress.to_port }}"
+    protocol   = "{{ security_group.ingress.protocol }}"
+    ## Optional Block Vars
+    cidr_blocks   = "{{ security_group.ingress.cidr_blocks | to_json | safe }}"
+    description   = "{{ security_group.ingress.description }}"
+    ipv6_cidr_blocks   = "{{ security_group.ingress.ipv6_cidr_blocks | to_json | safe }}"
+    prefix_list_ids   = "{{ security_group.ingress.prefix_list_ids | to_json | safe }}"
+    security_groups   = "{{ security_group.ingress.security_groups | to_json | safe }}"
+    self   = {{ security_group.ingress.self }}
+  }
+  egress {
+    ## Required Block Vars
+    from_port   = "{{ security_group.egress.from_port }}"
+    to_port   = "{{ security_group.egress.to_port }}"
+    protocol   = "{{ security_group.egress.protocol }}"
+    ## Optional Block Vars
+    cidr_blocks   = "{{ security_group.egress.cidr_blocks | to_json | safe }}"
+    description   = "{{ security_group.egress.description }}"
+    ipv6_cidr_blocks   = "{{ security_group.egress.ipv6_cidr_blocks | to_json | safe }}"
+    prefix_list_ids   = "{{ security_group.egress.prefix_list_ids | to_json | safe }}"
+    security_groups   = "{{ security_group.egress.security_groups | to_json | safe }}"
+    self   = {{ security_group.egress.self }}
+  }
+}

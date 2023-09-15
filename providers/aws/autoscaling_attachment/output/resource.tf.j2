@@ -1,0 +1,9 @@
+resource "aws_autoscaling_attachment" "{{ autoscaling_attachment.name }}" {
+  ## Required Vars
+  autoscaling_group_name   = "{{ autoscaling_attachment.autoscaling_group_name }}"
+
+  ## Optional Vars
+  elb   = "{{ autoscaling_attachment.elb }}"
+  lb_target_group_arn   = "{{ autoscaling_attachment.lb_target_group_arn }}"
+
+}

@@ -1,0 +1,18 @@
+resource:
+  name: "azurerm_api_management_gateway_certificate_authority"
+  enable_variable_comments: false
+  var_name: "api_management_gateway_certificate_authority"
+  required_vars:
+    - name: "api_management_id"
+      description: "The ID of the API Management Service"
+      type: "string"
+    - name: "certificate_name"
+      description: "The name of the API Management Certificate"
+      type: "string"
+    - name: "gateway_name"
+      description: "The name of the API Management Gateway"
+      type: "string"
+  optional_vars:
+    - name: "is_trusted"
+      description: "Whether the API Management Gateway Certificate Authority is trusted"
+      type: "boolean"

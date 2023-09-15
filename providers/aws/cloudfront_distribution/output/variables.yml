@@ -1,0 +1,90 @@
+cloudfront_distribution:
+  name: "<string>"	# Required; A name for this resource
+  enabled: <boolean>        # Required; Whether the distribution is enabled to accept end user requests for content
+  aliases: "<string>"       # Optional; Extra CNAMEs, if any, for this distribution
+  comment: "<string>"       # Optional; Any comments you want to include about the distribution
+  default_root_object: "<string>"       # Optional; Object that you want CloudFront to return when an end user requests the root URL
+  is_ipv6_enabled: <boolean>        # Optional; Whether the IPv6 is enabled for the distribution
+  http_version: "<string>"       # Optional; Maximum HTTP version to support on the distribution. Allowed values http1.1, http2, http2and3 or http3; Default http2
+  ordered_cache_behavior:  # Optional; Ordered list of cache behaviors resource for this distribution
+    - <list>
+  price_class: "<string>"       # Optional; Price class for this distribution; PriceClass_All, PriceClass_200 or PriceClass_100
+  web_acl_id: "<string>"       # Optional; Unique identifier that specifies the AWS WAF Web ACL, if any, to associate with this distribution
+  retain_on_delete: <boolean>        # Optional; Disables the distribution instead of deleting it when destroying the resource; Default false
+  wait_for_deployment: <boolean>        # Optional; If enabled, the resource will wait for the distribution status to change from InProgress to Deployed; Default true
+  tags:  # Optional; A map of tags to assign to the resource; If provider default_tags is set, duplicate keys here will override provider tags
+    - <list>
+  default_cache_behavior:
+    allowed_methods: "<string>"       # Required; Controls which HTTP methods CloudFront processes and forwards to your Amazon S3 bucket or custom origin
+    cached_methods: "<string>"       # Required; Controls whether CloudFront caches the response to requests using the specified HTTP methods
+    path_pattern: "<string>"       # Required; Pattern that specifies which requests you want this cache behavior to apply to
+    target_origin_id: "<string>"       # Required; Value of ID for the origin that you want CF to route request sto when a request matches the path pattern
+    viewer_protocol_policy: "<string>"       # Required; Specify the protocol policy that users can use to access the files in the origin specified; allow-all, https-only or redirect-to-https
+    cache_policy_id: "<string>"       # Optional; Unique identifier of the cache policy that is attached to the cache behavior
+    compress: <boolean>        # Optional; Whether you want CloudFront to automatically compress content for web request that include Accept-Encoding: gzip; Default false
+    default_ttl: "<string>"       # Optional; Default amount of time (in seconds) that an object is in a CloudFront cache before CloudFront goes back to the origin
+    field_level_encryption_id: "<string>"       # Optional; Field level encryption configuration ID
+    lambda_function_association:
+      event_type: "<string>"       # Required; Specific event to trigger this function; viewer-request, origin-request, viewer-response or origin-response 
+      lambda_arn: "<string>"       # Required; ARN of the Lambda function 
+      include_body: <boolean>        # Optional; When set to true it exposes the request body to the lambda function; Default false
+    function_association:
+      event_type: "<string>"       # Required; Specific event to trigger this function; viewer-request or viewer-response 
+      function_arn: "<string>"       # Required; ARN of the CF function 
+    max_ttl: "<string>"       # Optional; Maximum amount of time (in seconds) that an object is in a CloudFront cache before CF goes back to origin
+    min_ttl: "<string>"       # Optional; Minimum amount of time that you want objects to stay in CloudFront caches before CF goes back to origin
+    origin_request_policy_id: "<string>"       # Optional; Unique identifier of the origin request policy that is attached to the behavior
+    realtime_log_config_arn: "<string>"       # Optional; ARN of the real-time log configuration that is attached to this cache behavior
+    response_headers_policy_id: "<string>"       # Optional; Identifier for a response headers policy
+    smooth_streaming: "<string>"       # Optional; Indicates whether you want to distribute media files in Microsoft Smooth Streaming format
+    trusted_key_groups:  # Optional; List of key group IDs that CF can use to validate signed URLs or signed cookies
+      - <list>
+    trusted_signers:  # Optional; List of AWS account IDs that you want to allow to created signed URLs for private content
+      - <list>
+  custom_error_response:
+    error_code: "<string>"       # Required; 4xx or 5xx HTTP status code that you want to customize
+    error_caching_min_ttl: "<string>"       # Optional; Minimum amount of time you want HTTP error codes to stay in CF caches before CF queries your origin
+    response_code: "<string>"       # Optional; HTTP status code that you want CF to return with the custom error page to the viewer
+    response_page_path: "<string>"       # Optional; Path of the custom error page
+  logging_config:
+    bucket: "<string>"       # Required; Amazon S3 bucket to store the access logs in, e.g. <bucketname>.s3.amazonaws.com
+    include_cookies: "<string>"       # Optional; Whether to include cookies in access logs; Default false
+    prefix: "<string>"       # Optional; Prefix to the access log filenames for this distribution
+  origin:
+    domain_name: "<string>"       # Required; DNS domain name of either the S3 bucket or website of your custom origin
+    origin_id: "<string>"       # Required; Unique identifier for the origin
+    connection_attempts: "<string>"       # Optional; Number of times that CF attempts to connect to the origin; Default 3
+    connection_timeout: "<string>"       # Optional; Number of seconds that CF waits when trying to establish a connection to the origin; Default 10
+    custom_origin_config:
+      http_port: "<string>"       # Required; HTTP port the custom origin listens on 
+      https_port: "<string>"       # Required; HTTPs port the custom origin listens on 
+      origin_protocol_policy: "<string>"       # Required; Origin protocol policy to apply to your origin; http-only, https-only or match-viewer 
+      origin_ssl_protocols: "<string>"       # Required; SSL/TLS protocols that you want CF to use; SSLv3, TLSv1, TLSv1.1 or TLSv1.2 
+      origin_keepalive_timeout: "<string>"       # Required; Custom KeepAlive timeout in seconds; Limit of 60 
+      origin_read_timeout: "<string>"       # Required; The Custom Read timeout, in seconds. Limit of 60 
+    custom_header:  # Optional; One or more sub-resources with name and value parameters that specify header data
+      - <list>
+    origin_access_control_id: "<string>"       # Optional; Unique identifier of a CF origin access control for this origin
+    origin_path: "<string>"       # Optional; Optional element that causes CF to request your content from a directory in your S3 bucket
+    origin_shield:
+      enabled: <boolean>        # Required; Whether Origin Shield is enabled 
+      origin_shield_region: "<string>"       # Required; AWS Region for Origin Shield 
+    s3_origin_config:
+      origin_access_identity: "<string>"       # Required; The CF origin access identity to associate with the origin 
+  origin_group:
+    origin_id: "<string>"       # Required; Unique Identifier for the origin group
+    failover_criteria: "<string>"       # Required; The failover criteria for when to failover to the secondary origin
+    member:
+  member:
+    origin_id: "<string>"       # Required; Unique Identifier for the member origin
+  restrictions:
+    geo_restriction:
+ 
+      locations:  # Required; ISO-3166-1-alpha-2 codes for which you want CF either to whitelist or blacklist content delivery to
+        - <list>
+      restriction_type: "<string>"       # Required; Method that you want to use to restrict distribution of your content by country; none, whitelist or blacklist  viewer_certificate:
+    acm_certificate_arn: "<string>"       # Required; ARN of the AWS Cert Manager certificate to use with this distribution; ACM cert must be in US-EAST-1
+    cloudfront_default_certificate: <boolean>        # Required; Use as the default certificate when servicing an HTTPs requests
+    iam_certificate_id: "<string>"       # Required; IAM certificate identifier of the custom viewer certificate
+    minimum_protocol_version: "<string>"       # Required; Minimum version of the SSL protocol that you want CF to use for HTTPs connections
+    ssl_support_method: "<string>"       # Required; How you want CF to serve HTTPs requests; vip or sni-only

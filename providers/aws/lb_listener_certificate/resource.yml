@@ -1,0 +1,11 @@
+resource:
+  name: "aws_lb_listener_certificate"
+  enable_variable_comments: false
+  var_name: "lb_listener_certificate"
+  required_vars:
+    - name: "listener_arn"
+      description: "The ARN of the listener to attach the certificate to"
+      type: "string"
+    - name: "certificate_arn"
+      description: "ARN of the certificate to attach to the listener"
+      type: "string"

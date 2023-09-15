@@ -1,0 +1,45 @@
+resource "aws_route53_record" "{{ route53_record.name }}" {
+  ## Required Vars
+  zone_id   = "{{ route53_record.zone_id }}"
+  name   = "{{ route53_record.name }}"
+  type   = "{{ route53_record.type }}"
+  ttl   = "{{ route53_record.ttl }}"
+  records   = "{{ route53_record.records }}"
+
+  ## Optional Vars
+  set_identifier   = "{{ route53_record.set_identifier }}"
+  health_check_id   = "{{ route53_record.health_check_id }}"
+  allow_overwrite   = {{ route53_record.allow_overwrite }}
+
+  ## Blocks
+  alias {
+    ## Required Block Vars
+    name   = "{{ route53_record.alias.name }}"
+    zone_id   = "{{ route53_record.alias.zone_id }}"
+    evaluate_target_health   = "{{ route53_record.alias.evaluate_target_health }}"
+  }
+  cidr_routing_policy {
+    ## Required Block Vars
+    collection_id   = "{{ route53_record.cidr_routing_policy.collection_id }}"
+    location_name   = "{{ route53_record.cidr_routing_policy.location_name }}"
+  }
+  failover_routing_policy {
+    ## Required Block Vars
+    type   = "{{ route53_record.failover_routing_policy.type }}"
+  }
+  geolocation_routing_policy {
+    ## Required Block Vars
+    continent   = "{{ route53_record.geolocation_routing_policy.continent }}"
+    country   = "{{ route53_record.geolocation_routing_policy.country }}"
+    ## Optional Block Vars
+    subdivision   = "{{ route53_record.geolocation_routing_policy.subdivision }}"
+  }
+  latency_routing_policy {
+    ## Required Block Vars
+    region   = "{{ route53_record.latency_routing_policy.region }}"
+  }
+  weighted_routing_policy {
+    ## Required Block Vars
+    weight   = "{{ route53_record.weighted_routing_policy.weight }}"
+  }
+}

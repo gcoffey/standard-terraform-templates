@@ -1,0 +1,17 @@
+resource:
+  name: "azurerm_api_management_identity_provider_twitter"
+  enable_variable_comments: false
+  var_name: "api_management_identity_provider_twitter"
+  required_vars:
+    - name: "api_management_name"
+      description: "The name of the API Management Service"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the Resource Group where the API Management Service exists"
+      type: "string"
+    - name: "api_key"
+      description: "App Consumer API Key for Twitter"
+      type: "string"
+    - name: "api_secret_key"
+      description: "App Consumer API Secret Key for Twitter"
+      type: "string"

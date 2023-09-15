@@ -1,0 +1,14 @@
+resource "azurerm_dedicated_host" "{{ dedicated_host.name }}" {
+  ## Required Vars
+  name   = "{{ dedicated_host.name }}"
+  dedicated_host_group_id   = "{{ dedicated_host.dedicated_host_group_id }}"
+  location   = "{{ dedicated_host.location }}"
+  sku_name   = "{{ dedicated_host.sku_name }}"
+  platform_fault_domain   = "{{ dedicated_host.platform_fault_domain }}"
+
+  ## Optional Vars
+  auto_replace_on_failure   = "{{ dedicated_host.auto_replace_on_failure }}"
+  license_type   = "{{ dedicated_host.license_type }}"
+  tags   = "{{ dedicated_host.tags | to_json | safe }}"
+
+}

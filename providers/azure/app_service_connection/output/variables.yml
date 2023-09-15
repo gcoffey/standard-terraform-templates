@@ -1,0 +1,17 @@
+app_service_connection:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Specifies the name of the service connection
+  app_service_id: "<string>"       # Required; The ID of the data source web app
+  target_resource_id: "<string>"       # Required; The ID of the target resource; Postgres, PostgresFlexible, Mysql, Sql, Redis, CosmosMongo etc
+  authentication:
+    type: "<string>"       # Required; The authentication type; systemAssignedIdentity, userAssignedIdentity, servicePrincipalSecret etc
+    name: "<string>"       # Optional; Username or account name for secret auth
+    secret: "<string>"       # Optional; Password or account key for secret auth
+    client_id: "<string>"       # Optional; Client ID for userAssignedIdentity or servicePrincipal auth
+    subscription_id: "<string>"       # Optional; Subscription ID for userAssignedIdentity
+    principal_id: "<string>"       # Optional; Pincipal ID for servicePrincipal auth
+    certificate: "<string>"       # Optional; Service principal certificate for servicePrincipal auth
+    client_type: "<string>"       # Optional; The application client type; none, dotnet, java, python, go, php, ruby, django, nodejs or springBoot
+    vnet_solution: "<string>"       # Optional; The type of VNet solution; serviceEndpoint or privateLink
+    secret_store:
+      key_vault_id: "<string>"       # Required; The key vault id to store secret 

@@ -1,0 +1,11 @@
+resource:
+  name: "aws_network_acl_association"
+  enable_variable_comments: false
+  var_name: "network_acl_association"
+  required_vars:
+    - name: "network_acl_id"
+      description: "The ID of the network ACL"
+      type: "string"
+    - name: "subnet_id"
+      description: "The ID of the assocaited Subnet"
+      type: "string"

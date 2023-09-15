@@ -1,0 +1,11 @@
+resource:
+  name: "azuread_directory_role_member"
+  enable_variable_comments: false
+  var_name: "directory_role_member"
+  required_vars:
+    - name: "member_object_id"
+      description: "The object ID of the principal to add as a member of the role"
+      type: "string"
+    - name: "role_object_id"
+      description: "The object ID of the directory role you want to add the member to"
+      type: "string"

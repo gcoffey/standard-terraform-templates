@@ -1,0 +1,24 @@
+resource:
+  name: "azurerm_resource_provider_registration"
+  enable_variable_comments: false
+  var_name: "resource_provider_registration"
+  required_vars:
+    - name: "name"
+      description: "The name of the Resource provider to create"
+      type: "string"
+  optional_vars:
+    - name: "feature"
+      description: "A feature block"
+      type: "block"
+
+blocks:
+  - name: "feature"
+    required: false
+    description: "A feature block"
+    required_vars:
+      - name: "name"
+        description: "Name of the feature"
+        type: "string"
+      - name: "registered"
+        description: "Should this feature be registered or unregistered"
+        type: "string"

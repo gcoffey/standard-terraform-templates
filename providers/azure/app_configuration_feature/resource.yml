@@ -1,0 +1,73 @@
+resource:
+  name: "azurerm_app_configuration_feature"
+  enable_variable_comments: false
+  var_name: "app_configuration_feature"
+  required_vars:
+    - name: "name"
+      description: "The name of the App Configuration Feature"
+      type: "string"
+    - name: "configuration_store_id"
+      description: "Specifies the id of the App Configuration"
+      type: "string"
+  optional_vars:
+    - name: "description"
+      description: "The description of the App Configuration Feature"
+      type: "string"
+    - name: "enabled"
+      description: "The status of the App Configuration Feature; Default false"
+      type: "boolean"
+    - name: "label"
+      description: "The label of the App Configuration Feature"
+      type: "string"
+    - name: "locked"
+      description: "Should this App Configuration Feature be Locked to prevent changes"
+      type: "boolean"
+    - name: "percentage_filter_value"
+      description: "A list of one or more numbers representing the value of the percentage required to enable this feature"
+      type: "string"
+    - name: "targeting_filter"
+      description: "Targeting filter block"
+      type: "block"
+    - name: "timewindow_filter"
+      description: "Time Window Block"
+      type: "block"
+    - name: "tags"
+      description: "Mapping of tags to assign to the resource"
+      type: "list"
+
+blocks:
+  - name: "targeting_filter"
+    required: false 
+    description: "Targetng Filter Block"
+    required_vars:
+      - name: "default_rollout_percentage"
+        description: "A number representing the percentage of the entire user base"
+        type: "string"
+    optional_vars:
+      - name: "groups"
+        description: "Groups block"
+        type: "block"
+      - name: "users"
+        description: "A list of users to target for this feature"
+        type: "list"
+  - name: "groups"
+    required: false
+    parent_block: "targeting_filter"
+    description: "Groups block"
+    required_vars:
+      - name: "name"
+        description: "The name of the group"
+        type: "string"
+      - name: "rollout_percentage"
+        description: "Rollout percentage of the group"
+        type: "string"
+  - name: "timewindow_filter"
+    required: false 
+    description: "Timewindow filter block"
+    optional_vars:
+      - name: "start"
+        description: "The earliest timestamp the feature is enabled; Must be in RFC3339 format"
+        type: "string"
+      - name: "end"
+        description: "The latest timestamp the feature is enabled; Must be in RFC3339 format"
+        type: "string"

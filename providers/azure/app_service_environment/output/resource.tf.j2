@@ -1,0 +1,20 @@
+resource "azurerm_app_service_environment" "{{ app_service_environment.name }}" {
+  ## Required Vars
+  name   = "{{ app_service_environment.name }}"
+  resource_group_name   = "{{ app_service_environment.resource_group_name }}"
+  subnet_id   = "{{ app_service_environment.subnet_id }}"
+
+  ## Optional Vars
+  internal_load_balancing_mode   = "{{ app_service_environment.internal_load_balancing_mode }}"
+  pricing_tier   = "{{ app_service_environment.pricing_tier }}"
+  front_end_scale_factor   = "{{ app_service_environment.front_end_scale_factor }}"
+  allowed_user_ip_cidrs   = "{{ app_service_environment.allowed_user_ip_cidrs }}"
+  tags   = "{{ app_service_environment.tags | to_json | safe }}"
+
+  ## Blocks
+  cluster_setting {
+    ## Required Block Vars
+    name   = "{{ app_service_environment.cluster_setting.name }}"
+    value   = "{{ app_service_environment.cluster_setting.value }}"
+  }
+}

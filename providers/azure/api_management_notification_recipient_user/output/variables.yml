@@ -1,0 +1,5 @@
+api_management_notification_recipient_user:
+  name: "<string>"	# Required; A name for this resource
+  api_management_id: "<string>"       # Required; The ID of the API Management Service
+  user_id: "<string>"       # Required; The recipient user ID
+  notification_type: "<string>"       # Required; Notification Name Template? ; AccountClosedPublisher, BCC, NewApplicationNotificationMessage etc

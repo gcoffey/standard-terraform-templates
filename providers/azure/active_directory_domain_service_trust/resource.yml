@@ -1,0 +1,20 @@
+resource:
+  name: "azurerm_active_directory_domain_service_trust"
+  enable_variable_comments: false
+  var_name: "active_directory_domain_service_trust"
+  required_vars:
+    - name: "domain_service_id"
+      description: "The ID of the Domain Service"
+      type: "string"
+    - name: "name"
+      description: "The name which should be used for this Active Directory Domain Service Trust"
+      type: "string"
+    - name: "password"
+      description: "The password of the inbound trust set in the on-premise Active Directory Domain Service"
+      type: "string"
+    - name: "trusted_domain_dns_ips"
+      description: "Specifies a list of DNS IPs that are used to resolve the on-premise Active Directory Domain Service"
+      type: "string"
+    - name: "trusted_domain_fqdn"
+      description: "The FQDN of the on-premise Active Directory Domain Service"
+      type: "string"

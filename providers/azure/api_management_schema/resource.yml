@@ -1,0 +1,24 @@
+resource:
+  name: "azurerm_api_management_schema"
+  enable_variable_comments: false
+  var_name: "api_management_schema"
+  required_vars:
+    - name: "schema_id"
+      description: "A unique identifier for this Schema"
+      type: "string"
+    - name: "api_management_name"
+      description: "The Name of the API Management Service"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The Name of the Resource Group"
+      type: "string"
+    - name: "type"
+      description: "The content type of the schema; xml or json"
+      type: "string"
+    - name: "value"
+      description: "The string defining the document representing the Schema"
+      type: "string"
+  optional_vars:
+    - name: "description"
+      description: "The description of the Schema"
+      type: "string"

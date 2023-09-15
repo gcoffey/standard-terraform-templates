@@ -1,0 +1,12 @@
+app_configuration_key:
+  name: "<string>"	# Required; A name for this resource
+  key: "<string>"       # Required; The name of the App Configuration Key to create
+  configuration_store_id: "<string>"       # Required; Specifies the id of the App Configuration
+  content_type: "<string>"       # Optional; The content type of the App Configuration Key; Should only be set when type is kv
+  label: "<string>"       # Optional; The label of the App Configuration Key
+  value: "<string>"       # Optional; The value of the App Configuration Key; Should only be set when type is kv
+  locked: <boolean>        # Optional; Should this App Configuration Key be Locked to prevent changes
+  type: "<string>"       # Optional; The type of the App Configuration Key; kv or vault
+  vault_key_reference: "<string>"       # Optional; The ID of the vault secret this App Configuration Key refers to; When type is set to vault
+  tags:  # Optional; Mapping of tags to assign to the resource
+    - <list>

@@ -1,0 +1,13 @@
+api_management_identity_provider_aadb2c:
+  name: "<string>"	# Required; A name for this resource
+  api_management_name: "<string>"       # Required; The name of the API Management Service
+  resource_group_name: "<string>"       # Required; The name of the Resource Group where the API Management Service exists
+  client_id: "<string>"       # Required; Client Id of the Application in the AAD Identity Provider
+  client_secret: "<string>"       # Required; Client Secret of the Application in the AAD Identity Provider
+  allowed_tenant: "<string>"       # Required; List of allowed AAD Tenants
+  signin_tenant: "<string>"       # Required; The Tenant to use instead of Common when logging into Active Directory
+  authority: "<string>"       # Required; OpenID Connect discovery endpoint hostname
+  signin_policy: "<string>"       # Required; Signin Policy Name
+  signup_tenant: "<string>"       # Required; Signup Policy Name
+  password_reset_policy: "<string>"       # Optional; Password reset Policy Name
+  profile_editing_policy: "<string>"       # Optional; Profile editing Policy Name

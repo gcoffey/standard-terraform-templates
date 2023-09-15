@@ -1,0 +1,14 @@
+resource:
+  name: "azurerm_active_directory_domain_service_replica_set"
+  enable_variable_comments: false
+  var_name: "active_directory_domain_service_replica_set"
+  required_vars:
+    - name: "domain_service_id"
+      description: "The ID of the Domain Service"
+      type: "string"
+    - name: "location"
+      description: "The Azure location where the Replica set should exist"
+      type: "string"
+    - name: "subnet_id"
+      description: "The ID of the subnet in which to place this Replica Set"
+      type: "string"

@@ -1,0 +1,11 @@
+resource:
+  name: "azuread_service_principal_claims_mapping_policy_assignment"
+  enable_variable_comments: false
+  var_name: "service_principal_claims_mapping_policy_assignment"
+  required_vars:
+    - name: "claim_mapping_policy_id"
+      description: "The ID of the claims mapping policy to assign"
+      type: "string"
+    - name: "service_principal_id"
+      description: "The object ID of the service principal for the policy assignment"
+      type: "string"

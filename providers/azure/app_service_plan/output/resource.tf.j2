@@ -1,0 +1,25 @@
+resource "azurerm_app_service_plan" "{{ app_service_plan.name }}" {
+  ## Required Vars
+  name   = "{{ app_service_plan.name }}"
+  resource_group_name   = "{{ app_service_plan.resource_group_name }}"
+  location   = "{{ app_service_plan.location }}"
+
+  ## Optional Vars
+  kind   = "{{ app_service_plan.kind }}"
+  maximum_elastic_worker_count   = "{{ app_service_plan.maximum_elastic_worker_count }}"
+  app_service_environment_id   = "{{ app_service_plan.app_service_environment_id }}"
+  reserved   = {{ app_service_plan.reserved }}
+  per_site_scaling   = {{ app_service_plan.per_site_scaling }}
+  is_xenon   = {{ app_service_plan.is_xenon }}
+  zone_redundant   = {{ app_service_plan.zone_redundant }}
+  tags   = "{{ app_service_plan.tags | to_json | safe }}"
+
+  ## Blocks
+  sku {
+    ## Required Block Vars
+    tier   = "{{ app_service_plan.sku.tier }}"
+    size   = "{{ app_service_plan.sku.size }}"
+    ## Optional Block Vars
+    capacity   = "{{ app_service_plan.sku.capacity }}"
+  }
+}

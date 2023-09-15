@@ -1,0 +1,27 @@
+resource "aws_route_table" "{{ route_table.name }}" {
+  ## Required Vars
+  vpc_id   = "{{ route_table.vpc_id }}"
+
+  ## Optional Vars
+  propagating_vgws   = "{{ route_table.propagating_vgws | to_json | safe }}"
+  tags   = "{{ route_table.tags | to_json | safe }}"
+
+  ## Blocks
+  route {
+    ## Required Block Vars
+    cidr_block   = "{{ route_table.route.cidr_block }}"
+    ## Optional Block Vars
+    ipv6_cidr_block   = "{{ route_table.route.ipv6_cidr_block }}"
+    destination_prefix_list_id   = "{{ route_table.route.destination_prefix_list_id }}"
+    carrier_gateway_id   = "{{ route_table.route.carrier_gateway_id }}"
+    core_network_arn   = "{{ route_table.route.core_network_arn }}"
+    egress_only_gateway_id   = "{{ route_table.route.egress_only_gateway_id }}"
+    gateway_id   = "{{ route_table.route.gateway_id }}"
+    network_interface_id   = "{{ route_table.route.network_interface_id }}"
+    local_gateway_id   = "{{ route_table.route.local_gateway_id }}"
+    nat_gateway_id   = "{{ route_table.route.nat_gateway_id }}"
+    transit_gateway_id   = "{{ route_table.route.transit_gateway_id }}"
+    vpc_endpoint_id   = "{{ route_table.route.vpc_endpoint_id }}"
+    vpc_peering_connection_id   = "{{ route_table.route.vpc_peering_connection_id }}"
+  }
+}

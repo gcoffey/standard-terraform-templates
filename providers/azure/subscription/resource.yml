@@ -1,0 +1,24 @@
+resource:
+  name: "azurerm_subscription"
+  enable_variable_comments: false
+  var_name: "subscription"
+  required_vars:
+    - name: "subscription_name"
+      description: "The Name of the Subscription"
+      type: "string"
+  optional_vars:
+    - name: "alias"
+      description: "The aLias name for the subscription"
+      type: "string"
+    - name: "billing_scope_id"
+      description: "The Azure Billing Scope ID"
+      type: "string"
+    - name: "subscription_id"
+      description: "The ID of the subscription"
+      type: "string"
+    - name: "workload"
+      description: "The workload type of the Subscription; Production or DevTest"
+      type: "string"
+    - name: "tags"
+      description: "A mapping of tags"
+      type: "list"

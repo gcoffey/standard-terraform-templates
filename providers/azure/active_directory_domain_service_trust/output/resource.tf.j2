@@ -1,0 +1,10 @@
+resource "azurerm_active_directory_domain_service_trust" "{{ active_directory_domain_service_trust.name }}" {
+  ## Required Vars
+  domain_service_id   = "{{ active_directory_domain_service_trust.domain_service_id }}"
+  name   = "{{ active_directory_domain_service_trust.name }}"
+  password   = "{{ active_directory_domain_service_trust.password }}"
+  trusted_domain_dns_ips   = "{{ active_directory_domain_service_trust.trusted_domain_dns_ips }}"
+  trusted_domain_fqdn   = "{{ active_directory_domain_service_trust.trusted_domain_fqdn }}"
+
+
+}

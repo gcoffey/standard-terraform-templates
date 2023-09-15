@@ -1,0 +1,36 @@
+api_management_backend:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the API Management backend
+  api_management_name: "<string>"       # Required; The name of the API management service where this backend should be created
+  resource_group_name: "<string>"       # Required; The name of the resource group where the API management service exists
+  protocol: "<string>"       # Required; The protocol used by the backend host; http or soap
+  url: "<string>"       # Required; The URL of the backend host
+  description: "<string>"       # Optional; The description of the backend
+  resource_id: "<string>"       # Optional; The management URI of the backend host
+  title: "<string>"       # Optional; The title of the backend
+  tls: "<string>"       # Optional; A TLS block
+  credentials:
+    authorization:
+      parameter: "<string>"       # Optional; The authentication parameter value
+      scheme: "<string>"       # Optional; The authentication scheme name
+    certificate: "<string>"       # Optional; A list of client certificate thumbprints to present to the backend
+    header: "<string>"       # Optional; A mapping of header parameters to pass to the backend
+    query: "<string>"       # Optional; A mapping of query parameters to pass to the backend
+  proxy:
+    url: "<string>"       # Required; The URL of the proxy server
+    username: "<string>"       # Required; The username to connect to the proxy server
+    password: "<string>"       # Optional; The password to connect to the proxy server
+  service_fabric_cluster:
+    management_endpoints:  # Required; A list of cluster management endpoints
+      - <list>
+    max_partition_resolution_retries: "<string>"       # Required; The maximum number of retries when attempting to resolve the partition
+    client_certificate_thumbprint: "<string>"       # Optional; The client certificate thumbprint for the management endpoint
+    client_certificate_id: "<string>"       # Optional; The client certificate thumbprint for the management endpoint
+    server_certificate_thumbprints:  # Optional; A list of thumbprints of the server certificates of the Service Fabric cluster
+      - <list>
+    server_x509_name:
+      issuer_certificate_thumbprint: "<string>"       # Required; The thumbprint for the issuer of the certificate 
+      name: "<string>"       # Required; The common name of the certificate 
+  tls:
+    validate_certificate_chain: "<string>"       # Required; Certificate chain to use when validating backend SSL connection
+    validate_certificate_name: "<string>"       # Required; SNI / certificate validation for backend SSL connection

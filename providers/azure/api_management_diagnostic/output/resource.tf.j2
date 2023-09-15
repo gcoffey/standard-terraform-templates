@@ -1,0 +1,48 @@
+resource "azurerm_api_management_diagnostic" "{{ api_management_diagnostic.name }}" {
+  ## Required Vars
+  api_management_logger_id   = "{{ api_management_diagnostic.api_management_logger_id }}"
+  api_management_name   = "{{ api_management_diagnostic.api_management_name }}"
+  identifier   = "{{ api_management_diagnostic.identifier }}"
+  resource_group_name   = "{{ api_management_diagnostic.resource_group_name }}"
+
+  ## Optional Vars
+  always_log_errors   = {{ api_management_diagnostic.always_log_errors }}
+  http_correlation_protocol   = "{{ api_management_diagnostic.http_correlation_protocol }}"
+  log_client_ip   = "{{ api_management_diagnostic.log_client_ip }}"
+  sampling_percentage   = "{{ api_management_diagnostic.sampling_percentage }}"
+  verbosity   = "{{ api_management_diagnostic.verbosity }}"
+  operation_name_format   = "{{ api_management_diagnostic.operation_name_format }}"
+
+  ## Blocks
+  backend_request {
+    ## Optional Block Vars
+    body_bytes   = "{{ api_management_diagnostic.backend_request.body_bytes }}"
+    headers_to_log   = "{{ api_management_diagnostic.backend_request.headers_to_log }}"
+    data_masking {
+      ## Optional Block Vars
+    }
+  }
+  backend_response {
+    ## Optional Block Vars
+    body_bytes   = "{{ api_management_diagnostic.backend_response.body_bytes }}"
+    headers_to_log   = "{{ api_management_diagnostic.backend_response.headers_to_log }}"
+    data_masking {
+    }
+  }
+  frontend_request {
+    ## Optional Block Vars
+    body_bytes   = "{{ api_management_diagnostic.frontend_request.body_bytes }}"
+    headers_to_log   = "{{ api_management_diagnostic.frontend_request.headers_to_log }}"
+    data_masking {
+      ## Optional Block Vars
+    }
+  }
+  frontend_response {
+    ## Optional Block Vars
+    body_bytes   = "{{ api_management_diagnostic.frontend_response.body_bytes }}"
+    headers_to_log   = "{{ api_management_diagnostic.frontend_response.headers_to_log }}"
+    data_masking {
+      ## Optional Block Vars
+    }
+  }
+}

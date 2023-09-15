@@ -1,0 +1,22 @@
+resource "aws_vpc_endpoint" "{{ vpc_endpoint.name }}" {
+  ## Required Vars
+  service_name   = "{{ vpc_endpoint.service_name }}"
+  vpc_id   = "{{ vpc_endpoint.vpc_id }}"
+
+  ## Optional Vars
+  auto_accept   = "{{ vpc_endpoint.auto_accept }}"
+  policy   = "{{ vpc_endpoint.policy }}"
+  private_dns_enabled   = {{ vpc_endpoint.private_dns_enabled }}
+  ip_address_type   = "{{ vpc_endpoint.ip_address_type }}"
+  route_table_ids   = "{{ vpc_endpoint.route_table_ids | to_json | safe }}"
+  subnet_ids   = "{{ vpc_endpoint.subnet_ids | to_json | safe }}"
+  security_group_ids   = "{{ vpc_endpoint.security_group_ids | to_json | safe }}"
+  vpc_endpoint_type   = "{{ vpc_endpoint.vpc_endpoint_type }}"
+  tags   = "{{ vpc_endpoint.tags | to_json | safe }}"
+
+  ## Blocks
+  dns_options {
+    ## Optional Block Vars
+    dns_record_ip_type   = "{{ vpc_endpoint.dns_options.dns_record_ip_type }}"
+  }
+}

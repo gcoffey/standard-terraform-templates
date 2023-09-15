@@ -1,0 +1,9 @@
+kubernetes_fleet_manager:
+  name: "<string>"	# Required; A name for this resource
+  location: "<string>"       # Required; The Azure Region where the Kubernetes Fleet Manager should be created
+  name: "<string>"       # Required; The name of the Kubernetes Fleet Managed
+  resource_group_name: "<string>"       # Required; The resource group name for the Kubernetes Fleet Managed
+  tags:  # Optional; A mapping of tags
+    - <list>
+  hub_profile:
+    dns_prefix: "<string>"       # Required; DNS Prefix

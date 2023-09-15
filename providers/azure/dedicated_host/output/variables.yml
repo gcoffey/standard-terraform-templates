@@ -1,0 +1,11 @@
+dedicated_host:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Specifies the name of this Dedicated Host
+  dedicated_host_group_id: "<string>"       # Required; Specifies the ID of the Dedicated Host Group where the Dedicated Host should exist
+  location: "<string>"       # Required; The Azure location where the Dedicated Host should exist
+  sku_name: "<string>"       # Required; Specify the SKU name of the Dedicated Host; DADSv5-Type1, DASv4-Type1, DASv4-Type2, DASv5-Type1 etc
+  platform_fault_domain: "<string>"       # Required; Specify the fault domain of the Dedicated Host Group in which to create the Dedicated Host
+  auto_replace_on_failure: "<string>"       # Optional; Should the Dedicated Host automatically be replaced in case of a Hardware Failure; Default true
+  license_type: "<string>"       # Optional; Specifies the software license type that will be applied to VMs; None, Windows_Server_Hybrid or Windows_Server_Perpetual
+  tags:  # Optional; A mapping of tags
+    - <list>

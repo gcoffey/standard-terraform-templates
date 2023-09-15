@@ -1,0 +1,13 @@
+api_management_named_value:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the API Management Named Value
+  api_management_name: "<string>"       # Required; The name of the API Management Service
+  display_name: "<string>"       # Required; The display name of this API Management Named Value
+  resource_group_name: "<string>"       # Required; The name of the Resource Group where the API Management Service API Diagnostics Logs should exist
+  value: "<string>"       # Optional; The value of this API Management Named Value
+  secret: <boolean>        # Optional; Specifies whether this Named Value is secret; true, false; Default false
+  tags:  # Optional; A list of tags to apply to this resource
+    - <list>
+  value_from_key_vault:
+    secret_id: "<string>"       # Required; The resource ID of the Key Vault Secret
+    identity_client_id: "<string>"       # Optional; The client ID of User Assigned Identity to access the Key Vault

@@ -1,0 +1,24 @@
+resource:
+  name: "azurerm_route"
+  enable_variable_comments: false
+  var_name: "route"
+  required_vars:
+    - name: "name"
+      description: "The name of the route"
+      type: "string"
+    - name: "route_table_name"
+      description: "The name of the route table"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the resource group to create the public ip in"
+      type: "string"
+    - name: "address_prefix"
+      description: "The destination to which the route applies"
+      type: "string"
+    - name: "next_hop_type"
+      description: "The type of Azure hop the packet should be sent to; VirtualNetworkGateway, VnetLocal, Internet, VirtualAppliance or None"
+      type: "string"
+  optional_vars:
+    - name: "next_hop_in_ip_address"
+      description: "Contains the IP address packets should be forwarded to; when next_hop_type = VirtualAppliance"
+      type: "string"

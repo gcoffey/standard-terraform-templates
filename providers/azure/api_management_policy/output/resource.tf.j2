@@ -1,0 +1,9 @@
+resource "azurerm_api_management_policy" "{{ api_management_policy.name }}" {
+  ## Required Vars
+  api_management_id   = "{{ api_management_policy.api_management_id }}"
+
+  ## Optional Vars
+  xml_content   = "{{ api_management_policy.xml_content }}"
+  xml_link   = "{{ api_management_policy.xml_link }}"
+
+}
