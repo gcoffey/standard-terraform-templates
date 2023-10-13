@@ -1,0 +1,11 @@
+service_pack:
+  resources:
+    - name: iam_role
+      provider: aws
+    - name: cloudwatch_log_group
+      provider: aws
+    - name: eks_cluster
+      provider: aws
+      depends_on: 
+        - iam_role
+        - cloudwatch_log_group

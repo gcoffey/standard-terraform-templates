@@ -1,0 +1,17 @@
+resource "aws_cloudwatch_log_group" "{{ cloudwatch_log_group.name }}" {
+
+  ## Optional Vars
+  name   = "{{ cloudwatch_log_group.name }}"
+  name_prefix   = "{{ cloudwatch_log_group.name_prefix }}"
+  skip_destroy   = {{ cloudwatch_log_group.skip_destroy }}
+  retention_in_days   = "{{ cloudwatch_log_group.retention_in_days }}"
+  kms_key_id   = "{{ cloudwatch_log_group.kms_key_id }}"
+  tags   = "{{ cloudwatch_log_group.tags | to_json | safe }}"
+
+  ## Blocks
+  inline_policy {
+    ## Required Block Vars
+    name   = "{{ cloudwatch_log_group.inline_policy.name }}"
+    policy   = "{{ cloudwatch_log_group.inline_policy.policy }}"
+  }
+}

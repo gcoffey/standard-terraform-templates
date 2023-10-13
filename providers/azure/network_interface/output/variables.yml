@@ -1,0 +1,11 @@
+network_interface:
+  name: "<string>"	# Required; A name for this resource
+  location: "<string>"       # Required; The location where the Network Interface should be created
+  name: "<string>"       # Required; The name of the Network Interface to be created
+  resource_group_name: "<string>"       # Required; The name of the Resource Group in which to create the Network Interface
+  dns_servers:  # Optional; A list of IP addresses defining the DNS servers to use
+    - <list>
+  edge_zone: "<string>"       # Optional; Specifies the Edge Zone within the Azure Region where this NIC hsould exist
+  enable_ip_forwarding: <boolean>        # Optional; Should IP Forwarding be enabled; Default false
+  enable_accelerated_networking: <boolean>        # Optional; Should Accelerated Networking be enabled; Default false
+  internal_dns_name_label: "<string>"       # Optional; The DNS name used for internal communications between VMs in the same Virtual Network

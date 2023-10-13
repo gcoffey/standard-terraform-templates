@@ -1,0 +1,107 @@
+resource:
+  name: "aws_eks_cluster"
+  enable_variable_comments: false
+  var_name: "eks_cluster"
+  required_vars:
+    - name: "name"
+      description: "Name of the cluster. Between 1 - 100 chars in length, alphanumeric."
+      type: "string"
+    - name: "role_arn"
+      description: "ARN of the IAM role that provides permissions for the Kubernetes control plane"
+      type: "string"
+    - name: "vpc_config"
+      description: "Configuration block for the VPC associated with your cluster"
+      type: "block"
+  optional_vars:
+    - name: "enabled_cluster_log_types"
+      description: "List of the design control plane logging to enable"
+      type: "list"
+    - name: "encryption_config"
+      description: "Configuration block with encryption configure for the cluster"
+      type: "block"
+    - name: "kubernetes_network_config"
+      description: "Configuration block with kubernetes network configuration for the cluster"
+      type: "block"
+    - name: "outpost_config"
+      description: "Configuration block representing the configuration of your local EKS cluster on an AWS Outpost"
+      type: "block"
+    - name: "tags"
+      description: "Key-value map of resource tags"
+      type: "map"
+    - name: "version"
+      description: "Desired kubernetes master version"
+      type: "string"
+
+blocks:
+  - name: "encryption_config"
+    required: false
+    description: "Encryption Config Block"
+    required_vars:
+      - name: "provider"
+        description: "Provider configuration block"
+        type: "block"
+      - name: "resources"
+        description: "List of strings with resources to be encrypted"
+        type: "list"
+  - name: "provider"
+    required: false
+    parent_block: "encryption_config"
+    description: "Provider configuration block"
+    required_vars:
+      - name: "key_arn"
+        description: "ARN of the Key Management Service customer master key"
+        type: "string"
+  - name: "vpc_config"
+    required: false
+    description: "VPC Config block"
+    required_vars:
+      - name: "subnet_ids" 
+        description: "List of subnet Ids. Must be in 2 different AZs"
+        type: "list"
+    optional_vars:
+      - name: "endpoint_private_access"
+        description: "Enable EKS private API server endpoint. Default false"
+        default_value: false
+        type: "boolean"
+      - name: "endpoint_public_access"
+        description: "Enable EKS public API server endpoint. Default true"
+        default_value: true
+        type: "boolean"
+      - name: "public_access_cidrs"
+        description: "List of CIDR blocks"
+        type: "list"
+      - name: "security_group_ids"
+        description: "List of security groups IDs for cross-account ENI"
+        type: "list"
+  - name: "kubernetes_network_config"
+    required: false
+    description: "Kubernetes Network Config Block"
+    optional_vars:
+      - name: "service_ipv4_cidr"
+        description: "The CIDR block to assign kubernetes and service IP addresses from"
+        type: "string"
+      - name: "ip_family"
+        description: "The IP family used to assign Kubernetes pod and services addresses; ipv4 or ipv6"
+        type: "string"
+  - name: "outpost_config"
+    required: false
+    description: "Outpost Config Block"
+    required_vars:
+      - name: "control_plane_instance_type"
+        description: "The Amazon EC2 instance type you want to use for your local EKS cluster on Outpost"
+        type: "string"
+      - name: "outpost_arns"
+        description: "The ARN of the Outpost that you want to use for your local EKS cluster Outposts"
+        type: "string"
+    optional_vars:
+      - name: "control_plane_placement"
+        description: "Control Plane Placement Block"
+        type: "block"
+  - name: "control_plane_placement"
+    required: false
+    parent_block: "outpost_config"
+    description: "Control Plane Placement block"
+    required_vars:
+      - name: "group_name"
+        description: "The name of the placement group for the Kubernetes control plane instances"
+        type: "string"

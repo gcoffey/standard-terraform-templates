@@ -1,0 +1,14 @@
+resource "azurerm_network_interface" "{{ network_interface.name }}" {
+  ## Required Vars
+  location   = "{{ network_interface.location }}"
+  name   = "{{ network_interface.name }}"
+  resource_group_name   = "{{ network_interface.resource_group_name }}"
+
+  ## Optional Vars
+  dns_servers   = "{{ network_interface.dns_servers | to_json | safe }}"
+  edge_zone   = "{{ network_interface.edge_zone }}"
+  enable_ip_forwarding   = {{ network_interface.enable_ip_forwarding }}
+  enable_accelerated_networking   = {{ network_interface.enable_accelerated_networking }}
+  internal_dns_name_label   = "{{ network_interface.internal_dns_name_label }}"
+
+}

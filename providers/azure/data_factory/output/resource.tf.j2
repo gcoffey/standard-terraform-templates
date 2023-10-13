@@ -1,0 +1,44 @@
+resource "azurerm_data_factory" "{{ data_factory.name }}" {
+  ## Required Vars
+  name   = "{{ data_factory.name }}"
+  location   = "{{ data_factory.location }}"
+  resource_group_name   = "{{ data_factory.resource_group_name }}"
+
+  ## Optional Vars
+  managed_virtual_network_enabled   = {{ data_factory.managed_virtual_network_enabled }}
+  public_network_enabled   = {{ data_factory.public_network_enabled }}
+  customer_managed_key_id   = "{{ data_factory.customer_managed_key_id }}"
+  customer_managed_key_identity_id   = "{{ data_factory.customer_managed_key_identity_id }}"
+  purview_id   = "{{ data_factory.purview_id }}"
+
+  ## Blocks
+  github_configuration {
+    ## Required Block Vars
+    account_name   = "{{ data_factory.github_configuration.account_name }}"
+    branch_name   = "{{ data_factory.github_configuration.branch_name }}"
+    git_url   = "{{ data_factory.github_configuration.git_url }}"
+    repository_name   = "{{ data_factory.github_configuration.repository_name }}"
+    root_folder   = "{{ data_factory.github_configuration.root_folder }}"
+  }
+  global_parameter {
+    ## Required Block Vars
+    name   = "{{ data_factory.global_parameter.name }}"
+    type   = "{{ data_factory.global_parameter.type }}"
+    value   = "{{ data_factory.global_parameter.value }}"
+  }
+  identity {
+    ## Required Block Vars
+    type   = "{{ data_factory.identity.type }}"
+    ## Optional Block Vars
+    identity_ids   = "{{ data_factory.identity.identity_ids | to_json | safe }}"
+  }
+  vsts_configuration {
+    ## Required Block Vars
+    account_name   = "{{ data_factory.vsts_configuration.account_name }}"
+    branch_name   = "{{ data_factory.vsts_configuration.branch_name }}"
+    project_name   = "{{ data_factory.vsts_configuration.project_name }}"
+    repository_name   = "{{ data_factory.vsts_configuration.repository_name }}"
+    root_folder   = "{{ data_factory.vsts_configuration.root_folder }}"
+    tenant_id   = "{{ data_factory.vsts_configuration.tenant_id }}"
+  }
+}

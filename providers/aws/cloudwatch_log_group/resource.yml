@@ -1,0 +1,23 @@
+resource:
+  name: "aws_cloudwatch_log_group"
+  enable_variable_comments: false
+  var_name: "cloudwatch_log_group"
+  optional_vars:
+    - name: "name"
+      description: "The name of the log group"
+      type: "string"
+    - name: "name_prefix"
+      description: "Creates a unique name beginning with this prefix; Don't use name when using prefix"
+      type: "string"
+    - name: "skip_destroy"
+      description: "Set to true if you do not wish to delete the log group at destroy time"
+      type: "boolean"
+    - name: "retention_in_days"
+      description: "Specifies the number of days you want to retain log events for"
+      type: "string"
+    - name: "kms_key_id"
+      description: "The ARN of the KMS key to use when encrypting log data"
+      type: "string"
+    - name: "tags"
+      description: "A map of tags to assign to the resource"
+      type: "list"

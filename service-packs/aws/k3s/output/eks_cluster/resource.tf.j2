@@ -1,0 +1,44 @@
+resource "aws_eks_cluster" "{{ eks_cluster.name }}" {
+  ## Required Vars
+  name   = "{{ eks_cluster.name }}"
+  role_arn   = "{{ eks_cluster.role_arn }}"
+
+  ## Optional Vars
+  enabled_cluster_log_types   = "{{ eks_cluster.enabled_cluster_log_types | to_json | safe }}"
+  version   = "{{ eks_cluster.version }}"
+
+  ## Blocks
+  encryption_config {
+    ## Required Block Vars
+    provider {
+      ## Required Block Vars
+      key_arn   = "{{ eks_cluster.encryption_config.provider.key_arn }}"
+    }
+    resources   = "{{ eks_cluster.encryption_config.resources | to_json | safe }}"
+  }
+  vpc_config {
+    ## Required Block Vars
+    subnet_ids   = "{{ eks_cluster.vpc_config.subnet_ids | to_json | safe }}"
+    ## Optional Block Vars
+    endpoint_private_access   = {{ eks_cluster.vpc_config.endpoint_private_access }}
+    endpoint_public_access   = {{ eks_cluster.vpc_config.endpoint_public_access }}
+    public_access_cidrs   = "{{ eks_cluster.vpc_config.public_access_cidrs | to_json | safe }}"
+    security_group_ids   = "{{ eks_cluster.vpc_config.security_group_ids | to_json | safe }}"
+  }
+  kubernetes_network_config {
+    ## Optional Block Vars
+    service_ipv4_cidr   = "{{ eks_cluster.kubernetes_network_config.service_ipv4_cidr }}"
+    ip_family   = "{{ eks_cluster.kubernetes_network_config.ip_family }}"
+  }
+  outpost_config {
+    ## Required Block Vars
+    control_plane_instance_type   = "{{ eks_cluster.outpost_config.control_plane_instance_type }}"
+    outpost_arns   = "{{ eks_cluster.outpost_config.outpost_arns }}"
+    ## Optional Block Vars
+    control_plane_placement {
+      ## Required Block Vars
+      group_name   = "{{ eks_cluster.outpost_config.control_plane_placement.group_name }}"
+ 
+    }
+  }
+}

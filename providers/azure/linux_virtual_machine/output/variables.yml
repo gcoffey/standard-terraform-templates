@@ -1,0 +1,72 @@
+linux_virtual_machine:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the Linux Virtual Machine
+  location: "<string>"       # Required; Specifies the supported Azure location where the resource should be created
+  resource_group_name: "<string>"       # Required; The name of the Resource Group in which the Linux VM should exist
+  admin_username: "<string>"       # Required; The username of the local administrator on each VM instance
+  size: "<string>"       # Required; The SKU for the VM, such as Standard_F2
+  network_interface_ids:  # Required; A list of network interface ids to attach to this VM
+    - <list>
+  license_type: "<string>"       # Optional; Specifies the BYOL Type for this VM; RHEL_BYOS or SLES_BYOS
+  admin_password: "<string>"       # Optional; The password which should be used for the local administrator on this VM
+  allow_extension_operations: <boolean>        # Optional; Should extension operations be allowed on this VM; Default true
+  availability_set_id: "<string>"       # Optional; Specifies the ID of the Availability Set in which the VM should exist
+  capacity_reservation_group_id: "<string>"       # Optional; Specifies the ID of the Capacity Reservation Group which the VM Scale Set should be allocated to
+  computer_name: "<string>"       # Optional; Specifies the Hostname which should be used for this VM
+  custom_data: "<string>"       # Optional; The Base64-Encoded Custom Data which should be used for this VM
+  dedicated_host_id: "<string>"       # Optional; The ID of a Dedicated Host where this machine should be run
+  dedicated_host_group_id: "<string>"       # Optional; The ID of a Dedicated Host GRoup that this Linux VM should be run within
+  disable_password_authentication: <boolean>        # Optional; Should Password Auth be disabled on this VM Scale Set; Default true
+  edge_zone: "<string>"       # Optional; Specifies the Edge Zone within the Azure Region where this VM should exist
+  encryption_at_host_enabled: <boolean>        # Optional; Should all of the disks attached to this VM be encrypted
+  allow_extension_operations: <boolean>        # Optional; Should extension operations be allowed on the VM Scale Set; Default true
+  extensions_time_budget: "<string>"       # Optional; Specifies the duration allocated for all extensions to start; between 15 and 120 mins; Default PT1H30M [90mins]
+  eviction_policy: "<string>"       # Optional; Specifies the eviction policy for VMs in this Scale Set; Deallocate or Delete
+  gallery_application: "<string>"       # Optional; A Gallery Application Block
+  patch_assessment_mode: "<string>"       # Optional; Specifies the mode of VM Guest Patching for the VM; AutomaticByPlatform or ImageDefault
+  patch_mode: "<string>"       # Optional; Specifies the mode of in-guest patching for the VM; AutomaticByPlatform or ImageDefault
+  max_bid_price: "<string>"       # Optional; The maximum price you're willing to pay for each VM in US dollars; Default -1
+  platform_fault_domain: "<string>"       # Optional; Specifies the Platform Fault Domain in which this Linux VM should be created; Default -1
+  priority: "<string>"       # Optional; The Priority of this VM; Regular or Spot; Default Regular
+  provision_vm_agent: <boolean>        # Optional; Should the Azure VM Agent be provisioned on each VM; Default true
+  proximity_placement_group_id: "<string>"       # Optional; The ID of the Proximity Placement Group in which the VM
+  secure_boot_enabled: <boolean>        # Optional; Specifies if Secure Boot and Trusted Launch is enabled for the VM
+  source_image_id: "<string>"       # Optional; The ID of the image which the VM should be created from
+  tags:  # Optional; A mapping of tags
+    - <list>
+  user_data: "<string>"       # Optional; The Base64-Encoded User Data which should be used for this VM
+  vtpm_enabled: <boolean>        # Optional; Specifies if vTPM and Trusted Launch is enabled for the VM
+  virtual_machine_scale_set_id: "<string>"       # Optional; Specifies the Orchestrated Virtual Machine Scale Set that this VM should be created within
+  zone:  # Optional; Specifies a list of Availability Zones in which this VM Scale Set should be located
+    - <list>
+  additional_capabilities:
+    ultra_ssd_enabled: <boolean>        # Optional; Should the capacity to enable Data Disks of the UltraSSD_LRS storate account be supported; Default false
+  admin_ssh_key:
+    public_key: "<string>"       # Required; The Public Key which should be used for authentication, must be at least 2048-bit and in ssh-rsa format
+    username: "<string>"       # Required; The Username for which this Public SSH Key should be configured
+  boot_diagnostics:
+    storage_account_uri: "<string>"       # Optional; The primary / secondary endpoint for the Azure Storage Account which should be used for Boot Diagnostics
+  gallery_application:
+    version_id: "<string>"       # Required; Specifies the Gallery Application Version resource ID
+    configuration_blob_uri: "<string>"       # Optional; Specifies the URI to an Azure Blob that will replace the default configuration for the package if provided
+    order: "<string>"       # Optional; Specifies the order in which the packages have to be installed
+    tag: "<string>"       # Optional; Specifies a passthrough value for more generic context
+  identity:
+    type: "<string>"       # Required; Specifies the type of Managed Service Identity; SystemAssigned or UserAssigned
+    identity_ids: "<string>"       # Optional; Specifies a list of User Assigned Managed Identity IDs to be assigned to this Windows Virtual Machine Scale Set
+  plan:
+    name: "<string>"       # Required; Specifies the name of the image from the marketplace
+    publisher: "<string>"       # Required; Specifies the publisher of the image
+    product: "<string>"       # Required; Specifies the product of the image from the marketplace
+  secret:
+    certificate:
+ 
+      url: "<string>"       # Required; The Secret URL of a Key Vault Certificate    key_vault_id: "<string>"       # Required; The ID of the Key Vault which all Secrets should be sourced
+  termination_notification:
+    enabled: <boolean>        # Required; Should the termination notification be enabled on this VM Scale Set
+    timeout: "<string>"       # Optional; Length of time (in minutes, between 5 and 15) a notification to be sent to the VM; Default PT5M
+  source_image_reference:
+    publisher: "<string>"       # Required; Specifies the publisher of the image used to create the virtual machines
+    offer: "<string>"       # Required; Specifies the offer of the image used to create the virtual machines
+    sku: "<string>"       # Required; Specifies the SKU of the image used to create the virtual machines
+    version: "<string>"       # Required; Specifies the version of the image used to create the virtual machines
