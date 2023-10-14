@@ -1,16 +1,16 @@
 {{ resource.var_name }}:
   name: "<string>"	# Required; A name for this resource
-{% if resource.required_vars is defined %}
+{% if resource.required_vars is defined and resource.required_vars|length  %}
 {% for required in resource.required_vars %}
 {% include('required_variables.yml.j2') %}
 {% endfor %}
 {% endif -%}
-{% if resource.optional_vars is defined %}
+{% if resource.optional_vars is defined and resource.optional_vars|length %}
 {% for optional in resource.optional_vars %}
 {% include('optional_variables.yml.j2') %}
 {% endfor %}
 {% endif %}
-{% if blocks is defined %}
+{% if blocks is defined and blocks is not none and blocks|length%}
 {% for block in blocks %}
 {% if block.parent_block is not defined %}
   {{ block.name }}:

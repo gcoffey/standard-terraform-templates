@@ -17,17 +17,3 @@ subnet:
   private_dns_hostname_type_on_launch: "<string>"       # Optional; The type of hostnames to assign to instance in the subnet at launch; ip-name or resource-name
   tags:  # Optional; A map of tags to assign to the resource; If provider default_tags is set, duplicate keys here will override provider tags
     - <list>
-  route:
-    cidr_block: "<string>"       # Required; The CIDR block of the route
-    ipv6_cidr_block: "<string>"       # Optional; The IPv6 CIDR block of the route
-    destination_prefix_list_id: "<string>"       # Optional; The ID of a manged prefix list destination of the route
-    carrier_gateway_id: "<string>"       # Optional; Identifier of a carrier gateway
-    core_network_arn: "<string>"       # Optional; The Amazon Resource Name of a core network
-    egress_only_gateway_id: "<string>"       # Optional; Identifier of a VPC Egress Only Internet Gateway
-    gateway_id: "<string>"       # Optional; Identifier of a VPC internet gateway or a virtual private gateway
-    network_interface_id: "<string>"       # Optional; Identifier of a network interface
-    local_gateway_id: "<string>"       # Optional; Identifier of a Outpost local gateway
-    nat_gateway_id: "<string>"       # Optional; Identifier of a VPC NAT Gateway
-    transit_gateway_id: "<string>"       # Optional; Identifier of an EC2 Transit Gateway
-    vpc_endpoint_id: "<string>"       # Optional; Identifier of a VPC Endpoint
-    vpc_peering_connection_id: "<string>"       # Optional; Identifier of a VPC Peering Connection

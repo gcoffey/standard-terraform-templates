@@ -8,6 +8,7 @@ SP_PLAYBOOK="./playbooks/service-pack-resource-template.yml"
 
 PROVIDER="${1}"
 SERVICEPACK="${2}"
+ARGS="${3}"
 
 if [[ "${PROVIDER}" != "" && "${SERVICEPACK}" != "" ]];
 then
@@ -15,7 +16,7 @@ then
   if [[ -d "${SERVICEPACK_DIR}" ]];
   then
     echo -e "Processing ${SERVICEPACK_DIR}"
-    ansible-playbook ${SP_PLAYBOOK} --extra-vars "provider_name=${PROVIDER} service_pack_name=${SERVICEPACK}"
+    ansible-playbook ${SP_PLAYBOOK} --extra-vars "provider_name=${PROVIDER} service_pack_name=${SERVICEPACK}" ${ARGS}
   fi
   exit 0
 fi
@@ -30,7 +31,7 @@ do
     if [[ -d "${SP_RESOURCE_DIR}/${s}" ]];
     then
       echo -e "Processing ${SP_RESOURCE_DIR}/${s}"
-      ansible-playbook ${SP_PLAYBOOK} --extra-vars "provider_name=${p} service_pack_name=${s}"
+      ansible-playbook ${SP_PLAYBOOK} --extra-vars "provider_name=${p} service_pack_name=${s}" ${ARGS}
     fi
   done
 
