@@ -14,7 +14,7 @@
     core_path: "../core-tf-templates"
     provider_path: "../service-packs/{{ provider_name }}/{{ service_pack_name }}"
     output_path: "{{ provider_path }}/output"
-    resource_path: "../providers/{{ provider_name }}"
+    resource_path: "../providers/"
   tasks:
     - include_vars: "{{ provider_path }}/service-pack.yml"
     - include_tasks: service-pack-block.yml

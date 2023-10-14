@@ -1,0 +1,12 @@
+app_role_assignment:
+  name: "<string>"	# Required; A name for this resource
+  app_role_id: "<string>"       # Required; The ID of the app role to be assigned
+  principal_object_id: "<string>"       # Required; The object ID of the user, group or service principal to be assigned this app role
+  resource_object_id: "<string>"       # Required; The object ID of the service principal representing the resource
+  feature_tags:
+    custom_single_sign_on: <boolean>        # Optional; Whether this service principal represents a custom SAML app; Default false
+    enterprise: <boolean>        # Optional; Whether this service principal represents an Enterprise App; Default false
+    gallery: <boolean>        # Optional; Whether this service principal represents a gallery App; Default false
+    hide: <boolean>        # Optional; Whether this app is invisible to users in My Apps and Office 365 launcher; Default false
+  saml_single_sign_on:
+    relay_state: "<string>"       # Optional; The relative URI the service provider would redirect to after completion of the SSO flow

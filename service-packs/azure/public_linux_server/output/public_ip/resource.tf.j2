@@ -1,0 +1,78 @@
+resource "azurerm_public_ip" "{{ public_ip.name }}" {
+  ## Required Vars
+  location   = "{{ public_ip.location }}"
+  name   = "{{ public_ip.name }}"
+  resource_group_name   = "{{ public_ip.resource_group_name }}"
+  allocation_method   = "{{ public_ip.allocation_method }}"
+
+  ## Optional Vars
+  zones   = "{{ public_ip.zones }}"
+  ddos_protection_mode   = "{{ public_ip.ddos_protection_mode }}"
+  ddos_protection_plan_id   = "{{ public_ip.ddos_protection_plan_id }}"
+  domain_name_label   = "{{ public_ip.domain_name_label }}"
+  edge_zone   = "{{ public_ip.edge_zone }}"
+  idle_timeout_in_minutes   = "{{ public_ip.idle_timeout_in_minutes }}"
+  ip_tags   = "{{ public_ip.ip_tags | to_json | safe }}"
+  ip_version   = "{{ public_ip.ip_version }}"
+  public_ip_prefix_id   = "{{ public_ip.public_ip_prefix_id }}"
+  reverse_fqdn   = "{{ public_ip.reverse_fqdn }}"
+  sku   = "{{ public_ip.sku }}"
+  sku_tier   = "{{ public_ip.sku_tier }}"
+  tags   = "{{ public_ip.tags | to_json | safe }}"
+
+  ## Blocks
+  additional_capabilities {
+    ## Optional Block Vars
+    ultra_ssd_enabled   = {{ public_ip.additional_capabilities.ultra_ssd_enabled }}
+  }
+  admin_ssh_key {
+    ## Required Block Vars
+    public_key   = "{{ public_ip.admin_ssh_key.public_key }}"
+    username   = "{{ public_ip.admin_ssh_key.username }}"
+  }
+  boot_diagnostics {
+    ## Optional Block Vars
+    storage_account_uri   = "{{ public_ip.boot_diagnostics.storage_account_uri }}"
+  }
+  gallery_application {
+    ## Required Block Vars
+    version_id   = "{{ public_ip.gallery_application.version_id }}"
+    ## Optional Block Vars
+    configuration_blob_uri   = "{{ public_ip.gallery_application.configuration_blob_uri }}"
+    order   = "{{ public_ip.gallery_application.order }}"
+    tag   = "{{ public_ip.gallery_application.tag }}"
+  }
+  identity {
+    ## Required Block Vars
+    type   = "{{ public_ip.identity.type }}"
+    ## Optional Block Vars
+    identity_ids   = "{{ public_ip.identity.identity_ids }}"
+  }
+  plan {
+    ## Required Block Vars
+    name   = "{{ public_ip.plan.name }}"
+    publisher   = "{{ public_ip.plan.publisher }}"
+    product   = "{{ public_ip.plan.product }}"
+  }
+  secret {
+    ## Required Block Vars
+    certificate {
+      ## Required Block Vars
+      url   = "{{ public_ip.secret.certificate.url }}"
+    }
+    key_vault_id   = "{{ public_ip.secret.key_vault_id }}"
+  }
+  termination_notification {
+    ## Required Block Vars
+    enabled   = {{ public_ip.termination_notification.enabled }}
+    ## Optional Block Vars
+    timeout   = "{{ public_ip.termination_notification.timeout }}"
+  }
+  source_image_reference {
+    ## Required Block Vars
+    publisher   = "{{ public_ip.source_image_reference.publisher }}"
+    offer   = "{{ public_ip.source_image_reference.offer }}"
+    sku   = "{{ public_ip.source_image_reference.sku }}"
+    version   = "{{ public_ip.source_image_reference.version }}"
+  }
+}

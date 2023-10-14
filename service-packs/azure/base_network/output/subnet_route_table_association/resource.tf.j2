@@ -1,0 +1,18 @@
+resource "azurerm_subnet_route_table_association" "{{ subnet_route_table_association.name }}" {
+  ## Required Vars
+  route_table_id   = "{{ subnet_route_table_association.route_table_id }}"
+  subnet_id   = "{{ subnet_route_table_association.subnet_id }}"
+
+
+  ## Blocks
+  delegation {
+    ## Required Block Vars
+    name   = "{{ subnet_route_table_association.delegation.name }}"
+    service_delegation {
+      ## Required Block Vars
+      name   = "{{ subnet_route_table_association.delegation.service_delegation.name }}"
+      ## Optional Block Vars
+      actions   = "{{ subnet_route_table_association.delegation.service_delegation.actions }}"
+    }
+  }
+}

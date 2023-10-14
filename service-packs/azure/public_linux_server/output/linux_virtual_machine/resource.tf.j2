@@ -1,0 +1,97 @@
+resource "azurerm_linux_virtual_machine" "{{ linux_virtual_machine.name }}" {
+  ## Required Vars
+  name   = "{{ linux_virtual_machine.name }}"
+  location   = "{{ linux_virtual_machine.location }}"
+  resource_group_name   = "{{ linux_virtual_machine.resource_group_name }}"
+  admin_username   = "{{ linux_virtual_machine.admin_username }}"
+  size   = "{{ linux_virtual_machine.size }}"
+  network_interface_ids   = "{{ linux_virtual_machine.network_interface_ids | to_json | safe }}"
+
+  ## Optional Vars
+  license_type   = "{{ linux_virtual_machine.license_type }}"
+  admin_password   = "{{ linux_virtual_machine.admin_password }}"
+  allow_extension_operations   = {{ linux_virtual_machine.allow_extension_operations }}
+  availability_set_id   = "{{ linux_virtual_machine.availability_set_id }}"
+  capacity_reservation_group_id   = "{{ linux_virtual_machine.capacity_reservation_group_id }}"
+  computer_name   = "{{ linux_virtual_machine.computer_name }}"
+  custom_data   = "{{ linux_virtual_machine.custom_data }}"
+  dedicated_host_id   = "{{ linux_virtual_machine.dedicated_host_id }}"
+  dedicated_host_group_id   = "{{ linux_virtual_machine.dedicated_host_group_id }}"
+  disable_password_authentication   = {{ linux_virtual_machine.disable_password_authentication }}
+  edge_zone   = "{{ linux_virtual_machine.edge_zone }}"
+  encryption_at_host_enabled   = {{ linux_virtual_machine.encryption_at_host_enabled }}
+  allow_extension_operations   = {{ linux_virtual_machine.allow_extension_operations }}
+  extensions_time_budget   = "{{ linux_virtual_machine.extensions_time_budget }}"
+  eviction_policy   = "{{ linux_virtual_machine.eviction_policy }}"
+  gallery_application   = "{{ linux_virtual_machine.gallery_application }}"
+  patch_assessment_mode   = "{{ linux_virtual_machine.patch_assessment_mode }}"
+  patch_mode   = "{{ linux_virtual_machine.patch_mode }}"
+  max_bid_price   = "{{ linux_virtual_machine.max_bid_price }}"
+  platform_fault_domain   = "{{ linux_virtual_machine.platform_fault_domain }}"
+  priority   = "{{ linux_virtual_machine.priority }}"
+  provision_vm_agent   = {{ linux_virtual_machine.provision_vm_agent }}
+  proximity_placement_group_id   = "{{ linux_virtual_machine.proximity_placement_group_id }}"
+  secure_boot_enabled   = {{ linux_virtual_machine.secure_boot_enabled }}
+  source_image_id   = "{{ linux_virtual_machine.source_image_id }}"
+  tags   = "{{ linux_virtual_machine.tags | to_json | safe }}"
+  user_data   = "{{ linux_virtual_machine.user_data }}"
+  vtpm_enabled   = {{ linux_virtual_machine.vtpm_enabled }}
+  virtual_machine_scale_set_id   = "{{ linux_virtual_machine.virtual_machine_scale_set_id }}"
+  zone   = "{{ linux_virtual_machine.zone | to_json | safe }}"
+
+  ## Blocks
+  additional_capabilities {
+    ## Optional Block Vars
+    ultra_ssd_enabled   = {{ linux_virtual_machine.additional_capabilities.ultra_ssd_enabled }}
+  }
+  admin_ssh_key {
+    ## Required Block Vars
+    public_key   = "{{ linux_virtual_machine.admin_ssh_key.public_key }}"
+    username   = "{{ linux_virtual_machine.admin_ssh_key.username }}"
+  }
+  boot_diagnostics {
+    ## Optional Block Vars
+    storage_account_uri   = "{{ linux_virtual_machine.boot_diagnostics.storage_account_uri }}"
+  }
+  gallery_application {
+    ## Required Block Vars
+    version_id   = "{{ linux_virtual_machine.gallery_application.version_id }}"
+    ## Optional Block Vars
+    configuration_blob_uri   = "{{ linux_virtual_machine.gallery_application.configuration_blob_uri }}"
+    order   = "{{ linux_virtual_machine.gallery_application.order }}"
+    tag   = "{{ linux_virtual_machine.gallery_application.tag }}"
+  }
+  identity {
+    ## Required Block Vars
+    type   = "{{ linux_virtual_machine.identity.type }}"
+    ## Optional Block Vars
+    identity_ids   = "{{ linux_virtual_machine.identity.identity_ids }}"
+  }
+  plan {
+    ## Required Block Vars
+    name   = "{{ linux_virtual_machine.plan.name }}"
+    publisher   = "{{ linux_virtual_machine.plan.publisher }}"
+    product   = "{{ linux_virtual_machine.plan.product }}"
+  }
+  secret {
+    ## Required Block Vars
+    certificate {
+      ## Required Block Vars
+      url   = "{{ linux_virtual_machine.secret.certificate.url }}"
+    }
+    key_vault_id   = "{{ linux_virtual_machine.secret.key_vault_id }}"
+  }
+  termination_notification {
+    ## Required Block Vars
+    enabled   = {{ linux_virtual_machine.termination_notification.enabled }}
+    ## Optional Block Vars
+    timeout   = "{{ linux_virtual_machine.termination_notification.timeout }}"
+  }
+  source_image_reference {
+    ## Required Block Vars
+    publisher   = "{{ linux_virtual_machine.source_image_reference.publisher }}"
+    offer   = "{{ linux_virtual_machine.source_image_reference.offer }}"
+    sku   = "{{ linux_virtual_machine.source_image_reference.sku }}"
+    version   = "{{ linux_virtual_machine.source_image_reference.version }}"
+  }
+}

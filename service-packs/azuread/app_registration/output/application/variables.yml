@@ -1,0 +1,89 @@
+application:
+  name: "<string>"	# Required; A name for this resource
+  display_name: "<string>"       # Required; The display name for the application
+  description: "<string>"       # Optional; A description of the application, shown to end users
+  device_only_auth_enabled: <boolean>        # Optional; Specifies whether this app supports device auth without a user; Default false
+  fallback_public_client_enabled: <boolean>        # Optional; Specifies whether the app is a public client; Default false
+  group_membership_claims:  # Optional; Configures the groups claim issued in a user or OAuth 2 access token; None, SecurityGroup, DirectoryRole, ApplicationGroup or All
+    - <list>
+  identifier_uris:  # Optional; A set of user-defined URIs that uniquely identify an application within its Azure AD tenant
+    - <list>
+  logo_image: "<string>"       # Optional; A logo image to upload for the application, as a raw base64-encoded string; GIF, JPEG or PNG format
+  marketing_url: "<string>"       # Optional; URL of the applications marketing page
+  notes: "<string>"       # Optional; User-specified notes relevant for the management of the application
+  oauth2_post_response_required: <boolean>        # Optional; Specifies whether, as part of OAuth 2 token request, AAD allows POST requests [insecure]; Default false
+  owners:  # Optional; A set of object IDs of principals that will be granted ownership of the application
+    - <list>
+  prevent_duplicate_names: <boolean>        # Optional; If true, will return an error if an existing application is found with the same name; Default false
+  privacy_statement_url: "<string>"       # Optional; URL of the applications privacy statement
+  service_management_reference: "<string>"       # Optional; References application context information from a Service or Asset Management DB
+  sign_in_audience: "<string>"       # Optional; The Microsoft account types that are supported by the app; AzureADMyOrg, AzureADMultipleOrgs; Default AzureADMyOrg
+  support_url: "<string>"       # Optional; URL of the applications support page
+  tags:  # Optional; A set of tags to apply to the application
+    - <list>
+  template_id: "<string>"       # Optional; Unique ID for a templated app in the AAD App Gallery, to create the app from
+  terms_of_service_url: "<string>"       # Optional; URL of the application terms of service statement
+  api:
+    known_client_applications:  # Optional; A set of application IDs [client IDs] used for building consent
+      - <list>
+    mapped_claims_enabled: <boolean>        # Optional; Allows an application to use claims mapping without specifying a custom signing key; Default false
+    oauth2_permission_scope:
+    requested_access_token_version: "<string>"       # Optional; The access token version expected by this resource; 1 or 2; Default 1
+  oauth2_permission_scope:
+    admin_consent_description: "<string>"       # Required; Delegated permission description that appears in all tenant-wide admin consent experiences
+    admin_consent_display_name: "<string>"       # Required; Display name for the delegated permission
+    id: "<string>"       # Required; The unique identifier of the delegated permission
+    enabled: <boolean>        # Optional; Determines if the permission scope is enabled; Default true
+    type: "<string>"       # Optional; Whether this delegated permission should be considered safe for non-admin users to consent to; User or Admin; Default User
+    user_consent_description: "<string>"       # Optional; Delegated permission description that appears in the end user consent experience
+    user_consent_display_name: "<string>"       # Optional; Display name for the delegated permission that appears in the end user consent experience
+    value: "<string>"       # Optional; The value that is used for the scp claim in the OAuth 2 access token
+  app_role:
+    allowed_member_types: "<string>"       # Required; Specify whether this app role definition can be assigned to users and groups; User, Application or Both
+    description: "<string>"       # Required; Description of the app role that appears when the roles is being assigned
+    display_name: "<string>"       # Required; Display name for the app role that appears during app role assignment
+    id: "<string>"       # Required; The unique identifier of the app role
+    enabled: <boolean>        # Optional; Determines if the app role is enabled; Default true
+    value: "<string>"       # Optional; The value that is used for the roles claim in the OAuth 2 access token
+  feature_tags:
+    custom_single_sign_on: <boolean>        # Optional; Whether this application represents a custom SAML application for linked service principals; Default false
+    enterprise: <boolean>        # Optional; Whether this app represents an Enterprise App for linked service principals; Default false
+    gallery: <boolean>        # Optional; Whether this application represents a gallery application for linked service principals; Default false
+    hide: <boolean>        # Optional; Whether this app is invisible to users in My Apps and Office 365; Default false
+  optional_claims:
+    access_token:
+      additional_properties:  # Optional; List of additional properties of the claim
+        - <list>
+      essential: <boolean>        # Optional; Whether the claim specified by the client is necessary to ensure a smooth auth experience
+      name: "<string>"       # Optional; The name of the optional claim
+      source: "<string>"       # Optional; The source of the claim; Only known value seems to be user
+    id_token:
+      additional_properties:  # Optional; List of additional properties of the claim
+        - <list>
+      essential: <boolean>        # Optional; Whether the claim specified by the client is necessary to ensure a smooth auth experience
+      name: "<string>"       # Optional; The name of the optional claim
+      source: "<string>"       # Optional; The source of the claim; Only known value seems to be user
+    saml2_token:
+      additional_properties:  # Optional; List of additional properties of the claim
+        - <list>
+      essential: <boolean>        # Optional; Whether the claim specified by the client is necessary to ensure a smooth auth experience
+      name: "<string>"       # Optional; The name of the optional claim
+      source: "<string>"       # Optional; The source of the claim; Only known value seems to be user
+  public_client:
+    redirect_uris:  # Optional; A set of URLs where user tokens are sent for sign-in; https or ms-appx-web URL
+      - <list>
+  required_resource_access:
+    resource_access:
+ 
+      id: "<string>"       # Required; The unique identifier for an app role or OAuth2 permission scope      type: "<string>"       # Required; Specifies whether the id property references an app role or an OAuth2 permission scope; Role or Scope    resource_app_id: "<string>"       # Required; The unique identifier for the resource that the application requires access to; Should be an application ID
+  single_page_application:
+    redirect_uris:  # Optional; A set of URLs where user tokens are sent for callback; must be https based URL
+      - <list>
+  web:
+    homepage_url: "<string>"       # Optional; Home page or landing page of the application
+    implicit_grant:
+      access_token_issuance_enabled: <boolean>        # Optional; Whether this web app can request an access token using OAuth2 implicit flow
+      id_token_issuance_enabled: <boolean>        # Optional; Whether this web app can request ID token using OAuth2 implicit flow
+    logout_url: "<string>"       # Optional; The URL that will be used by Microsoft's autorization service to perform sign out
+    redirect_uris:  # Optional; A set of URLS where user tokens are sent for callback; must be http based URL or URN
+      - <list>

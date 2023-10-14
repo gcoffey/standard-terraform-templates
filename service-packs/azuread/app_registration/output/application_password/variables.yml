@@ -1,0 +1,71 @@
+application_password:
+  name: "<string>"	# Required; A name for this resource
+  application_object_id: "<string>"       # Required; The object ID of the application
+  display_name: "<string>"       # Optional; A display name for the password
+  end_date: "<string>"       # Optional; The end date until which the password is valid, formatted as an RFC3339 date string
+  end_date_relative: "<string>"       # Optional; A relative duration for which the password is valid until e.g. 240h
+  start_date: "<string>"       # Optional; The start date from which the password is valid, formatted as an RFC3339 date string
+  api:
+    known_client_applications:  # Optional; A set of application IDs [client IDs] used for building consent
+      - <list>
+    mapped_claims_enabled: <boolean>        # Optional; Allows an application to use claims mapping without specifying a custom signing key; Default false
+    oauth2_permission_scope:
+    requested_access_token_version: "<string>"       # Optional; The access token version expected by this resource; 1 or 2; Default 1
+  oauth2_permission_scope:
+    admin_consent_description: "<string>"       # Required; Delegated permission description that appears in all tenant-wide admin consent experiences
+    admin_consent_display_name: "<string>"       # Required; Display name for the delegated permission
+    id: "<string>"       # Required; The unique identifier of the delegated permission
+    enabled: <boolean>        # Optional; Determines if the permission scope is enabled; Default true
+    type: "<string>"       # Optional; Whether this delegated permission should be considered safe for non-admin users to consent to; User or Admin; Default User
+    user_consent_description: "<string>"       # Optional; Delegated permission description that appears in the end user consent experience
+    user_consent_display_name: "<string>"       # Optional; Display name for the delegated permission that appears in the end user consent experience
+    value: "<string>"       # Optional; The value that is used for the scp claim in the OAuth 2 access token
+  app_role:
+    allowed_member_types: "<string>"       # Required; Specify whether this app role definition can be assigned to users and groups; User, Application or Both
+    description: "<string>"       # Required; Description of the app role that appears when the roles is being assigned
+    display_name: "<string>"       # Required; Display name for the app role that appears during app role assignment
+    id: "<string>"       # Required; The unique identifier of the app role
+    enabled: <boolean>        # Optional; Determines if the app role is enabled; Default true
+    value: "<string>"       # Optional; The value that is used for the roles claim in the OAuth 2 access token
+  feature_tags:
+    custom_single_sign_on: <boolean>        # Optional; Whether this application represents a custom SAML application for linked service principals; Default false
+    enterprise: <boolean>        # Optional; Whether this app represents an Enterprise App for linked service principals; Default false
+    gallery: <boolean>        # Optional; Whether this application represents a gallery application for linked service principals; Default false
+    hide: <boolean>        # Optional; Whether this app is invisible to users in My Apps and Office 365; Default false
+  optional_claims:
+    access_token:
+      additional_properties:  # Optional; List of additional properties of the claim
+        - <list>
+      essential: <boolean>        # Optional; Whether the claim specified by the client is necessary to ensure a smooth auth experience
+      name: "<string>"       # Optional; The name of the optional claim
+      source: "<string>"       # Optional; The source of the claim; Only known value seems to be user
+    id_token:
+      additional_properties:  # Optional; List of additional properties of the claim
+        - <list>
+      essential: <boolean>        # Optional; Whether the claim specified by the client is necessary to ensure a smooth auth experience
+      name: "<string>"       # Optional; The name of the optional claim
+      source: "<string>"       # Optional; The source of the claim; Only known value seems to be user
+    saml2_token:
+      additional_properties:  # Optional; List of additional properties of the claim
+        - <list>
+      essential: <boolean>        # Optional; Whether the claim specified by the client is necessary to ensure a smooth auth experience
+      name: "<string>"       # Optional; The name of the optional claim
+      source: "<string>"       # Optional; The source of the claim; Only known value seems to be user
+  public_client:
+    redirect_uris:  # Optional; A set of URLs where user tokens are sent for sign-in; https or ms-appx-web URL
+      - <list>
+  required_resource_access:
+    resource_access:
+ 
+      id: "<string>"       # Required; The unique identifier for an app role or OAuth2 permission scope      type: "<string>"       # Required; Specifies whether the id property references an app role or an OAuth2 permission scope; Role or Scope    resource_app_id: "<string>"       # Required; The unique identifier for the resource that the application requires access to; Should be an application ID
+  single_page_application:
+    redirect_uris:  # Optional; A set of URLs where user tokens are sent for callback; must be https based URL
+      - <list>
+  web:
+    homepage_url: "<string>"       # Optional; Home page or landing page of the application
+    implicit_grant:
+      access_token_issuance_enabled: <boolean>        # Optional; Whether this web app can request an access token using OAuth2 implicit flow
+      id_token_issuance_enabled: <boolean>        # Optional; Whether this web app can request ID token using OAuth2 implicit flow
+    logout_url: "<string>"       # Optional; The URL that will be used by Microsoft's autorization service to perform sign out
+    redirect_uris:  # Optional; A set of URLS where user tokens are sent for callback; must be http based URL or URN
+      - <list>

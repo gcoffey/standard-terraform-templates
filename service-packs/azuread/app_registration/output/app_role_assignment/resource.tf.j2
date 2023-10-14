@@ -1,0 +1,20 @@
+resource "azuread_app_role_assignment" "{{ app_role_assignment.name }}" {
+  ## Required Vars
+  app_role_id   = "{{ app_role_assignment.app_role_id }}"
+  principal_object_id   = "{{ app_role_assignment.principal_object_id }}"
+  resource_object_id   = "{{ app_role_assignment.resource_object_id }}"
+
+
+  ## Blocks
+  feature_tags {
+    ## Optional Block Vars
+    custom_single_sign_on   = {{ app_role_assignment.feature_tags.custom_single_sign_on }}
+    enterprise   = {{ app_role_assignment.feature_tags.enterprise }}
+    gallery   = {{ app_role_assignment.feature_tags.gallery }}
+    hide   = {{ app_role_assignment.feature_tags.hide }}
+  }
+  saml_single_sign_on {
+    ## Optional Block Vars
+    relay_state   = "{{ app_role_assignment.saml_single_sign_on.relay_state }}"
+  }
+}

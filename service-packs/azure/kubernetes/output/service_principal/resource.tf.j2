@@ -1,0 +1,30 @@
+resource "azuread_service_principal" "{{ service_principal.name }}" {
+  ## Required Vars
+  application_id   = "{{ service_principal.application_id }}"
+
+  ## Optional Vars
+  account_enabled   = {{ service_principal.account_enabled }}
+  alternative_names   = "{{ service_principal.alternative_names | to_json | safe }}"
+  app_role_assignment_required   = {{ service_principal.app_role_assignment_required }}
+  description   = "{{ service_principal.description }}"
+  login_url   = "{{ service_principal.login_url }}"
+  notes   = "{{ service_principal.notes }}"
+  notification_email_addresses   = "{{ service_principal.notification_email_addresses | to_json | safe }}"
+  owners   = "{{ service_principal.owners | to_json | safe }}"
+  preferred_single_sign_on_mode   = "{{ service_principal.preferred_single_sign_on_mode }}"
+  tags   = "{{ service_principal.tags | to_json | safe }}"
+  use_existing   = {{ service_principal.use_existing }}
+
+  ## Blocks
+  feature_tags {
+    ## Optional Block Vars
+    custom_single_sign_on   = {{ service_principal.feature_tags.custom_single_sign_on }}
+    enterprise   = {{ service_principal.feature_tags.enterprise }}
+    gallery   = {{ service_principal.feature_tags.gallery }}
+    hide   = {{ service_principal.feature_tags.hide }}
+  }
+  saml_single_sign_on {
+    ## Optional Block Vars
+    relay_state   = "{{ service_principal.saml_single_sign_on.relay_state }}"
+  }
+}

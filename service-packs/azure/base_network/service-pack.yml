@@ -1,4 +1,4 @@
-resource_pack:
+service_pack:
   name: "Base Network"
   description: "Provides basic private networking in Azure, with default Azure routing for Internet access"
   resources:
@@ -6,14 +6,19 @@ resource_pack:
       provider: azure
     - name: route_table
       provider: azure
-      parent: "resource_group"
+      depends_on: 
+        - "resource_group"
     - name: subnet
       provider: azure
-      parent: "virtual_network"
+      depends_on:
+        - "virtual_network"
     - name: subnet_route_table_association
       provider: azure
-      parent: "subnet"
+      depends_on:
+        - "subnet"
+        - "route_table"
     - name: virtual_network
       provider: azure
-      parent: "resource_group"
+      depends_on:
+        - "resource_group"
 

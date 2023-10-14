@@ -1,0 +1,244 @@
+kubernetes_cluster:
+  name: "<string>"	# Required; A name for this resource
+  location: "<string>"       # Required; The location where the Managed Kubernetes Cluster should be created
+  name: "<string>"       # Required; The name of the Managed Kubernetes Cluster to create
+  resource_group_name: "<string>"       # Required; The name of the resource group in which to create the Kubernetes Cluster
+  dns_prefix: "<string>"       # Optional; DNS prefix specified when creating the managed cluster; max 54 chars length
+  dns_prefix_private_cluster: "<string>"       # Optional; Specifies the DNS prefix to use with private clusters
+  automatic_channel_upgrade: "<string>"       # Optional; The upgrade channel for this Kubernetes Cluster; patch, rapid, node-image or stable
+  azure_policy_enabled: <boolean>        # Optional; Should the Azure Policy Add On be enabled?
+  disk_encryption_set_id: "<string>"       # Optional; The ID of the Disk Encryption Set
+  edge_zone: "<string>"       # Optional; Specifies the Edge Zone within the Azure Region where this Managed Cluster shoul exist
+  http_application_routing_enabled: <boolean>        # Optional; Should HTTP Application Routing be enabled?
+  image_cleaner_enabled: <boolean>        # Optional; Specifies whether Image Cleaner is Enabled?
+  image_cleaner_interval_hours: "<string>"       # Optional; Specifies the interval in hours when images should be cleand up; Default 48
+  kubernetes_version: "<string>"       # Optional; Version of Kubernetes specified when creating the AKS Managed Cluster
+  local_account_disabled: <boolean>        # Optional; If true local accounts will be disabled
+  node_resource_group: "<string>"       # Optional; The name of the Resource Group where the Kubernetes Nodes should exist
+  oidc_issuer_enabled: <boolean>        # Optional; Enable or Disable the OIDC issuer URL
+  open_service_mesh_enabled: <boolean>        # Optional; Is Open Service Mesh enabled?
+  private_cluster_enabled: <boolean>        # Optional; Should this Kubernetes Cluster have its API server only exposed on internal IP Addresses
+  private_dns_zone_id: "<string>"       # Optional; Either the ID of Private DNS Zone which should be delegated to this cluster; None, Zone ID or System
+  private_cluster_public_fqdn_enabled: <boolean>        # Optional; Specifies whether a Public FQDN for this Private Cluster should be added; Default false
+  workload_identity_enabled: <boolean>        # Optional; Specifies whether Azure AD Workload Identity should be enabled for the Cluster; Default false
+  public_network_access_enabled: <boolean>        # Optional; Whether public network access is allowed for this Kubernetes Cluster; Default true
+  role_based_access_control_enabled: <boolean>        # Optional;  Whether RBAC for the Kubernetes Cluster should be enabled; Default true
+  run_command_enabled: <boolean>        # Optional; Whether to enable run command for the cluster or not; Default true
+  sku_tier: "<string>"       # Optional; The SKU Tier that should be used for this Kubernetes Cluster; Free, Paid or Standard; Default Free
+  tags:  # Optional; A mapping of tags
+    - <list>
+  aci_connector_linux:
+    subnet_name: "<string>"       # Required; The Subnet Name for the virtual nodes to run
+  api_server_access_profile:
+    authorized_ip_ranges:  # Optional; Set of authorized IP ranges to allow access to API server
+      - <list>
+    subnet_id: "<string>"       # Optional; The ID of the Subnet where the API server endpoint is delegated to
+    vnet_integration_enabled: <boolean>        # Optional; Should API Server VNet integration be enabled
+  auto_scaler_profile:
+    balance_similar_node_groups: <boolean>        # Optional; Detect similar node groups and balance the number of nodes between time; Default false
+    expander: "<string>"       # Optional; Expander to use; least-waste, priority, most-pods or random; Default random
+    max_graceful_termination_sec: "<string>"       # Optional; Maximum number of seconds the cluster autoscaler waits for pod termination; Default 600
+    max_node_provisioning_time: "<string>"       # Optional; Maximum time the autoscaler waits for a node to be provisioned; Default 15m
+    max_unready_nodes: "<string>"       # Optional; Maximum number of allowed unready nodes; Default 3
+    max_unready_percentage: "<string>"       # Optional; Maximum percentage of unready nodes the cluster autoscaler will stop if the percentage is exceeded; Default 45
+    new_pod_scale_up_delay: "<string>"       # Optional; For scenarios like burst/batch scale where you don't want CA to act before the k8s scheduler could schedule all pods
+    scale_down_delay_after_add: "<string>"       # Optional; How long after the scale up of AKS nodes the scale down evaluation resumes; Default 10m
+    scale_down_delay_after_deleted: "<string>"       # Optional; How long after node deletion that scale down evaluation resumes; Default scan_interval
+    scale_down_delay_after_failure: "<string>"       # Optional; How long after scale down failure that scale down evaluation resumes; Default 3m
+    scan_interval: "<string>"       # Optional; How often the AKS Cluster should be evaluated for scale up/down; Default 10s
+    scale_down_unneeded: "<string>"       # Optional; How long a node should be unneeded before it is eligible for scale down; Default 10m
+    scale_down_unready: "<string>"       # Optional; How long an unready node should be unneeded before it is eligible for scale down; Default 20m
+    scale_down_utilization_threshold: "<string>"       # Optional; Node utilization level defined as sum of requested resources divided by capacity; Default 0.5
+    empty_bulk_delete_max: "<string>"       # Optional; Maximum number of empty nodes that can be deleted at the same time; Default 10
+    skip_nodes_with_local_storage: <boolean>        # Optional; If true cluster autoscaler will never delete nodes with pods with local stoage; Default true
+    skip_nodes_with_system_pods: <boolean>        # Optional; If true cluster autoscaler will never delete nodes with pods from kube-system; Default true
+  azure_active_directory_role_based_access_control:
+    managed: <boolean>        # Optional; Is the Azure AD integration Managed
+    tenant_id: "<string>"       # Optional; The Tenant ID used for Azure AD Application
+    admin_group_object_ids:  # Optional; Required only when managed = true; List of Object IDs of Azure AD Groups
+      - <list>
+    azure_rbac_enabled: <boolean>        # Optional; Required only when managed = true; Is RBAC based on Azure AD enabled?
+    client_app_id: "<string>"       # Optional; Required only when managed = false; The Client ID of an Azure AD Application
+    server_app_id: "<string>"       # Optional; Required only when managed = false; The Server ID of and Azure AD App
+    server_app_secret: "<string>"       # Optional; Required only when managed = false; The Server Secret of an Azure AD App
+  confidential_computing:
+    sgx_quote_helper_enabled: <boolean>        # Required; Should the SGX quote helper be enabled?
+  monitor_metrics:
+    annotations_allowed: "<string>"       # Optional; Specifies a comma-separated list of K8S annotation keys
+    labels_allowed: "<string>"       # Optional; Specifies a comma-separated list of K8S label keys
+  default_node_pool:
+    name: "<string>"       # Required; The name which should be used for the default K8s Node Pool
+    vm_size: "<string>"       # Required; The size of the Virtual Machine; Such as Standard_DS_v2
+    capacity_reservation_group_id: "<string>"       # Optional; Specifies the ID of the Capacity Reservation Group
+    custom_ca_trust_enabled: <boolean>        # Optional; Specifies whether to trust a Custom CA
+    enable_auto_scaling: <boolean>        # Optional; Should the Kubernetes Auto Scaler be enabled for this node pool?
+    enable_host_encryption: <boolean>        # Optional; Should the nodes in the Default Node Pool have host encryption enabled?
+    enabled_node_public_ip: <boolean>        # Optional; Should nodes in this Node Pool have a Public IP Address?
+    host_group_id: "<string>"       # Optional; Specifies the ID of the Host GRoup within which this AKS Cluster should be created
+    kubelet_config:
+    linux_os_config:
+    fips_enabled: <boolean>        # Optional; Should the nodes in this Node Pool have Federal information Processing Standard enabled?
+    kubelet_disk_type: "<string>"       # Optional; The type of disk used by kubelet; OS or Temporary
+    max_pods: "<string>"       # Optional; The maximum number of pods that can run on each agent
+    message_of_the_day: "<string>"       # Optional; A base64-encoded string which will be written to /etc/motd
+    node_network_profile:
+    node_public_ip_prefix_id: "<string>"       # Optional; Resource ID for the Public IP Addresses Prefix for the nodes in this Node Pool; enable_node_public_ip should be true
+    node_labels: "<string>"       # Optional; A map of Kubernetes labels which should be applied to nodes
+    node_taints:  # Optional; A list of the taints added to new nodes during node pool create and scale
+      - <list>
+    only_critical_addons_enabled: <boolean>        # Optional; Enabling this option will taint default node pool with CriticalAddonsOnly=true:NoSchedule
+    orchestrator_version: "<string>"       # Optional; Version of Kubernetes used for the Agents
+    os_disk_size_gb: "<string>"       # Optional; The size of the OS Disk which should be used for each agent in the Node Pool
+    os_disk_type: "<string>"       # Optional; The type of disk which should be used for the Operating System; Ephemeral or Managed
+    os_sku: "<string>"       # Optional; Specifies the OS SKU used by the agent pool; Ubuntu, CBLMariner, Mariner, Windows2019 or Windows2022
+    pod_subnet_id: "<string>"       # Optional; The ID of the Subnet where the pods in the default Node Pool should exist
+    proximity_placement_group_id: "<string>"       # Optional; The ID of the Proximity Placement Group
+    scale_down_mode: "<string>"       # Optional; Specifies the autoscaling behaviour of the Kubernetes cluster; Delete or Deallocate
+    temporary_name_for_rotation: "<string>"       # Optional; Specifies the name of the temporary node pool
+    type: "<string>"       # Optional; The type of Node Pool which should be created; Availabilityset or VirtualMachineScaleSets
+    tags:  # Optional; A mapping of tags
+      - <list>
+    ultra_ssd_enabled: <boolean>        # Optional; Used to specify whether the UltraSSD is enabled in the Default Node Pool; Default false
+    upgrade_settings:
+    vnet_subnet_id: "<string>"       # Optional; The ID of a Subnet where the Kubernetes Node Pool should exist; Route table must be attached to subnet
+    max_count: "<string>"       # Optional; Required if enable_auto_scaling = true; Max number of nodes in this Node Pool
+    min_count: "<string>"       # Optional; Required if enable_auto_scaling = true; Min number of nodes in this Node Pool
+    node_count: "<string>"       # Optional; Initial number of nodes in this Node Pool
+    workflow_runtime: "<string>"       # Optional; Specifies the workload runtime used by the node pool; OCIContainer
+    zones:  # Optional; Specifies a list of Availability Zones in which this Kubernetes Cluster should be located
+      - <list>
+  identity:
+    type: "<string>"       # Required; Specifies the type of Managed Service Identity; SystemAssigned or UserAssigned
+    identity_ids: "<string>"       # Optional; Specifies a list of User Assigned Managed Identity IDs
+  key_management_service:
+    key_vault_key_id: "<string>"       # Required; Identifier of Azure Key Vault Key
+    key_vault_network_access: "<string>"       # Optional; Network access of the key vault Network access of the key vault; Publc or Private
+  key_vault_secrets_provider:
+    secret_rotation_enabled: <boolean>        # Optional; Should the secret store CSI driver on the AKS cluster be enabled?
+    secret_rotation_interval: "<string>"       # Optional; The interval to poll for secret rotation; Default 2m
+  kubelet_config:
+    allowed_unsafe_sysctls:  # Optional; Specifies the allow list of unsafe sysctls command
+      - <list>
+    container_log_max_line: "<string>"       # Optional; Specifies the maximum number of container log files that can be present for a container; must be at least 2
+    container_log_max_size_mb: "<string>"       # Optional; Specifies the maximum size of container log file before it is rotated
+    cpu_cfs_quote_enabled: <boolean>        # Optional; Is CPU CFS quota enforcement for containers enabled?
+    cpu_cfs_quota_period: "<string>"       # Optional; Specifies the CPU CFS quota period value
+    cpu_manager_policy: "<string>"       # Optional; Specifies the CPU Manager Policy to use; none or static
+    image_gc_high_threshold: "<string>"       # Optional; Specifies the percent of disk usage above which image garbage collection is always run; must be between 0 and 100
+    image_gc_low_threshold: "<string>"       # Optional; Specifies the percent of disk usage lower than which image garbage collcetion is never run; must be between 0 and 100
+    pod_max_pid: "<string>"       # Optional; Specifies the maximum number of processes per pod
+    topology_manager_policy: "<string>"       # Optional; Specifies the Topology Manager policy to use; none, best-effort, restricted or single-numa-node
+  kubelet_identity:
+    client_id: "<string>"       # Optional; The Client ID of the user-defined Managed Identity to be assigned to the kubelets
+    object_id: "<string>"       # Optional; The Object ID of the user-defined Managed Identity assigned to the kubelets
+    user_assigned_identity_id: "<string>"       # Optional; The ID of the User Assigned Identity assigned to the kubelets
+  linux_os_config:
+    swap_file_size_mb: "<string>"       # Optional; Specifies the size of the swap file on each node in MB
+    sysctl_config:
+      fs_aio_max_nr: <integer>        # Optional; The sysctl setting fs.aio-mar-nr; Between 65536 and 6553500
+      fs_file_max: <integer>        # Optional; The sysctl setting fs.file-max; Between 8192 and 12000500
+      fs_inotify_max_user_watches: <integer>        # Optional; The sysctl setting fs.inotify.max_user_watches; Between 781250 and 2097152
+      fs_nr_open: <integer>        # Optional; The sysctl setting fs.nr_open; Between 8192 and 20000500
+      kernel_threads_max: <integer>        # Optional; The sysctl setting kernel.threads-max; between 20 and 513785
+      net_core_netdev_max_backlog: <integer>        # Optional; The sysctl setting net.core.netdev_max_backlog; Between 1000 and 3240000
+      net_core_optmem_max: <integer>        # Optional; The sysctl setting net.core.optmem_max; between 20480 and 4194304
+      net_core_rmem_default: <integer>        # Optional; The sysctl setting net.core.rmem_default; between 212992 and 134217728
+      net_core_rmem_max: <integer>        # Optional; The sysctl setting net.core.rmem_max; between 212992 and 134217728
+      net_core_somaxconn: <integer>        # Optional; The sysctl setting net.core.somaxconn; between 4096 and 3240000
+      net_core_wmem_default: <integer>        # Optional; The sysctl setting net.core.wmem_default; between 212992 and 134217728
+      net_core_wmem_max: <integer>        # Optional; The sysctl setting net.core.wmem_max; between 212992 and 134217728
+      net_ipv4_ip_local_port_range_max: <integer>        # Optional; The sysctl setting net.ipv4_local_port_range_max.value; between 1024 and 60999
+      net_ipv4_ip_local_port_range_min: <integer>        # Optional; The sysctl setting net.ipv4_local_port_range_min.value; between 1024 and 60999
+      net_ipv4_neigh_default_gc_thresh1: <integer>        # Optional; The sysctl setting net.ipv4.neigh.default.gc_thresh1; between 128 and 80000
+      net_ipv4_neigh_default_gc_thresh2: <integer>        # Optional; The sysctl setting net.ipv4.neigh.default.gc_thresh2; between 512 and 90000
+      net_ipv4_neigh_default_gc_thresh3: <integer>        # Optional; The sysctl setting net.ipv4.neigh.default.gc_thresh3; between 1024 and 100000
+      net_ipv4_tcp_fin_timeout: <integer>        # Optional; The sysctl setting net.ipv4.tcp_fin_timeout; between 5 and 120
+      net_ipv4_tcp_keepalive_intv1: <integer>        # Optional; The sysctl setting net.ipv4.tcp_keepalive_intv1; between 10 and 75
+      net_ipv4_tcp_keepalive_probes: <integer>        # Optional; The sysctl setting net.ipv4.tcp_keepalive_probes; between 1 and 15
+      net_ipv4_tcp_keepalive_time: <integer>        # Optional; The sysctl setting net.ipv4.tcp_keepalive_time; between 30 and 432000
+      net_ipv4_tcp_max_syn_backlog: <integer>        # Optional; The sysctl setting net.ipv4.tcp_max_syn_backlog; between 128 and 3240000
+      net_ipv4_tcp_max_tw_buckets: <integer>        # Optional; The sysctl setting net.ipv4.tcp_max_tw_buckets; between 8000 and 1440000
+      net_ipv4_tcp_tw_reuse: <integer>        # Optional; The sysctl setting net.ipv4.tcp_tw_reuse
+      net_netfilter_nf_conntrack_buckets: <integer>        # Optional; The sysctl setting net_netfilter_nf_conntrack_buckets; between 65536 and 147456
+      net_netfilter_nf_conntrack_max: <integer>        # Optional; The sysctl setting net_netfilter_nf_conntrack_max; between 131072 and 1048576
+      vm_max_map_count: <integer>        # Optional; The sysctl setting vm.max_map_count; between 65530 and 262144
+      vm_swappiness: <integer>        # Optional; The sysctl setting vm.swappiness; between 0 and 100
+      vm_vfs_cache_pressure: <integer>        # Optional; The sysctl setting vm.vfs_cache_pressure; between 0 and 100
+    transparent_huge_page_defrag: "<string>"       # Optional; Specifies the defrag configuration for Transparent Huge Page; always, defer, defer+madvise, madvise or never
+    transparent_huge_page_enabled: "<string>"       # Optional; Specifies the Transparent Huge Page enabled configuration; always, madvise or never
+  node_network_profile:
+    node_public_ip_tags:  # Optional; Specifies a mapping of tags to the instance-level public IPs
+      - <list>
+  linux_profile:
+    admin_username: "<string>"       # Required; The Admin Username for the cluster
+    ssh_key:
+ 
+      key_data: "<string>"       # Required; The Public SSH Key usd to access the cluster  maintenance_window:
+    allowed:
+      day: "<string>"       # Required; A day in a week; Sunday, Monday, Tuesday etc 
+      hours: "<string>"       # Required; An array of hour slots in a day 
+    not_allowed:
+      end: "<string>"       # Required; The end of a time span, formatted as an RFC3339 string 
+      start: "<string>"       # Required; The start of a time span, formatted as an RFC3339 string 
+  microsoft_defender:
+    log_analytics_workspace_id: "<string>"       # Required; Specifies the ID of the Log Analytics Workspace where the audit logs from Microsoft Defender should be sent
+  network_profile:
+    network_plugin: "<string>"       # Required; Network plugin to use for networking; azure, kubenet or none
+    network_mode: "<string>"       # Optional; Network mode to be used with Azure CNI; bridge or transparent
+    network_policy: "<string>"       # Optional; Sets up network policy to be used with Azure CNI; calico or azure
+    dns_service_ip: "<string>"       # Optional; IP address within the Kubernetes service address range that will be used by cluster service discovery
+    docker_bridge_cidr: "<string>"       # Optional; IP address used as the Docker bridge IP address on nodes
+    ebpf_data_plane: "<string>"       # Optional; Specifies the eBPF data plane used for building the Kubernetes network; cilium
+    network_plugin_mode: "<string>"       # Optional; Specifies the network plugin mode used for building the Kubernetes netwoek; Overlay
+    outbound_type: "<string>"       # Optional; The outbound routing method which should be used; loadBalancer, userDefinedRouting, managedNATGateway or userAssignedNATGateway
+    pod_cidr: "<string>"       # Optional; The CIDR to use for pod IP addresses; Required when network_plugin = kubenet
+    pod_cidrs:  # Optional; A list of CIDRS to use for pod IP addresses
+      - <list>
+    service_cidr: "<string>"       # Optional; The Network Range used by the Kubernetes service
+    service_cidrs:  # Optional; A list of CIDRs to use for Kubernetes service
+      - <list>
+    load_balancer_sku: "<string>"       # Optional; Specifies the SKU of the Load Balancer used for this Kubernetes Cluster; basic or standard
+    load_balancer_profile:
+      idle_timeout_in_minutes: "<string>"       # Optional; Desired outbound flow idle timeout in minutes; between 4 and 120; Default 30
+      managed_outbound_ip_count: "<string>"       # Optional; Count of desired managed outbound IPs for the cluster lb; between 1 and 100
+      managed_outbound_ipv6_count: "<string>"       # Optional; Desired number of IPv6 outbound IPs created and managed by Azure; between 1 and 100
+      outbound_ip_address_ids: "<string>"       # Optional; The ID of the Public IP Address which should be used for outbound communication
+      outbound_ip_prefix_ids: "<string>"       # Optional; The ID of the outbound Public IP Address Prefixes
+      outbound_ports_allocated: "<string>"       # Optional; Number of desired SNAT port for each VM in the clusters lb; between 0 & 64000
+    nat_gateway_profile: "<string>"       # Optional; A Nat Gateway Profile block; Required when load_balancer_sku = standard
+  oms_agent:
+    log_anayltics_workspace_id: "<string>"       # Required; The ID of the Log Analytics Workspace which the OMS Agent should send data to
+    msi_auth_for_monitoring_enabled: <boolean>        # Required; Is managed identity authentication for monitoring enabled?
+  ingress_application_gateway:
+    gateway_id: "<string>"       # Optional; The ID of the Application Gateway to integrate with the ingress controller of this Kubernetes Cluster
+    gateway_name: "<string>"       # Optional; The name of the App Gateway
+    subnet_cidr: "<string>"       # Optional; The subnet CIDR to be used to create an App Gateway
+    subnet_id: "<string>"       # Optional; The ID of the subnet on which to create an App Gateway
+  service_principal:
+    client_id: "<string>"       # Required; The Client ID for the Service Principal
+    client_secret: "<string>"       # Required; The Client Secret for the Service Principal
+  storage_profile:
+    blob_driver_enabled: <boolean>        # Optional; Is the Blob CSI driver enabled?; Default false
+    disk_driver_enabled: <boolean>        # Optional; Is the Disk CSI driver enabled?; Default true
+    disk_driver_version: "<string>"       # Optional; Disk CSI Driver version to be used; v1 or v2; Default v1
+    file_driver_enabled: <boolean>        # Optional; Is the File CSI driver enabled? Default true
+    snapshot_controller_enabled: <boolean>        # Optional; Is snapshot controller enabled? Default true
+  web_app_routing:
+    dns_zone_id: "<string>"       # Required; Specifies the ID of the DNS Zone in which DNS entries are created for applications deployed to the cluster
+  windows_profile:
+    admin_username: "<string>"       # Required; The Admin Username for Windows VMs
+    admin_password: "<string>"       # Optional; The Admin Password for Windows VMs; between 14 and 123 chars
+    license: "<string>"       # Optional; Specifies the type of on-premise license which should be used for Node Pool Windows VM
+    gmsa:
+      dns_server: "<string>"       # Required; Specifies the DNS server for Windows gMSA 
+      root_domain: "<string>"       # Required; Specifies the root domain name for Windows gMSA 
+  workload_autoscaler_profile:
+    keda_enabled: <boolean>        # Optional; Specifies whether KEDA Autoscaler can be used for workloads
+    vertical_pod_autoscaler_enabled: <boolean>        # Optional; Specifies whether Vertical Pod Autoscaler should be enabled
+  http_proxy_config:
+    http_proxy: "<string>"       # Optional; The proxy address to be used when communicating over HTTP
+    https_proxy: "<string>"       # Optional; The proxy address to be used when communicating over HTTPS
+    no_proxy: "<string>"       # Optional; The list of domains that will not use the proxy for communication
+    trusted_ca: "<string>"       # Optional; The base64 encoded alternative CA certifciate content in PEM content
+  upgrade_settings:
+    max_surge: "<string>"       # Required; The maximum number or percentage of nodes which will be added to the Node Pool size during an upgrade

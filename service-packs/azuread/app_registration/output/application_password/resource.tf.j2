@@ -1,0 +1,101 @@
+resource "azuread_application_password" "{{ application_password.name }}" {
+  ## Required Vars
+  application_object_id   = "{{ application_password.application_object_id }}"
+
+  ## Optional Vars
+  display_name   = "{{ application_password.display_name }}"
+  end_date   = "{{ application_password.end_date }}"
+  end_date_relative   = "{{ application_password.end_date_relative }}"
+  start_date   = "{{ application_password.start_date }}"
+
+  ## Blocks
+  api {
+    ## Optional Block Vars
+    known_client_applications   = "{{ application_password.api.known_client_applications | to_json | safe }}"
+    mapped_claims_enabled   = {{ application_password.api.mapped_claims_enabled }}
+    oauth2_permission_scope {
+    }
+    requested_access_token_version   = "{{ application_password.api.requested_access_token_version }}"
+  }
+  oauth2_permission_scope {
+    ## Required Block Vars
+    admin_consent_description   = "{{ application_password.oauth2_permission_scope.admin_consent_description }}"
+    admin_consent_display_name   = "{{ application_password.oauth2_permission_scope.admin_consent_display_name }}"
+    id   = "{{ application_password.oauth2_permission_scope.id }}"
+    ## Optional Block Vars
+    enabled   = {{ application_password.oauth2_permission_scope.enabled }}
+    type   = "{{ application_password.oauth2_permission_scope.type }}"
+    user_consent_description   = "{{ application_password.oauth2_permission_scope.user_consent_description }}"
+    user_consent_display_name   = "{{ application_password.oauth2_permission_scope.user_consent_display_name }}"
+    value   = "{{ application_password.oauth2_permission_scope.value }}"
+  }
+  app_role {
+    ## Required Block Vars
+    allowed_member_types   = "{{ application_password.app_role.allowed_member_types }}"
+    description   = "{{ application_password.app_role.description }}"
+    display_name   = "{{ application_password.app_role.display_name }}"
+    id   = "{{ application_password.app_role.id }}"
+    ## Optional Block Vars
+    enabled   = {{ application_password.app_role.enabled }}
+    value   = "{{ application_password.app_role.value }}"
+  }
+  feature_tags {
+    ## Optional Block Vars
+    custom_single_sign_on   = {{ application_password.feature_tags.custom_single_sign_on }}
+    enterprise   = {{ application_password.feature_tags.enterprise }}
+    gallery   = {{ application_password.feature_tags.gallery }}
+    hide   = {{ application_password.feature_tags.hide }}
+  }
+  optional_claims {
+    ## Optional Block Vars
+    access_token {
+      ## Optional Block Vars
+      additional_properties   = "{{ application_password.optional_claims.access_token.additional_properties | to_json | safe }}"
+      essential   = {{ application_password.optional_claims.access_token.essential }}
+      name   = "{{ application_password.optional_claims.access_token.name }}"
+      source   = "{{ application_password.optional_claims.access_token.source }}"
+    }
+    id_token {
+      ## Optional Block Vars
+      additional_properties   = "{{ application_password.optional_claims.id_token.additional_properties | to_json | safe }}"
+      essential   = {{ application_password.optional_claims.id_token.essential }}
+      name   = "{{ application_password.optional_claims.id_token.name }}"
+      source   = "{{ application_password.optional_claims.id_token.source }}"
+    }
+    saml2_token {
+      ## Optional Block Vars
+      additional_properties   = "{{ application_password.optional_claims.saml2_token.additional_properties | to_json | safe }}"
+      essential   = {{ application_password.optional_claims.saml2_token.essential }}
+      name   = "{{ application_password.optional_claims.saml2_token.name }}"
+      source   = "{{ application_password.optional_claims.saml2_token.source }}"
+    }
+  }
+  public_client {
+    ## Optional Block Vars
+    redirect_uris   = "{{ application_password.public_client.redirect_uris | to_json | safe }}"
+  }
+  required_resource_access {
+    ## Required Block Vars
+    resource_access {
+      ## Required Block Vars
+      id   = "{{ application_password.required_resource_access.resource_access.id }}"
+      type   = "{{ application_password.required_resource_access.resource_access.type }}"
+    }
+    resource_app_id   = "{{ application_password.required_resource_access.resource_app_id }}"
+  }
+  single_page_application {
+    ## Optional Block Vars
+    redirect_uris   = "{{ application_password.single_page_application.redirect_uris | to_json | safe }}"
+  }
+  web {
+    ## Optional Block Vars
+    homepage_url   = "{{ application_password.web.homepage_url }}"
+    implicit_grant {
+      ## Optional Block Vars
+      access_token_issuance_enabled   = {{ application_password.web.implicit_grant.access_token_issuance_enabled }}
+      id_token_issuance_enabled   = {{ application_password.web.implicit_grant.id_token_issuance_enabled }}
+    }
+    logout_url   = "{{ application_password.web.logout_url }}"
+    redirect_uris   = "{{ application_password.web.redirect_uris | to_json | safe }}"
+  }
+}

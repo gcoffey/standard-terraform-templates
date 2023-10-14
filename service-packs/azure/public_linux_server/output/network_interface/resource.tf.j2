@@ -1,0 +1,69 @@
+resource "azurerm_network_interface" "{{ network_interface.name }}" {
+  ## Required Vars
+  location   = "{{ network_interface.location }}"
+  name   = "{{ network_interface.name }}"
+  resource_group_name   = "{{ network_interface.resource_group_name }}"
+
+  ## Optional Vars
+  dns_servers   = "{{ network_interface.dns_servers | to_json | safe }}"
+  edge_zone   = "{{ network_interface.edge_zone }}"
+  enable_ip_forwarding   = {{ network_interface.enable_ip_forwarding }}
+  enable_accelerated_networking   = {{ network_interface.enable_accelerated_networking }}
+  internal_dns_name_label   = "{{ network_interface.internal_dns_name_label }}"
+
+  ## Blocks
+  additional_capabilities {
+    ## Optional Block Vars
+    ultra_ssd_enabled   = {{ network_interface.additional_capabilities.ultra_ssd_enabled }}
+  }
+  admin_ssh_key {
+    ## Required Block Vars
+    public_key   = "{{ network_interface.admin_ssh_key.public_key }}"
+    username   = "{{ network_interface.admin_ssh_key.username }}"
+  }
+  boot_diagnostics {
+    ## Optional Block Vars
+    storage_account_uri   = "{{ network_interface.boot_diagnostics.storage_account_uri }}"
+  }
+  gallery_application {
+    ## Required Block Vars
+    version_id   = "{{ network_interface.gallery_application.version_id }}"
+    ## Optional Block Vars
+    configuration_blob_uri   = "{{ network_interface.gallery_application.configuration_blob_uri }}"
+    order   = "{{ network_interface.gallery_application.order }}"
+    tag   = "{{ network_interface.gallery_application.tag }}"
+  }
+  identity {
+    ## Required Block Vars
+    type   = "{{ network_interface.identity.type }}"
+    ## Optional Block Vars
+    identity_ids   = "{{ network_interface.identity.identity_ids }}"
+  }
+  plan {
+    ## Required Block Vars
+    name   = "{{ network_interface.plan.name }}"
+    publisher   = "{{ network_interface.plan.publisher }}"
+    product   = "{{ network_interface.plan.product }}"
+  }
+  secret {
+    ## Required Block Vars
+    certificate {
+      ## Required Block Vars
+      url   = "{{ network_interface.secret.certificate.url }}"
+    }
+    key_vault_id   = "{{ network_interface.secret.key_vault_id }}"
+  }
+  termination_notification {
+    ## Required Block Vars
+    enabled   = {{ network_interface.termination_notification.enabled }}
+    ## Optional Block Vars
+    timeout   = "{{ network_interface.termination_notification.timeout }}"
+  }
+  source_image_reference {
+    ## Required Block Vars
+    publisher   = "{{ network_interface.source_image_reference.publisher }}"
+    offer   = "{{ network_interface.source_image_reference.offer }}"
+    sku   = "{{ network_interface.source_image_reference.sku }}"
+    version   = "{{ network_interface.source_image_reference.version }}"
+  }
+}

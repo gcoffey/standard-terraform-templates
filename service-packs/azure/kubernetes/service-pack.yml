@@ -1,0 +1,11 @@
+service_pack:
+  name: "Managed Kubernetes Cluster"
+  description: "A manage kubernetes cluster / AKS"
+  resources:
+    - name: kubernetes_cluster
+      provider: azure
+      depends_on:
+        - service_principal
+    - name: service_principal
+      provider: azuread
+

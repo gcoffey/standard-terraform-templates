@@ -1,4 +1,4 @@
-resource_pack:
+service_pack:
   name: "Public Linux Server"
   description: "A single VM, running Linux with a publically accessible IP address assigned"
   resources:

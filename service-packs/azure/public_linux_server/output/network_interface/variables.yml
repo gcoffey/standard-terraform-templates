@@ -1,0 +1,42 @@
+network_interface:
+  name: "<string>"	# Required; A name for this resource
+  location: "<string>"       # Required; The location where the Network Interface should be created
+  name: "<string>"       # Required; The name of the Network Interface to be created
+  resource_group_name: "<string>"       # Required; The name of the Resource Group in which to create the Network Interface
+  dns_servers:  # Optional; A list of IP addresses defining the DNS servers to use
+    - <list>
+  edge_zone: "<string>"       # Optional; Specifies the Edge Zone within the Azure Region where this NIC hsould exist
+  enable_ip_forwarding: <boolean>        # Optional; Should IP Forwarding be enabled; Default false
+  enable_accelerated_networking: <boolean>        # Optional; Should Accelerated Networking be enabled; Default false
+  internal_dns_name_label: "<string>"       # Optional; The DNS name used for internal communications between VMs in the same Virtual Network
+  additional_capabilities:
+    ultra_ssd_enabled: <boolean>        # Optional; Should the capacity to enable Data Disks of the UltraSSD_LRS storate account be supported; Default false
+  admin_ssh_key:
+    public_key: "<string>"       # Required; The Public Key which should be used for authentication, must be at least 2048-bit and in ssh-rsa format
+    username: "<string>"       # Required; The Username for which this Public SSH Key should be configured
+  boot_diagnostics:
+    storage_account_uri: "<string>"       # Optional; The primary / secondary endpoint for the Azure Storage Account which should be used for Boot Diagnostics
+  gallery_application:
+    version_id: "<string>"       # Required; Specifies the Gallery Application Version resource ID
+    configuration_blob_uri: "<string>"       # Optional; Specifies the URI to an Azure Blob that will replace the default configuration for the package if provided
+    order: "<string>"       # Optional; Specifies the order in which the packages have to be installed
+    tag: "<string>"       # Optional; Specifies a passthrough value for more generic context
+  identity:
+    type: "<string>"       # Required; Specifies the type of Managed Service Identity; SystemAssigned or UserAssigned
+    identity_ids: "<string>"       # Optional; Specifies a list of User Assigned Managed Identity IDs to be assigned to this Windows Virtual Machine Scale Set
+  plan:
+    name: "<string>"       # Required; Specifies the name of the image from the marketplace
+    publisher: "<string>"       # Required; Specifies the publisher of the image
+    product: "<string>"       # Required; Specifies the product of the image from the marketplace
+  secret:
+    certificate:
+ 
+      url: "<string>"       # Required; The Secret URL of a Key Vault Certificate    key_vault_id: "<string>"       # Required; The ID of the Key Vault which all Secrets should be sourced
+  termination_notification:
+    enabled: <boolean>        # Required; Should the termination notification be enabled on this VM Scale Set
+    timeout: "<string>"       # Optional; Length of time (in minutes, between 5 and 15) a notification to be sent to the VM; Default PT5M
+  source_image_reference:
+    publisher: "<string>"       # Required; Specifies the publisher of the image used to create the virtual machines
+    offer: "<string>"       # Required; Specifies the offer of the image used to create the virtual machines
+    sku: "<string>"       # Required; Specifies the SKU of the image used to create the virtual machines
+    version: "<string>"       # Required; Specifies the version of the image used to create the virtual machines

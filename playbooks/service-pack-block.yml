@@ -1,6 +1,6 @@
 - name: Process Service Pack Resources
   block:
-    - include_vars: "{{ resource_path }}/{{ item.name }}/resource.yml"
+    - include_vars: "{{ resource_path }}/{{ item.provider }}/{{ item.name }}/resource.yml"
     - file: 
         path: "{{ provider_path }}/{{ item.name }}"
         state: absent
