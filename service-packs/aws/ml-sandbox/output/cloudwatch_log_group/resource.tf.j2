@@ -1,0 +1,38 @@
+resource "aws_cloudwatch_log_group" "{{ cloudwatch_log_group.name }}" {
+
+  ## Optional Vars
+  name   = "{{ cloudwatch_log_group.name }}"
+  name_prefix   = "{{ cloudwatch_log_group.name_prefix }}"
+  skip_destroy   = {{ cloudwatch_log_group.skip_destroy }}
+  retention_in_days   = "{{ cloudwatch_log_group.retention_in_days }}"
+  kms_key_id   = "{{ cloudwatch_log_group.kms_key_id }}"
+  tags   = "{{ cloudwatch_log_group.tags | to_json | safe }}"
+
+  ## Blocks
+  ingress {
+    ## Required Block Vars
+    from_port   = "{{ cloudwatch_log_group.ingress.from_port }}"
+    to_port   = "{{ cloudwatch_log_group.ingress.to_port }}"
+    rule_no   = "{{ cloudwatch_log_group.ingress.rule_no }}"
+    action   = "{{ cloudwatch_log_group.ingress.action }}"
+    protocol   = "{{ cloudwatch_log_group.ingress.protocol }}"
+    ## Optional Block Vars
+    cidr_block   = "{{ cloudwatch_log_group.ingress.cidr_block }}"
+    ipv6_cidr_block   = "{{ cloudwatch_log_group.ingress.ipv6_cidr_block }}"
+    icmp_type   = "{{ cloudwatch_log_group.ingress.icmp_type }}"
+    icmp_code   = "{{ cloudwatch_log_group.ingress.icmp_code }}"
+  }
+  egress {
+    ## Required Block Vars
+    from_port   = "{{ cloudwatch_log_group.egress.from_port }}"
+    to_port   = "{{ cloudwatch_log_group.egress.to_port }}"
+    rule_no   = "{{ cloudwatch_log_group.egress.rule_no }}"
+    action   = "{{ cloudwatch_log_group.egress.action }}"
+    protocol   = "{{ cloudwatch_log_group.egress.protocol }}"
+    ## Optional Block Vars
+    cidr_block   = "{{ cloudwatch_log_group.egress.cidr_block }}"
+    ipv6_cidr_block   = "{{ cloudwatch_log_group.egress.ipv6_cidr_block }}"
+    icmp_type   = "{{ cloudwatch_log_group.egress.icmp_type }}"
+    icmp_code   = "{{ cloudwatch_log_group.egress.icmp_code }}"
+  }
+}

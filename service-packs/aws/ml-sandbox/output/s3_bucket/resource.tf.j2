@@ -1,0 +1,37 @@
+resource "aws_s3_bucket" "{{ s3_bucket.name }}" {
+
+  ## Optional Vars
+  bucket   = "{{ s3_bucket.bucket }}"
+  bucket_prefix   = "{{ s3_bucket.bucket_prefix }}"
+  force_destroy   = {{ s3_bucket.force_destroy }}
+  object_lock_enabled   = {{ s3_bucket.object_lock_enabled }}
+  tags   = "{{ s3_bucket.tags | to_json | safe }}"
+
+  ## Blocks
+  ingress {
+    ## Required Block Vars
+    from_port   = "{{ s3_bucket.ingress.from_port }}"
+    to_port   = "{{ s3_bucket.ingress.to_port }}"
+    rule_no   = "{{ s3_bucket.ingress.rule_no }}"
+    action   = "{{ s3_bucket.ingress.action }}"
+    protocol   = "{{ s3_bucket.ingress.protocol }}"
+    ## Optional Block Vars
+    cidr_block   = "{{ s3_bucket.ingress.cidr_block }}"
+    ipv6_cidr_block   = "{{ s3_bucket.ingress.ipv6_cidr_block }}"
+    icmp_type   = "{{ s3_bucket.ingress.icmp_type }}"
+    icmp_code   = "{{ s3_bucket.ingress.icmp_code }}"
+  }
+  egress {
+    ## Required Block Vars
+    from_port   = "{{ s3_bucket.egress.from_port }}"
+    to_port   = "{{ s3_bucket.egress.to_port }}"
+    rule_no   = "{{ s3_bucket.egress.rule_no }}"
+    action   = "{{ s3_bucket.egress.action }}"
+    protocol   = "{{ s3_bucket.egress.protocol }}"
+    ## Optional Block Vars
+    cidr_block   = "{{ s3_bucket.egress.cidr_block }}"
+    ipv6_cidr_block   = "{{ s3_bucket.egress.ipv6_cidr_block }}"
+    icmp_type   = "{{ s3_bucket.egress.icmp_type }}"
+    icmp_code   = "{{ s3_bucket.egress.icmp_code }}"
+  }
+}

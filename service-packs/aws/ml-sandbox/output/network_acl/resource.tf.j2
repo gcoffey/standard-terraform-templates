@@ -1,0 +1,36 @@
+resource "aws_network_acl" "{{ network_acl.name }}" {
+  ## Required Vars
+  vpc_id   = "{{ network_acl.vpc_id }}"
+
+  ## Optional Vars
+  subnet_ids   = "{{ network_acl.subnet_ids | to_json | safe }}"
+  tags   = "{{ network_acl.tags | to_json | safe }}"
+
+  ## Blocks
+  ingress {
+    ## Required Block Vars
+    from_port   = "{{ network_acl.ingress.from_port }}"
+    to_port   = "{{ network_acl.ingress.to_port }}"
+    rule_no   = "{{ network_acl.ingress.rule_no }}"
+    action   = "{{ network_acl.ingress.action }}"
+    protocol   = "{{ network_acl.ingress.protocol }}"
+    ## Optional Block Vars
+    cidr_block   = "{{ network_acl.ingress.cidr_block }}"
+    ipv6_cidr_block   = "{{ network_acl.ingress.ipv6_cidr_block }}"
+    icmp_type   = "{{ network_acl.ingress.icmp_type }}"
+    icmp_code   = "{{ network_acl.ingress.icmp_code }}"
+  }
+  egress {
+    ## Required Block Vars
+    from_port   = "{{ network_acl.egress.from_port }}"
+    to_port   = "{{ network_acl.egress.to_port }}"
+    rule_no   = "{{ network_acl.egress.rule_no }}"
+    action   = "{{ network_acl.egress.action }}"
+    protocol   = "{{ network_acl.egress.protocol }}"
+    ## Optional Block Vars
+    cidr_block   = "{{ network_acl.egress.cidr_block }}"
+    ipv6_cidr_block   = "{{ network_acl.egress.ipv6_cidr_block }}"
+    icmp_type   = "{{ network_acl.egress.icmp_type }}"
+    icmp_code   = "{{ network_acl.egress.icmp_code }}"
+  }
+}

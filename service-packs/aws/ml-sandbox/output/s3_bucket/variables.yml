@@ -1,0 +1,28 @@
+s3_bucket:
+  name: "<string>"	# Required; A name for this resource
+  bucket: "<string>"       # Optional; Name of the bucket
+  bucket_prefix: "<string>"       # Optional; Creates a bucket with this prefix, don't set bucket if using a prefix
+  force_destroy: <boolean>        # Optional; Delete everything in the bucket when the bucket is destroyed
+  object_lock_enabled: <boolean>        # Optional; Indicates whether this bucket has an Object Lock config enabled
+  tags:  # Optional; Map of tags to assign to the bucket
+    - <list>
+  ingress:
+    from_port: "<string>"       # Required; The from port to match
+    to_port: "<string>"       # Required; The to port to match
+    rule_no: "<string>"       # Required; The rule number. Used for ordering
+    action: "<string>"       # Required; The action to take
+    protocol: "<string>"       # Required; The protocol to match; icmp, icmpv6, tcp, udp or all
+    cidr_block: "<string>"       # Optional; The CIDR block to match
+    ipv6_cidr_block: "<string>"       # Optional; The IPv6 CIDR block
+    icmp_type: "<string>"       # Optional; The ICMP type to be used
+    icmp_code: "<string>"       # Optional; The ICMP type code
+  egress:
+    from_port: "<string>"       # Required; The from port to match
+    to_port: "<string>"       # Required; The to port to match
+    rule_no: "<string>"       # Required; The rule number. Used for ordering
+    action: "<string>"       # Required; The action to take
+    protocol: "<string>"       # Required; The protocol to match; icmp, icmpv6, tcp, udp or all
+    cidr_block: "<string>"       # Optional; The CIDR block to match
+    ipv6_cidr_block: "<string>"       # Optional; The IPv6 CIDR block
+    icmp_type: "<string>"       # Optional; The ICMP type to be used
+    icmp_code: "<string>"       # Optional; The ICMP type code

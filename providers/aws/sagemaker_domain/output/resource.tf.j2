@@ -1,0 +1,84 @@
+resource "aws_sagemaker_domain" "{{ sagemaker_domain.name }}" {
+  ## Required Vars
+  auth_mode   = "{{ sagemaker_domain.auth_mode }}"
+  domain_name   = "{{ sagemaker_domain.domain_name }}"
+  subnet_ids   = "{{ sagemaker_domain.subnet_ids | to_json | safe }}"
+  vpc_id   = "{{ sagemaker_domain.vpc_id }}"
+
+  ## Optional Vars
+  app_network_access_type   = "{{ sagemaker_domain.app_network_access_type }}"
+  app_security_group_management   = "{{ sagemaker_domain.app_security_group_management }}"
+  kms_key_id   = "{{ sagemaker_domain.kms_key_id }}"
+  tags   = "{{ sagemaker_domain.tags | to_json | safe }}"
+
+  ## Blocks
+  default_space_settings {
+    ## Required Block Vars
+    execution_role   = "{{ sagemaker_domain.default_space_settings.execution_role }}"
+    ## Optional Block Vars
+    jupyter_server_app_settings {
+      ## Optional Block Vars
+      default_resource_spec   = "{{ sagemaker_domain.default_space_settings.jupyter_server_app_settings.default_resource_spec }}"
+      lifecycle_config_arns   = "{{ sagemaker_domain.default_space_settings.jupyter_server_app_settings.lifecycle_config_arns }}"
+    }
+    kernel_gateway_app_settings {
+      ## Optional Block Vars
+      custom_image   = "{{ sagemaker_domain.default_space_settings.kernel_gateway_app_settings.custom_image | to_json | safe }}"
+      lifecycle_config_arns   = "{{ sagemaker_domain.default_space_settings.kernel_gateway_app_settings.lifecycle_config_arns }}"
+    }
+    security_groups   = "{{ sagemaker_domain.default_space_settings.security_groups | to_json | safe }}"
+  }
+  default_user_settings {
+    ## Required Block Vars
+    execution_role   = "{{ sagemaker_domain.default_user_settings.execution_role }}"
+    ## Optional Block Vars
+    canvas_app_settings {
+      ## Optional Block Vars
+    }
+    jupyter_server_app_settings {
+      ## Optional Block Vars
+      default_resource_spec   = "{{ sagemaker_domain.default_user_settings.jupyter_server_app_settings.default_resource_spec }}"
+      lifecycle_config_arns   = "{{ sagemaker_domain.default_user_settings.jupyter_server_app_settings.lifecycle_config_arns }}"
+    }
+    kernel_gateway_app_settings {
+      ## Optional Block Vars
+      custom_image   = "{{ sagemaker_domain.default_user_settings.kernel_gateway_app_settings.custom_image | to_json | safe }}"
+      lifecycle_config_arns   = "{{ sagemaker_domain.default_user_settings.kernel_gateway_app_settings.lifecycle_config_arns }}"
+    }
+    r_session_app_settings {
+      ## Optional Block Vars
+    }
+    r_studio_server_pro_app_settings {
+      ## Optional Block Vars
+      access_status   = "{{ sagemaker_domain.default_user_settings.r_studio_server_pro_app_settings.access_status }}"
+      user_group   = "{{ sagemaker_domain.default_user_settings.r_studio_server_pro_app_settings.user_group }}"
+    }
+    security_groups   = "{{ sagemaker_domain.default_user_settings.security_groups | to_json | safe }}"
+    sharing_settings {
+      ## Optional Block Vars
+      notebook_output_option   = "{{ sagemaker_domain.default_user_settings.sharing_settings.notebook_output_option }}"
+      s3_kms_key_id   = "{{ sagemaker_domain.default_user_settings.sharing_settings.s3_kms_key_id }}"
+      s3_output_path   = "{{ sagemaker_domain.default_user_settings.sharing_settings.s3_output_path }}"
+    }
+    tensor_board_app_settings {
+      ## Optional Block Vars
+    }
+  }
+  domain_settings {
+    ## Optional Block Vars
+    execution_role_identity_config   = "{{ sagemaker_domain.domain_settings.execution_role_identity_config }}"
+    r_studio_server_pro_domain_settings {
+      ## Required Block Vars
+      domain_execution_role_arn   = "{{ sagemaker_domain.domain_settings.r_studio_server_pro_domain_settings.domain_execution_role_arn }}"
+ 
+      ## Optional Block Vars
+      r_studio_connect_url   = "{{ sagemaker_domain.domain_settings.r_studio_server_pro_domain_settings.r_studio_connect_url }}"
+      r_studio_package_manager_url   = "{{ sagemaker_domain.domain_settings.r_studio_server_pro_domain_settings.r_studio_package_manager_url }}"
+    }
+    security_group_ids   = "{{ sagemaker_domain.domain_settings.security_group_ids | to_json | safe }}"
+  }
+  retention_policy {
+    ## Optional Block Vars
+    home_efs_file_system   = "{{ sagemaker_domain.retention_policy.home_efs_file_system }}"
+  }
+}

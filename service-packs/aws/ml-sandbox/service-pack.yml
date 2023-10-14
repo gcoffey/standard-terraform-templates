@@ -1,0 +1,22 @@
+service_pack:
+  resources:
+    - name: vpc
+      provider: aws
+    - name: route_table
+      provider: aws
+    - name: subnet
+      provider: aws
+    - name: network_acl
+      provider: aws
+    - name: internet_gateway
+      provider: aws
+    - name: s3_bucket
+      provider: aws
+    - name: cloudwatch_log_group
+      provider: aws
+    - name: sagemaker_domain
+      provider: aws
+      depends_on: 
+        - s3_bucket
+        - cloudwatch_log_group
+        - vpc

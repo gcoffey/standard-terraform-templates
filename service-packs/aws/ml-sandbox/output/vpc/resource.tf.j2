@@ -1,0 +1,20 @@
+resource "aws_vpc" "{{ vpc.name }}" {
+
+  ## Optional Vars
+  cidr_block   = "{{ vpc.cidr_block }}"
+  instance_tenancy   = "{{ vpc.instance_tenancy }}"
+  ipv4_ipam_pool_id   = "{{ vpc.ipv4_ipam_pool_id }}"
+  ipv4_netmask_length   = "{{ vpc.ipv4_netmask_length }}"
+  ipv6_cidr_block   = "{{ vpc.ipv6_cidr_block }}"
+  ipv6_ipam_pool_id   = "{{ vpc.ipv6_ipam_pool_id }}"
+  ipv6_netmask_length   = "{{ vpc.ipv6_netmask_length }}"
+  ipv6_cidr_block_network_border_group   = "{{ vpc.ipv6_cidr_block_network_border_group }}"
+  enable_dns_support   = {{ vpc.enable_dns_support }}
+  enable_network_address_usage_metrics   = {{ vpc.enable_network_address_usage_metrics }}
+  enable_dns_hostnames   = {{ vpc.enable_dns_hostnames }}
+  enable_classiclink   = {{ vpc.enable_classiclink }}
+  enable_classiclink_dns_support   = {{ vpc.enable_classiclink_dns_support }}
+  assign_generated_ipv6_cidr_block   = {{ vpc.assign_generated_ipv6_cidr_block }}
+  tags   = "{{ vpc.tags | to_json | safe }}"
+
+}

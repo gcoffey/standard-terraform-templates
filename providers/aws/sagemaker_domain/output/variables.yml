@@ -1,0 +1,54 @@
+sagemaker_domain:
+  name: "<string>"	# Required; A name for this resource
+  auth_mode: "<string>"       # Required; The mode of authentication that members use to access the domain; IAM or SSO
+  domain_name: "<string>"       # Required; The domain name
+  subnet_ids:  # Required; The VPC subnets that studio uses for communication
+    - <list>
+  vpc_id: "<string>"       # Required; The ID of the AWS VPC that Studio users for communication
+  app_network_access_type: "<string>"       # Optional; The egress used for non-EFS traffic; PublicInternetOnly or VpcOnly
+  app_security_group_management: "<string>"       # Optional; The entity that creates and manages the required security groups; Service or Customer
+  kms_key_id: "<string>"       # Optional; The AWS KMS customer managed key use to encrypt the EFS volume
+  tags:  # Optional; A map of tags to assign to the resource
+    - <list>
+  default_space_settings:
+    execution_role: "<string>"       # Required; The execution role for the space
+    jupyter_server_app_settings:
+      default_resource_spec: "<string>"       # Optional; The default instance type and the ARN of the SageMaker image
+      lifecycle_config_arns: "<string>"       # Optional; The ARN of the Lifecycle configs
+    kernel_gateway_app_settings:
+      custom_image:  # Optional; A list of custom SageMaker images
+        - <list>
+      lifecycle_config_arns: "<string>"       # Optional; The ARN of the Lifecycle configurations
+    security_groups:  # Optional; The security groups for the AWS VPC
+      - <list>
+  default_user_settings:
+    execution_role: "<string>"       # Required; The execution role ARN for the user
+    canvas_app_settings:
+    jupyter_server_app_settings:
+      default_resource_spec: "<string>"       # Optional; The default instance type and the ARN of the SageMaker image
+      lifecycle_config_arns: "<string>"       # Optional; The ARN of the Lifecycle configs
+    kernel_gateway_app_settings:
+      custom_image:  # Optional; A list of custom SageMaker images
+        - <list>
+      lifecycle_config_arns: "<string>"       # Optional; The ARN of the Lifecycle configurations
+    r_session_app_settings:
+    r_studio_server_pro_app_settings:
+      access_status: "<string>"       # Optional; Indicates whether the current user has access to the RStudioServerPro App; ENABLED or DISABLED
+      user_group: "<string>"       # Optional; The level of permissions that the user has within the RStudioServerPro app; R_STUDIO_USER or R_STUDIO_ADMIN
+    security_groups:  # Optional; A list of security group Ids that will be attached to the user
+      - <list>
+    sharing_settings:
+      notebook_output_option: "<string>"       # Optional; Whether to include the notebook cell output; Allowed or Disabled
+      s3_kms_key_id: "<string>"       # Optional; When notebook_output_option is Allowed, you must specify KMS key Id
+      s3_output_path: "<string>"       # Optional; When notebook_output_option is Allowed, the S3 bucket to save cell output
+    tensor_board_app_settings:
+  domain_settings:
+    execution_role_identity_config: "<string>"       # Optional; The configuration for attaching a SageMaker user profile name; USER_PROFILE_NAME or DISABLED
+    r_studio_server_pro_domain_settings:
+      domain_execution_role_arn: "<string>"       # Required; The ARN of the execution role for the RStudioSeverProDomain level app 
+      r_studio_connect_url: "<string>"       # Optional; A URL pointing to an RStudio connect server
+      r_studio_package_manager_url: "<string>"       # Optional; A URL pointing to an RStudio Package Manager server
+    security_group_ids:  # Optional; The security groups for the AWS VPC
+      - <list>
+  retention_policy:
+    home_efs_file_system: "<string>"       # Optional; The retention policy for data stored on an EFS volume; Retain or Delete

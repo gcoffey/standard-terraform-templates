@@ -1,0 +1,21 @@
+resource:
+  name: "aws_s3_bucket"
+  enable_variable_comments: false
+  var_name: "s3_bucket"
+  optional_vars:
+    - name: "bucket"
+      description: "Name of the bucket"
+      type: "string"
+    - name: "bucket_prefix"
+      description: "Creates a bucket with this prefix, don't set bucket if using a prefix"
+      type: "string"
+    - name: "force_destroy"
+      description: "Delete everything in the bucket when the bucket is destroyed"
+      default_value: false
+      type: "boolean"
+    - name: "object_lock_enabled"
+      description: "Indicates whether this bucket has an Object Lock config enabled"
+      type: "boolean"
+    - name: "tags"
+      description: "Map of tags to assign to the bucket"
+      type: "list"
