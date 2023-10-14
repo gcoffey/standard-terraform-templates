@@ -1,0 +1,16 @@
+automation_account:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the automation account
+  resource_group_name: "<string>"       # Required; The name of the resource group to create the automation account in
+  location: "<string>"       # Required; The Azure location to create the automation account
+  sku_name: "<string>"       # Required; The SKU for the account; Basic or Free
+  local_authentication_enabled: <boolean>        # Optional; Whether requests using non-AAD authentication are block; default true
+  public_network_access_enabled: <boolean>        # Optional; Whether public network access is enabled for the account; default true
+  tags:  # Optional; Tags to apply to this automation account resource
+    - <list>
+  encryption:
+    key_vault_key_id: "<string>"       # Required; The ID of the Key vault which should be used to encrypt data in the automation account
+    user_assigned_identity_id: "<string>"       # Optional; The User Assigned Managed Identity ID to be used for accessing the Customer managed Key
+  identity:
+    type: "<string>"       # Required; The type of identity used for this automation account; SystemAssigned, UserAssigned
+    identity_ids: "<string>"       # Optional; The ID of the User Assigned Identity which should be assigned to this Automation Account

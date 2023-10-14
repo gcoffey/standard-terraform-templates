@@ -1,0 +1,54 @@
+resource:
+  name: "azurerm_automation_account"
+  enable_variable_comments: false
+  var_name: "automation_account"
+  required_vars:
+    - name: "name"
+      description: "The name of the automation account"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the resource group to create the automation account in"
+      type: "string"
+    - name: "location"
+      description: "The Azure location to create the automation account"
+      type: "string"
+    - name: "sku_name"
+      description: "The SKU for the account; Basic or Free"
+      type: "string"
+  optional_vars:
+    - name: "local_authentication_enabled"
+      description: "Whether requests using non-AAD authentication are block; default true"
+      default_value: true
+      type: "boolean"
+    - name: "public_network_access_enabled"
+      description: "Whether public network access is enabled for the account; default true"
+      default_value: true
+      type: "boolean"
+    - name: "tags"
+      description: "Tags to apply to this automation account resource"
+      type: "list"
+
+blocks:
+  - name: "encryption"
+    description: "An Encryption block"
+    required: false
+    required_vars:
+      - name: "key_vault_key_id"
+        description: "The ID of the Key vault which should be used to encrypt data in the automation account"
+        type: "string"
+    optional_vars:
+      - name: "user_assigned_identity_id"
+        description: "The User Assigned Managed Identity ID to be used for accessing the Customer managed Key"
+        type: "string"
+  - name: "identity"
+    description: "An Identity block"
+    required: false
+    required_vars:
+      - name: "type"
+        description: "The type of identity used for this automation account; SystemAssigned, UserAssigned"
+        type: "string"
+    optional_vars:
+      - name: "identity_ids"
+        description: "The ID of the User Assigned Identity which should be assigned to this Automation Account"
+        type: "string"
+

@@ -1,0 +1,40 @@
+service_pack:
+  name: "Azure Sandbox"
+  description: "A collection of interdependent cloud computing configs for implementing Azure services in a single subscription"
+  resources:
+    - name: resource_group
+      provider: azure
+    - name: route_table
+      provider: azure
+      depends_on: 
+        - "resource_group"
+    - name: subnet
+      provider: azure
+      depends_on:
+        - "virtual_network"
+    - name: subnet_route_table_association
+      provider: azure
+      depends_on:
+        - "subnet"
+        - "route_table"
+    - name: virtual_network
+      provider: azure
+      depends_on:
+        - "resource_group"
+    - name: key_vault
+      provider: azure
+    - name: automation_account
+      provider: azure
+    - name: storage_account
+      provider: azure
+    - name: log_analytics_workspace
+      provider: azure
+    - name: mssql_server
+      provider: azure
+      depends_on:
+        - subnet
+    - name: mysql_server
+      provider: azure
+      depends_on:
+        - subnet
+

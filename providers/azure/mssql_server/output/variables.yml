@@ -1,0 +1,25 @@
+mssql_server:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Specifies the name of the MSSQL Server
+  resource_group_name: "<string>"       # Required; The name of the Resource group in which the MSSQL Server should be created
+  location: "<string>"       # Required; Specifies the supported Azure location where the resource exists
+  version: "<string>"       # Required; Specifies the version of MSSQL to use; 2.0 [v11] or 12.0 [v12]
+  administrator_login: "<string>"       # Optional; The Administrator login for the MSSQL Server; Required unless azuread_authentication_only is true
+  administrator_login_password: "<string>"       # Optional; The password associated with the administrator_login; Required unless azuread_authentication_only is true
+  connection_policy: "<string>"       # Optional; The connection policy the server will use. Default, Proxy or Redirect
+  transparent_data_encryption_key_vault_key_id: "<string>"       # Optional; The full Key Vault Key URL
+  minimum_tls_version: "<string>"       # Optional; The minimum TLS version for all SQL Database and SQL Data Warehouse database associated with server; 1.0, 1.1, 1.2 or Disabled
+  public_network_access_enabled: <boolean>        # Optional; Whether public network access is allowed; default is true
+  outbound_network_restriction_enabled: <boolean>        # Optional; Whether outbound network traffic is restricted; default is false
+  primary_user_assigned_identity_id: "<string>"       # Optional; Specifies the primary user managed identity id. Required if type is userAssigned
+  tags:  # Optional; A mapping of tags
+    - <list>
+  identity:
+    type: "<string>"       # Required; Specifies the type of Managed Service Identity; SystemAssigned
+    identity_ids:  # Optional; Specifies a list of User Assigned Managed Identity IDs to be assigned to the SQL server
+      - <list>
+  azuread_administrator:
+    login_username: "<string>"       # Required; The login username of the Azure AD Administrator
+    object_id: "<string>"       # Required; The object id of the Azure AD Administrator of this SQL server
+    tenant_id: "<string>"       # Required; The tenant id that the Azure AD Administrator belongs to
+    azuread_authentication_only: <boolean>        # Required; Whether logins are restricted to Azure AD Users and Administrators

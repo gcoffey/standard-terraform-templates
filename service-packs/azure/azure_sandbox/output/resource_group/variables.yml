@@ -1,0 +1,6 @@
+resource_group:
+  name: "<string>"	# Required; A name for this resource
+  location: "<string>"       # Required; The Azure Region where the Resource Group should exist
+  name: "<string>"       # Required; The name of the Resource group to create
+  tags:  # Optional; A mapping of tags
+    - <list>
