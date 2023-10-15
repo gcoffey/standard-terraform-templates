@@ -1,0 +1,17 @@
+resource "azurerm_mssql_managed_database" "{{ mssql_managed_database.name }}" {
+  ## Required Vars
+  name   = "{{ mssql_managed_database.name }}"
+  managed_instance_id   = "{{ mssql_managed_database.managed_instance_id }}"
+
+  ## Optional Vars
+  short_term_retention_days   = "{{ mssql_managed_database.short_term_retention_days }}"
+
+  ## Blocks
+  long_term_retention_policy {
+    ## Optional Block Vars
+    weekly_retention   = "{{ mssql_managed_database.long_term_retention_policy.weekly_retention }}"
+    monthly_retention   = "{{ mssql_managed_database.long_term_retention_policy.monthly_retention }}"
+    yearly_retention   = "{{ mssql_managed_database.long_term_retention_policy.yearly_retention }}"
+    week_of_year   = "{{ mssql_managed_database.long_term_retention_policy.week_of_year }}"
+  }
+}

@@ -1,0 +1,14 @@
+service_pack:
+  name: "Azure SQL DB Ledger"
+  description: "A SQL DB ledger using Azure SQL Managed Instance" 
+  resources:
+    - name: resource_group
+      provider: azure
+    - name: storage_account
+      provider: azure
+    - name: mssql_managed_instance
+      provider: azure
+    - name: mssql_managed_database
+      provider: azure
+      depends_on:
+        - "mssql_managed_instance"

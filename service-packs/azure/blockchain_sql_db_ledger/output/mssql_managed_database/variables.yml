@@ -1,0 +1,10 @@
+mssql_managed_database:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Specifies the name of the Managed DB
+  managed_instance_id: "<string>"       # Required; The ID of the Azure SQL Managed Instance to create this DB on
+  short_term_retention_days: "<string>"       # Optional; The backup retention period in days
+  long_term_retention_policy:
+    weekly_retention: "<string>"       # Optional; The weekly retention policy for an LTR backup in ISO 8601 format; e.g. P1Y, P1M, P1W
+    monthly_retention: "<string>"       # Optional; The monthly retention policy for an LTR backup in ISO 8601 format; e.g. Y, P1M, P4W
+    yearly_retention: "<string>"       # Optional; The yearly retention policy for an LTR backup in ISO 8601 format;; e.g. P1Y, P12M, P52W
+    week_of_year: "<string>"       # Optional; The week of year to take the yearly backup; between 1 & 52

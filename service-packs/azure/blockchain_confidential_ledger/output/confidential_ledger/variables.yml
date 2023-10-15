@@ -1,0 +1,16 @@
+confidential_ledger:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Name for the Confidential Ledger
+  resource_group_name: "<string>"       # Required; The name of the resource group in which to create the Confidential Ledger
+  location: "<string>"       # Required; The Azure location where this confidential ledger should be created
+  ledger_type: "<string>"       # Required; Specifies the type of confidential ledger; Private or Public
+  certificate_based_security_principal: "<string>"       # Optional; A list of certificate based security principal blocks
+  tags:  # Optional; A mapping of tags
+    - <list>
+  azuread_based_service_principal:
+    ledger_role_name: "<string>"       # Required; Specifies the Ledger role to grant to this AAD SP; Adminsitrator, Contributor or Reader
+    principal_id: "<string>"       # Required; Specifies the Principal ID of the AAD SP
+    tenant_id: "<string>"       # Required; Specifies the tenant id for this AAD SP
+  certificate_based_service_principal:
+    ledger_role_name: "<string>"       # Required; Specifies the Ledger role to grant to this certificate SP; Adminsitrator, Contributor or Reader
+    pem_public_key: "<string>"       # Required; The public key, in PEM format, of the certificate used by this SP to authenticate with CL

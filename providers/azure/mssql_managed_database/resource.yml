@@ -1,0 +1,36 @@
+resource:
+  name: "azurerm_mssql_managed_database"
+  enable_variable_comments: false
+  var_name: "mssql_managed_database"
+  required_vars:
+    - name: "name"
+      description: "Specifies the name of the Managed DB"
+      type: "string"
+    - name: "managed_instance_id"
+      description: "The ID of the Azure SQL Managed Instance to create this DB on"
+      type: "string"
+  optional_vars:
+    - name: "long_term_retention_policy"
+      description: "A Long Term Retention Policy block"
+      type: "block"
+    - name: "short_term_retention_days"
+      description: "The backup retention period in days"
+      type: "string"
+
+blocks:
+  - name: "long_term_retention_policy"
+    required: false
+    description: "A Long Term Retention Policy Block"
+    optional_vars:
+      - name: "weekly_retention"
+        description: "The weekly retention policy for an LTR backup in ISO 8601 format; e.g. P1Y, P1M, P1W"
+        type: "string"
+      - name: "monthly_retention"
+        description: "The monthly retention policy for an LTR backup in ISO 8601 format; e.g. Y, P1M, P4W"
+        type: "string"
+      - name: "yearly_retention"
+        description: "The yearly retention policy for an LTR backup in ISO 8601 format;; e.g. P1Y, P12M, P52W"
+        type: "string"
+      - name: "week_of_year"
+        description: "The week of year to take the yearly backup; between 1 & 52"
+        type: "string"

@@ -1,0 +1,24 @@
+resource "azurerm_confidential_ledger" "{{ confidential_ledger.name }}" {
+  ## Required Vars
+  name   = "{{ confidential_ledger.name }}"
+  resource_group_name   = "{{ confidential_ledger.resource_group_name }}"
+  location   = "{{ confidential_ledger.location }}"
+  ledger_type   = "{{ confidential_ledger.ledger_type }}"
+
+  ## Optional Vars
+  certificate_based_security_principal   = "{{ confidential_ledger.certificate_based_security_principal }}"
+  tags   = "{{ confidential_ledger.tags | to_json | safe }}"
+
+  ## Blocks
+  azuread_based_service_principal {
+    ## Required Block Vars
+    ledger_role_name   = "{{ confidential_ledger.azuread_based_service_principal.ledger_role_name }}"
+    principal_id   = "{{ confidential_ledger.azuread_based_service_principal.principal_id }}"
+    tenant_id   = "{{ confidential_ledger.azuread_based_service_principal.tenant_id }}"
+  }
+  certificate_based_service_principal {
+    ## Required Block Vars
+    ledger_role_name   = "{{ confidential_ledger.certificate_based_service_principal.ledger_role_name }}"
+    pem_public_key   = "{{ confidential_ledger.certificate_based_service_principal.pem_public_key }}"
+  }
+}

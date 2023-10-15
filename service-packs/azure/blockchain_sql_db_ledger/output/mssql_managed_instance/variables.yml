@@ -1,0 +1,26 @@
+mssql_managed_server:
+  name: "<string>"	# Required; A name for this resource
+  administrator_login: "<string>"       # Required; The administrator login name for the SQL managed instance
+  administrator_login_password: "<string>"       # Required; The password associated with the administrator_login user
+  license_type: "<string>"       # Required; What type of license the instance will use; LicenseIncluded or BasePrice
+  location: "<string>"       # Required; An Azure location to deploy the resource
+  name: "<string>"       # Required; The name of the SQL managed instance
+  resource_group_name: "<string>"       # Required; The name of the resource group to create the SQL Managed Instance
+  sku_name: "<string>"       # Required; Specifies the SKU name for the instance; GP_Gen4, GP_Gen5, GP_Gen8IM, GP_Gen8IH etc
+  storage_size_in_gb: "<string>"       # Required; Maximum storage space for the SQL instance; should be in multiples of 32 GB
+  subnet_id: "<string>"       # Required; The subnet the SQL managed instance will reside in
+  vcores: "<string>"       # Required; Number of cores that should be assigned; 8, 16 or 24 for Gen4, 4, 8, 16, 24, 32, 40 etc for Gen5
+  collation: "<string>"       # Optional; Specifies how the SQL Managed Instance will be collated; Default SQL_Latin1_General_CP1_CI_AS
+  dns_zone_partner_id: "<string>"       # Optional; The ID of the SQL managed instance which will share the DNS zone
+  maintenance_configuration_name: "<string>"       # Optional; The Rname of the Public Maintenance Configuration window to apply; SQL_Default, SQL_EastUS_MI_1
+  minimum_tls_versrion: "<string>"       # Optional; The minimum TLS version to use; 1.0, 1.1 or 1.2
+  proxy_override: "<string>"       # Optional; Specifies how the SQL Managed Instance will be accessed; Default, Proxy or Redirect
+  public_data_endpoint_enabled: <boolean>        # Optional; Is the public data endpoint enabled?
+  storage_account_type: "<string>"       # Optional; Specifies the storage account type used to store backups; GRS, LRS or ZRS
+  tags:  # Optional; A mapping of tags
+    - <list>
+  timezone_id: "<string>"       # Optional; The TimeZone ID that the SQL Managed Instance will be operating in; Default is UTC
+  identity:
+    type: "<string>"       # Required; Specifies the type of Managed Service Identity that should be used; SystemAssigned or UserAssigned
+    identity_ids:  # Optional; Specifies a list of User Assigned Managed Identity IDs; required when type is UserAssigned
+      - <list>

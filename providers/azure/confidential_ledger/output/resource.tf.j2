@@ -1,0 +1,31 @@
+resource "azurerm_vpn_gatewy" "{{ vpn_gateway.name }}" {
+  ## Required Vars
+  name   = "{{ vpn_gateway.name }}"
+  resource_group_name   = "{{ vpn_gateway.resource_group_name }}"
+  location   = "{{ vpn_gateway.location }}"
+  virtual_hub_id   = "{{ vpn_gateway.virtual_hub_id }}"
+
+  ## Optional Vars
+  bgp_route_translation_for_nat_enabled   = {{ vpn_gateway.bgp_route_translation_for_nat_enabled }}
+  routing_preference   = "{{ vpn_gateway.routing_preference }}"
+  scale_unit   = "{{ vpn_gateway.scale_unit }}"
+  tags   = "{{ vpn_gateway.tags | to_json | safe }}"
+
+  ## Blocks
+  bgp_settings {
+    ## Required Block Vars
+    asn   = "{{ vpn_gateway.bgp_settings.asn }}"
+    peer_weight   = "{{ vpn_gateway.bgp_settings.peer_weight }}"
+    ## Optional Block Vars
+    instance_0_bgp_peering_address {
+      ## Required Block Vars
+      custom_ips   = "{{ vpn_gateway.bgp_settings.instance_0_bgp_peering_address.custom_ips | to_json | safe }}"
+ 
+    }
+    instance_1_bgp_peering_address {
+      ## Required Block Vars
+      custom_ips   = "{{ vpn_gateway.bgp_settings.instance_1_bgp_peering_address.custom_ips | to_json | safe }}"
+ 
+    }
+  }
+}

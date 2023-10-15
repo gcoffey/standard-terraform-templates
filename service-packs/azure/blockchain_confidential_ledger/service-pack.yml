@@ -1,0 +1,13 @@
+service_pack:
+  name: "Azure Confidential Ledger"
+  description: "A Confidential Ledger running in Azure including Cloud APIs, Governance and Administration" 
+  resources:
+    - name: resource_group
+      provider: azure
+    - name: service_principal
+      provider: azuread
+    - name: confidential_ledger
+      provider: azure
+      depends_on:
+        - "resource_group"
+

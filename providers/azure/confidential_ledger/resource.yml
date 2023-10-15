@@ -1,0 +1,53 @@
+resource:
+  name: "azurerm_confidential_ledger"
+  enable_variable_comments: false
+  var_name: "confidential_ledger"
+  required_vars:
+    - name: "name"
+      description: "Name for the Confidential Ledger"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the resource group in which to create the Confidential Ledger"
+      type: "string"
+    - name: "location"
+      description: "The Azure location where this confidential ledger should be created"
+      type: "string"
+    - name: "azuread_based_service_principal"
+      description: "A list of azuread based service principal block"
+      type: "block"
+    - name: "ledger_type"
+      description: "Specifies the type of confidential ledger; Private or Public"
+      type: "string"
+  optional_vars:
+    - name: "certificate_based_security_principal"
+      description: "A list of certificate based security principal blocks"
+      type: "string"
+    - name: "tags"
+      description: "A mapping of tags"
+      type: "list"
+
+blocks:
+  - name: "azuread_based_service_principal"
+    required: false
+    description: "An Azure AD Based Service Principal Block"
+    required_vars:
+      - name: "ledger_role_name"
+        description: "Specifies the Ledger role to grant to this AAD SP; Adminsitrator, Contributor or Reader"
+        type: "string"
+      - name: "principal_id"
+        description: "Specifies the Principal ID of the AAD SP"
+        type: "string"
+      - name: "tenant_id"
+        description: "Specifies the tenant id for this AAD SP"
+        type: "string"
+  - name: "certificate_based_service_principal"
+    required: false
+    description: "An certificate Based Service Principal Block"
+    required_vars:
+      - name: "ledger_role_name"
+        description: "Specifies the Ledger role to grant to this certificate SP; Adminsitrator, Contributor or Reader"
+        type: "string"
+      - name: "pem_public_key"
+        description: "The public key, in PEM format, of the certificate used by this SP to authenticate with CL"
+        type: "string"
+

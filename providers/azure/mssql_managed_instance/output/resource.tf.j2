@@ -1,0 +1,32 @@
+resource "azurerm_mssql_managed_server" "{{ mssql_managed_server.name }}" {
+  ## Required Vars
+  administrator_login   = "{{ mssql_managed_server.administrator_login }}"
+  administrator_login_password   = "{{ mssql_managed_server.administrator_login_password }}"
+  license_type   = "{{ mssql_managed_server.license_type }}"
+  location   = "{{ mssql_managed_server.location }}"
+  name   = "{{ mssql_managed_server.name }}"
+  resource_group_name   = "{{ mssql_managed_server.resource_group_name }}"
+  sku_name   = "{{ mssql_managed_server.sku_name }}"
+  storage_size_in_gb   = "{{ mssql_managed_server.storage_size_in_gb }}"
+  subnet_id   = "{{ mssql_managed_server.subnet_id }}"
+  vcores   = "{{ mssql_managed_server.vcores }}"
+
+  ## Optional Vars
+  collation   = "{{ mssql_managed_server.collation }}"
+  dns_zone_partner_id   = "{{ mssql_managed_server.dns_zone_partner_id }}"
+  maintenance_configuration_name   = "{{ mssql_managed_server.maintenance_configuration_name }}"
+  minimum_tls_versrion   = "{{ mssql_managed_server.minimum_tls_versrion }}"
+  proxy_override   = "{{ mssql_managed_server.proxy_override }}"
+  public_data_endpoint_enabled   = {{ mssql_managed_server.public_data_endpoint_enabled }}
+  storage_account_type   = "{{ mssql_managed_server.storage_account_type }}"
+  tags   = "{{ mssql_managed_server.tags | to_json | safe }}"
+  timezone_id   = "{{ mssql_managed_server.timezone_id }}"
+
+  ## Blocks
+  identity {
+    ## Required Block Vars
+    type   = "{{ mssql_managed_server.identity.type }}"
+    ## Optional Block Vars
+    identity_ids   = "{{ mssql_managed_server.identity.identity_ids | to_json | safe }}"
+  }
+}
