@@ -1,0 +1,26 @@
+resource "azurerm_automation_account" "{{ automation_account.name }}" {
+  ## Required Vars
+  name   = "{{ automation_account.name }}"
+  resource_group_name   = "{{ automation_account.resource_group_name }}"
+  location   = "{{ automation_account.location }}"
+  sku_name   = "{{ automation_account.sku_name }}"
+
+  ## Optional Vars
+  local_authentication_enabled   = {{ automation_account.local_authentication_enabled }}
+  public_network_access_enabled   = {{ automation_account.public_network_access_enabled }}
+  tags   = "{{ automation_account.tags | to_json | safe }}"
+
+  ## Blocks
+  encryption {
+    ## Required Block Vars
+    key_vault_key_id   = "{{ automation_account.encryption.key_vault_key_id }}"
+    ## Optional Block Vars
+    user_assigned_identity_id   = "{{ automation_account.encryption.user_assigned_identity_id }}"
+  }
+  identity {
+    ## Required Block Vars
+    type   = "{{ automation_account.identity.type }}"
+    ## Optional Block Vars
+    identity_ids   = "{{ automation_account.identity.identity_ids }}"
+  }
+}

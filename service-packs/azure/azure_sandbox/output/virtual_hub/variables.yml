@@ -1,0 +1,15 @@
+virtual_hub:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Name of the Virtual Hub
+  resource_group_name: "<string>"       # Required; The name of the resource group in which to create the Virtual Hub
+  location: "<string>"       # Required; The Azure location where this Virtual Hub should be created
+  address_prefix: "<string>"       # Required; The Address Prefix which should be used for this Virtual Hub
+  hub_routing_preference: "<string>"       # Optional; The hub routing preference; ExpressRoute, ASPath or VpnGateway
+  sku: "<string>"       # Optional; The SKU of the Virtual Hub; Basic or Standard
+  virtual_wan_id: "<string>"       # Optional; The ID of a Virtual WAN within which the Virtual Hub should be create
+  tags:  # Optional; A mapping of tags
+    - <list>
+  route:
+    address_prefixes:  # Required; A list of address prefixes
+      - <list>
+    next_hop_ip_address: "<string>"       # Required; The IP Address that Packets should be forward to as the Next Hop

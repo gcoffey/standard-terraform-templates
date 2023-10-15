@@ -1,0 +1,72 @@
+resource:
+  name: "azurerm_vpn_gatewy"
+  enable_variable_comments: false
+  var_name: "vpn_gateway"
+  required_vars:
+    - name: "name"
+      description: "Name for the VPN gateway"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the resource group in which to create the VPN Gateway"
+      type: "string"
+    - name: "location"
+      description: "The Azure location where this VPN gateway should be created"
+      type: "string"
+    - name: "virtual_hub_id"
+      description: "The ID of the Virtual Hub where the VPN Gateway shuld be created"
+      type: "string"
+  optional_vars:
+    - name: "bgp_route_translation_for_nat_enabled"
+      description: "Is BGP route translation for NAT on this VPN Gateway enabled?"
+      default_value: false
+      type: "boolean"
+    - name: "bgp_settings"
+      description: "A bgp_settings block"
+      type: "block"
+    - name: "routing_preference"
+      description: "Azure routing preference lets you choose how traffic routes between Azure and Internet"
+      default_value: "Microsoft Network"
+      type: "string"
+    - name: "scale_unit"
+      description: "The Scale Unit for this VPN Gateway"
+      default_value: "1"
+      type: "string"
+    - name: "tags"
+      description: "A mapping of tags"
+      type: "list"
+
+blocks:
+  - name: "bgp_settings"
+    required: false
+    description: "BGP Settings Block"
+    required_vars:
+      - name: "asn"
+        description: "The ASN of the BGP Speaker"
+        type: "string"
+      - name: "peer_weight"
+        description: "The Weight added to the routes learned from this BGP Speaker"
+        type: "string"
+    optional_vars:
+      - name: "instance_0_bgp_peering_address"
+        description: "An instance bgp peering address block"
+        type: "block"
+      - name: "instance_1_bgp_peering_address"
+        description: "An instance bgp peering address block"
+        type: "block"
+  - name: "instance_0_bgp_peering_address"
+    required: false
+    parent_block: "bgp_settings"
+    description: "Instance BGP Peering address block"
+    required_vars:
+      - name: "custom_ips"
+        description: "A list of custom BGP peering addresses to assign to this instance"
+        type: "list"
+  - name: "instance_1_bgp_peering_address"
+    required: false
+    parent_block: "bgp_settings"
+    description: "Instance BGP Peering address block"
+    required_vars:
+      - name: "custom_ips"
+        description: "A list of custom BGP peering addresses to assign to this instance"
+        type: "list"
+

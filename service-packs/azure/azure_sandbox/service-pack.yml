@@ -21,6 +21,17 @@ service_pack:
       provider: azure
       depends_on:
         - "resource_group"
+    - name: vpn_gateway
+      provider: azure
+      depends_on:
+        - "virtual_network"
+        - "virtual_hub"
+    - name: virtual_hub
+      provider: azure
+      depends_on:
+        - "virtual_wan"
+    - name: virtual_wan
+      provider: azure
     - name: key_vault
       provider: azure
     - name: automation_account
@@ -29,12 +40,16 @@ service_pack:
       provider: azure
     - name: log_analytics_workspace
       provider: azure
+    - name: bastion_host
+      provider: azure
+      depends_on:
+        - "subnet"
     - name: mssql_server
       provider: azure
       depends_on:
-        - subnet
+        - "subnet"
     - name: mysql_server
       provider: azure
       depends_on:
-        - subnet
+        - "subnet"
 

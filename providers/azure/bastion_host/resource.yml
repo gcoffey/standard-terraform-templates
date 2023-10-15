@@ -1,0 +1,64 @@
+resource:
+  name: "azurerm_bastion_host"
+  enable_variable_comments: false
+  var_name: "bastion_host"
+  required_vars:
+    - name: "name"
+      description: "Name of the Bastion Host"
+      type: "string"
+    - name: "resource_group_name"
+      description: "The name of the resource group in which to create the Bastion Host"
+      type: "string"
+    - name: "location"
+      description: "The Azure location where this Bastion Host should be created"
+      type: "string"
+    - name: "ip_configuration"
+      description: "An ip configuration block"
+      type: "block"
+  optional_vars:
+    - name: "copy_paste_enabled"
+      description: "Is Copy/Paste feature enabled for bastion host"
+      default_value: true
+      type: "boolean"
+    - name: "file_copy_enabled"
+      description: "Is File Copy feature enabled for bastion host"
+      default_value: false
+      type: "boolean"
+    - name: "sku"
+      description: "The SKU of the bastion host; Basic or Standard"
+      default_value: "Basic"
+      type: "string"
+    - name: "ip_connect_enabled"
+      description: "Is IP connect feature enabled for bastion host"
+      default_value: false
+      type: "boolean"
+    - name: "scale_units"
+      description: "The number of scale units with which to provision the Bastion Host; between 2 and 50"
+      default_value: "2"
+      type: "string"
+    - name: "shareable_link_enabled"
+      description: "Is Shareable link feature enabled for this bastion host"
+      default_value: false
+      type: "boolean"
+    - name: "tunneling_enabled"
+      description: "Is Tunneling feature enabled for bastion host"
+      default_value: false
+      type: "boolean"
+    - name: "tags"
+      description: "A mapping of tags"
+      type: "list"
+
+blocks:
+  - name: "ip_configuration"
+    description: "An IP Configuration block"
+    required: false
+    required_vars:
+      - name: "name"
+        description: "The name of the IP configuration"
+        type: "string"
+      - name: "subnet_id"
+        description: "Reference to a subnet in which this bastion host will be created"
+        type: "string"
+      - name: "public_ip_address_id"
+        description: "Reference to a public ip address to assocaite with this bastion host"
+        type: "string"

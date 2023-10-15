@@ -1,0 +1,197 @@
+resource "azurerm_storage_account" "{{ storage_account.name }}" {
+  ## Required Vars
+  name   = "{{ storage_account.name }}"
+  resource_group_name   = "{{ storage_account.resource_group_name }}"
+  location   = "{{ storage_account.location }}"
+  account_tier   = "{{ storage_account.account_tier }}"
+  account_replication_type   = "{{ storage_account.account_replication_type }}"
+
+  ## Optional Vars
+  account_kind   = "{{ storage_account.account_kind }}"
+  cross_tenant_replication_enabled   = {{ storage_account.cross_tenant_replication_enabled }}
+  access_tier   = "{{ storage_account.access_tier }}"
+  edge_zone   = "{{ storage_account.edge_zone }}"
+  enable_https_traffic_only   = {{ storage_account.enable_https_traffic_only }}
+  min_tls_version   = "{{ storage_account.min_tls_version }}"
+  allow_nested_items_to_be_public   = {{ storage_account.allow_nested_items_to_be_public }}
+  shared_access_key_enabled   = {{ storage_account.shared_access_key_enabled }}
+  public_network_access_enabled   = {{ storage_account.public_network_access_enabled }}
+  default_to_oauth_authentication   = {{ storage_account.default_to_oauth_authentication }}
+  is_hns_enabled   = {{ storage_account.is_hns_enabled }}
+  nfsv3_enabled   = {{ storage_account.nfsv3_enabled }}
+  large_file_share_enabled   = {{ storage_account.large_file_share_enabled }}
+  queue_encryption_key_type   = "{{ storage_account.queue_encryption_key_type }}"
+  table_encryption_key_type   = "{{ storage_account.table_encryption_key_type }}"
+  infrastructure_encryption_enabled   = {{ storage_account.infrastructure_encryption_enabled }}
+  allowed_copy_scope   = "{{ storage_account.allowed_copy_scope }}"
+  sftp_enabled   = {{ storage_account.sftp_enabled }}
+  tags   = "{{ storage_account.tags | to_json | safe }}"
+
+  ## Blocks
+  blob_properties {
+    ## Optional Block Vars
+    cors_rule {
+      ## Required Block Vars
+      allowed_headers   = "{{ storage_account.blob_properties.cors_rule.allowed_headers | to_json | safe }}"
+ 
+      allowed_methods   = "{{ storage_account.blob_properties.cors_rule.allowed_methods | to_json | safe }}"
+ 
+      allowed_origins   = "{{ storage_account.blob_properties.cors_rule.allowed_origins | to_json | safe }}"
+ 
+      exposed_headers   = "{{ storage_account.blob_properties.cors_rule.exposed_headers | to_json | safe }}"
+ 
+      max_age_in_seconds   = "{{ storage_account.blob_properties.cors_rule.max_age_in_seconds }}"
+ 
+    }
+    delete_retention_policy {
+    }
+    restore_policy {
+    }
+    versioning_enabled   = {{ storage_account.blob_properties.versioning_enabled }}
+    change_feed_enabled   = {{ storage_account.blob_properties.change_feed_enabled }}
+    change_feed_retention_in_days   = "{{ storage_account.blob_properties.change_feed_retention_in_days }}"
+    default_service_version   = "{{ storage_account.blob_properties.default_service_version }}"
+    last_access_time_enabled   = {{ storage_account.blob_properties.last_access_time_enabled }}
+    container_delete_retention_policy {
+    }
+  }
+  custom_domain {
+    ## Required Block Vars
+    name   = "{{ storage_account.custom_domain.name }}"
+    ## Optional Block Vars
+    use_subdomain   = {{ storage_account.custom_domain.use_subdomain }}
+  }
+  customer_managed_key {
+    ## Required Block Vars
+    key_vault_key_id   = "{{ storage_account.customer_managed_key.key_vault_key_id }}"
+    user_assigned_identity_id   = "{{ storage_account.customer_managed_key.user_assigned_identity_id }}"
+  }
+  delete_retention_policy {
+    ## Optional Block Vars
+    days   = "{{ storage_account.delete_retention_policy.days }}"
+  }
+  restore_policy {
+    ## Required Block Vars
+    days   = "{{ storage_account.restore_policy.days }}"
+  }
+  container_delete_retention_policy {
+    ## Optional Block Vars
+    days   = "{{ storage_account.container_delete_retention_policy.days }}"
+  }
+  identity {
+    ## Required Block Vars
+    type   = "{{ storage_account.identity.type }}"
+    ## Optional Block Vars
+    identity_ids   = "{{ storage_account.identity.identity_ids }}"
+  }
+  immutability_policy {
+    ## Required Block Vars
+    allow_protected_append_writes   = {{ storage_account.immutability_policy.allow_protected_append_writes }}
+    state   = "{{ storage_account.immutability_policy.state }}"
+    period_since_creation_in_days   = "{{ storage_account.immutability_policy.period_since_creation_in_days }}"
+  }
+  network_rules {
+    ## Required Block Vars
+    default_action   = "{{ storage_account.network_rules.default_action }}"
+    ## Optional Block Vars
+    bypass   = "{{ storage_account.network_rules.bypass }}"
+    ip_rules   = "{{ storage_account.network_rules.ip_rules | to_json | safe }}"
+    virtual_network_subnet_ids   = "{{ storage_account.network_rules.virtual_network_subnet_ids }}"
+    private_link_access {
+      ## Required Block Vars
+      endpoint_resource_id   = "{{ storage_account.network_rules.private_link_access.endpoint_resource_id }}"
+ 
+      ## Optional Block Vars
+      endpoint_tenant_id   = "{{ storage_account.network_rules.private_link_access.endpoint_tenant_id }}"
+    }
+  }
+  azure_files_authentication {
+    ## Required Block Vars
+    directory_type   = "{{ storage_account.azure_files_authentication.directory_type }}"
+    ## Optional Block Vars
+    active_directory {
+      ## Required Block Vars
+      domain_name   = "{{ storage_account.azure_files_authentication.active_directory.domain_name }}"
+ 
+      domain_guid   = "{{ storage_account.azure_files_authentication.active_directory.domain_guid }}"
+ 
+      ## Optional Block Vars
+      domain_sid   = "{{ storage_account.azure_files_authentication.active_directory.domain_sid }}"
+      storage_sid   = "{{ storage_account.azure_files_authentication.active_directory.storage_sid }}"
+      forest_name   = "{{ storage_account.azure_files_authentication.active_directory.forest_name }}"
+      netbios_domain_name   = "{{ storage_account.azure_files_authentication.active_directory.netbios_domain_name }}"
+    }
+  }
+  routing {
+    ## Optional Block Vars
+    publish_internet_endpoints   = {{ storage_account.routing.publish_internet_endpoints }}
+    publish_microsoft_endpoints   = {{ storage_account.routing.publish_microsoft_endpoints }}
+    choice   = "{{ storage_account.routing.choice }}"
+  }
+  queue_properties {
+    ## Optional Block Vars
+    cors_rule {
+    }
+    logging {
+      ## Required Block Vars
+      delete   = {{ storage_account.queue_properties.logging.delete }}
+ 
+      read   = {{ storage_account.queue_properties.logging.read }}
+ 
+      version   = "{{ storage_account.queue_properties.logging.version }}"
+ 
+      write   = "{{ storage_account.queue_properties.logging.write }}"
+ 
+      ## Optional Block Vars
+      retention_policy_days   = "{{ storage_account.queue_properties.logging.retention_policy_days }}"
+    }
+    minute_metrics {
+      ## Required Block Vars
+      enabled   = {{ storage_account.queue_properties.minute_metrics.enabled }}
+ 
+      version   = "{{ storage_account.queue_properties.minute_metrics.version }}"
+ 
+      ## Optional Block Vars
+      include_apis   = "{{ storage_account.queue_properties.minute_metrics.include_apis }}"
+      retention_policy_days   = "{{ storage_account.queue_properties.minute_metrics.retention_policy_days }}"
+    }
+    hour_metrics {
+      ## Required Block Vars
+      enabled   = {{ storage_account.queue_properties.hour_metrics.enabled }}
+ 
+      version   = "{{ storage_account.queue_properties.hour_metrics.version }}"
+ 
+      ## Optional Block Vars
+      include_apis   = {{ storage_account.queue_properties.hour_metrics.include_apis }}
+      retention_policy_days   = "{{ storage_account.queue_properties.hour_metrics.retention_policy_days }}"
+    }
+  }
+  sas_policy {
+    ## Required Block Vars
+    expiration_period   = "{{ storage_account.sas_policy.expiration_period }}"
+    ## Optional Block Vars
+    expiration_action   = "{{ storage_account.sas_policy.expiration_action }}"
+  }
+  static_website {
+    ## Optional Block Vars
+    index_document   = "{{ storage_account.static_website.index_document }}"
+    error_404_document   = "{{ storage_account.static_website.error_404_document }}"
+  }
+  share_properties {
+    ## Optional Block Vars
+    cors_rule {
+    }
+    retention_policy {
+      ## Optional Block Vars
+      days   = "{{ storage_account.share_properties.retention_policy.days }}"
+    }
+    smb {
+      ## Optional Block Vars
+      versions   = "{{ storage_account.share_properties.smb.versions }}"
+      authentication_types   = "{{ storage_account.share_properties.smb.authentication_types }}"
+      kerberos_ticket_encryption_type   = "{{ storage_account.share_properties.smb.kerberos_ticket_encryption_type }}"
+      channel_encryption_type   = "{{ storage_account.share_properties.smb.channel_encryption_type }}"
+      multichannel_enabled   = {{ storage_account.share_properties.smb.multichannel_enabled }}
+    }
+  }
+}

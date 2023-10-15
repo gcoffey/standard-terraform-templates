@@ -1,0 +1,20 @@
+resource "azurerm_virtual_hub" "{{ virtual_hub.name }}" {
+  ## Required Vars
+  name   = "{{ virtual_hub.name }}"
+  resource_group_name   = "{{ virtual_hub.resource_group_name }}"
+  location   = "{{ virtual_hub.location }}"
+  address_prefix   = "{{ virtual_hub.address_prefix }}"
+
+  ## Optional Vars
+  hub_routing_preference   = "{{ virtual_hub.hub_routing_preference }}"
+  sku   = "{{ virtual_hub.sku }}"
+  virtual_wan_id   = "{{ virtual_hub.virtual_wan_id }}"
+  tags   = "{{ virtual_hub.tags | to_json | safe }}"
+
+  ## Blocks
+  route {
+    ## Required Block Vars
+    address_prefixes   = "{{ virtual_hub.route.address_prefixes | to_json | safe }}"
+    next_hop_ip_address   = "{{ virtual_hub.route.next_hop_ip_address }}"
+  }
+}

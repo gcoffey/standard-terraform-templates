@@ -1,0 +1,22 @@
+vpn_gateway:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Name for the VPN gateway
+  resource_group_name: "<string>"       # Required; The name of the resource group in which to create the VPN Gateway
+  location: "<string>"       # Required; The Azure location where this VPN gateway should be created
+  virtual_hub_id: "<string>"       # Required; The ID of the Virtual Hub where the VPN Gateway shuld be created
+  bgp_route_translation_for_nat_enabled: <boolean>        # Optional; Is BGP route translation for NAT on this VPN Gateway enabled?
+  routing_preference: "<string>"       # Optional; Azure routing preference lets you choose how traffic routes between Azure and Internet
+  scale_unit: "<string>"       # Optional; The Scale Unit for this VPN Gateway
+  tags:  # Optional; A mapping of tags
+    - <list>
+  bgp_settings:
+    asn: "<string>"       # Required; The ASN of the BGP Speaker
+    peer_weight: "<string>"       # Required; The Weight added to the routes learned from this BGP Speaker
+    instance_0_bgp_peering_address:
+      custom_ips:  # Required; A list of custom BGP peering addresses to assign to this instance
+        - <list>
+ 
+    instance_1_bgp_peering_address:
+      custom_ips:  # Required; A list of custom BGP peering addresses to assign to this instance
+        - <list>
+ 

@@ -1,0 +1,17 @@
+log_analytics_workspace:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Specifies the name of the Workspace
+  resource_group_name: "<string>"       # Required; The name of the resource group to create the workspace in
+  location: "<string>"       # Required; The Azure location to create the workspace
+  allow_resource_only_permissions: <boolean>        # Optional; Specifies if users can access resources without workspace permission
+  local_authentication_disabled: <boolean>        # Optional; Specifies if the workspace should enforce auth using AAD; default false
+  sku: "<string>"       # Optional; Specifies the SKU of the workspace; Free, PerNode, Premium, Standard, Standalone etc
+  retention_in_days: "<string>"       # Optional; The workspace data retention in days
+  daily_quota_gb: "<string>"       # Optional; The workspace daily quota for ingestion in GB; Default is -1 [unlimited]
+  cmk_for_query_forced: <boolean>        # Optional; Is customer managed key mandatory for query management
+  internet_ingestion_enabled: <boolean>        # Optional; Should the workspace support ingest over the public internet?
+  internet_query_enabled: <boolean>        # Optional; Should the workspace support querying over the public internet?
+  reservation_capacity_in_gb_per_day: "<string>"       # Optional; The capacity reservation level in GB for workspace; 100, 200, 300, 400, 500 etc
+  data_collection_rule_id: "<string>"       # Optional; The ID of the Data collection Rule to use for this workspace
+  tags:  # Optional; A mapping of tags to assign to the workspace
+    - <list>

@@ -1,0 +1,11 @@
+virtual_wan:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Name of the Virtual WAN
+  resource_group_name: "<string>"       # Required; The name of the resource group in which to create the Virtual WAN
+  location: "<string>"       # Required; The Azure location where this Virtual WAN should be created
+  disable_vpn_encryption: <boolean>        # Optional; Boolean flag to specify whether VPN encryption is disable
+  allow_branch_to_branch_traffic: <boolean>        # Optional; Boolean flag to specify whether branch to branch traffic is allow
+  office365_local_breakout_category: "<string>"       # Optional; Specifies the O365 local breakout category; Optimize, OptimizeAndAllow, All or None
+  type: "<string>"       # Optional; Specifies the Virtual WAN type; Basic or Standard
+  tags:  # Optional; A mapping of tags
+    - <list>

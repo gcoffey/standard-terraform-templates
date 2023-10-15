@@ -2,8 +2,3 @@ subnet_route_table_association:
   name: "<string>"	# Required; A name for this resource
   route_table_id: "<string>"       # Required; The ID of the Route Table which should be associate with the Subnet
   subnet_id: "<string>"       # Required; The ID of the Subnet
-  delegation:
-    name: "<string>"       # Required; A name for this delegation
-    service_delegation:
- 
-      name: "<string>"       # Required; The name of service to delegate; Microsoft.ApiManagement/service, Microsoft.AzureComsmosDB/clusters etc      actions: "<string>"       # Optional; A list of Actions which should be delegated; Microsoft.Network/networkinterfaces/*, Microsoft.Network/publicIPAddresses/join/action etc
