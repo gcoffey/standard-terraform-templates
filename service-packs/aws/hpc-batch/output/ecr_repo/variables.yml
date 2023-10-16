@@ -1,0 +1,12 @@
+ecr_repo:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; Name of repo
+  force_delete: <boolean>        # Optional; If true, will delete repo even if it contains images
+  image_tab_mutability: "<string>"       # Optional; The tag mutability setting for the repo; MUTABLE or IMMUTABLE
+  tags:  # Optional; Map of tags to assign
+    - <list>
+  image_scanning_configuration:
+    scan_on_push: <boolean>        # Required; Indicates whether images are scanned after being pushed
+  encryption_configuration:
+    encryption_type: "<string>"       # Optional; The encryption type to use for the repo; AES256 or KMS
+    kms_key: "<string>"       # Optional; The ARN of the KMS key to use when encryption_type is KMS

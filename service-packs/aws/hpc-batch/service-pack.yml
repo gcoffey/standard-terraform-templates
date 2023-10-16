@@ -1,0 +1,26 @@
+service_pack:
+  name: "HPC Batch"
+  description: "High Performance Compute using batch based processing in AWS"
+  resources:
+    - name: vpc
+      provider: aws
+    - name: route_table
+      provider: aws
+    - name: subnet
+      provider: aws
+    - name: network_acl
+      provider: aws
+    - name: internet_gateway
+      provider: aws
+    - name: iam_role
+      provider: aws
+    - name: s3_bucket
+      provider: aws
+    - name: ecr_repo
+      provider: aws
+    - name: batch_compute_environment
+      provider: aws
+    - name: batch_job_definition
+      provider: aws
+      depends_on:
+        - batch_compute_environment

@@ -1,0 +1,15 @@
+service_pack:
+  name: "Serverless"
+  description: "Serverless computing with AWS Lambda"
+  resources:
+    - name: iam_role
+      provider: aws
+    - name: s3_bucket
+      provider: aws
+    - name: cloudwatch_log_group
+      provider: aws
+    - name: lambda_function
+      provider: aws
+      depends_on:
+        - iam_role
+        - s3_bucket

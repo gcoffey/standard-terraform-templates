@@ -1,0 +1,46 @@
+resource:
+  name: "aws_ecr_repository"
+  enable_variable_comments: false
+  var_name: "ecr_repo"
+  required_vars:
+    - name: "name"
+      description: "Name of repo"
+      type: "string"
+  optional_vars:
+    - name: "encryption_configuration"
+      description: "Encryption configuration block"
+      type: "block"
+    - name: "force_delete"
+      description: "If true, will delete repo even if it contains images"
+      default_value: false
+      type: "boolean"
+    - name: "image_tab_mutability"
+      description: "The tag mutability setting for the repo; MUTABLE or IMMUTABLE"
+      default_value: "MUTABLE"
+      type: "string"
+    - name: "image_scanning_configuration"
+      description: "Image scanning configuration block"
+      type: "block"
+    - name: "tags"
+      description: "Map of tags to assign"
+      type: "list"
+
+blocks:
+  - name: "image_scanning_configuration"
+    description: "Image Scanning configuration block"
+    required: false
+    required_vars:
+      - name: "scan_on_push"
+        description: "Indicates whether images are scanned after being pushed"
+        type: "boolean"
+  - name: "encryption_configuration"
+    description: "Encryption configuration block"
+    required: false
+    optional_vars:
+      - name: "encryption_type"
+        description: "The encryption type to use for the repo; AES256 or KMS"
+        default_value: "AES256"
+        type: "string"
+      - name: "kms_key"
+        description: "The ARN of the KMS key to use when encryption_type is KMS"
+        type: "string"

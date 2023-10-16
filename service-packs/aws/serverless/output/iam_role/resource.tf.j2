@@ -1,0 +1,22 @@
+resource "aws_iam_role" "{{ iam_role.name }}" {
+  ## Required Vars
+  assume_role_policy   = "{{ iam_role.assume_role_policy }}"
+
+  ## Optional Vars
+  description   = "{{ iam_role.description }}"
+  force_detach_policies   = {{ iam_role.force_detach_policies }}
+  managed_policy_arns   = "{{ iam_role.managed_policy_arns | to_json | safe }}"
+  max_session_duration   = "{{ iam_role.max_session_duration }}"
+  name   = "{{ iam_role.name }}"
+  name_prefix   = "{{ iam_role.name_prefix }}"
+  path   = "{{ iam_role.path }}"
+  permissions_boundary   = "{{ iam_role.permissions_boundary }}"
+  tags   = "{{ iam_role.tags | to_json | safe }}"
+
+  ## Blocks
+  inline_policy {
+    ## Required Block Vars
+    name   = "{{ iam_role.inline_policy.name }}"
+    policy   = "{{ iam_role.inline_policy.policy }}"
+  }
+}

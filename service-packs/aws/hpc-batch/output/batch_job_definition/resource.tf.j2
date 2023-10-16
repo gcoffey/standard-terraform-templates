@@ -1,0 +1,31 @@
+resource "aws_batch_job_definition" "{{ batch_job_definition.name }}" {
+  ## Required Vars
+  name   = "{{ batch_job_definition.name }}"
+  type   = "{{ batch_job_definition.type }}"
+  container_properties   = "{{ batch_job_definition.container_properties }}"
+
+  ## Optional Vars
+  parameters   = "{{ batch_job_definition.parameters }}"
+  platform_capabilities   = "{{ batch_job_definition.platform_capabilities }}"
+  propagate_tags   = {{ batch_job_definition.propagate_tags }}
+  tags   = "{{ batch_job_definition.tags | to_json | safe }}"
+
+  ## Blocks
+  retry_strategy {
+    ## Optional Block Vars
+    attempts   = "{{ batch_job_definition.retry_strategy.attempts }}"
+    evaluate_on_exit {
+      ## Required Block Vars
+      action   = "{{ batch_job_definition.retry_strategy.evaluate_on_exit.action }}"
+ 
+      ## Optional Block Vars
+      on_exit_code   = "{{ batch_job_definition.retry_strategy.evaluate_on_exit.on_exit_code }}"
+      on_reason   = "{{ batch_job_definition.retry_strategy.evaluate_on_exit.on_reason }}"
+      on_status_reason   = "{{ batch_job_definition.retry_strategy.evaluate_on_exit.on_status_reason }}"
+    }
+  }
+  timeout {
+    ## Optional Block Vars
+    attempt_duration_seconds   = "{{ batch_job_definition.timeout.attempt_duration_seconds }}"
+  }
+}

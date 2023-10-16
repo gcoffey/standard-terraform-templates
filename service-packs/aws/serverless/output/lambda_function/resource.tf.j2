@@ -1,0 +1,66 @@
+resource "aws_lambda_function" "{{ lambda_function.name }}" {
+  ## Required Vars
+  function_name   = "{{ lambda_function.function_name }}"
+  role   = "{{ lambda_function.role }}"
+
+  ## Optional Vars
+  architectures   = "{{ lambda_function.architectures }}"
+  code_signing_config_arn   = "{{ lambda_function.code_signing_config_arn }}"
+  description   = "{{ lambda_function.description }}"
+  ephemeral_storage   = "{{ lambda_function.ephemeral_storage }}"
+  filename   = "{{ lambda_function.filename }}"
+  handler   = "{{ lambda_function.handler }}"
+  image_uri   = "{{ lambda_function.image_uri }}"
+  kms_key_arn   = "{{ lambda_function.kms_key_arn }}"
+  layers   = "{{ lambda_function.layers | to_json | safe }}"
+  memory_size   = "{{ lambda_function.memory_size }}"
+  package_type   = "{{ lambda_function.package_type }}"
+  publish   = {{ lambda_function.publish }}
+  reserved_concurrent_executions   = "{{ lambda_function.reserved_concurrent_executions }}"
+  runtime   = "{{ lambda_function.runtime }}"
+  s3_bucket   = "{{ lambda_function.s3_bucket }}"
+  s3_key   = "{{ lambda_function.s3_key }}"
+  s3_object_version   = "{{ lambda_function.s3_object_version }}"
+  skip_destroy   = {{ lambda_function.skip_destroy }}
+  source_code_hash   = "{{ lambda_function.source_code_hash }}"
+  tags   = "{{ lambda_function.tags | to_json | safe }}"
+  timeout   = "{{ lambda_function.timeout }}"
+
+  ## Blocks
+  dead_letter_config {
+    ## Required Block Vars
+    target_arn   = "{{ lambda_function.dead_letter_config.target_arn }}"
+  }
+  environment {
+    ## Optional Block Vars
+    variables   = "{{ lambda_function.environment.variables | to_json | safe }}"
+  }
+  ephemeral_storage {
+    ## Required Block Vars
+    size   = "{{ lambda_function.ephemeral_storage.size }}"
+  }
+  file_system_config {
+    ## Required Block Vars
+    arn   = "{{ lambda_function.file_system_config.arn }}"
+    local_mount_path   = "{{ lambda_function.file_system_config.local_mount_path }}"
+  }
+  image_config {
+    ## Optional Block Vars
+    command   = "{{ lambda_function.image_config.command }}"
+    entry_point   = "{{ lambda_function.image_config.entry_point }}"
+    working_directory   = "{{ lambda_function.image_config.working_directory }}"
+  }
+  snap_start {
+    ## Required Block Vars
+    apply_on   = "{{ lambda_function.snap_start.apply_on }}"
+  }
+  tracing_config {
+    ## Required Block Vars
+    mode   = "{{ lambda_function.tracing_config.mode }}"
+  }
+  vpc_config {
+    ## Required Block Vars
+    security_group_ids   = "{{ lambda_function.vpc_config.security_group_ids | to_json | safe }}"
+    subnet_ids   = "{{ lambda_function.vpc_config.subnet_ids | to_json | safe }}"
+  }
+}

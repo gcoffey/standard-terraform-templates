@@ -1,0 +1,20 @@
+resource "aws_ecr_repository" "{{ ecr_repo.name }}" {
+  ## Required Vars
+  name   = "{{ ecr_repo.name }}"
+
+  ## Optional Vars
+  force_delete   = {{ ecr_repo.force_delete }}
+  image_tab_mutability   = "{{ ecr_repo.image_tab_mutability }}"
+  tags   = "{{ ecr_repo.tags | to_json | safe }}"
+
+  ## Blocks
+  image_scanning_configuration {
+    ## Required Block Vars
+    scan_on_push   = {{ ecr_repo.image_scanning_configuration.scan_on_push }}
+  }
+  encryption_configuration {
+    ## Optional Block Vars
+    encryption_type   = "{{ ecr_repo.encryption_configuration.encryption_type }}"
+    kms_key   = "{{ ecr_repo.encryption_configuration.kms_key }}"
+  }
+}

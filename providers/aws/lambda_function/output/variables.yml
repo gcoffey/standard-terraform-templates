@@ -1,0 +1,50 @@
+lambda_function:
+  name: "<string>"	# Required; A name for this resource
+  function_name: "<string>"       # Required; Unique name for your Lambda function
+  role: "<string>"       # Required; ARN of the functions execution role
+  architectures: "<string>"       # Optional; Instruction set architecture for your Lambda function; x86_64 or arm64
+  code_signing_config_arn: "<string>"       # Optional; To enable code signing for this function specify the ARN of a code-signing config
+  description: "<string>"       # Optional; Description of your Lambda function
+  ephemeral_storage: "<string>"       # Optional; The amount of ephemeral storage to allocate to the lambda function in MB
+  filename: "<string>"       # Optional; Path to the functions deployment packages
+  handler: "<string>"       # Optional; Function entrypoint in your code
+  image_uri: "<string>"       # Optional; ECR image URI containing the functions deployment package
+  kms_key_arn: "<string>"       # Optional; ARN of the KMS key used to encrypt environment variables
+  layers:  # Optional; List of lambda layer version ARNS to attach to your lambda function
+    - <list>
+  memory_size: "<string>"       # Optional; Amount of memory in MB you Lambda function can use at runtime
+  package_type: "<string>"       # Optional; ALambda deployment package type; Zip or Image
+  publish: <boolean>        # Optional; Whether to publish creation/change as new Lambda function Version
+  reserved_concurrent_executions: "<string>"       # Optional; Amount of reserved concurrent executions for this Lambda function
+  runtime: "<string>"       # Optional; Identifier of the functions runtime
+  s3_bucket: "<string>"       # Optional; S3 bucket location containing the function deployment package
+  s3_key: "<string>"       # Optional; S3 key of an object containing the functions deployment package
+  s3_object_version: "<string>"       # Optional; Object version containing the functions deployment package
+  skip_destroy: <boolean>        # Optional; Set to true if you do not wish the function to be deleted at destroy time
+  source_code_hash: "<string>"       # Optional; Used to trigger updates, must be set to a base64-encoded SHA256 hash of the package file
+  tags:  # Optional; A map of tags
+    - <list>
+  timeout: "<string>"       # Optional; Amount of time your lambda function has to run in seconds
+  dead_letter_config:
+    target_arn: "<string>"       # Required; ARN of an SNS topic or SQS queue to notify when an invocation fails
+  environment:
+    variables:  # Optional; Map of environment variables that are accessible from the function code during execution
+      - <list>
+  ephemeral_storage:
+    size: "<string>"       # Required; The size of the Lambda function ephemeral storage represented in MB
+  file_system_config:
+    arn: "<string>"       # Required; ARN of the EFS Access Point
+    local_mount_path: "<string>"       # Required; Path where the function can access the file system; starting with /mnt/
+  image_config:
+    command: "<string>"       # Optional; Parameters you want to pass in with entry_point
+    entry_point: "<string>"       # Optional; Entry point to your application, typically the location of the runtime executable
+    working_directory: "<string>"       # Optional; Working directory
+  snap_start:
+    apply_on: "<string>"       # Required; Conditions where snap start is enabled; Valid values are PublishedVersions
+  tracing_config:
+    mode: "<string>"       # Required; Whether to sample and trace a subset of incoming requests with AWS X-Ray; PassThrough or Active
+  vpc_config:
+    security_group_ids:  # Required; List of security group ids associated with the Lambda function
+      - <list>
+    subnet_ids:  # Required; List of Subnet IDs associated with the Lambda function
+      - <list>

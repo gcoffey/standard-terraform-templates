@@ -1,0 +1,8 @@
+s3_bucket:
+  name: "<string>"	# Required; A name for this resource
+  bucket: "<string>"       # Optional; Name of the bucket
+  bucket_prefix: "<string>"       # Optional; Creates a bucket with this prefix, don't set bucket if using a prefix
+  force_destroy: <boolean>        # Optional; Delete everything in the bucket when the bucket is destroyed
+  object_lock_enabled: <boolean>        # Optional; Indicates whether this bucket has an Object Lock config enabled
+  tags:  # Optional; Map of tags to assign to the bucket
+    - <list>

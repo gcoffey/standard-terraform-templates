@@ -1,0 +1,10 @@
+resource "aws_s3_bucket" "{{ s3_bucket.name }}" {
+
+  ## Optional Vars
+  bucket   = "{{ s3_bucket.bucket }}"
+  bucket_prefix   = "{{ s3_bucket.bucket_prefix }}"
+  force_destroy   = {{ s3_bucket.force_destroy }}
+  object_lock_enabled   = {{ s3_bucket.object_lock_enabled }}
+  tags   = "{{ s3_bucket.tags | to_json | safe }}"
+
+}

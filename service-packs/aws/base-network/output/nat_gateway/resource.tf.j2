@@ -8,31 +8,4 @@ resource "aws_nat_gateway" "{{ nat_gateway.name }}" {
   private_ip   = "{{ nat_gateway.private_ip }}"
   tags   = "{{ nat_gateway.tags | to_json | safe }}"
 
-  ## Blocks
-  ingress {
-    ## Required Block Vars
-    from_port   = "{{ nat_gateway.ingress.from_port }}"
-    to_port   = "{{ nat_gateway.ingress.to_port }}"
-    rule_no   = "{{ nat_gateway.ingress.rule_no }}"
-    action   = "{{ nat_gateway.ingress.action }}"
-    protocol   = "{{ nat_gateway.ingress.protocol }}"
-    ## Optional Block Vars
-    cidr_block   = "{{ nat_gateway.ingress.cidr_block }}"
-    ipv6_cidr_block   = "{{ nat_gateway.ingress.ipv6_cidr_block }}"
-    icmp_type   = "{{ nat_gateway.ingress.icmp_type }}"
-    icmp_code   = "{{ nat_gateway.ingress.icmp_code }}"
-  }
-  egress {
-    ## Required Block Vars
-    from_port   = "{{ nat_gateway.egress.from_port }}"
-    to_port   = "{{ nat_gateway.egress.to_port }}"
-    rule_no   = "{{ nat_gateway.egress.rule_no }}"
-    action   = "{{ nat_gateway.egress.action }}"
-    protocol   = "{{ nat_gateway.egress.protocol }}"
-    ## Optional Block Vars
-    cidr_block   = "{{ nat_gateway.egress.cidr_block }}"
-    ipv6_cidr_block   = "{{ nat_gateway.egress.ipv6_cidr_block }}"
-    icmp_type   = "{{ nat_gateway.egress.icmp_type }}"
-    icmp_code   = "{{ nat_gateway.egress.icmp_code }}"
-  }
 }

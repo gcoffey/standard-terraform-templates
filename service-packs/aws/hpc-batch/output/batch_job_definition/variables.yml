@@ -1,0 +1,19 @@
+batch_job_definition:
+  name: "<string>"	# Required; A name for this resource
+  name: "<string>"       # Required; The name of the job definition
+  type: "<string>"       # Required; The type of compute environment; must be container
+  container_properties: "<string>"       # Required; A valid container properties provided as a JSON document
+  parameters: "<string>"       # Optional; Specifies the parameter substitution placeholders to set in the job definition
+  platform_capabilities: "<string>"       # Optional; The platform capabilities required by the job definition; EC2 or FARGATE
+  propagate_tags: <boolean>        # Optional; Specifies whether to propagate the tags from the job definition
+  tags:  # Optional; Map of tags to assign to the bucket
+    - <list>
+  retry_strategy:
+    attempts: "<string>"       # Optional; The number of times to move a job to the RUNNABLE state
+    evaluate_on_exit:
+      action: "<string>"       # Required; Specifies the action to take if all specified conditions are met; RETRY or EXIT 
+      on_exit_code: "<string>"       # Optional; A glob pattern to match against the decimal representation of the exit code
+      on_reason: "<string>"       # Optional; A glob pattern to match against the reason returned for a job
+      on_status_reason: "<string>"       # Optional; A glob pattern to match against the status reason returned for a job
+  timeout:
+    attempt_duration_seconds: "<string>"       # Optional; The time duration in seconds after which AWS Batch terminates your jobs if not finished

@@ -1,0 +1,36 @@
+batch_compute_environment:
+  name: "<string>"	# Required; A name for this resource
+  service_role: "<string>"       # Required; The full ARN of the IAM role that allows AWS Batch to use other AWS services
+  type: "<string>"       # Required; The type of compute environment; MANAGED or UNMANAGED
+  compute_environment_name: "<string>"       # Optional; The name for the compute environment
+  compute_environment_name_prefix: "<string>"       # Optional; Creates a unique name using this prefix; don't use with compute_environment_name
+  state: "<string>"       # Optional; The state of the compute environment; ENABLED or DISABLED
+  tags:  # Optional; Map of tags to assign to the bucket
+    - <list>
+  compute_resources:
+    max_vcpus: "<string>"       # Required; The maximum number of EC2 vCPUs that an environment can have
+    subnets:  # Required; A list of VPC subnets that compute resources are launched
+      - <list>
+    type: "<string>"       # Required; The type of compute environment; EC2, SPOT, FARGATE or FARGATE_SPOT
+    allocation_strategy: "<string>"       # Optional; The allocation strategy to use for the compute resource; BEST_FIT_PROGRESS, SPOT_CAPACITY_OPTIMIZED etc
+    bid_percentage: "<string>"       # Optional; Integer of maximum percentage that spot instance price can be when compared to on-demand
+    desired_vcpus: "<string>"       # Optional; The desired number of EC2 vCPUs in the compute environment
+    ec2_configuration:
+      image_id_override: "<string>"       # Optional; The AMI ID used for instances launched in the compute environment
+      image_type: "<string>"       # Optional; The image type to match with the instance type to select an AMI?!
+    ec2_key_pair: "<string>"       # Optional; The EC2 key pair that is used for instances launched in the compute environment
+    image_id: "<string>"       # Optional; The AMI ID used for instances launch in the compute environment
+    instance_role: "<string>"       # Optional; The Amazon ECS instance role applied to the EC2 instances in the compute environment
+    instance_type:  # Optional; A list of instance types that may be launched
+      - <list>
+    launch_template: "<string>"       # Optional; The launch template to use for your compute resources
+    min_vcpus: "<string>"       # Optional; The minimum number of EC2 vCPUs that should be present in the compute environment
+    placement_group: "<string>"       # Optional; The EC2 placement group to associated with your compute resources
+    security_group_ids:  # Optional; A list of EC2 security groups that are associated with instances launched in the environment
+      - <list>
+    spot_iam_fleet_role: "<string>"       # Optional; The ARN of the EC2 Spot Fleet IAM role
+    tags:  # Optional; Key-value pair tags to be applied to resources
+      - <list>
+  eks_configuration:
+    eks_cluster_arn: "<string>"       # Required; The ARN of the Amazon EKS cluster
+    kubernetes_namespace: "<string>"       # Required; The namespace of the Amazon EKS cluster

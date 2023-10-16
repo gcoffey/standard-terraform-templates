@@ -1,0 +1,43 @@
+resource "aws_batch_compute_environment" "{{ batch_compute_environment.name }}" {
+  ## Required Vars
+  service_role   = "{{ batch_compute_environment.service_role }}"
+  type   = "{{ batch_compute_environment.type }}"
+
+  ## Optional Vars
+  compute_environment_name   = "{{ batch_compute_environment.compute_environment_name }}"
+  compute_environment_name_prefix   = "{{ batch_compute_environment.compute_environment_name_prefix }}"
+  state   = "{{ batch_compute_environment.state }}"
+  tags   = "{{ batch_compute_environment.tags | to_json | safe }}"
+
+  ## Blocks
+  compute_resources {
+    ## Required Block Vars
+    max_vcpus   = "{{ batch_compute_environment.compute_resources.max_vcpus }}"
+    subnets   = "{{ batch_compute_environment.compute_resources.subnets | to_json | safe }}"
+    type   = "{{ batch_compute_environment.compute_resources.type }}"
+    ## Optional Block Vars
+    allocation_strategy   = "{{ batch_compute_environment.compute_resources.allocation_strategy }}"
+    bid_percentage   = "{{ batch_compute_environment.compute_resources.bid_percentage }}"
+    desired_vcpus   = "{{ batch_compute_environment.compute_resources.desired_vcpus }}"
+    ec2_configuration {
+      ## Optional Block Vars
+      image_id_override   = "{{ batch_compute_environment.compute_resources.ec2_configuration.image_id_override }}"
+      image_type   = "{{ batch_compute_environment.compute_resources.ec2_configuration.image_type }}"
+    }
+    ec2_key_pair   = "{{ batch_compute_environment.compute_resources.ec2_key_pair }}"
+    image_id   = "{{ batch_compute_environment.compute_resources.image_id }}"
+    instance_role   = "{{ batch_compute_environment.compute_resources.instance_role }}"
+    instance_type   = "{{ batch_compute_environment.compute_resources.instance_type | to_json | safe }}"
+    launch_template   = "{{ batch_compute_environment.compute_resources.launch_template }}"
+    min_vcpus   = "{{ batch_compute_environment.compute_resources.min_vcpus }}"
+    placement_group   = "{{ batch_compute_environment.compute_resources.placement_group }}"
+    security_group_ids   = "{{ batch_compute_environment.compute_resources.security_group_ids | to_json | safe }}"
+    spot_iam_fleet_role   = "{{ batch_compute_environment.compute_resources.spot_iam_fleet_role }}"
+    tags   = "{{ batch_compute_environment.compute_resources.tags | to_json | safe }}"
+  }
+  eks_configuration {
+    ## Required Block Vars
+    eks_cluster_arn   = "{{ batch_compute_environment.eks_configuration.eks_cluster_arn }}"
+    kubernetes_namespace   = "{{ batch_compute_environment.eks_configuration.kubernetes_namespace }}"
+  }
+}

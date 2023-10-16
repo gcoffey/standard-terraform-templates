@@ -1,0 +1,28 @@
+nat_gateway:
+  name: "<string>"	# Required; A name for this resource
+  subnet_id: "<string>"       # Required; The Subnet ID of the subnet in which to place the gateway
+  allocation_id: "<string>"       # Optional; The allocation ID of the elastic ip address for the gateway
+  connectivity_type: "<string>"       # Optional; Connectivity type for the gateway; private or public; Default public
+  private_ip: "<string>"       # Optional; The private IPv5 address to assign to the NAT gateway
+  tags:  # Optional; A map of tags to assign to the resource
+    - <list>
+  ingress:
+    from_port: "<string>"       # Required; The from port to match
+    to_port: "<string>"       # Required; The to port to match
+    rule_no: "<string>"       # Required; The rule number. Used for ordering
+    action: "<string>"       # Required; The action to take
+    protocol: "<string>"       # Required; The protocol to match; icmp, icmpv6, tcp, udp or all
+    cidr_block: "<string>"       # Optional; The CIDR block to match
+    ipv6_cidr_block: "<string>"       # Optional; The IPv6 CIDR block
+    icmp_type: "<string>"       # Optional; The ICMP type to be used
+    icmp_code: "<string>"       # Optional; The ICMP type code
+  egress:
+    from_port: "<string>"       # Required; The from port to match
+    to_port: "<string>"       # Required; The to port to match
+    rule_no: "<string>"       # Required; The rule number. Used for ordering
+    action: "<string>"       # Required; The action to take
+    protocol: "<string>"       # Required; The protocol to match; icmp, icmpv6, tcp, udp or all
+    cidr_block: "<string>"       # Optional; The CIDR block to match
+    ipv6_cidr_block: "<string>"       # Optional; The IPv6 CIDR block
+    icmp_type: "<string>"       # Optional; The ICMP type to be used
+    icmp_code: "<string>"       # Optional; The ICMP type code

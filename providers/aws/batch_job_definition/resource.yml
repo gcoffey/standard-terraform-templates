@@ -1,0 +1,74 @@
+resource:
+  name: "aws_batch_job_definition"
+  enable_variable_comments: false
+  var_name: "batch_job_definition"
+  required_vars:
+    - name: "name"
+      description: "The name of the job definition"
+      type: "string"
+    - name: "type"
+      description: "The type of compute environment; must be container"
+      default_value: "container"
+      type: "string"
+    - name: "container_properties"
+      description: "A valid container properties provided as a JSON document"
+      type: "string"
+  optional_vars:
+    - name: "parameters"
+      description: "Specifies the parameter substitution placeholders to set in the job definition"
+      type: "string"
+    - name: "platform_capabilities"
+      description: "The platform capabilities required by the job definition; EC2 or FARGATE"
+      default_value: "EC2"
+      type: "string"
+    - name: "propagate_tags"
+      description: "Specifies whether to propagate the tags from the job definition"
+      default_value: false
+      type: "boolean"
+    - name: "retry_strategy"
+      description: "Specifies the retry strategy to use for failed job"
+      type: "block"
+    - name: "tags"
+      description: "Map of tags to assign to the bucket"
+      type: "list"
+    - name: "timeout"
+      description: "Specifies the timeout for jobs so that if a job runs longer, AWS batch terminates job"
+      type: "block"
+
+blocks:
+  - name: "retry_strategy"
+    description: "A Retry Strategy Block"
+    required: false
+    optional_vars:
+      - name: "attempts"
+        description: "The number of times to move a job to the RUNNABLE state"
+        type: "string"
+      - name: "evaluate_on_exit"
+        description: "An evaluate on exit block"
+        type: "block"
+  - name: "evaluate_on_exit"
+    description: "An evaluate on exit block"
+    parent_block: "retry_strategy"
+    required: false
+    required_vars:
+      - name: "action"
+        description: "Specifies the action to take if all specified conditions are met; RETRY or EXIT"
+        type: "string"
+    optional_vars:
+      - name: "on_exit_code"
+        description: "A glob pattern to match against the decimal representation of the exit code"
+        type: "string"
+      - name: "on_reason"
+        description: "A glob pattern to match against the reason returned for a job"
+        type: "string"
+      - name: "on_status_reason"
+        description: "A glob pattern to match against the status reason returned for a job"
+        type: "string"
+  - name: "timeout"
+    description: "A timeout block"
+    required: false
+    optional_vars:
+      - name: "attempt_duration_seconds"
+        description: "The time duration in seconds after which AWS Batch terminates your jobs if not finished"
+        type: "string"
+
