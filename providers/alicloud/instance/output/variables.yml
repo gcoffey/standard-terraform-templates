@@ -1,0 +1,84 @@
+instance:
+  name: "<string>"	# Required; A name for this resource
+  image_id: "<string>"       # Required; The image to use for the ECS instance
+  instance_type: "<string>"       # Required; The type of instance to start
+  security_groups:  # Required; A list of security group ids to associate with
+    - <list>
+  is_outdated: <boolean>        # Optional; Whether to use outdated instance type
+  availability_zone: "<string>"       # Optional; The zone to start the instance in
+  instance_name: "<string>"       # Optional; The name of the ECS instance; 2 to 128 chars only alphanumeric and -,._
+  system_disk_category: "<string>"       # Optional; Valid values ephemeral_ssd, cloud_efficiency, cloud_ssd, cloud_essd, cloud or cloud_auto
+  system_disk_name: "<string>"       # Optional; The name of the system disk; 2 to 128 chars only alphanumeric and -,._
+  system_disk_description: "<string>"       # Optional; The description of the system disk; 2 to 256 chars
+  system_disk_size: "<string>"       # Optional; Size of the system disk in GB; range 20 to 500
+  system_disk_performance_level: "<string>"       # Optional; The performance level of the ESSD when used as the system disk type; Values PL0, PL1, PL2 or PL3
+  system_disk_auto_snapshot_policy_id: "<string>"       # Optional; The ID of the automatic snapshot policy applied to the system disk
+  system_disk_storage_cluster_id: "<string>"       # Optional; The ID of the dedicated block storage cluster
+  system_disk_encrypted: <boolean>        # Optional; Whether to encrypt the system disk or not; true or false
+  system_disk_kms_key_id: "<string>"       # Optional; The ID of the Key Management Service key to be used for the system disk
+  system_disk_encrypt_algorithm: "<string>"       # Optional; The algorithm to be used to encrypt the system disk; aes-256 or sm4-128
+  description: "<string>"       # Optional; Description of the instance
+  internet_charge_type: "<string>"       # Optional; Internet charge type of instance; PayByBandwidth or PayByTraffic
+  internet_max_bandwidth_in: "<string>"       # Optional; Maximum incoming bandwidth from the public network; 1 to 200 measured in Mbps
+  internet_max_bandwidth_out: "<string>"       # Optional; Maximum outgoing bandwidth to the public network; 1 to 100 measured in Mbps
+  host_name: "<string>"       # Optional; Host name of the ECS instance; For Windows a max of 15 chars
+  password: "<string>"       # Optional; Password to an instance; 8 to 30 chars; must contain upper & lower alphanumeric no special chars
+  kms_encrypted_password: "<string>"       # Optional; A reference to a password stored in KMS?
+  kms_encryption_context: "<string>"       # Optional; KMS encryption context used to decrypt kms_encrypted_password
+  vswitch_id: "<string>"       # Optional; The virtual switch ID to launch in the VPC; must be set unless classic nic used
+  instance_charge_type: "<string>"       # Optional; Valid values are PrePaid & PostPaid
+  resource_group_id: "<string>"       # Optional; The Id of the Resource Group to place the instance
+  period_unit: "<string>"       # Optional; The duration unit that you will buy the resouce; Week or Month
+  period: "<string>"       # Optional; The duration that you will buy the resource
+  renewal_status: "<string>"       # Optional; Whether to renew an ECS instance automatically or not; AutoRenewal, Normal or NotRenewal
+  auto_renew_period: "<string>"       # Optional; Auto renewal period of an instance, in months
+  tags:  # Optional; A mapping of tags to assign
+    - <list>
+  volume_tags:  # Optional; A mapping of tags to apply to the disk volume
+    - <list>
+  user_data: "<string>"       # Optional; User-defined data to customize startup behavior
+  key_name: "<string>"       # Optional; The name of the SSH key pair to grant access to this instance
+  role_name: "<string>"       # Optional; Instance RAM role name
+  include_data_disks: <boolean>        # Optional; Whether to change instance disks charge type when changing instance charge type
+  dry_run: <boolean>        # Optional; Specifies whether to send a dry-run request
+  private_ip: "<string>"       # Optional; A private IP to assign to the ECS instance
+  credit_specification: "<string>"       # Optional; Performance mode of the t5 burstable instance; Standard or Unlimited
+  spot_strategy: "<string>"       # Optional; The spot strategy of a PAYG instance; NoSpot, SpotWithPriceLimit or SpotAsPriceGo
+  spot_price_limit: "<string>"       # Optional; The hourly price threshold of an instance
+  deletion_protection: <boolean>        # Optional; Whether to enable protection from deletion
+  force_delete: <boolean>        # Optional; If true, the instance will be forcibly deleted
+  auto_release_time: "<string>"       # Optional; The automatic release time of the PostPaid instance; ISO8601 format
+  security_enhancement_strategy: "<string>"       # Optional; The security enhancements strategy; Active or Deactive?
+  status: "<string>"       # Optional; The instance status; Running or Stopped
+  hpc_cluster_id: "<string>"       # Optional; The Id of the Elastic High Performance Computing cluster to place the instance?
+  secondary_private_ips:  # Optional; A list of Secondary private IPs to assign
+    - <list>
+  secondary_private_ip_address_count: "<string>"       # Optional; The number of private IP addresses to be automatically assigned from a CIDR block
+  deployment_set_id: "<string>"       # Optional; The ID of the deployment set to which to deploy the instance
+  operator_type: "<string>"       # Optional; The operation type?; upgrade or downgrade?? When you change instance_type?!
+  stopped_mode: "<string>"       # Optional; The stop mode of the PAYG instance; StopCharging, KeepCharing or Not-applicable
+  maintenance_action: "<string>"       # Optional; The maintenance action; Stop, AutoRecover or AutoRedeploy
+  maintenance_notify: <boolean>        # Optional; Specifies whether to send an event notification before instance shutdown
+  spot_duration: "<string>"       # Optional; The retention time of the preemptive instance in hours; 0 - 6
+  http_tokens: "<string>"       # Optional; Specifies whether to forcefully use the security-enhanced mode; optional or required
+  http_endpoint: "<string>"       # Optional; Specifies whether to enable the access channel for instance metadata; enabled or disabled
+  http_put_response_hop_limit: "<string>"       # Optional; The HTTP PUT response hop limit for accessing metadata; 1 to 64
+  ipv6_address_count: "<string>"       # Optional; The number of IPv6 addresses to randomly generate for the primary ENI; 1 to 10
+  ipv6_addresses:  # Optional; A list of IPv6 addresses to be assigned to the primary ENI; max of 10
+    - <list>
+  dedicated_host_id: "<string>"       # Optional; The Id of the dedicated host on which to create the instance
+  data_disks:
+    size: "<string>"       # Required; The size of the data disk in GB
+    name: "<string>"       # Optional; The name of the data disk
+    category: "<string>"       # Optional; The category of disk; cloud, cloud_efficiency, cloud_ssd, cloud_essd etc
+    performance_level: "<string>"       # Optional; The performance level of the ESSD; PL0 - PL3
+    encrypted: <boolean>        # Optional; Is the disk encrypted
+    kms_key_id: "<string>"       # Optional; The KMS Key Id used to encrypt / decrypt the disk
+    snapshot_id: "<string>"       # Optional; The snapshot Id used to initialize the disk
+    auto_snapshot_policy_id: "<string>"       # Optional; The Id of the automatic snapshot policy applied to the disk
+    delete_with_instance: <boolean>        # Optional; Delete this data disk when the instance is destroyed
+    description: "<string>"       # Optional; The description of the data disk
+    device: "<string>"       # Optional; The mount point of the data disk
+  maintenance_time:
+    start_time: "<string>"       # Optional; The start time for the maintenance window
+    end_time: "<string>"       # Optional; The end time for the maintenance window

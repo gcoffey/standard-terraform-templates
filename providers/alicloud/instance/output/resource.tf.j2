@@ -1,0 +1,89 @@
+resource "alicloud_instance" "{{ instance.name }}" {
+  ## Required Vars
+  image_id   = "{{ instance.image_id }}"
+  instance_type   = "{{ instance.instance_type }}"
+  security_groups   = "{{ instance.security_groups | to_json | safe }}"
+
+  ## Optional Vars
+  is_outdated   = {{ instance.is_outdated }}
+  availability_zone   = "{{ instance.availability_zone }}"
+  instance_name   = "{{ instance.instance_name }}"
+  system_disk_category   = "{{ instance.system_disk_category }}"
+  system_disk_name   = "{{ instance.system_disk_name }}"
+  system_disk_description   = "{{ instance.system_disk_description }}"
+  system_disk_size   = "{{ instance.system_disk_size }}"
+  system_disk_performance_level   = "{{ instance.system_disk_performance_level }}"
+  system_disk_auto_snapshot_policy_id   = "{{ instance.system_disk_auto_snapshot_policy_id }}"
+  system_disk_storage_cluster_id   = "{{ instance.system_disk_storage_cluster_id }}"
+  system_disk_encrypted   = {{ instance.system_disk_encrypted }}
+  system_disk_kms_key_id   = "{{ instance.system_disk_kms_key_id }}"
+  system_disk_encrypt_algorithm   = "{{ instance.system_disk_encrypt_algorithm }}"
+  description   = "{{ instance.description }}"
+  internet_charge_type   = "{{ instance.internet_charge_type }}"
+  internet_max_bandwidth_in   = "{{ instance.internet_max_bandwidth_in }}"
+  internet_max_bandwidth_out   = "{{ instance.internet_max_bandwidth_out }}"
+  host_name   = "{{ instance.host_name }}"
+  password   = "{{ instance.password }}"
+  kms_encrypted_password   = "{{ instance.kms_encrypted_password }}"
+  kms_encryption_context   = "{{ instance.kms_encryption_context }}"
+  vswitch_id   = "{{ instance.vswitch_id }}"
+  instance_charge_type   = "{{ instance.instance_charge_type }}"
+  resource_group_id   = "{{ instance.resource_group_id }}"
+  period_unit   = "{{ instance.period_unit }}"
+  period   = "{{ instance.period }}"
+  renewal_status   = "{{ instance.renewal_status }}"
+  auto_renew_period   = "{{ instance.auto_renew_period }}"
+  tags   = "{{ instance.tags | to_json | safe }}"
+  volume_tags   = "{{ instance.volume_tags | to_json | safe }}"
+  user_data   = "{{ instance.user_data }}"
+  key_name   = "{{ instance.key_name }}"
+  role_name   = "{{ instance.role_name }}"
+  include_data_disks   = {{ instance.include_data_disks }}
+  dry_run   = {{ instance.dry_run }}
+  private_ip   = "{{ instance.private_ip }}"
+  credit_specification   = "{{ instance.credit_specification }}"
+  spot_strategy   = "{{ instance.spot_strategy }}"
+  spot_price_limit   = "{{ instance.spot_price_limit }}"
+  deletion_protection   = {{ instance.deletion_protection }}
+  force_delete   = {{ instance.force_delete }}
+  auto_release_time   = "{{ instance.auto_release_time }}"
+  security_enhancement_strategy   = "{{ instance.security_enhancement_strategy }}"
+  status   = "{{ instance.status }}"
+  hpc_cluster_id   = "{{ instance.hpc_cluster_id }}"
+  secondary_private_ips   = "{{ instance.secondary_private_ips | to_json | safe }}"
+  secondary_private_ip_address_count   = "{{ instance.secondary_private_ip_address_count }}"
+  deployment_set_id   = "{{ instance.deployment_set_id }}"
+  operator_type   = "{{ instance.operator_type }}"
+  stopped_mode   = "{{ instance.stopped_mode }}"
+  maintenance_action   = "{{ instance.maintenance_action }}"
+  maintenance_notify   = {{ instance.maintenance_notify }}
+  spot_duration   = "{{ instance.spot_duration }}"
+  http_tokens   = "{{ instance.http_tokens }}"
+  http_endpoint   = "{{ instance.http_endpoint }}"
+  http_put_response_hop_limit   = "{{ instance.http_put_response_hop_limit }}"
+  ipv6_address_count   = "{{ instance.ipv6_address_count }}"
+  ipv6_addresses   = "{{ instance.ipv6_addresses | to_json | safe }}"
+  dedicated_host_id   = "{{ instance.dedicated_host_id }}"
+
+  ## Blocks
+  data_disks {
+    ## Required Block Vars
+    size   = "{{ instance.data_disks.size }}"
+    ## Optional Block Vars
+    name   = "{{ instance.data_disks.name }}"
+    category   = "{{ instance.data_disks.category }}"
+    performance_level   = "{{ instance.data_disks.performance_level }}"
+    encrypted   = {{ instance.data_disks.encrypted }}
+    kms_key_id   = "{{ instance.data_disks.kms_key_id }}"
+    snapshot_id   = "{{ instance.data_disks.snapshot_id }}"
+    auto_snapshot_policy_id   = "{{ instance.data_disks.auto_snapshot_policy_id }}"
+    delete_with_instance   = {{ instance.data_disks.delete_with_instance }}
+    description   = "{{ instance.data_disks.description }}"
+    device   = "{{ instance.data_disks.device }}"
+  }
+  maintenance_time {
+    ## Optional Block Vars
+    start_time   = "{{ instance.maintenance_time.start_time }}"
+    end_time   = "{{ instance.maintenance_time.end_time }}"
+  }
+}

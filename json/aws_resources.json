@@ -3,12 +3,19 @@
 
 "autoscaling_attachment",
 "autoscaling_group",
+"batch_compute_environment",
+"batch_job_definition",
 "cloudfront_distribution",
 "cloudfront_function",
 "cloudfront_origin_access_control",
+"cloudwatch_log_group",
 "db_instance",
+"ecr_repo",
 "egress_only_internet_gateway",
+"eks_cluster",
+"iam_role",
 "internet_gateway",
+"lambda_function",
 "lb",
 "lb_listener",
 "lb_listener_certificate",
@@ -21,6 +28,8 @@
 "route53_record",
 "route53_zone",
 "route_table",
+"s3_bucket",
+"sagemaker_domain",
 "security_group",
 "security_group_rule",
 "sns_platform_application",
@@ -41,5 +50,9 @@
 "servicepacks": [ 
 
 "base-network",
+"eks-cluster",
+"hpc-batch",
+"ml-sandbox",
+"serverless",
  ]
 }

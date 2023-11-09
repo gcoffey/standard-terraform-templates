@@ -1,0 +1,32 @@
+{  
+"resources": [ 
+
+"application",
+"application_certificate",
+"application_federated_identity_credential",
+"application_password",
+"application_pre_authorized",
+"app_role_assignment",
+"claims_mapping_policy",
+"conditional_access_policy",
+"custom_directory_role",
+"directory_role",
+"directory_role_assignment",
+"directory_role_member",
+"group",
+"group_member",
+"invitation",
+"service_principal",
+"service_principal_certificate",
+"service_principal_claims_mapping_policy_assignment",
+"service_principal_password",
+"service_principal_token_signing_certificate",
+"user",
+ ]
+}
+{  
+"servicepacks": [ 
+
+"app_registration",
+ ]
+}

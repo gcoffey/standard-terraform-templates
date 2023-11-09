@@ -1,4 +1,6 @@
 { "providers": [ 
 "aws",
 "azure",
+"azuread",
+"azuredevops",
  ] }
